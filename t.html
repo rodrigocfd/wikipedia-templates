@@ -1,0 +1,152 @@
+<html>
+<head>
+<meta charset="UTF-8"/>
+<meta name="author" content="Rodrigo César de Freitas Dias"/>
+<link rel="icon" href="favicon.ico"/>
+<title>Tabela</title>
+<link type="text/css" rel="stylesheet" href="dress.css"/>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script>
+var ll = 0;
+var cc = 0;
+$(document).ready(function() {
+	$('form#tabela').hide();
+	$('textarea#out').hide();
+
+	$('form#gerador').submit(function() {
+		$('textarea#out').hide();
+
+		ll = parseInt($('form#gerador input[name=linhas]').val(), 10);
+		cc = parseInt($('form#gerador input[name=colunas]').val(), 10);
+		var campo = parseInt($('form#gerador input[name=campo]').val(), 10);
+
+		var code = '';
+		for (var j = 0; j < cc; ++j) {
+			var val = $('input#h_' + j).length > 0 ? $('input#h_' + j).val() : '';
+			code += '<input type="text" id="h_' + j + '" size="' + campo + '" value="' + val + '"/>';
+		}
+		$('form#tabela div#cabecalho').html(code);
+
+		code = '';
+		for (var i = 0; i < ll; ++i) {
+			for (var j = 0; j < cc; ++j) {
+				var id = 'f_' + i + '_' + j;
+				var val = $('input#' + id).length > 0 ? $('input#' + id).val() : '';
+				code += '<input type="text" id="' + id + '" size="' + campo + '" value="' + val + '"/>';
+			}
+			code += '<br/>';
+		}
+
+		$('form#tabela div#campos').html(code);
+		$('form#tabela').show();
+		$('form#tabela input:first').focus();
+		return false;
+	});
+
+	function ProcMatrix() {
+		var matrix = [];
+		for (var i = 0; i < ll; ++i) {
+			matrix.push([]);
+			for (var j = 0; j < cc; ++j) {
+				var id = 'f_' + i + '_' + j;
+				matrix[i].push({ rowspan:1, colspan:1, value:$('input#' + id).val() });
+			}
+		}
+
+		for(var i = 0; i < ll; ++i) {
+			var j = cc - 1;
+			for (;;) {
+				if (matrix[i][j].value == '<<') {
+					var howMany = 0;
+					while (matrix[i][j--].value == '<<') {
+						++howMany;
+					}
+					matrix[i][++j].colspan = howMany + 1;
+				}
+
+				if (j === 0) break;
+				--j;
+			}
+		}
+
+		for(var j = 0; j < cc; ++j) {
+			var i = ll - 1;
+			for (;;) {
+				if (matrix[i][j].value == '||') {
+					var howMany = 0;
+					while (matrix[i--][j].value == '||') {
+						++howMany;
+					}
+					matrix[++i][j].rowspan = howMany + 1;
+				}
+
+				if (i === 0) break;
+				--i;
+			}
+		}
+
+		return matrix;
+	}
+
+	$('form#tabela').submit(function() {
+		var matrix = ProcMatrix();
+		var code = '{| class="wikitable"\n';
+		var hasHead = false;
+		for (var j = 0; j < cc; ++j) {
+			if ($('input#h_' + j).val().length > 0) {
+				hasHead = true;
+				break;
+			}
+		}
+
+		if (hasHead) {
+			code += '! ';
+			for (var j = 0; j < cc; ++j) {
+				code += $('input#h_' + j).val() + ' !! ';
+			}
+			code = code.substr(0, code.length - 4) + '\n';
+		}
+
+		code += '|-\n';
+		for (var i = 0; i < ll; ++i) {
+			code += '| ';
+			for (var j = 0; j < cc; ++j) {
+				if (matrix[i][j].value != '<<' && matrix[i][j].value != '||') {
+					if (matrix[i][j].colspan > 1) {
+						code += 'colspan="' + matrix[i][j].colspan + '" | ';
+					}
+					if (matrix[i][j].rowspan > 1) {
+						code += 'rowspan="' + matrix[i][j].rowspan + '" | ';
+					}
+					code += matrix[i][j].value + ' || ';
+				}
+			}
+
+			code = code.substr(0, code.length - 4) + '\n|-\n';
+		}
+
+		code += '|}';
+		$('textarea#out').text(code).show().focus().select();
+		return false;
+	});
+});
+</script>
+</head>
+<body>
+<h2>tabela</h2>
+<form id="gerador">
+	Linhas <input type="text" name="linhas" value="4" size="2"/> x
+	colunas <input type="text" name="colunas" value="4" size="2"/>,
+	campo <input type="text" name="campo" value="15" size="2"/>
+	<input type="submit" value="Gerar"/>
+</form>
+<form id="tabela">
+	<div id="cabecalho"></div>
+	<code>Vertical || horizontal &lt;&lt;</code>
+	<div id="campos"></div>
+	<input type="submit" value="Gerar"/>
+</form>
+<textarea id="out" rows="12" cols="60"></textarea>
+<p><a href="index.html">voltar</a></p>
+</body>
+</html>
