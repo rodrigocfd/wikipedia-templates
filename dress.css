@@ -1,2 +1,13 @@
-body { padding:8px; font-family:12pt Arial; }
-input { margin:3px; padding:2px; }
+body, table, input {
+	font: 12pt Arial;
+}
+
+body {
+	padding: 8px;
+}
+
+textarea, input[type=text] {
+	margin: 3px;
+	padding: 2px;
+	font: 11pt monospace;
+}
