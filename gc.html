@@ -12,17 +12,17 @@ $(document).ready(function() {
 	$('#gmaps').focus();
 
 	$('form').submit(function() {
-		var gmaps = $('#gmaps').val();
+		/*var gmaps = $('#gmaps').val();
 		var z = null;
-
 		if (gmaps.length > 0) {
 			var ll = urlparm(gmaps, 'll').split(',', 2);
 			$('#lat').val(ll[0]);
 			$('#lng').val(ll[1]);
 			z = urlparm(gmaps, 'z');
-		}
+		}*/
 
-		var floats = { lat:parseFloat($('#lat').val()), lng:parseFloat($('#lng').val()) };
+		var latlng = $('#latlng').val().split(',');
+		var floats = { lat: parseFloat(latlng[0]), lng: parseFloat(latlng[1]) };
 		var lat = getdms(floats.lat);
 		var lng = getdms(floats.lng);
 
@@ -32,21 +32,21 @@ $(document).ready(function() {
 			lat.d + '°' + lat.m + '’' + Math.round(lat.s) + '”' + (lat.dec < 0 ? 'S' : 'N') + ', ' +
 			lng.d + '°' + lng.m + '’' + Math.round(lng.s) + '”' + (lng.dec < 0 ? 'O' : 'L') + '}}';
 
-		var scales = [ null, 100000000, 90000000, 50000000, 30000000, 12000000, 6000000, 3000000, 1500000, 800000,
-			5000000, 3000000, 120000, 80000, 40000, 20000, 10000, 4000, 1500, 1000 ];
+		//var scales = [ null, 100000000, 90000000, 50000000, 30000000, 12000000, 6000000, 3000000, 1500000, 800000,
+			//5000000, 3000000, 120000, 80000, 40000, 20000, 10000, 4000, 1500, 1000 ];
 
 		var code2 = '{{Coor dms' +
 			'|' + Math.abs(floats.lat) + '|||' + (floats.lat < 0 ? 'S' : 'N') +
 			'|' + Math.abs(floats.lng) + '|||' + (floats.lng < 0 ? 'O' : 'L') +
 			'|display=title' +
-			(z !== null ? '|escala=' + scales[z] : '') +
+			//(z !== null ? '|escala=' + scales[z] : '') +
 			'}}';
 
 		var code3 = '{{Coor dms' +
-			'|' + lat.d + '|' + lat.m + '|' + lat.s.toFixed(4) + '|' + (floats.lat < 0 ? 'S' : 'N') +
-			'|' + lng.d + '|' + lng.m + '|' + lng.s.toFixed(4) + '|' + (floats.lng < 0 ? 'W' : 'E') +
+			'|' + lat.d + '|' + lat.m + '|' + decpl(lat.s, 2) + '|' + (floats.lat < 0 ? 'S' : 'N') +
+			'|' + lng.d + '|' + lng.m + '|' + decpl(lng.s, 2) + '|' + (floats.lng < 0 ? 'O' : 'L') +
 			'|display=title' +
-			(z !== null ? '|escala=' + scales[z] : '') +
+			//(z !== null ? '|escala=' + scales[z] : '') +
 			'}}';
 
 		$('#output').val(code).show();
@@ -54,8 +54,8 @@ $(document).ready(function() {
 		$('#output3').val(code3).show().focus().select();
 
 		var gmapslnk = 'http://maps.google.com/maps?ll=' +
-			$('#lat').val() + ',' + $('#lng').val() + '&spn=0.01,0.01&q=' +
-			$('#lat').val() + ',' + $('#lng').val() + '&z=' + z;
+			latlng[0] + ',' + latlng[1] + '&spn=0.01,0.01&q=' +
+			latlng[0] + ',' + latlng[1];// + '&z=' + z;
 
 		$('#gmapslnk').html('<a href="' + gmapslnk + '">' + gmapslnk + '</a>');
 
@@ -63,29 +63,12 @@ $(document).ready(function() {
 	});
 
 	$('input[value=Limpar]').click(function() {
-		$('#gmaps').val('');
-		$('#lat').val('');
-		$('#lng').val('');
+		$('#latlng').val('').focus();
 		$('#gmapslnk').html('');
-		$('#output').val('').hide();
-		$('#output2').val('').hide();
-		$('#output3').val('').hide();
-		$('#gmaps').focus();
+		$('[id^=output]').val('').hide();
 	});
 
-	$('#output').click(function() { $(this).select(); });
-	$('#output2').click(function() { $(this).select(); });
-	$('#output3').click(function() { $(this).select(); });
-
-	function urlparm(url, parm) {
-		var idx = url.indexOf('?' + parm + '=');
-		if (idx == -1) idx = url.indexOf('&' + parm + '=');
-		if (idx == -1) return null;
-		url = url.substring(idx + parm.length + 2);
-		var idx = url.indexOf('&');
-		if (idx == -1) return url;
-		return url.substring(0, idx);
-	}
+	$('[id^=output]').click(function() { $(this).select(); });
 
 	function getdms(decimal) {
 		var ret = { dec:decimal, d:0, m:0, s:0 };
@@ -95,6 +78,14 @@ $(document).ready(function() {
 		ret.s = (((decimal % 1) * 60) % 1) * 60;
 		return ret;
 	}
+
+	function decpl(nFloat, maxPlaces) {
+		var n = '' + nFloat.toFixed(maxPlaces);
+		while (n[n.length - 1] === '0') {
+			n = n.substr(0, n.length - 1);
+		}
+		return parseFloat(n);
+	}
 });
 </script>
 </head>
@@ -103,11 +94,11 @@ $(document).ready(function() {
 	<h2>predefinição:geocoordenadas</h2>
 
 	<form>
-		<p>Google Maps <input type="text" size="100" id="gmaps"/><br/>
-			Latitude (N–S): <input type="text" id="lat"/><br/>
-			Longitude (L–O): <input type="text" id="lng"/><br/>
-			<input type="submit" value="Processar"/>
-			<input type="button" value="Limpar"/></p>
+		<p>
+		Latitude (N–S), longitude (L–O): <input type="text" id="latlng" size="30"/><br/>
+		<input type="submit" value="Processar"/>
+		<input type="button" value="Limpar"/>
+		</p>
 	</form>
 
 	<div id="gmapslnk"></div>
