@@ -5,11 +5,10 @@
 <link rel="icon" href="favicon.ico"/>
 <title>Geocoordenadas</title>
 <link type="text/css" rel="stylesheet" href="dress.css"/>
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 $(document).ready(function() {
-	$('#output').hide();
-	$('#output2').hide();
+	$('[id^=output]').hide();
 	$('#gmaps').focus();
 
 	$('form').submit(function() {
@@ -43,8 +42,16 @@ $(document).ready(function() {
 			(z !== null ? '|escala=' + scales[z] : '') +
 			'}}';
 
+		var code3 = '{{Coor dms' +
+			'|' + lat.d + '|' + lat.m + '|' + lat.s.toFixed(4) + '|' + (floats.lat < 0 ? 'S' : 'N') +
+			'|' + lng.d + '|' + lng.m + '|' + lng.s.toFixed(4) + '|' + (floats.lng < 0 ? 'W' : 'E') +
+			'|display=title' +
+			(z !== null ? '|escala=' + scales[z] : '') +
+			'}}';
+
 		$('#output').val(code).show();
-		$('#output2').val(code2).show().focus().select();
+		$('#output2').val(code2).show();
+		$('#output3').val(code3).show().focus().select();
 
 		var gmapslnk = 'http://maps.google.com/maps?ll=' +
 			$('#lat').val() + ',' + $('#lng').val() + '&spn=0.01,0.01&q=' +
@@ -62,11 +69,13 @@ $(document).ready(function() {
 		$('#gmapslnk').html('');
 		$('#output').val('').hide();
 		$('#output2').val('').hide();
+		$('#output3').val('').hide();
 		$('#gmaps').focus();
 	});
 
 	$('#output').click(function() { $(this).select(); });
 	$('#output2').click(function() { $(this).select(); });
+	$('#output3').click(function() { $(this).select(); });
 
 	function urlparm(url, parm) {
 		var idx = url.indexOf('?' + parm + '=');
@@ -104,7 +113,8 @@ $(document).ready(function() {
 	<div id="gmapslnk"></div>
 	<br/>
 	<input type="text" id="output" size="75"/><br/>
-	<input type="text" id="output2" size="75"/>
+	<input type="text" id="output2" size="75"/><br/>
+	<input type="text" id="output3" size="75"/>
 	<p><a href="index.html">voltar</a></p>
 </body>
 </html>
