@@ -8,8 +8,8 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 $(document).ready(function() {
-	$('[id^=output]').hide();
-	$('#gmaps').focus();
+	$('[id^=output],#osm').hide();
+	$('#latlng').focus();
 
 	$('form').submit(function() {
 		/*var gmaps = $('#gmaps').val();
@@ -56,8 +56,11 @@ $(document).ready(function() {
 		var gmapslnk = 'http://maps.google.com/maps?ll=' +
 			latlng[0] + ',' + latlng[1] + '&spn=0.01,0.01&q=' +
 			latlng[0] + ',' + latlng[1];// + '&z=' + z;
-
 		$('#gmapslnk').html('<a href="' + gmapslnk + '">' + gmapslnk + '</a>');
+
+		$('#osm').attr('src', 'http://www.openstreetmap.org/export/embed.html?bbox=' +
+			floats.lng + '%2C' + floats.lat + '%2C' +
+			floats.lng + '%2C' + floats.lat + '&amp;layer=mapnik').show();
 
 		return false;
 	});
@@ -66,6 +69,7 @@ $(document).ready(function() {
 		$('#latlng').val('').focus();
 		$('#gmapslnk').html('');
 		$('[id^=output]').val('').hide();
+		$('#osm').attr('src', '').hide();
 	});
 
 	$('[id^=output]').click(function() { $(this).select(); });
@@ -106,6 +110,10 @@ $(document).ready(function() {
 	<input type="text" id="output" size="80"/><br/>
 	<input type="text" id="output2" size="80"/><br/>
 	<input type="text" id="output3" size="80"/>
+
+	<iframe id="osm" width="650" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"
+		src="" style="margin-top:18px; border:1px solid #AAA;"></iframe>
+
 	<p><a href="index.html">voltar</a></p>
 </body>
 </html>
