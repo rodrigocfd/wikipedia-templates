@@ -5,7 +5,8 @@
 <link rel="icon" href="favicon.ico"/>
 <title>Lista de faixas</title>
 <link type="text/css" rel="stylesheet" href="dress.css"/>
-<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="util.js"></script>
 <script>
 function zpad2(num) {
 	return num < 10 ? '0' + num : num;
@@ -91,7 +92,8 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<h2>predefinição:lista de faixas</h2>
+	<h2>predefinição:Lista de faixas</h2>
+
 	<form id="drawfields">
 		<p>
 			Quantidade de faixas: <input type="text" size="2" id="qtd"/>
@@ -124,6 +126,9 @@ $(document).ready(function() {
 		<br/>
 	</div>
 	<textarea id="output" rows="20" cols="80"></textarea>
-	<p><a href="index.html">voltar</a></p>
+
+	<p><a href="index.html">voltar</a> |
+		<a href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Lista_de_faixas">docs</a>
+	</p>
 </body>
 </html>
