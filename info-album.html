@@ -1,156 +1,264 @@
-<html ng-app="infoAlbumApp">
+<html lang="en">
 <head>
-	<meta charset="utf-8"/>
+	<meta charset="UTF-8"/>
 	<meta name="author" content="Rodrigo César de Freitas Dias"/>
 	<link rel="icon" href="favicon.ico"/>
 	<title>Info/Álbum</title>
 	<link type="text/css" rel="stylesheet" href="dress.css"/>
 	<style type="text/css">
-	.radioCell { padding:6px 0; max-width:400px; }
-	.radioCell > div { display:inline-block; }
-	.out { font:11pt monospace; border:1px solid #ddd; padding:8px; min-width:460px; cursor:text; }
-	.out > div { white-space:pre; }
+		.radioCell { padding:6px 0; max-width:400px; }
+		.radioCell > label { display:inline-block; margin-right:4px; }
+		.out { font:11pt monospace; border:1px solid #ddd; padding:8px; min-width:460px; cursor:text; }
+		.out > div { white-space:pre; }
 	</style>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.6/angular.min.js"></script>
-	<script>
-	var infoAlbumApp = angular.module('infoAlbumApp', []);
-
-	infoAlbumApp.filter('wikilnk', function() {
-		return function(s) {
-			return s ? '[[' + s + ']]' : '';
-		}
-	});
-
-	infoAlbumApp.controller('infoAlbumController', function($scope) {
-		$scope.tipos = ['estúdio', 'demo', 'ep', 'ao vivo', 'grandes êxitos', 'remistura',
-			'caixa', 'compilação', 'mixtape', 'banda sonora', 'vídeo', 'outro'];
-		$scope.tipo = 'estúdio';
-
-		$scope.$watch('[lancadoD, lancadoM, lancadoY]', function() {
-			$scope.lancadoFin = dmyGet($scope.lancadoD, $scope.lancadoM, $scope.lancadoY);
-		});
-		$scope.$watch('[gravadoD, gravadoM, gravadoY]', function() {
-			$scope.gravadoFin = dmyGet($scope.gravadoD, $scope.gravadoM, $scope.gravadoY);
-		});
-
-		$scope.$watch('[duracaoM, duracaoS]', function() {
-			$scope.duracaoFin = duracaoGet($scope.duracaoM, $scope.duracaoS);
-		});
-
-		$scope.idiomas = [ ['', '(nenhum)'],
-			['[[Língua inglesa|inglês]]', 'inglês'],
-			['[[Língua portuguesa|português]]', 'português'] ];
-		$scope.idioma = '';
-
-		$scope.$watch('[ultimoAlbum, ultimoAlbumAno]', function() {
-			$scope.ultimoAlbumFin = albumGet($scope.ultimoAlbum, $scope.ultimoAlbumAno);
-		});
-		$scope.$watch('[proximoAlbum, proximoAlbumAno]', function() {
-			$scope.proximoAlbumFin = albumGet($scope.proximoAlbum, $scope.proximoAlbumAno);
-		});
-	});
-
-	function dmyGet(d, m, y) {
-		if (d || m || y) {
-			return '{{Data de início' +
-				'|' + (y ? y : '') +
-				'|' + (m ? m : '') +
-				'|' + (d ? d : '') + '}}';
-		}
-		return '';
-	}
-
-	function duracaoGet(min, sec) {
-		if (min && sec) {
-			return '{{Duração|m=' + min + '|s=' + sec + '}}';
-		} else if (min) {
-			return '{{Duração|m=' + min + '|s=0}}';
-		} else if (sec) {
-			return '{{Duração|m=0|s=' + sec + '}}';
-		}
-		return '';
-	}
-
-	function albumGet(alb, ano) {
-		if (alb && ano) {
-			return "''[[" + alb + "]]''<br/>([[" + ano + ']])';
-		} else if (alb) {
-			return "''[[" + alb + "]]''";
-		}
-		return '';
-	}
-	</script>
 </head>
-<body ng-controller="infoAlbumController">
+<body>
 	<h2>Info/Álbum</h2>
-	<table>
-		<tr><td valign="top">
-			<!-- Formulário de preenchimento -->
-			<table>
-				<tr><td>Nome</td>
-					<td><input type="text" ng-model="nome" size="30" autofocus/></td></tr>
-				<tr><td>Tipo</td>
-					<td class="radioCell">
-						<div ng-repeat="t in tipos">
-							<label><input type="radio" name="tipo" ng-model="$parent.tipo" value="{{t}}"/>{{t}}</label>
-						</div>
-					</td></tr>
-				<tr><td>Artista</td>
-					<td><input type="text" ng-model="artista" size="30"/></td></tr>
-				<tr><td>Lançado em</td>
-					<td><input type="text" ng-model="lancadoD" size="2"/> /
-						<input type="text" ng-model="lancadoM" size="2"/> /
-						<input type="text" ng-model="lancadoY" size="4"/></td></tr>
-				<tr><td>Gravado em</td>
-					<td><input type="text" ng-model="gravadoD" size="2"/> /
-						<input type="text" ng-model="gravadoM" size="2"/> /
-						<input type="text" ng-model="gravadoY" size="4"/></td></tr>
-				<tr><td>Estúdio</td>
-					<td><input type="text" ng-model="estudio" size="30"></td></tr>
-				<tr><td>Gênero</td>
-					<td><input type="text" ng-model="genero" size="30"></td></tr>
-				<tr><td>Duração</td>
-					<td><input type="text" ng-model="duracaoM" size="2"/> :
-						<input type="text" ng-model="duracaoS" size="2"/></td></tr>
-				<tr><td>Idioma</td>
-					<td class="radioCell">
-						<div ng-repeat="i in idiomas">
-							<label><input type="radio" name="idioma" ng-model="$parent.idioma" value="{{i[0]}}"/>{{i[1]}}</label>
-						</div></td></tr>
-				<tr><td>Gravadora</td>
-					<td><input type="text" ng-model="gravadora" size="30"></td></tr>
-				<tr><td>Produtor</td>
-					<td><input type="text" ng-model="produtor" size="30"></td></tr>
-				<tr><td>Último álbum</td>
-					<td><input type="text" ng-model="ultimoAlbum" size="30"> ano
-						<input type="text" ng-model="ultimoAlbumAno" size="4"/></td></tr>
-				<tr><td>Próximo álbum</td>
-					<td><input type="text" ng-model="proximoAlbum" size="30"> ano
-						<input type="text" ng-model="proximoAlbumAno" size="4"/></td></tr>
-			</table>
-		</td><td valign="top">
-			<!-- Saída de dados -->
-			<div class="out">
-				<div ng-non-bindable>{{Info/Álbum</div>
-				<div>|nome          = {{nome}}</div>
-				<div>|tipo          = {{tipo}}</div>
-				<div>|artista       = {{artista | wikilnk}}</div>
-				<div>|lançado       = {{lancadoFin}}</div>
-				<div>|gravado       = {{gravadoFin}}</div>
-				<div>|estúdio       = {{estudio}}</div>
-				<div>|gênero        = {{genero}}</div>
-				<div>|duração       = {{duracaoFin}}</div>
-				<div>|idioma        = {{idioma}}</div>
-				<div>|gravadora     = {{gravadora}}</div>
-				<div>|produtor      = {{produtor}}</div>
-				<div>|último álbum  = {{ultimoAlbumFin}}</div>
-				<div>|próximo álbum = {{proximoAlbumFin}}</div>
-				<div ng-non-bindable>}}</div>
-			</div>
-		</td></tr>
-	</table>
+	<div id="app"></div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+	<script type="text/babel">
+		class Radios extends React.Component {
+			constructor(props) {
+				super(props); // value: ['val1','val2'] or [['val1','name1'],['val2','name2']]
+				this.state = { selec: this.props.value };
+			}
+
+			componentDidMount() {
+				this.props.onChange({
+					target: {
+						name: this.props.name,
+						value: this.props.value
+					}
+				});
+			}
+
+			mudou = (e) => {
+				let newVal = e.target.value;
+				this.setState({ selec: newVal },
+					() => {
+						this.props.onChange({
+							target: {
+								name: this.props.name,
+								value: newVal
+							}
+						});
+					});
+			}
+
+			render() {
+				return (
+					<div className="radioCell">
+						{this.props.items.map(it => (
+							<label><input type="radio" name={this.props.name} onChange={this.mudou}
+								value={Array.isArray(it) ? it[0] : it}
+								checked={this.state.selec === (Array.isArray(it) ? it[0] : it)}
+								/>{Array.isArray(it) ? it[1] : it}</label>
+						))}
+					</div>
+				);
+			}
+		}
+
+		class WikiLink extends React.Component {
+			mudou = (e) => {
+				this.props.onChange({
+					target: {
+						name: this.props.name,
+						value: e.target.value.length ? '[[' + e.target.value + ']]' : ''
+					}
+				});
+			}
+
+			render() {
+				return (
+					<input type="text" onChange={this.mudou} size={this.props.size ? this.props.size : '10'}/>
+				);
+			}
+		}
+
+		class DataDeInicio extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { };
+			}
+
+			mudou = (e) => {
+				this.setState({ [e.target.name]: e.target.value },
+					() => {
+						let predef = '';
+						if (this.state.dia || this.state.mes || this.state.ano) {
+							predef = '{{Data de início' +
+								'|' + (this.state.ano ? this.state.ano : '') +
+								'|' + (this.state.mes ? this.state.mes : '') +
+								'|' + (this.state.dia ? this.state.dia : '') +
+								'}}';
+						}
+						this.props.onChange({
+							target: {
+								name: this.props.name,
+								value: predef
+							}
+						});
+					});
+			}
+
+			render() {
+				return (
+					<div>
+						<input type="text" name="dia" onChange={this.mudou} size="2" maxLength="2"
+							/> / <input type="text" name="mes" onChange={this.mudou} size="2" maxLength="2"
+							/> / <input type="text" name="ano" onChange={this.mudou} size="4" maxLength="4"/>
+					</div>
+				);
+			}
+		}
+
+		class Duracao extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { };
+			}
+
+			mudou = (e) => {
+				this.setState({ [e.target.name]: e.target.value },
+					() => {
+						let dur = '';
+						if (this.state.min || this.state.sec) {
+							let min = this.state.min ? this.state.min : '0';
+							let sec = this.state.sec ? this.state.sec : '0';
+							dur = '{{Duração|m=' + min + '|s=' + sec + '}}';
+						}
+						this.props.onChange({
+							target: {
+								name: this.props.name,
+								value: dur
+							}
+						});
+					});
+			}
+
+			render() {
+				return (
+					<div>
+						<input type="text" name="min" size="2" onChange={this.mudou} maxLength="2"
+							/> : <input type="text" name="sec" size="2" onChange={this.mudou} maxLength="2"/>
+					</div>
+				);
+			}
+		}
+
+		class OutroAlbum extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { };
+			}
+
+			mudou = (e) => {
+				this.setState({ [e.target.name]: e.target.value },
+					() => {
+						let s = '';
+						if (this.state.album) {
+							s = "''[[" + this.state.album + "]]''";
+							if (this.state.ano) {
+								s += '<br/>([[' + this.state.ano + ']])';
+							}
+						}
+						this.props.onChange({
+							target: {
+								name: this.props.name,
+								value: s
+							}
+						})
+					});
+			}
+
+			render() {
+				return (
+					<div>
+						<input type="text" name="album" size="30" onChange={this.mudou}
+							/> ano <input type="text" name="ano" size="4" maxLength="4" onChange={this.mudou}/>
+					</div>
+				);
+			}
+		}
+
+		class InfoAlbum extends React.Component {
+			constructor(props) {
+				super(props);
+				this.state = { };
+				this.tipos = ['estúdio', 'demo', 'ep', 'ao vivo', 'grandes êxitos', 'remistura',
+					'caixa', 'compilação', 'mixtape', 'banda sonora', 'vídeo', 'outro'];
+				this.idiomas = [ ['', '(nenhum)'],
+					['[[Língua inglesa|inglês]]', 'inglês'],
+					['[[Língua portuguesa|português]]', 'português'] ];
+			}
+
+			mudou = (e) => {
+				this.setState({ [e.target.name]: e.target.value });
+			}
+
+			render() {
+				return (
+					<table>
+						<tr><td style={{verticalAlign:'top'}}>
+							<table>
+								<tr><td>Nome</td>
+									<td><input type="text" name="nome" size="30" onChange={this.mudou} autoFocus/></td></tr>
+								<tr><td>Tipo</td>
+									<td><Radios name="tipo" value="estúdio" items={this.tipos} onChange={this.mudou}/></td></tr>
+								<tr><td>Artista</td>
+									<td><WikiLink name="artista" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Lançado em</td>
+										<td><DataDeInicio name="lancado" onChange={this.mudou}/></td></tr>
+								<tr><td>Gravado em</td>
+									<td><input type="text" name="gravado" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Estúdio</td>
+									<td><input type="text" name="estudio" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Gênero</td>
+									<td><input type="text" name="genero" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Duração</td>
+									<td><Duracao name="duracao" onChange={this.mudou}/></td></tr>
+								<tr><td>Idioma</td>
+									<td><Radios name="idioma" value="" items={this.idiomas} onChange={this.mudou}/></td></tr>
+								<tr><td>Gravadora</td>
+									<td><input type="text" name="gravadora" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Produtor</td>
+									<td><input type="text" name="produtor" size="30" onChange={this.mudou}/></td></tr>
+								<tr><td>Último álbum</td>
+									<td><OutroAlbum name="ultimoAlbum" onChange={this.mudou}/></td></tr>
+								<tr><td>Próximo álbum</td>
+									<td><OutroAlbum name="proximoAlbum" onChange={this.mudou}/></td></tr>
+							</table>
+						</td><td style={{verticalAlign:'top'}}>
+							<div className="out">
+								<div>{'{{'}Info/Álbum</div>
+								<div>|nome          = {this.state.nome}</div>
+								<div>|tipo          = {this.state.tipo}</div>
+								<div>|artista       = {this.state.artista}</div>
+								<div>|lançado       = {this.state.lancado}</div>
+								<div>|gravado       = {this.state.gravado}</div>
+								<div>|estúdio       = {this.state.estudio}</div>
+								<div>|gênero        = {this.state.genero}</div>
+								<div>|duração       = {this.state.duracao}</div>
+								<div>|idioma        = {this.state.idioma}</div>
+								<div>|gravadora     = {this.state.gravadora}</div>
+								<div>|produtor      = {this.state.produtor}</div>
+								<div>|último álbum  = {this.state.ultimoAlbum}</div>
+								<div>|próximo álbum = {this.state.proximoAlbum}</div>
+								<div>{'}}'}</div>
+							</div>
+						</td></tr>
+					</table>
+				);
+			}
+		}
+
+		// To test locally: GoogleChrome.exe --allow-file-access-from-files
+		ReactDOM.render(<InfoAlbum/>, document.querySelector('#app'));
+	</script>
 	<p><a href="index.html">voltar</a> |
 		<a href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Info/%C3%81lbum">docs</a>
-	</p>
 </body>
 </html>
