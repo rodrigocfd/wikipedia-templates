@@ -1,264 +1,91 @@
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8"/>
 	<meta name="author" content="Rodrigo César de Freitas Dias"/>
 	<link rel="icon" href="favicon.ico"/>
-	<title>Info/Álbum</title>
 	<link type="text/css" rel="stylesheet" href="dress.css"/>
-	<style type="text/css">
-		.radioCell { padding:6px 0; max-width:400px; }
-		.radioCell > label { display:inline-block; margin-right:4px; }
-		.out { font:11pt monospace; border:1px solid #ddd; padding:8px; min-width:460px; cursor:text; }
-		.out > div { white-space:pre; }
+	<style>
+		#outPanel { white-space: pre; border: 1px solid #ccc; vertical-align: top;
+			font-family: monospace; padding: 4px; min-width: 460px; }
+		input[type=number] { margin-left: 3px; }
+		.num2 { width: 50px; }
+		.num4 { width: 75px; }
 	</style>
+	<title>Info/Álbum</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="info-album.js"></script>
 </head>
 <body>
-	<h2>Info/Álbum</h2>
-	<div id="app"></div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.2/react.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/15.6.2/react-dom.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
-	<script type="text/babel">
-		class Radios extends React.Component {
-			constructor(props) {
-				super(props); // value: ['val1','val2'] or [['val1','name1'],['val2','name2']]
-				this.state = { selec: this.props.value };
-			}
-
-			componentDidMount() {
-				this.props.onChange({
-					target: {
-						name: this.props.name,
-						value: this.props.value
-					}
-				});
-			}
-
-			mudou = (e) => {
-				let newVal = e.target.value;
-				this.setState({ selec: newVal },
-					() => {
-						this.props.onChange({
-							target: {
-								name: this.props.name,
-								value: newVal
-							}
-						});
-					});
-			}
-
-			render() {
-				return (
-					<div className="radioCell">
-						{this.props.items.map(it => (
-							<label><input type="radio" name={this.props.name} onChange={this.mudou}
-								value={Array.isArray(it) ? it[0] : it}
-								checked={this.state.selec === (Array.isArray(it) ? it[0] : it)}
-								/>{Array.isArray(it) ? it[1] : it}</label>
-						))}
-					</div>
-				);
-			}
-		}
-
-		class WikiLink extends React.Component {
-			mudou = (e) => {
-				this.props.onChange({
-					target: {
-						name: this.props.name,
-						value: e.target.value.length ? '[[' + e.target.value + ']]' : ''
-					}
-				});
-			}
-
-			render() {
-				return (
-					<input type="text" onChange={this.mudou} size={this.props.size ? this.props.size : '10'}/>
-				);
-			}
-		}
-
-		class DataDeInicio extends React.Component {
-			constructor(props) {
-				super(props);
-				this.state = { };
-			}
-
-			mudou = (e) => {
-				this.setState({ [e.target.name]: e.target.value },
-					() => {
-						let predef = '';
-						if (this.state.dia || this.state.mes || this.state.ano) {
-							predef = '{{Data de início' +
-								'|' + (this.state.ano ? this.state.ano : '') +
-								'|' + (this.state.mes ? this.state.mes : '') +
-								'|' + (this.state.dia ? this.state.dia : '') +
-								'}}';
-						}
-						this.props.onChange({
-							target: {
-								name: this.props.name,
-								value: predef
-							}
-						});
-					});
-			}
-
-			render() {
-				return (
-					<div>
-						<input type="text" name="dia" onChange={this.mudou} size="2" maxLength="2"
-							/> / <input type="text" name="mes" onChange={this.mudou} size="2" maxLength="2"
-							/> / <input type="text" name="ano" onChange={this.mudou} size="4" maxLength="4"/>
-					</div>
-				);
-			}
-		}
-
-		class Duracao extends React.Component {
-			constructor(props) {
-				super(props);
-				this.state = { };
-			}
-
-			mudou = (e) => {
-				this.setState({ [e.target.name]: e.target.value },
-					() => {
-						let dur = '';
-						if (this.state.min || this.state.sec) {
-							let min = this.state.min ? this.state.min : '0';
-							let sec = this.state.sec ? this.state.sec : '0';
-							dur = '{{Duração|m=' + min + '|s=' + sec + '}}';
-						}
-						this.props.onChange({
-							target: {
-								name: this.props.name,
-								value: dur
-							}
-						});
-					});
-			}
-
-			render() {
-				return (
-					<div>
-						<input type="text" name="min" size="2" onChange={this.mudou} maxLength="2"
-							/> : <input type="text" name="sec" size="2" onChange={this.mudou} maxLength="2"/>
-					</div>
-				);
-			}
-		}
-
-		class OutroAlbum extends React.Component {
-			constructor(props) {
-				super(props);
-				this.state = { };
-			}
-
-			mudou = (e) => {
-				this.setState({ [e.target.name]: e.target.value },
-					() => {
-						let s = '';
-						if (this.state.album) {
-							s = "''[[" + this.state.album + "]]''";
-							if (this.state.ano) {
-								s += '<br/>([[' + this.state.ano + ']])';
-							}
-						}
-						this.props.onChange({
-							target: {
-								name: this.props.name,
-								value: s
-							}
-						})
-					});
-			}
-
-			render() {
-				return (
-					<div>
-						<input type="text" name="album" size="30" onChange={this.mudou}
-							/> ano <input type="text" name="ano" size="4" maxLength="4" onChange={this.mudou}/>
-					</div>
-				);
-			}
-		}
-
-		class InfoAlbum extends React.Component {
-			constructor(props) {
-				super(props);
-				this.state = { };
-				this.tipos = ['estúdio', 'demo', 'ep', 'ao vivo', 'grandes êxitos', 'remistura',
-					'caixa', 'compilação', 'mixtape', 'banda sonora', 'vídeo', 'outro'];
-				this.idiomas = [ ['', '(nenhum)'],
-					['[[Língua inglesa|inglês]]', 'inglês'],
-					['[[Língua portuguesa|português]]', 'português'] ];
-			}
-
-			mudou = (e) => {
-				this.setState({ [e.target.name]: e.target.value });
-			}
-
-			render() {
-				return (
-					<table>
-						<tr><td style={{verticalAlign:'top'}}>
-							<table>
-								<tr><td>Nome</td>
-									<td><input type="text" name="nome" size="30" onChange={this.mudou} autoFocus/></td></tr>
-								<tr><td>Tipo</td>
-									<td><Radios name="tipo" value="estúdio" items={this.tipos} onChange={this.mudou}/></td></tr>
-								<tr><td>Artista</td>
-									<td><WikiLink name="artista" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Lançado em</td>
-										<td><DataDeInicio name="lancado" onChange={this.mudou}/></td></tr>
-								<tr><td>Gravado em</td>
-									<td><input type="text" name="gravado" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Estúdio</td>
-									<td><input type="text" name="estudio" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Gênero</td>
-									<td><input type="text" name="genero" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Duração</td>
-									<td><Duracao name="duracao" onChange={this.mudou}/></td></tr>
-								<tr><td>Idioma</td>
-									<td><Radios name="idioma" value="" items={this.idiomas} onChange={this.mudou}/></td></tr>
-								<tr><td>Gravadora</td>
-									<td><input type="text" name="gravadora" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Produtor</td>
-									<td><input type="text" name="produtor" size="30" onChange={this.mudou}/></td></tr>
-								<tr><td>Último álbum</td>
-									<td><OutroAlbum name="ultimoAlbum" onChange={this.mudou}/></td></tr>
-								<tr><td>Próximo álbum</td>
-									<td><OutroAlbum name="proximoAlbum" onChange={this.mudou}/></td></tr>
-							</table>
-						</td><td style={{verticalAlign:'top'}}>
-							<div className="out">
-								<div>{'{{'}Info/Álbum</div>
-								<div>|nome          = {this.state.nome}</div>
-								<div>|tipo          = {this.state.tipo}</div>
-								<div>|artista       = {this.state.artista}</div>
-								<div>|lançado       = {this.state.lancado}</div>
-								<div>|gravado       = {this.state.gravado}</div>
-								<div>|estúdio       = {this.state.estudio}</div>
-								<div>|gênero        = {this.state.genero}</div>
-								<div>|duração       = {this.state.duracao}</div>
-								<div>|idioma        = {this.state.idioma}</div>
-								<div>|gravadora     = {this.state.gravadora}</div>
-								<div>|produtor      = {this.state.produtor}</div>
-								<div>|último álbum  = {this.state.ultimoAlbum}</div>
-								<div>|próximo álbum = {this.state.proximoAlbum}</div>
-								<div>{'}}'}</div>
-							</div>
-						</td></tr>
-					</table>
-				);
-			}
-		}
-
-		// To test locally: GoogleChrome.exe --allow-file-access-from-files
-		ReactDOM.render(<InfoAlbum/>, document.querySelector('#app'));
-	</script>
-	<p><a href="index.html">voltar</a> |
-		<a href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Info/%C3%81lbum">docs</a>
+<h2>Info/Álbum</h2>
+<table>
+	<tr><td>
+		<table>
+			<tr><td>Nome</td>
+				<td><input type="text" name="nome" size="32"/></td></tr>
+			<tr><td>Tipo</td>
+				<td><label><input type="radio" name="tipo" value="estúdio"/>estúdio</label>
+					<label><input type="radio" name="tipo" value="demo"/>demo</label>
+					<label><input type="radio" name="tipo" value="ep"/>EP</label>
+					<label><input type="radio" name="tipo" value="ao vivo"/>ao vivo</label>
+					<label><input type="radio" name="tipo" value="grandes êxitos"/>grandes êxitos</label><br/>
+					<label><input type="radio" name="tipo" value="remistura"/>remistura</label>
+					<label><input type="radio" name="tipo" value="caixa"/>caixa</label>
+					<label><input type="radio" name="tipo" value="compilação"/>compilação</label>
+					<label><input type="radio" name="tipo" value="mixtape"/>mixtape</label><br/>
+					<label><input type="radio" name="tipo" value="banda sonora"/>banda sonora</label>
+					<label><input type="radio" name="tipo" value="vídeo"/>vídeo</label>
+					<label><input type="radio" name="tipo" value="outro"/>outro</label>
+					</select></td></tr>
+			<tr><td>Artista</td>
+				<td><input type="text" name="artista" size="20"/></td></tr>
+			<tr><td>Lançado em</td>
+				<td><input type="number" name="lancado_d" class="num2"/>
+					<input type="number" name="lancado_m" class="num2"/>
+					<input type="number" name="lancado_y" class="num4"/></td></tr>
+			<tr><td>Gravado em</td>
+				<td><input type="text" name="gravado" size="30"/></td></tr>
+			<tr><td>Estúdio</td>
+				<td><input type="text" name="estudio" size="30"/></td></tr>
+			<tr><td>Gênero</td>
+				<td><input type="text" name="genero" size="30"/></td></tr>
+			<tr><td>Duração</td>
+				<td><input type="number" name="duracao_m" class="num2"/>
+					<input type="number" name="duracao_s" class="num2"/></td></tr>
+			<tr><td>Idioma</td>
+				<td><label><input type="radio" name="idioma" value=""/>nenhum</label>
+					<label><input type="radio" name="idioma" value="Língua espanhola|espanhol"/>espanhol</label>
+					<label><input type="radio" name="idioma" value="Língua inglesa|inglês"/>inglês</label>
+					<label><input type="radio" name="idioma" value="Língua portuguesa|português"/>português</label>
+				</td></tr>
+				<tr><td>Gravadora</td>
+					<td><input type="text" name="gravadora" size="30"></td></tr>
+				<tr><td>Produtor</td>
+					<td><input type="text" name="produtor" size="30"></td></tr>
+				<tr><td>Último álbum</td>
+					<td><input type="text" name="ultimoalbum" size="30"> ano
+						<input type="number" name="ultimoalbum_ano" class="num4"/></td></tr>
+				<tr><td>Próximo álbum</td>
+					<td><input type="text" name="proximoalbum" size="30"> ano
+						<input type="number" name="proximoalbum_ano" class="num4"/></td></tr>
+		</table>
+	</td>
+	<td id="outPanel">{{Info/Álbum
+|nome          = <span id="out_nome"></span>
+|tipo          = <span id="out_tipo"></span>
+|artista       = <span id="out_artista"></span>
+|lançado       = <span id="out_lancado"></span>
+|gravado       = <span id="out_gravado"></span>
+|estudio       = <span id="out_estudio"></span>
+|gênero        = <span id="out_genero"></span>
+|duração       = <span id="out_duracao"></span>
+|idioma        = <span id="out_idioma"></span>
+|gravadora     = <span id="out_gravadora"></span>
+|produtor      = <span id="out_produtor"></span>
+|último álbum  = <span id="out_ultimoalbum"></span>
+|próximo álbum = <span id="out_proximoalbum"></span>
+}}</td></tr>
+</table>
+<p><a href="index.html">voltar</a> |
+	<a href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Info/%C3%81lbum">docs</a></p>
 </body>
 </html>
