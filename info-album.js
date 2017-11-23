@@ -7,8 +7,8 @@ $(document).ready(function() {
 	duracao(['duracao']);
 	outroAlbum(['ultimoalbum', 'proximoalbum']);
 
-	defRadio('tipo', 0);
-	defRadio('idioma', 0);
+	$('#limpar').on('click', limpar);
+	limpar();
 });
 
 function campo(names) {
@@ -72,4 +72,12 @@ function defRadio(name, pos) {
 	$('input[name='+name+']:eq('+pos+')')
 		.prop('checked', true)
 		.trigger('input');
+}
+
+function limpar() {
+	$('input[type=text]').val('').trigger('input');
+	$('input[type=radio]').prop('checked', false).trigger('input');
+	$('input:eq(0)').focus();
+	defRadio('tipo', 0);
+	defRadio('idioma', 0);
 }
