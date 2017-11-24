@@ -5,14 +5,14 @@
 	<link rel="icon" href="favicon.ico"/>
 	<link type="text/css" rel="stylesheet" href="dress.css"/>
 	<style>
-		#outPanel { white-space: pre; border: 1px solid #ccc; vertical-align: top;
-			font-family: monospace; padding: 4px; min-width: 460px; }
+		#outPanel { vertical-align: top; }
+		#final { min-width: 350px; }
 		input[type=number] { margin-left: 3px; }
 		.num2 { width: 50px; }
 		.num4 { width: 75px; }
 	</style>
 	<title>Info/Álbum</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="info-album.js"></script>
 </head>
 <body>
@@ -39,8 +39,8 @@
 				<tr><td>Artista</td>
 					<td><input type="text" name="artista" size="20"/></td></tr>
 				<tr><td>Lançado em</td>
-					<td><input type="number" name="lancado_d" class="num2"/>
-						<input type="number" name="lancado_m" class="num2"/>
+					<td><input type="number" name="lancado_d" min="1" max="31" class="num2"/>
+						<input type="number" name="lancado_m" min="1" max="12" class="num2"/>
 						<input type="number" name="lancado_y" class="num4"/></td></tr>
 				<tr><td>Gravado em</td>
 					<td><input type="text" name="gravado" size="30"/></td></tr>
@@ -49,8 +49,8 @@
 				<tr><td>Gênero</td>
 					<td><input type="text" name="genero" size="30"/></td></tr>
 				<tr><td>Duração</td>
-					<td><input type="number" name="duracao_m" class="num2"/>
-						<input type="number" name="duracao_s" class="num2"/></td></tr>
+					<td><input type="number" name="duracao_m" min="0" class="num2"/>
+						<input type="number" name="duracao_s" min="0" max="59" class="num2"/></td></tr>
 				<tr><td>Idioma</td>
 					<td><label><input type="radio" name="idioma" value=""/>nenhum</label>
 						<label><input type="radio" name="idioma" value="Língua espanhola|espanhol"/>espanhol</label>
@@ -69,21 +69,7 @@
 							<input type="number" name="proximoalbum_ano" class="num4"/></td></tr>
 			</table>
 		</td>
-		<td id="outPanel">{{Info/Álbum
-|nome          = <span id="out_nome"></span>
-|tipo          = <span id="out_tipo"></span>
-|artista       = <span id="out_artista"></span>
-|lançado       = <span id="out_lancado"></span>
-|gravado       = <span id="out_gravado"></span>
-|estudio       = <span id="out_estudio"></span>
-|gênero        = <span id="out_genero"></span>
-|duração       = <span id="out_duracao"></span>
-|idioma        = <span id="out_idioma"></span>
-|gravadora     = <span id="out_gravadora"></span>
-|produtor      = <span id="out_produtor"></span>
-|último álbum  = <span id="out_ultimoalbum"></span>
-|próximo álbum = <span id="out_proximoalbum"></span>
-}}</td></tr>
+		<td id="outPanel"><div id="final" contenteditable="true"></div></td></tr>
 	</table>
 	<p><input type="button" value="Limpar" id="limpar"/> &nbsp;
 		<a href="index.html">voltar</a> |

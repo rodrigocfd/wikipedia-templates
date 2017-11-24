@@ -1,21 +1,21 @@
 body, table, input, select {
 	font: 12pt Arial;
 }
-
 body {
 	padding: 8px;
 }
-
 a {
 	color: #0040E0;
 }
-
-textarea, input[type=text] {
+textarea, input[type=text], #final {
 	margin: 3px;
 	padding: 2px;
 	font: 11pt monospace;
 }
-
+#final {
+	border: 1px solid #ccc;
+	white-space: pre;
+}
 li {
 	line-height: 150%;
 }

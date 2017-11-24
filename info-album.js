@@ -1,72 +1,78 @@
 'use strict';
 
 $(document).ready(function() {
-	campo(['nome', 'tipo', 'gravado', 'estudio', 'genero', 'gravadora', 'produtor']);
-	wikiLnk(['artista', 'idioma']);
-	dataDeInicio(['lancado']);
-	duracao(['duracao']);
-	outroAlbum(['ultimoalbum', 'proximoalbum']);
+	bind.campo(['nome', 'tipo', 'gravado', 'estudio', 'genero', 'gravadora', 'produtor']);
+	bind.wikiLnk(['artista', 'idioma']);
+	bind.dataDeInicio(['lancado']);
+	bind.duracao(['duracao']);
+	bind.outroAlbum(['ultimoalbum', 'proximoalbum']);
 
 	$('#limpar').on('click', limpar);
 	limpar();
 });
 
-function campo(names) {
-	$.each(names, function(i, name) {
-		$('input[name='+name+']').on('input', function() {
-			$('#out_'+name).text($(this).val());
+var bind = {
+	campo: function(names) {
+		$.each(names, function(i, name) {
+			$('input[name='+name+']').on('change input', function() {
+				campos[name] = $(this).val();
+				gerarFinal();
+			});
 		});
-	});
-}
+	},
 
-function wikiLnk(names) {
-	$.each(names, function(i, name) {
-		$('input[name='+name+']').on('input', function() {
-			var val = $(this).val();
-			$('#out_'+name).text(val ? '[['+val+']]' : '');
+	wikiLnk: function(names) {
+		$.each(names, function(i, name) {
+			$('input[name='+name+']').on('change input', function() {
+				var val = $(this).val();
+				campos[name] = val ? '[['+val+']]' : '';
+				gerarFinal();
+			});
 		});
-	});
-}
+	},
 
-function dataDeInicio(names) {
-	$.each(names, function(i, name) {
-		$('input[name^='+name+']').on('input', function() {
-			var d = $('input[name='+name+'_d]').val();
-			var m = $('input[name='+name+'_m]').val();
-			var y = $('input[name='+name+'_y]').val();
-			$('#out_'+name).text(d || m || y ?
-				'{{Data de início|'+d+'|'+m+'|'+y+'}}' : '');
+	dataDeInicio: function(names) {
+		$.each(names, function(i, name) {
+			$('input[name^='+name+']').on('input', function() {
+				var d = $('input[name='+name+'_d]').val();
+				var m = $('input[name='+name+'_m]').val();
+				var y = $('input[name='+name+'_y]').val();
+				campos[name] = (d || m || y) ?
+					'{{Data de início|'+d+'|'+m+'|'+y+'}}' : '';
+				gerarFinal();
+			});
 		});
-	});
-}
+	},
 
-function duracao(names) {
-	$.each(names, function(i, name) {
-		$('input[name^='+name+']').on('input', function() {
-			var m = $('input[name='+name+'_m]').val();
-			var s = $('input[name='+name+'_s]').val();
-			$('#out_'+name).text(m && s ?
-				'{{Duração|m='+m+'|s='+s+'}}' : '');
+	duracao: function(names) {
+		$.each(names, function(i, name) {
+			$('input[name^='+name+']').on('input', function() {
+				var m = $('input[name='+name+'_m]').val();
+				var s = $('input[name='+name+'_s]').val();
+				campos[name] = (m && s) ?
+					'{{Duração|m='+m+'|s='+s+'}}' : '';
+				gerarFinal();
+			});
 		});
-	});
-}
+	},
 
-function outroAlbum(names) {
-	$.each(names, function(i, name) {
-		$('input[name^='+name+']').on('input', function() {
-			var a = $('input[name='+name+']').val();
-			var y = $('input[name='+name+'_ano]').val();
-			var out = '';
-			if (a) {
-				out = "''[["+a+"]]''";
-				if (y) {
-					out += '<br/>([['+y+']])';
+	outroAlbum: function(names) {
+		$.each(names, function(i, name) {
+			$('input[name^='+name+']').on('input', function() {
+				var a = $('input[name='+name+']').val();
+				var y = $('input[name='+name+'_ano]').val();
+				campos[name] = '';
+				if (a) {
+					campos[name] = "''[["+a+"]]''";
+					if (y) {
+						campos[name] += '<br/>([['+y+']])';
+					}
 				}
-			}
-			$('#out_'+name).text(out);
+				gerarFinal();
+			});
 		});
-	});
-}
+	}
+};
 
 function defRadio(name, pos) {
 	$('input[name='+name+']:eq('+pos+')')
@@ -75,9 +81,32 @@ function defRadio(name, pos) {
 }
 
 function limpar() {
-	$('input[type=text]').val('').trigger('input');
-	$('input[type=radio]').prop('checked', false).trigger('input');
+	$('input[type=text], input[type=number]').val('').trigger('input');
+	$('input[type=radio]').prop('checked', false).trigger('change');
 	$('input:eq(0)').focus();
 	defRadio('tipo', 0);
 	defRadio('idioma', 0);
+}
+
+var campos = { };
+
+function gerarFinal() {
+	function c(name) { return campos[name] ? campos[name] : '' };
+	$('#final').text(
+		'{{Info/Álbum\n' +
+		'|nome          = ' + c('nome') + '\n' +
+		'|tipo          = ' + c('tipo') + '\n' +
+		'|artista       = ' + c('artista') + '\n' +
+		'|lançado       = ' + c('lancado') + '\n' +
+		'|gravado       = ' + c('gravado') + '\n' +
+		'|estúdio       = ' + c('estudio') + '\n' +
+		'|gênero        = ' + c('genero') + '\n' +
+		'|duração       = ' + c('duracao') + '\n' +
+		'|idioma        = ' + c('idioma') + '\n' +
+		'|gravadora     = ' + c('gravadora') + '\n' +
+		'|produtor      = ' + c('produtor') + '\n' +
+		'|último álbum  = ' + c('ultimoalbum') + '\n' +
+		'|próximo álbum = ' + c('proximoalbum') + '\n' +
+		'}}'
+	);
 }
