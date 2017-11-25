@@ -3,7 +3,8 @@
 $(document).ready(function() {
 	bind.campo(['nome', 'nome_nat', 'imagem', 'imagem_tam', 'imagem_leg', 'nome_com',
 		'pseudonimo', 'nascimento_loc', 'nacionalidade', 'etnia', 'morte_loc', 'morte_cau',
-		'residencia', 'ocupacao', 'alma', 'conhecido', 'mae', 'pai', 'conjuge', 'filhos']);
+		'residencia', 'ocupacao', 'alma', 'conhecido', 'mae', 'pai', 'conjuge', 'filhos',
+		'website']);
 	bind.datasNascimentoMorte('nascimento', 'morte');
 
 	$('#limpar').on('click', limpar);
@@ -78,6 +79,7 @@ ifc('|nome_mãe         = ' + c('mae') + '\n', 'mae') +
 ifc('|nome_pai         = ' + c('pai') + '\n', 'pai') +
 ifc('|cônjuge          = ' + c('conjuge') + '\n', 'conjuge') +
 ifc('|filhos           = ' + c('filhos') + '\n', 'filhos') +
+ifc('|website          = ' + c('website') + '\n', 'website') +
 		'}}'
 	);
 }
