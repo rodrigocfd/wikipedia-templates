@@ -74,24 +74,17 @@ var bind = {
 	}
 };
 
-function defRadio(name, pos) {
-	$('input[name='+name+']:eq('+pos+')')
-		.prop('checked', true)
-		.trigger('input');
-}
-
 function limpar() {
-	$('input[type=text], input[type=number]').val('').trigger('input');
-	$('input[type=radio]').prop('checked', false).trigger('change');
+	ctrl.limpar();
 	$('input:eq(0)').focus();
-	defRadio('tipo', 0);
-	defRadio('idioma', 0);
+	ctrl.defRadio('tipo', 0);
+	ctrl.defRadio('idioma', 0);
 }
 
 var campos = { };
 
 function gerarFinal() {
-	function c(name) { return campos[name] ? campos[name] : '' };
+	function c(name) { return campos[name] ? $.trim(campos[name]) : '' };
 	$('#final').text(
 		'{{Info/Álbum\n' +
 		'|nome          = ' + c('nome') + '\n' +

@@ -1,8 +1,13 @@
 
-String.prototype.format = function() { // https://stackoverflow.com/a/4673436/6923555
-	var args = arguments;
-	var iArg = -1;
-	return this.replace(/(%s|%d)/g, function(match, number) {
-		return args[++iArg] !== undefined ? args[iArg] : match;
-	});
+var ctrl = {
+	defRadio: function(name, pos) {
+		$('input[name='+name+']:eq('+pos+')')
+			.prop('checked', true)
+			.trigger('input');
+	},
+
+	limpar: function() {
+		$('input[type=text], input[type=number]').val('').trigger('input');
+		$('input[type=radio]').prop('checked', false).trigger('change');
+	}
 };

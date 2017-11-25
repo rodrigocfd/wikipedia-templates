@@ -7,10 +7,16 @@ body {
 a {
 	color: #0040E0;
 }
-textarea, input[type=text], #final {
+textarea, input[type=text], input[type=number], #final {
 	margin: 3px;
 	padding: 2px;
 	font: 11pt monospace;
+}
+input[type=number].num2 {
+	width: 50px;
+}
+input[type=number].num4 {
+	width: 75px;
 }
 #final {
 	border: 1px solid #ccc;
