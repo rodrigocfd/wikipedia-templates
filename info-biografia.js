@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 var bind = {
 	campo: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name=${name}]`).on('change input', function() {
 				campos[name] = $(this).val();
 				gerarFinal();
@@ -46,7 +46,7 @@ var bind = {
 };
 
 function limpar() {
-	ctrl.limpar();
+	util.limpar();
 	$('input:eq(0)').focus();
 }
 

@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 var bind = {
 	campo: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name=${name}]`).on('change input', function() {
 				campos[name] = $(this).val();
 				gerarFinal();
@@ -22,7 +22,7 @@ var bind = {
 	},
 
 	wikiLnk: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name=${name}]`).on('change input', function() {
 				var val = $(this).val();
 				campos[name] = val ? `[[${val}]]` : '';
@@ -32,7 +32,7 @@ var bind = {
 	},
 
 	dataDeInicio: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name^=${name}]`).on('input', function() {
 				var d = $(`input[name=${name}_d]`).val();
 				var m = $(`input[name=${name}_m]`).val();
@@ -45,7 +45,7 @@ var bind = {
 	},
 
 	duracao: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name^=${name}]`).on('input', function() {
 				var m = $(`input[name=${name}_m]`).val();
 				var s = $(`input[name=${name}_s]`).val();
@@ -57,7 +57,7 @@ var bind = {
 	},
 
 	outroAlbum: function(names) {
-		$.each(names, function(i, name) {
+		names.forEach(function(name) {
 			$(`input[name^=${name}]`).on('input', function() {
 				var a = $(`input[name=${name}]`).val();
 				var y = $(`input[name=${name}_ano]`).val();
@@ -75,10 +75,10 @@ var bind = {
 };
 
 function limpar() {
-	ctrl.limpar();
+	util.limpar();
 	$('input:eq(0)').focus();
-	ctrl.defRadio('tipo', 0);
-	ctrl.defRadio('idioma', 0);
+	util.setRadioVal('tipo', 0);
+	util.setRadioVal('idioma', 0);
 }
 
 var campos = { };

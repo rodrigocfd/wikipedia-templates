@@ -57,7 +57,7 @@ var bind = {
 };
 
 function limpar() {
-	ctrl.limpar();
+	util.limpar();
 	$('#osm').attr('src', 'about:blank');
 	$('#gmapsLnk').text('');
 	$('input:eq(0)').focus();

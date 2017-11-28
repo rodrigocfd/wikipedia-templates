@@ -1,7 +1,7 @@
 
-var ctrl = {
-	defRadio: function(name, pos) {
-		$(`input[name=${name}]:eq(${pos})`)
+var util = {
+	setRadioVal: function(name, index) {
+		$(`input[name=${name}]:eq(${index})`)
 			.prop('checked', true)
 			.trigger('input');
 	},
