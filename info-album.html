@@ -39,7 +39,8 @@
 				<tr><td>Lançado em</td>
 					<td><input type="number" name="lancado_d" min="1" max="31" class="num2"/>
 						<input type="number" name="lancado_m" min="1" max="12" class="num2"/>
-						<input type="number" name="lancado_y" class="num4"/></td></tr>
+						<input type="number" name="lancado_y" class="num4"/>
+						<input type="button" id="lancado_hoje" value="hoje"/></td></tr>
 				<tr><td>Gravado em</td>
 					<td><input type="text" name="gravado" size="30"/></td></tr>
 				<tr><td>Estúdio</td>
@@ -55,16 +56,16 @@
 						<label><input type="radio" name="idioma" value="Língua inglesa|inglês"/>inglês</label>
 						<label><input type="radio" name="idioma" value="Língua portuguesa|português"/>português</label>
 					</td></tr>
-					<tr><td>Gravadora</td>
-						<td><input type="text" name="gravadora" size="30"></td></tr>
-					<tr><td>Produtor</td>
-						<td><input type="text" name="produtor" size="30"></td></tr>
-					<tr><td>Último álbum</td>
-						<td><input type="text" name="ultimoalbum" size="30"> ano
-							<input type="number" name="ultimoalbum_ano" class="num4"/></td></tr>
-					<tr><td>Próximo álbum</td>
-						<td><input type="text" name="proximoalbum" size="30"> ano
-							<input type="number" name="proximoalbum_ano" class="num4"/></td></tr>
+				<tr><td>Gravadora</td>
+					<td><input type="text" name="gravadora" size="30"></td></tr>
+				<tr><td>Produtor</td>
+					<td><input type="text" name="produtor" size="30"></td></tr>
+				<tr><td>Último álbum</td>
+					<td><input type="text" name="ultimoalbum" size="30"> ano
+						<input type="number" name="ultimoalbum_ano" class="num4"/></td></tr>
+				<tr><td>Próximo álbum</td>
+					<td><input type="text" name="proximoalbum" size="30"> ano
+						<input type="number" name="proximoalbum_ano" class="num4"/></td></tr>
 			</table>
 		</td>
 		<td id="tdFinal"><div id="final" contenteditable="true"></div></td></tr>

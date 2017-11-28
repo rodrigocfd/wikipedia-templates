@@ -22,6 +22,10 @@ var calc = {
 			n = n.substr(0, n.length - 1);
 		}
 		return parseFloat(n);
+	},
+
+	isNum: function(s) {
+		return s !== undefined && s !== null && s.length > 0 && !isNaN(s);
 	}
 };
 
@@ -39,9 +43,10 @@ var bind = {
 
 			if (!val) return nada();
 			var ll = val.split(',');
-			if (ll.length !== 2 || !ll[1]) return nada();
-			ll[0] = $.trim(ll[0]);
-			ll[1] = $.trim(ll[1]);
+			if (ll.length !== 2) return nada();
+			ll[0] = ll[0].trim();
+			ll[1] = ll[1].trim();
+			if (!calc.isNum(ll[0]) || !calc.isNum(ll[1])) return nada();
 
 			campos.lat = calc.getDms(parseFloat(ll[0]));
 			campos.lng = calc.getDms(parseFloat(ll[1]));
@@ -69,7 +74,7 @@ function limpar() {
 var campos = { };
 
 function gerarFinal() {
-	function v(val) { return val ? val : '' }
+	function v(val) { return val !== undefined ? val : '' }
 	$('#final').text(
 		'{{Coor dms' +
 		`|${v(campos.lat.d)}|${v(campos.lat.m)}|${v(campos.lat.s)}` +

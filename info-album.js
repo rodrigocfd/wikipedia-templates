@@ -7,17 +7,18 @@ $(document).ready(function() {
 	bind.duracao(['duracao']);
 	bind.outroAlbum(['ultimoalbum', 'proximoalbum']);
 
+	$('#lancado_hoje').on('click', function() { util.setDataHoje('lancado'); });
 	$('#limpar').on('click', limpar);
 	limpar();
 });
 
 var bind = {
 	campo: function(names) {
-		util.bindInput(names, gerarFinal);
+		util.bindInput(campos, names, gerarFinal);
 	},
 
 	wikiLnk: function(names) {
-		util.bindInputWikiLnk(names, gerarFinal);
+		util.bindInputWikiLnk(campos, names, gerarFinal);
 	},
 
 	dataDeInicio: function(names) {
@@ -65,15 +66,15 @@ var bind = {
 
 function limpar() {
 	util.limpar();
-	$('input:eq(0)').focus();
 	util.setRadioVal('tipo', 0);
 	util.setRadioVal('idioma', 0);
+	$('input:eq(0)').focus();
 }
 
 var campos = { };
 
 function gerarFinal() {
-	function c(name) { return campos[name] ? $.trim(campos[name]) : '' };
+	function c(name) { return campos[name] ? campos[name].trim() : '' };
 	$('#final').text(
 		'{{Info/Álbum\n' +
 		`|nome          = ${c('nome')}\n` +

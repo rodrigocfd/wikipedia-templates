@@ -4,6 +4,9 @@ body, table, input, select {
 body {
 	padding: 8px;
 }
+h2 {
+	margin-top: 0;
+}
 a {
 	color: #0040E0;
 }

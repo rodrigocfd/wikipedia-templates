@@ -7,13 +7,15 @@ $(document).ready(function() {
 		'website']);
 	bind.datasNascimentoMorte('nascimento', 'morte');
 
+	$('#nascimento_hoje').on('click', function() { util.setDataHoje('nascimento'); });
+	$('#morte_hoje').on('click', function() { util.setDataHoje('morte'); });
 	$('#limpar').on('click', limpar);
 	limpar();
 });
 
 var bind = {
 	campo: function(names) {
-		util.bindInput(names, gerarFinal);
+		util.bindInput(campos, names, gerarFinal);
 	},
 
 	datasNascimentoMorte: function(nasName, morName) {
@@ -48,7 +50,7 @@ function limpar() {
 var campos = { };
 
 function gerarFinal() {
-	function c(name) { return campos[name] ? $.trim(campos[name]) : ''; }
+	function c(name) { return campos[name] ? campos[name].trim() : ''; }
 	function ifc(txt, name) { return campos[name] ? txt : ''; }
 	$('#final').text(
 		'{{Info/Biografia\n' +
