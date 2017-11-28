@@ -13,12 +13,7 @@ $(document).ready(function() {
 
 var bind = {
 	campo: function(names) {
-		names.forEach(function(name) {
-			$(`input[name=${name}]`).on('change input', function() {
-				campos[name] = $(this).val();
-				gerarFinal();
-			});
-		});
+		util.bindInput(names, gerarFinal);
 	},
 
 	datasNascimentoMorte: function(nasName, morName) {
