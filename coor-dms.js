@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 var bind = {
 	latLng: function(name) {
-		$('input[name='+name+']').on('input', function() {
+		$(`input[name=${name}]`).on('input', function() {
 			var val = $(this).val();
 
 			function nada() {
@@ -47,11 +47,11 @@ var bind = {
 			gerarFinal();
 
 			$('#osm').attr('src', 'http://www.openstreetmap.org/export/embed.html?bbox=' +
-				ll[1]+'%2C'+ll[0]+'%2C' +
-				ll[1]+'%2C'+ll[0]+'&amp;layer=mapnik');
-			var gmapsLnk = 'http://maps.google.com/maps?ll='+ll[0]+','+ll[1]+
-				'&spn=0.01,0.01&q='+ll[0]+','+ll[1];
-			$('#gmapsLnk').html('<a target="_blank" href="'+gmapsLnk+'">'+gmapsLnk+'</a>');
+				`${ll[1]}%2C${ll[0]}%2C` +
+				`${ll[1]}%2C${ll[0]}&amp;layer=mapnik`);
+			var gmapsLnk = `http://maps.google.com/maps?ll=${ll[0]},${ll[1]}` +
+				`&spn=0.01,0.01&q=${ll[0]},${ll[1]}`;
+			$('#gmapsLnk').html(`<a target="_blank" href="${gmapsLnk}">${gmapsLnk}</a>`);
 		});
 	}
 };
@@ -69,8 +69,8 @@ function gerarFinal() {
 	function vl(val) { return val ? val : '' }
 	$('#final').text(
 		'{{Coor dms' +
-		'|'+vl(campos.lat.d)+'|'+vl(campos.lat.m)+'|'+vl(campos.lat.s)+
-		'|'+vl(campos.lng.d)+'|'+vl(campos.lng.m)+'|'+vl(campos.lng.s)+
+		`|${vl(campos.lat.d)}|${vl(campos.lat.m)}|${vl(campos.lat.s)}` +
+		`|${vl(campos.lng.d)}|${vl(campos.lng.m)}|${vl(campos.lng.s)}` +
 		'|display=title'+
 		'}}'
 	);
