@@ -6,6 +6,25 @@ $(document).ready(function() {
 	limpar();
 });
 
+var calc = {
+	getDms: function(decimal) {
+		var ret = { dec: decimal, d: 0, m: 0, s: 0 };
+		decimal = Math.abs(decimal);
+		ret.d = Math.floor(decimal);
+		ret.m = Math.floor((decimal % 1) * 60);
+		ret.s = (((decimal % 1) * 60) % 1) * 60;
+		return ret;
+	},
+
+	floatTrunc: function(nFloat, numDigs) {
+		var n = '' + nFloat.toFixed(numDigs);
+		while (n[n.length - 1] === '0') {
+			n = n.substr(0, n.length - 1);
+		}
+		return parseFloat(n);
+	}
+};
+
 var bind = {
 	latLng: function(name) {
 		$(`input[name=${name}]`).on('input', function() {
@@ -24,26 +43,10 @@ var bind = {
 			ll[0] = $.trim(ll[0]);
 			ll[1] = $.trim(ll[1]);
 
-			function getDms(decimal) {
-				var ret = { dec: decimal, d: 0, m: 0, s: 0 };
-				decimal = Math.abs(decimal);
-				ret.d = Math.floor(decimal);
-				ret.m = Math.floor((decimal % 1) * 60);
-				ret.s = (((decimal % 1) * 60) % 1) * 60;
-				return ret;
-			}
-			function floatDig(nFloat, digs) {
-				var n = '' + nFloat.toFixed(digs);
-				while (n[n.length - 1] === '0') {
-					n = n.substr(0, n.length - 1);
-				}
-				return parseFloat(n);
-			}
-
-			campos.lat = getDms(parseFloat(ll[0]));
-			campos.lng = getDms(parseFloat(ll[1]));
-			campos.lat.s = floatDig(campos.lat.s, 2);
-			campos.lng.s = floatDig(campos.lng.s, 2);
+			campos.lat = calc.getDms(parseFloat(ll[0]));
+			campos.lng = calc.getDms(parseFloat(ll[1]));
+			campos.lat.s = calc.floatTrunc(campos.lat.s, 2);
+			campos.lng.s = calc.floatTrunc(campos.lng.s, 2);
 			gerarFinal();
 
 			$('#osm').attr('src', 'http://www.openstreetmap.org/export/embed.html?bbox=' +
@@ -66,11 +69,11 @@ function limpar() {
 var campos = { };
 
 function gerarFinal() {
-	function vl(val) { return val ? val : '' }
+	function v(val) { return val ? val : '' }
 	$('#final').text(
 		'{{Coor dms' +
-		`|${vl(campos.lat.d)}|${vl(campos.lat.m)}|${vl(campos.lat.s)}` +
-		`|${vl(campos.lng.d)}|${vl(campos.lng.m)}|${vl(campos.lng.s)}` +
+		`|${v(campos.lat.d)}|${v(campos.lat.m)}|${v(campos.lat.s)}` +
+		`|${v(campos.lng.d)}|${v(campos.lng.m)}|${v(campos.lng.s)}` +
 		'|display=title'+
 		'}}'
 	);
