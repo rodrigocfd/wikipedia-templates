@@ -11,7 +11,7 @@ var util = {
 		var hoje = new Date();
 		$(`input[name=${name}_d]`).val(hoje.getDate()).focus();
 		$(`input[name=${name}_m]`).val(hoje.getMonth() + 1);
-		$(`input[name=${name}_y]`).val(hoje.getFullYear());
+		$(`input[name=${name}_y]`).val(hoje.getFullYear()).trigger('input');
 	},
 
 	limpar: function() {
