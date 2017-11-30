@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Rodrigo César de Freitas Dias"/>
+	<link rel="icon" href="favicon.ico"/>
+	<link type="text/css" rel="stylesheet" href="dress.css"/>
+	<style>
+		#tdFinal { vertical-align: top; }
+		#final { min-width: 350px; }
+	</style>
+	<title>Lista de faixas</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="util.js"></script>
+	<script src="lista-de-faixas.js"></script>
+</head>
+<body>
+	<table>
+		<tr><td>
+			<h2>Lista de faixas</h2>
+			<section id="linhas"></section>
+			<div>
+				<input type="button" id="adicionar" value="Adicionar"/>
+				<input type="button" id="remover" value="Remover"/>
+			</div>
+		</td><td id="tdFinal">
+			<div id="final" contenteditable="true"></div>
+		</td></tr>
+	</table>
+	<section id="templates">
+		<table class="linha">
+			<tr><td>Título</td>
+				<td><input type="text" name="titulo" size="30"/></td></tr>
+			<tr><td>Nota</td>
+				<td><input type="text" name="nota" size="28"/></td></tr>
+		</table>
+	</section>
+</body>
+</html>
