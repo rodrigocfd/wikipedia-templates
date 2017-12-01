@@ -10,6 +10,9 @@ h2 {
 a {
 	color: #0040E0;
 }
+li {
+	line-height: 150%;
+}
 textarea, input[type=text], input[type=number], #final {
 	margin: 3px;
 	padding: 2px;
@@ -21,10 +24,10 @@ input[type=number].num2 {
 input[type=number].num4 {
 	width: 75px;
 }
+#templates {
+	display: none;
+}
 #final {
 	border: 1px solid #ccc;
 	white-space: pre;
-}
-li {
-	line-height: 150%;
 }
