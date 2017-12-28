@@ -5,6 +5,8 @@
 	<link rel="icon" href="favicon.ico"/>
 	<link type="text/css" rel="stylesheet" href="dress.css"/>
 	<style>
+		.faixa { border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px; }
+		.faixaNum { vertical-align: top; padding-top: 8px; }
 		#tdFinal { vertical-align: top; }
 		#final { min-width: 350px; }
 	</style>
@@ -17,7 +19,7 @@
 	<table>
 		<tr><td>
 			<h2>Lista de faixas</h2>
-			<section id="linhas"></section>
+			<section id="faixas"></section>
 			<div>
 				<input type="button" id="adicionar" value="Adicionar"/>
 				<input type="button" id="remover" value="Remover"/>
@@ -27,11 +29,16 @@
 		</td></tr>
 	</table>
 	<section id="templates">
-		<table class="linha">
-			<tr><td>Título</td>
+		<table class="faixa">
+			<tr><td rowspan="4" class="faixaNum"></td>
+				<td>Título</td>
 				<td><input type="text" name="titulo" size="30"/></td></tr>
 			<tr><td>Nota</td>
 				<td><input type="text" name="nota" size="28"/></td></tr>
+			<tr><td>Letra</td>
+				<td><input type="text" name="letra" size="28"/></td></tr>
+			<tr><td>Música</td>
+				<td><input type="text" name="musica" size="28"/></td></tr>
 		</table>
 	</section>
 </body>
