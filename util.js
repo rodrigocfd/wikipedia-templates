@@ -1,5 +1,9 @@
 'use strict';
 
+Array.prototype.last = function() {
+	return this[this.length - 1];
+};
+
 var util = {
 	setRadioVal: function(name, index) {
 		$(`input[name=${name}]:eq(${index})`)

@@ -2,6 +2,8 @@
 
 $(document).ready(() => {
 	criaFaixa();
+	$('[name=fechado]').on('change', setaFechado);
+	$('[name=tituloTopo]').on('input', setaTituloTopo);
 	$('#adicionar').on('click', criaFaixa);
 	$('#remover').on('click', removeUltimaFaixa);
 });
@@ -51,7 +53,7 @@ class Faixa {
 		let ret = '';
 		let pegaCampo = (campo, k) => {
 			let val = this.$tpl.find(`[name=${campo}]`).val().trim();
-			if (val) ret += `|${k}${num} = ${val} `;
+			if (val) ret += `|${k}${num}=${val} `;
 		};
 		pegaCampo('titulo', 'título');
 		pegaCampo('nota', 'nota');
@@ -61,35 +63,51 @@ class Faixa {
 	}
 }
 
-let faixas = [];
-let serializado = [];
+let campos = {
+	fechado: false,
+	tituloTopo: '',
+	faixas: [],
+	serializado: []
+};
+
+function setaFechado() {
+	campos.fechado = $('[name=fechado]').prop('checked');
+	geraFinal();
+}
+
+function setaTituloTopo() {
+	campos.tituloTopo = $('[name=tituloTopo]').val().trim();
+	geraFinal();
+}
 
 function criaFaixa() {
 	let novaFaixa = new Faixa();
 	novaFaixa.onInput((linha) => {
-		serializado[novaFaixa.index] = linha;
+		campos.serializado[novaFaixa.index] = linha;
 		geraFinal();
 	})
-	faixas.push(novaFaixa);
-	$('#remover').prop('disabled', faixas.length === 1);
+	campos.faixas.push(novaFaixa);
+	$('#remover').prop('disabled', campos.faixas.length === 1);
 }
 
 function removeUltimaFaixa() {
-	let ultima = faixas.pop();
-	ultima.deleta();
-	serializado.pop();
-	faixas[faixas.length - 1].poeFoco();
-	$('#remover').prop('disabled', faixas.length === 1);
+	campos.faixas.last().deleta();
+	campos.faixas.pop();
+	campos.serializado.pop();
+	campos.faixas.last().poeFoco();
+	$('#remover').prop('disabled', campos.faixas.length === 1);
 	geraFinal();
 }
 
 function geraFinal() {
-	var linhas = '';
-	serializado.forEach((linha) => {
+	let linhas = '';
+	campos.serializado.forEach((linha) => {
 		linhas += `\n${linha}`;
 	});
 	$('#final').text(
 		'{{Lista de faixas' +
+		(campos.fechado ? '\n|fechado=sim' : '') +
+		(campos.tituloTopo ? `\n|topo=${campos.tituloTopo}` : '') +
 		linhas +
 		'\n}}'
 	);

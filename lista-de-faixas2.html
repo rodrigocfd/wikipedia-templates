@@ -5,6 +5,7 @@
 	<link rel="icon" href="favicon.ico"/>
 	<link type="text/css" rel="stylesheet" href="dress.css"/>
 	<style>
+		#opcoes { margin-bottom: 12px; }
 		.faixa { border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px; }
 		.faixaNum { vertical-align: top; padding-top: 8px; }
 		#tdFinal { vertical-align: top; }
@@ -19,6 +20,10 @@
 	<table>
 		<tr><td>
 			<h2>Lista de faixas</h2>
+			<div id="opcoes">
+				<label><input type="checkbox" name="fechado"/>Fechado</label>
+				<div>Título topo <input type="text" name="tituloTopo"/></div>
+			</div>
 			<section id="faixas"></section>
 			<div>
 				<input type="button" id="adicionar" value="Adicionar"/>
