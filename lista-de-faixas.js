@@ -1,61 +1,92 @@
 'use strict';
 
-$(document).ready(function() {
-	faixa.cria();
-
-	$('#adicionar').on('click', faixa.cria);
-	$('#remover').on('click', faixa.remove);
-	limpar();
+$(document).ready(() => {
+	criaFaixa();
+	$('#adicionar').on('click', criaFaixa);
+	$('#remover').on('click', removeUltimaFaixa);
 });
 
-var faixa = {
-	cria: function() {
-		var numFaixas = $('#faixas > .faixa').length;
-		var $novaFaixa = $('#templates > .faixa').clone();
-		$novaFaixa.find('.faixaNum').text(numFaixas + 1);
-		$novaFaixa.find('input').each(function() {
-			var $input = $(this);
-			var nome = $input.attr('name');
-			$input.attr('name', `${nome}${numFaixas + 1}`);
-			$input.on('input', function() {
-				var idx = numFaixas;
-				if (!campos.faixas[idx]) campos.faixas[idx] = { };
-				campos.faixas[idx][nome] = $(this).val();
-				gerarFinal();
+class Faixa {
+	constructor() {
+		this.index = $('#faixas > .faixa').length;
+		this.$tpl = $('#templates > .faixa').clone();
+		this.inputCb = null;
+		this._colocaNumero();
+		this._setaEventos();
+		this._adicionaNaPagina('#faixas');
+	}
+
+	deleta() {
+		this.$tpl.remove();
+	}
+
+	onInput(cb) {
+		this.inputCb = cb;
+		this.inputCb( this._serializaLinha() );
+	}
+
+	poeFoco() {
+		this.$tpl.find('input:first').focus();
+	}
+
+	_colocaNumero() {
+		this.$tpl.find('.faixaNum').text(this.index + 1);
+	}
+
+	_setaEventos() {
+		this.$tpl.find('input').each((idx, elem) => {
+			$(elem).on('input', () => {
+				if (this.inputCb) this.inputCb( this._serializaLinha() );
 			});
 		});
-		$('#faixas').append($novaFaixa);
-		campos.faixas.push({ titulo: '' });
-		faixa.habilitaRemover();
-		gerarFinal();
-	},
-
-	remove: function() {
-		$('#faixas .faixa:last').remove();
-		campos.faixas.pop();
-		faixa.habilitaRemover();
-		gerarFinal();
-	},
-
-	habilitaRemover: function() {
-		$('#remover').prop('disabled', $('#faixas > .faixa').length === 1);
 	}
-};
 
-function limpar() {
-	util.limpar();
-	$('input:eq(0)').focus();
+	_adicionaNaPagina(onde) {
+		$(onde).append(this.$tpl);
+		this.poeFoco();
+	}
+
+	_serializaLinha() {
+		let num = this.index + 1;
+		let ret = '';
+		let pegaCampo = (campo, k) => {
+			let val = this.$tpl.find(`[name=${campo}]`).val().trim();
+			if (val) ret += `|${k}${num} = ${val} `;
+		};
+		pegaCampo('titulo', 'título');
+		pegaCampo('nota', 'nota');
+		pegaCampo('letra', 'letra');
+		pegaCampo('musica', 'música');
+		return ret.substr(0, ret.length - 1);
+	}
 }
 
-var campos = { faixas: [] };
+let faixas = [];
+let serializado = [];
 
-function gerarFinal() {
+function criaFaixa() {
+	let novaFaixa = new Faixa();
+	novaFaixa.onInput((linha) => {
+		serializado[novaFaixa.index] = linha;
+		geraFinal();
+	})
+	faixas.push(novaFaixa);
+	$('#remover').prop('disabled', faixas.length === 1);
+}
+
+function removeUltimaFaixa() {
+	let ultima = faixas.pop();
+	ultima.deleta();
+	serializado.pop();
+	faixas[faixas.length - 1].poeFoco();
+	$('#remover').prop('disabled', faixas.length === 1);
+	geraFinal();
+}
+
+function geraFinal() {
 	var linhas = '';
-	campos.faixas.forEach(function(f, i) {
-		linhas += `\n|título${i + 1} = ${f.titulo}`;
-		if (f.nota) linhas += ` |nota${i + 1} = ${f.nota}`;
-		if (f.letra) linhas += ` |letra${i + 1} = ${f.letra}`;
-		if (f.musica) linhas += ` |música${i + 1} = ${f.musica}`;
+	serializado.forEach((linha) => {
+		linhas += `\n${linha}`;
 	});
 	$('#final').text(
 		'{{Lista de faixas' +
