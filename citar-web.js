@@ -3,15 +3,13 @@
 $(document).ready(function() {
 	bind.campo(['refName', 'url', 'titulo', 'fonte', 'idioma']);
 	bind.data(['data', 'acesso']);
-
-	$('input[name=url]').on('input', function() {
-		$('#pagina').attr('src', $(this).val().trim() ? $(this).val().trim() : 'about:blank');
-	});
+	bind.iframe('url', '#pagina');
 
 	$('#data_hoje').on('click', function() { util.setDataHoje('data'); });
 	$('#acesso_hoje').on('click', function() { util.setDataHoje('acesso'); });
 	$('#limpar').on('click', limpar);
 	limpar();
+	$('#pagina').hide();
 });
 
 var bind = {
@@ -30,6 +28,14 @@ var bind = {
 				campos[name] = (d ? `${d} de ` : '') + (m ? `${meses[m]} de ` : '') + y;
 				gerarFinal();
 			});
+		});
+	},
+
+	iframe: function(name, ifr) {
+		$(`input[name=${name}]`).on('input', function() {
+			let urlVal = $(this).val().trim();
+			$(ifr).attr('src', util.urlBoa(urlVal) ? urlVal : 'about:blank');
+			$(ifr).toggle(util.urlBoa(urlVal));
 		});
 	}
 };

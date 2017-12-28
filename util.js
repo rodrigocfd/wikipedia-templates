@@ -14,6 +14,12 @@ var util = {
 		$(`input[name=${name}_y]`).val(hoje.getFullYear()).trigger('input');
 	},
 
+	urlBoa: function(u) {
+		if (!u) return false;
+		if (!u.startsWith('http://') && !u.startsWith('https://')) return false;
+		return u.length > 10;
+	},
+
 	limpar: function() {
 		$('input[type=text], input[type=number]').val('').trigger('input');
 		$('input[type=radio]').prop('checked', false).trigger('change');
