@@ -59,6 +59,11 @@ class Faixa {
 		pegaCampo('nota', 'nota');
 		pegaCampo('letra', 'letra');
 		pegaCampo('musica', 'música');
+
+		let min = this.$tpl.find('[name=duracao_m]').val();
+		let sec = this.$tpl.find('[name=duracao_s]').val();
+		if (min && sec) ret += `|duração${num}=${min}:${sec} `;
+
 		return ret.substr(0, ret.length - 1);
 	}
 }
