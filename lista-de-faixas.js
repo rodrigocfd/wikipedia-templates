@@ -13,6 +13,7 @@ class Faixa {
 		this.index = $('#faixas > .faixa').length;
 		this.$tpl = $('#templates > .faixa').clone();
 		this.inputCb = null;
+		this.acimaCb = null;
 		this._colocaNumero();
 		this._setaEventos();
 		this._adicionaNaPagina('#faixas');
@@ -27,12 +28,30 @@ class Faixa {
 		this.inputCb( this._serializaLinha() );
 	}
 
+	onAcima(cb) {
+		this.acimaCb = cb;
+	}
+
 	poeFoco() {
 		this.$tpl.find('input:first').focus();
 	}
 
+	trocaValores(outraFaixa) {
+		let outros = [];
+		outraFaixa.$tpl.find('input').each((idx, elem) => outros.push($(elem).val()) );
+		this.$tpl.find('input').each((idx, elem) => {
+			let $elem = $(elem);
+			let nome = $elem.attr('name');
+			outraFaixa.$tpl.find(`[name=${nome}]`).val($elem.val());
+			$elem.val(outros[idx]);
+		});
+		this.$tpl.find('input:first').trigger('input');
+		outraFaixa.$tpl.find('input:first').trigger('input');
+	}
+
 	_colocaNumero() {
 		this.$tpl.find('.faixaNum').text(this.index + 1);
+		this.$tpl.find('[name=acima]').toggle(this.index > 0);
 	}
 
 	_setaEventos() {
@@ -40,6 +59,10 @@ class Faixa {
 			$(elem).on('input', () => {
 				if (this.inputCb) this.inputCb( this._serializaLinha() );
 			});
+		});
+
+		this.$tpl.find('[name=acima]').on('click', () => {
+			if (this.acimaCb) this.acimaCb();
 		});
 	}
 
@@ -90,7 +113,10 @@ function criaFaixa() {
 	novaFaixa.onInput((linha) => {
 		campos.serializado[novaFaixa.index] = linha;
 		geraFinal();
-	})
+	});
+	novaFaixa.onAcima((index) => {
+		novaFaixa.trocaValores(campos.faixas[novaFaixa.index - 1]);
+	});
 	campos.faixas.push(novaFaixa);
 	$('#remover').prop('disabled', campos.faixas.length === 1);
 }
