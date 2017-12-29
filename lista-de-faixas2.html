@@ -8,7 +8,7 @@
 		#opcoes { margin-bottom: 12px; }
 		.faixa { border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px; }
 		.faixaNum { vertical-align: top; padding-top: 8px; }
-		#tdFinal { vertical-align: top; }
+		#tdFinal { position: fixed; left: 410px; top: 128px; }
 		#final { min-width: 350px; }
 	</style>
 	<title>Lista de faixas</title>
@@ -17,22 +17,19 @@
 	<script src="lista-de-faixas.js"></script>
 </head>
 <body>
-	<table>
-		<tr><td>
-			<h2>Lista de faixas</h2>
-			<div id="opcoes">
-				<label><input type="checkbox" name="fechado"/>Fechado</label>
-				<div>Título topo <input type="text" name="tituloTopo"/></div>
-			</div>
-			<section id="faixas"></section>
-			<div>
-				<input type="button" id="adicionar" value="Adicionar"/>
-				<input type="button" id="remover" value="Remover"/>
-			</div>
-		</td><td id="tdFinal">
-			<div id="final" contenteditable="true"></div>
-		</td></tr>
-	</table>
+	<h2>Lista de faixas</h2>
+	<div id="opcoes">
+		<label><input type="checkbox" name="fechado"/>Fechado</label>
+		<div>Título topo <input type="text" name="tituloTopo"/></div>
+	</div>
+	<section id="faixas"></section>
+	<div>
+		<input type="button" id="adicionar" value="Adicionar"/>
+		<input type="button" id="remover" value="Remover"/>
+	</div>
+	<div id="tdFinal">
+		<div id="final" contenteditable="true"></div>
+	</div>
 	<section id="templates">
 		<table class="faixa">
 			<tr><td rowspan="5" class="faixaNum"></td>
