@@ -1,134 +1,54 @@
 <html>
 <head>
-<meta charset="UTF-8"/>
-<meta name="author" content="Rodrigo César de Freitas Dias"/>
-<link rel="icon" href="favicon.ico"/>
-<title>Lista de faixas</title>
-<link type="text/css" rel="stylesheet" href="dress.css"/>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="util.js"></script>
-<script>
-function zpad2(num) {
-	return num < 10 ? '0' + num : num;
-}
-$(document).ready(function() {
-	$('#optfields').hide();
-	$('#process').hide();
-	$('#output').hide();
-	$('#field').hide();
-	$('#qtd').focus();
-
-	$('#drawfields').submit(function() {
-		var iQtd = parseInt($('#qtd').val(), 10);
-		var iStartAt = parseInt($('#startat').val(), 10);
-		for (var idx = iStartAt - 1; idx < iQtd + iStartAt - 1; ++idx) {
-			var i = idx + 1;
-			if ($('#num' + i).length === 0) {
-				$('#fields').append($('#field').html());
-				$('#num').attr('id', 'num' + i).text(zpad2(i));
-				$('#title').attr('id', 'title' + i);
-				$('#length').attr('id', 'length' + i);
-				$('#compos').attr('id', 'compos' + i).hide();
-				$('#lyric').attr('id', 'lyric' + i).hide();
-				$('#music').attr('id', 'music' + i).hide();
-				$('#note').attr('id', 'note' + i).hide();
-			}
-		}
-		$('#optfields').show();
-		$('#process').show();
-		$('#title1').focus();
-		return false;
-	});
-
-	$('#process').submit(function() {
-		var sCode = '{{Lista de faixas\n';
-		var sTopo = $('#topo').val();
-		if (sTopo.length > 0) {
-			sCode += '|topo=' + sTopo + '\n';
-		}
-
-		if ($('#fechado').is(':checked')) sCode += '|fechado=sim\n';
-		if ($('#tcompos').is(':checked')) sCode += '|crédito_escrita=sim\n';
-		if ($('#tlyric').is(':checked')) sCode += '|crédito_letra=sim\n';
-		if ($('#tmusic').is(':checked')) sCode += '|crédito_música=sim\n';
-
-		var iQtd = parseInt($('#qtd').val(), 10);
-		var iStartAt = parseInt($('#startat').val(), 10);
-		var iTimeSum = 0;
-		for (var idx = iStartAt - 1; idx < iQtd + iStartAt - 1; ++idx) {
-			var i = idx + 1;
-			var ilen = parseInt($('#length' + i).val(), 10);
-			var slen = ((ilen - (ilen % 100)) / 100) + ':' + zpad2(ilen % 100);
-			sCode += '|título' + i + '=' + $('#title' + i).val();
-
-			if ($('#tcompos').is(':checked')) sCode += ' |escritor' + i + '=' + $('#compos' + i + ' input').val();
-			if ($('#tlyric').is(':checked')) sCode += ' |letra' + i + '=' + $('#lyric' + i + ' input').val();
-			if ($('#tmusic').is(':checked')) sCode += ' |música' + i + '=' + $('#music' + i + ' input').val();
-			sCode += ' |duração' + i + '=' + slen;
-
-			if ($('#tnote').is(':checked') && $('#note' + i + ' input').val().length > 0) {
-				sCode += ' |nota' + i + '=' + $('#note' + i + ' input').val();
-			}
-
-			sCode += '\n';
-			iTimeSum += ((ilen - (ilen % 100)) / 100) * 60 + (ilen % 100);
-		}
-		sCode += '|duração_total=' +
-			((iTimeSum - (iTimeSum % 60)) / 60) + ':' + zpad2(iTimeSum % 60) +
-			'\n}}';
-		$('#output')
-			.text(sCode)
-			.show()
-			.focus()
-			.select();
-		return false;
-	});
-
-	$('#tcompos').click(function() { $('[id^=compos]').toggle(); });
-	$('#tlyric').click(function() { $('[id^=lyric]').toggle(); });
-	$('#tmusic').click(function() { $('[id^=music]').toggle(); });
-	$('#tnote').click(function() { $('[id^=note]').toggle(); });
-});
-</script>
+	<meta charset="UTF-8"/>
+	<meta name="author" content="Rodrigo César de Freitas Dias"/>
+	<link rel="icon" href="favicon.ico"/>
+	<link type="text/css" rel="stylesheet" href="dress.css"/>
+	<style>
+		#opcoes { margin-bottom: 12px; }
+		.faixa { border-bottom: 1px solid #ddd; margin-bottom: 10px; padding-bottom: 10px; }
+		.faixaNum { vertical-align: top; padding-top: 8px; }
+		#tdFinal { position: fixed; left: 410px; top: 128px; }
+		#final { min-width: 350px; }
+	</style>
+	<title>Lista de faixas</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="util.js"></script>
+	<script src="lista-de-faixas.js"></script>
 </head>
 <body>
-	<h2>predefinição:Lista de faixas</h2>
-
-	<form id="drawfields">
-		<p>
-			Quantidade de faixas: <input type="text" size="2" id="qtd"/>
-			Iniciar em: <input type="text" size="2" id="startat" value="1"/>
-			<input type="submit" value="Gerar"/>
-		</p>
-	</form>
-	<div id="optfields">
-		<p>
-			<label><input type="checkbox" id="tcompos"/>composição</label>
-			<label><input type="checkbox" id="tlyric"/>letra</label>
-			<label><input type="checkbox" id="tmusic"/>música</label>
-			<label><input type="checkbox" id="tnote"/>nota</label>
-		</p>
+	<h2>Lista de faixas</h2>
+	<div id="opcoes">
+		<label><input type="checkbox" name="fechado"/>Fechado</label>
+		<div>Título topo <input type="text" name="tituloTopo"/></div>
 	</div>
-	<form id="process">
-		<div id="fields"></div>
-		Título <input id="topo" type="text" size="12"/>
-		<label><input type="checkbox" id="fechado"/>fechado</label>
-		&nbsp; <input type="submit" value="Processar"/>
-	</form>
-	<div id="field">
-		<span id="num"></span>
-		<input type="text" size="30" id="title"/>
-		<input type="text" size="5" id="length"/>
-		<span id="compos">compos: <input type="text" size="35"></span>
-		<span id="lyric">letra: <input type="text" size="35"></span>
-		<span id="music">música: <input type="text" size="35"></span>
-		<span id="note">nota: <input type="text" size="20"/></span>
-		<br/>
+	<section id="faixas"></section>
+	<div>
+		<input type="button" id="adicionar" value="Adicionar"/>
+		<input type="button" id="remover" value="Remover"/>
 	</div>
-	<textarea id="output" rows="20" cols="80"></textarea>
-
+	<div id="tdFinal">
+		<div id="final" contenteditable="true"></div>
+	</div>
 	<p><a href="index.html">voltar</a> |
-		<a href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Lista_de_faixas">docs</a>
+		<a target="_blank" href="https://pt.wikipedia.org/wiki/Predefini%C3%A7%C3%A3o:Lista_de_faixas">docs</a>
 	</p>
+	<section id="templates">
+		<table class="faixa">
+			<tr><td rowspan="5" class="faixaNum"></td>
+				<td>Título</td>
+				<td><input type="text" name="titulo" size="30"/></td></tr>
+			<tr><td>Nota</td>
+				<td><input type="text" name="nota" size="28"/></td></tr>
+			<tr><td>Letra</td>
+				<td><input type="text" name="letra" size="28"/></td></tr>
+			<tr><td>Música</td>
+				<td><input type="text" name="musica" size="28"/></td></tr>
+			<tr><td>Duração</td>
+				<td><input type="number" name="duracao_m" min="0" class="num2"/>
+					<input type="number" name="duracao_s" min="0" max="59" class="num2"/> &nbsp;
+					<input type="button" name="acima" value="&#8679;"/></td></tr>
+		</table>
+	</section>
 </body>
 </html>
