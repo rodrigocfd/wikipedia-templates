@@ -1,7 +1,7 @@
 'use strict';
 
 $(document).ready(function() {
-	bind.campo(['refName', 'url', 'titulo', 'fonte', 'idioma']);
+	bind.campo(['refName', 'url', 'titulo', 'fonte', 'pagina', 'paginas', 'idioma']);
 	bind.data(['data', 'acesso']);
 	bind.iframe('url', '#pagina');
 
@@ -57,6 +57,8 @@ function gerarFinal() {
 ifc(` |url=${c('url')}`, 'url') +
 ifc(` |titulo=${c('titulo')}`, 'titulo') +
 ifc(` |publicado=${c('fonte')}`, 'fonte') +
+ifc(` |pagina=${c('pagina')}`, 'pagina') +
+ifc(` |paginas=${c('paginas')}`, 'paginas') +
 ifc(` |data=${c('data')}`, 'data') +
 ifc(` |acessodata=${c('acesso')}`, 'acesso') +
 ifc(` |lingua2=${c('idioma')}`, 'idioma') +

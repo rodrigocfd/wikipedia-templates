@@ -83,7 +83,7 @@ function gerarFinal() {
 		`|${v(campos.ns)}` +
 		`|${v(campos.lng.d)}|${v(campos.lng.m)}|${v(campos.lng.s)}` +
 		`|${v(campos.oe)}` +
-		'|display=title'+
+		'|display=title' +
 		'}}'
 	);
 }
