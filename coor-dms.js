@@ -52,6 +52,8 @@ var bind = {
 			campos.lng = calc.getDms(parseFloat(ll[1]));
 			campos.lat.s = calc.floatTrunc(campos.lat.s, 2);
 			campos.lng.s = calc.floatTrunc(campos.lng.s, 2);
+			campos.ns = ll[0] < 0 ? 'S' : 'N';
+			campos.oe = ll[1] < 0 ? 'O' : 'E';
 			gerarFinal();
 
 			$('#osm').attr('src', 'http://www.openstreetmap.org/export/embed.html?bbox=' +
@@ -78,7 +80,9 @@ function gerarFinal() {
 	$('#final').text(
 		'{{Coor dms' +
 		`|${v(campos.lat.d)}|${v(campos.lat.m)}|${v(campos.lat.s)}` +
+		`|${v(campos.ns)}` +
 		`|${v(campos.lng.d)}|${v(campos.lng.m)}|${v(campos.lng.s)}` +
+		`|${v(campos.oe)}` +
 		'|display=title'+
 		'}}'
 	);
