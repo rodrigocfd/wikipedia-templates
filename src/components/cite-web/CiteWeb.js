@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 import Txt from '../Txt';
 import YearMonthDay from './YearMonthDay';
@@ -34,7 +35,7 @@ class CiteWeb extends React.Component {
 						values={['', 'en', 'es', 'fr', 'de', 'pt']}
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/></div>
 				</div>
-				<div>
+				<DivOut>
 					{'<ref'}
 					{state.refName && ` name="${state.refName}"`}
 					{'>'}
@@ -46,11 +47,18 @@ class CiteWeb extends React.Component {
 					<OutParam name="access-date" val={state.accessDate}/>
 					<OutParam name="language" val={state.language}/>
 					{' }}</ref>'}
-				</div>
+				</DivOut>
 				<Link to="/"><Txt val="Home"/></Link>
 			</div>
 		);
 	}
 }
+
+const DivOut = styled.div`
+	font-family: monospace;
+	border: 1px solid #ccc;
+	margin: 10px 0;
+	padding: 10px;
+`;
 
 export default CiteWeb;

@@ -1,7 +1,7 @@
 import {action, observable} from 'mobx';
 
-import en from './locale/en';
-import pt from './locale/pt';
+import en from './locales/en';
+import pt from './locales/pt';
 
 const loadedJsonLocales = {en, pt};
 

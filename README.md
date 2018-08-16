@@ -6,3 +6,4 @@ This project was written using the following libraries:
 * [React](https://github.com/facebook/react)
 * [React Router](https://github.com/ReactTraining/react-router)
 * [MobX](https://github.com/mobxjs/mobx-react)
+* [Styled Components](https://github.com/styled-components/styled-components)

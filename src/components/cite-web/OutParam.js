@@ -8,7 +8,7 @@ import Txt from '../Txt';
  */
 const OutParam = ({name, val}) =>
 	val ?
-		<Fragment> | <Txt val={name}/>={val}</Fragment> :
+		<Fragment> |<Txt val={name}/>={val}</Fragment> :
 		null;
 
 OutParam.propTypes = {
