@@ -1,4 +1,4 @@
-import {action, observable} from 'mobx';
+import {observable} from 'mobx';
 
 import en from './locales/en';
 import pt from './locales/pt';
@@ -9,10 +9,10 @@ const loadedJsonLocales = {en, pt};
  * Application unique MobX store.
  */
 class Store {
-	@observable locale = loadedJsonLocales['en'];
+	@observable locale = 'en';
 
-	@action changeLocale(lang) {
-		this.locale = loadedJsonLocales[lang];
+	localeString(val) {
+		return loadedJsonLocales[this.locale][val];
 	}
 }
 

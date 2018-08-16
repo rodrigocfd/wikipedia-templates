@@ -1,31 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {inject} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 
 import Txt from './Txt';
 
 /**
  * Changes the current locale file.
  */
-@inject('store')
-class ChangeLanguage extends React.Component {
-	static propTypes = {
-		store: PropTypes.any.isRequired
-	};
+const ChangeLanguage = ({store}) => (
+	<div>
+		<Txt val="Language"/>
+		{['en', 'pt'].map((lang) =>
+			store.locale === lang ?
+				lang.toUpperCase() :
+				<button key={lang} onClick={e => store.locale = lang}>
+					{lang.toUpperCase()}
+				</button>
+		)}
+	</div>
+);
 
-	changeTo = (lang) => {
-		this.props.store.changeLocale(lang);
-	}
+ChangeLanguage.propTypes = {
+	store: PropTypes.any.isRequired
+};
 
-	render() {
-		return (
-			<div>
-				<Txt val="Language"/>
-				<button onClick={e => this.changeTo('en')}>EN</button>
-				<button onClick={e => this.changeTo('pt')}>PT</button>
-			</div>
-		);
-	}
-}
-
-export default ChangeLanguage;
+export default inject('store')(
+	observer(ChangeLanguage)
+);

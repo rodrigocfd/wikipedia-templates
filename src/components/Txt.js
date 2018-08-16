@@ -5,8 +5,8 @@ import {inject, observer} from 'mobx-react';
  * Ouputs a text from the current locale file, defined in app store.
  */
 const Txt = ({store, val}) =>
-	store.locale[val] ?
-		store.locale[val] :
+	store.localeString(val) ?
+		store.localeString(val) :
 		`KEY "${val}" NOT FOUND`;
 
 Txt.propTypes = {
