@@ -25,15 +25,36 @@ class CiteWeb extends React.Component {
 			<div>
 				<h2><Txt val="Cite web"/></h2>
 				<div>
-					<div><Txt val="Ref name"/> <input type="text" size="18" name="refName" onChange={this.changed}/></div>
-					<div><Txt val="URL"/> <input type="text" size="100" name="url" onChange={this.changed} autoComplete="off"/></div>
-					<div><Txt val="Title"/> <input type="text" size="88" name="title" onChange={this.changed} autoComplete="off"/></div>
-					<div><Txt val="Publisher"/> <input type="text" size="88" name="publisher" onChange={this.changed}/></div>
-					<div><Txt val="Date"/> <YearMonthDay name="date" onChange={this.changed}/></div>
-					<div><Txt val="Access date"/> <YearMonthDay name="accessDate" onChange={this.changed}/></div>
-					<div><Txt val="Language"/> <InlineRadio name="language" onChange={this.changed}
-						values={['', 'en', 'es', 'fr', 'de', 'pt']}
-						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/></div>
+					<div>
+						<DivName><Txt val="Ref name"/></DivName>
+						<input type="text" size="18" name="refName" onChange={this.changed}/>
+					</div>
+					<div>
+						<DivName><Txt val="URL"/></DivName>
+						<input type="text" size="100" name="url" onChange={this.changed} autoComplete="off"/>
+					</div>
+					<div>
+						<DivName><Txt val="Title"/></DivName>
+						<input type="text" size="88" name="title" onChange={this.changed} autoComplete="off"/>
+					</div>
+					<div>
+						<DivName><Txt val="Publisher"/></DivName>
+						<input type="text" size="88" name="publisher" onChange={this.changed}/>
+					</div>
+					<div>
+						<DivName><Txt val="Date"/></DivName>
+						<YearMonthDay name="date" onChange={this.changed}/>
+					</div>
+					<div>
+						<DivName><Txt val="Access date"/></DivName>
+						<YearMonthDay name="accessDate" onChange={this.changed}/>
+					</div>
+					<div>
+						<DivName><Txt val="Language"/></DivName>
+						<InlineRadio name="language" onChange={this.changed}
+							values={['', 'en', 'es', 'fr', 'de', 'pt']}
+							labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
+					</div>
 				</div>
 				<DivOut>
 					{'<ref'}
@@ -54,10 +75,15 @@ class CiteWeb extends React.Component {
 	}
 }
 
+const DivName = styled.div`
+	display: inline-block;
+	width: 150px;
+	padding: 6px 0;
+`;
 const DivOut = styled.div`
 	font-family: monospace;
 	border: 1px solid #ccc;
-	margin: 10px 0;
+	margin: 20px 0;
 	padding: 10px;
 `;
 

@@ -14,7 +14,7 @@ const ChangeLanguage = ({store}) => (
 		<DivOpts>
 			{['en', 'pt'].map((lang) =>
 				store.locale === lang ?
-					<span>{lang.toUpperCase()}</span> :
+					<span key={lang}>{lang.toUpperCase()}</span> :
 					<button key={lang} onClick={e => store.locale = lang}>
 						{lang.toUpperCase()}
 					</button>
