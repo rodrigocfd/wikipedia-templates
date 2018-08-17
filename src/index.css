@@ -3,6 +3,13 @@
  */
 
 body {
-	font-family: Arial, sans-serif;
 	padding: 0 10px;
+}
+body, input {
+	font-family: Arial, sans-serif;
+	font-size: 11pt;
+	color: #333;
+}
+a {
+	color: #0366d6;
 }

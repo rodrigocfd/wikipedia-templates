@@ -18,7 +18,6 @@ const App = () => (
 				<Header/>
 				<Route exact path="/" component={Home}/>
 				<Route path="/cite-web" component={CiteWeb} />
-				<hr/>
 				<ChangeLanguage/>
 			</div>
 		</Provider>

@@ -9,7 +9,7 @@ import Txt from './Txt';
  * Changes the current locale file.
  */
 const ChangeLanguage = ({store}) => (
-	<div>
+	<DivWrap>
 		<DivTitle><Txt val="Language"/></DivTitle>
 		<DivOpts>
 			{['en', 'pt'].map((lang) =>
@@ -20,13 +20,18 @@ const ChangeLanguage = ({store}) => (
 					</button>
 			)}
 		</DivOpts>
-	</div>
+	</DivWrap>
 );
 
 ChangeLanguage.propTypes = {
 	store: PropTypes.any.isRequired
 };
 
+const DivWrap = styled.div`
+	margin-top: 24px;
+	border-top: 1px solid #ddd;
+	padding-top: 6px;
+`;
 const DivTitle = styled.div`
 	display: inline-block;
 	width: 100px;
