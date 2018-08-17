@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Txt from '../Txt';
 
@@ -9,10 +10,10 @@ import Txt from '../Txt';
 const InlineRadio = ({name, onChange, values, labels}) => (
 	<Fragment>
 		{values.map((value, i) => (
-			<label key={i}><input type="radio"
+			<LabelHand key={i}><InputRadioHand type="radio"
 				name={name} value={value}
 				defaultChecked={i === 0}
-				onChange={onChange}/> <Txt val={labels[i]}/></label>
+				onChange={onChange}/> <Txt val={labels[i]}/></LabelHand>
 		))}
 	</Fragment>
 );
@@ -23,5 +24,13 @@ InlineRadio.propTypes = {
 	values: PropTypes.arrayOf(PropTypes.string).isRequired,
 	labels: PropTypes.arrayOf(PropTypes.string).isRequired
 };
+
+const LabelHand = styled.label`
+	cursor: pointer;
+	margin-right: 8px;
+`;
+const InputRadioHand = styled.input`
+	cursor: pointer;
+`;
 
 export default InlineRadio;

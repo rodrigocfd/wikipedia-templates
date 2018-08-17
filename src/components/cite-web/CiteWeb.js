@@ -13,6 +13,12 @@ import OutParam from './OutParam';
 class CiteWeb extends React.Component {
 	state = {}
 
+	txt1 = null;
+
+	componentDidMount() {
+		this.txt1.focus();
+	}
+
 	changed = (e) => {
 		this.setState({
 			[e.target.name]: e.target.value
@@ -27,7 +33,7 @@ class CiteWeb extends React.Component {
 				<div>
 					<div>
 						<DivName><Txt val="Ref name"/></DivName>
-						<input type="text" size="18" name="refName" onChange={this.changed}/>
+						<input type="text" size="18" name="refName" ref={e => this.txt1 = e} onChange={this.changed}/>
 					</div>
 					<div>
 						<DivName><Txt val="URL"/></DivName>

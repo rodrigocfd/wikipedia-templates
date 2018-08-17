@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import Txt from '../Txt';
 
@@ -30,12 +31,21 @@ class YearMonthDay extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Txt val="Year"/> <input type="number" ref={e => this.txYer = e} onChange={this.changed}/>
-				<Txt val="Month"/> <input type="number" min="1" max="12" ref={e => this.txMon = e} onChange={this.changed}/>
-				<Txt val="Day"/> <input type="number" min="1" max="31" ref={e => this.txDay = e} onChange={this.changed}/>
+				<Txt val="Year"/> <InputNum4 type="number" innerRef={e => this.txYer = e} onChange={this.changed}/>
+				<Txt val="Month"/> <InputNum2 type="number" min="1" max="12" innerRef={e => this.txMon = e} onChange={this.changed}/>
+				<Txt val="Day"/> <InputNum2 type="number" min="1" max="31" innerRef={e => this.txDay = e} onChange={this.changed}/>
 			</Fragment>
 		);
 	}
 }
+
+const InputNum2 = styled.input`
+	width: 50px;
+	margin-right: 12px;
+`;
+const InputNum4 = styled.input`
+	width: 75px;
+	margin-right: 12px;
+`;
 
 export default YearMonthDay;
