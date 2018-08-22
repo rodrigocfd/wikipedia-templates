@@ -6,8 +6,7 @@ import {inject, observer} from 'mobx-react';
  */
 const Txt = ({store, val}) =>
 	store.localeString(val) ?
-		store.localeString(val) :
-		`KEY "${val}" NOT FOUND`;
+		store.localeString(val) : `[${val}]`;
 
 Txt.propTypes = {
 	store: PropTypes.any.isRequired,

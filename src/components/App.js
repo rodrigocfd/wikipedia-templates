@@ -17,7 +17,7 @@ const App = () => (
 			<div>
 				<Header/>
 				<Route exact path="/" component={Home}/>
-				<Route path="/cite-web" component={CiteWeb} />
+				<Route path="/cite-web" component={CiteWeb}/>
 				<ChangeLanguage/>
 			</div>
 		</Provider>
