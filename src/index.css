@@ -2,8 +2,12 @@
  * Global app styles.
  */
 
+* {
+	box-sizing: border-box;
+}
 body {
-	padding: 0 10px;
+	margin: 0;
+	padding: 0;
 }
 body, input {
 	font-family: Arial, sans-serif;

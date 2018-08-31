@@ -28,17 +28,15 @@ ChangeLanguage.propTypes = {
 };
 
 const DivWrap = styled.div`
-	margin-top: 24px;
-	border-top: 1px solid #ddd;
-	padding-top: 6px;
+	padding-top: 14px;
 `;
 const DivTitle = styled.div`
 	display: inline-block;
-	width: 100px;
 `;
 const DivOpts = styled.div`
 	display: inline-block;
 	border: 1px solid #ccc;
+	margin-left: 10px;
 	padding: 3px;
 	& > span, & > button {
 		margin: 0 5px;
