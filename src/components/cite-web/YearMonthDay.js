@@ -11,7 +11,7 @@ class YearMonthDay extends React.Component {
 	static propTypes = {
 		name: PropTypes.string,
 		onChange: PropTypes.func
-	}
+	};
 
 	txYer = null;
 	txMon = null;

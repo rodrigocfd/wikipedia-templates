@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Txt from './Txt';
+import Intz from './Intz';
 import ChangeLanguage from './ChangeLanguage';
 
 /**
@@ -10,7 +10,7 @@ import ChangeLanguage from './ChangeLanguage';
 const Header = () => (
 	<DivWrap>
 		<DivLeft>
-			<h1><Txt val="Wikipedia Templates"/></h1>
+			<h1><Intz val="Wikipedia Templates"/></h1>
 		</DivLeft>
 		<DivRight>
 			<ChangeLanguage/>

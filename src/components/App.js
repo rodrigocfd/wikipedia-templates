@@ -8,19 +8,26 @@ import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 
+import en from '../locales/en';
+import pt from '../locales/pt';
+import Intz, {IntzProvider} from './Intz';
+
 /**
  * Application root component.
  */
 const App = () => (
 	<BrowserRouter>
 		<Provider store={store}>
-			<div>
-				<Header/>
-				<DivBody>
-					<Route exact path="/" component={Home}/>
-					<Route path="/cite-web" component={CiteWeb}/>
-				</DivBody>
-			</div>
+			<IntzProvider lang="pt" locales={{en, pt}}>
+				<div>
+					<Header/>
+					<DivBody>
+						<Route exact path="/" component={Home}/>
+						<Route path="/cite-web" component={CiteWeb}/>
+					</DivBody>
+					<div>This is <Intz val="Wikipedia Templates"/>.</div>
+				</div>
+			</IntzProvider>
 		</Provider>
 	</BrowserRouter>
 );
