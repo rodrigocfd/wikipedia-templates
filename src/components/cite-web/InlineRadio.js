@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Txt from '../Txt';
+import Intz from '../Intz';
 
 /**
  * Prints a series of radio buttons, inline.
@@ -13,7 +13,7 @@ const InlineRadio = ({name, onChange, values, labels}) => (
 			<LabelHand key={i}><InputRadioHand type="radio"
 				name={name} value={value}
 				defaultChecked={i === 0}
-				onChange={onChange}/> <Txt val={labels[i]}/></LabelHand>
+				onChange={onChange}/> <Intz val={labels[i]}/></LabelHand>
 		))}
 	</Fragment>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import Txt from '../Txt';
+import Intz from '../Intz';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 import OutParam from './OutParam';
@@ -29,34 +29,34 @@ class CiteWeb extends React.Component {
 		const state = this.state;
 		return (
 			<div>
-				<h2><Txt val="Cite web"/></h2>
+				<h2><Intz val="Cite web"/></h2>
 				<div>
 					<div>
-						<DivName><Txt val="Ref name"/></DivName>
+						<DivName><Intz val="Ref name"/></DivName>
 						<input type="text" size="18" name="refName" ref={e => this.txt1 = e} onChange={this.changed}/>
 					</div>
 					<div>
-						<DivName><Txt val="URL"/></DivName>
+						<DivName><Intz val="URL"/></DivName>
 						<input type="text" size="100" name="url" onChange={this.changed} autoComplete="off"/>
 					</div>
 					<div>
-						<DivName><Txt val="Title"/></DivName>
+						<DivName><Intz val="Title"/></DivName>
 						<input type="text" size="88" name="title" onChange={this.changed} autoComplete="off"/>
 					</div>
 					<div>
-						<DivName><Txt val="Publisher"/></DivName>
+						<DivName><Intz val="Publisher"/></DivName>
 						<input type="text" size="88" name="publisher" onChange={this.changed}/>
 					</div>
 					<div>
-						<DivName><Txt val="Date"/></DivName>
+						<DivName><Intz val="Date"/></DivName>
 						<YearMonthDay name="date" onChange={this.changed}/>
 					</div>
 					<div>
-						<DivName><Txt val="Access date"/></DivName>
+						<DivName><Intz val="Access date"/></DivName>
 						<YearMonthDay name="accessDate" onChange={this.changed}/>
 					</div>
 					<div>
-						<DivName><Txt val="Language"/></DivName>
+						<DivName><Intz val="Language"/></DivName>
 						<InlineRadio name="language" onChange={this.changed}
 							values={['', 'en', 'es', 'fr', 'de', 'pt']}
 							labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
@@ -66,7 +66,7 @@ class CiteWeb extends React.Component {
 					{'<ref'}
 					{state.refName && ` name="${state.refName}"`}
 					{'>'}
-					{'{{'}<Txt val="Cite web"/>
+					{'{{'}<Intz val="Cite web"/>
 					<OutParam name="url" val={state.url}/>
 					<OutParam name="title" val={state.title}/>
 					<OutParam name="publisher" val={state.publisher}/>
@@ -75,7 +75,7 @@ class CiteWeb extends React.Component {
 					<OutParam name="language" val={state.language}/>
 					{' }}</ref>'}
 				</DivOut>
-				<Link to="/"><Txt val="Home"/></Link>
+				<Link to="/"><Intz val="Home"/></Link>
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Txt from '../Txt';
+import Intz from '../Intz';
 
 /**
  * Main component for app route: home.
@@ -9,7 +9,7 @@ import Txt from '../Txt';
 const Home = () => (
 	<div>
 		<ul>
-			<li><Link to="/cite-web"><Txt val="Cite web"/></Link></li>
+			<li><Link to="/cite-web"><Intz val="Cite web"/></Link></li>
 		</ul>
 	</div>
 );

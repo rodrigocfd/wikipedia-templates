@@ -1,14 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import Txt from '../Txt';
+import Intz from '../Intz';
 
 /**
  * Outputs a single Wikipedia template parameter, if value is given.
  */
 const OutParam = ({name, val}) =>
 	val ?
-		<Fragment> |<Txt val={name}/>={val}</Fragment> :
+		<Fragment> |<Intz val={name}/>={val}</Fragment> :
 		null;
 
 OutParam.propTypes = {

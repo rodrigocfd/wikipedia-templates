@@ -3,19 +3,19 @@ import PropTypes from 'prop-types';
 import {inject, observer} from 'mobx-react';
 import styled from 'styled-components';
 
-import Txt from './Txt';
+import Intz from './Intz';
 
 /**
  * Changes the current locale file.
  */
 const ChangeLanguage = ({store}) => (
 	<DivWrap>
-		<DivTitle><Txt val="Language"/></DivTitle>
+		<DivTitle><Intz val="Language"/></DivTitle>
 		<DivOpts>
-			{['en', 'pt'].map((lang) =>
-				store.locale === lang ?
+			{['en', 'pt'].map(lang =>
+				store.lang === lang ?
 					<span key={lang}>{lang.toUpperCase()}</span> :
-					<button key={lang} onClick={e => store.locale = lang}>
+					<button key={lang} onClick={e => store.lang = lang}>
 						{lang.toUpperCase()}
 					</button>
 			)}
