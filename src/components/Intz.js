@@ -7,7 +7,7 @@ const {Provider, Consumer} = React.createContext();
  * Provider to wrap all the app components.
  */
 const IntzProvider = ({children, lang, locales}) => (
-	<Provider value={locales[lang]}>
+	<Provider value={{lang, locales}}>
 		{children}
 	</Provider>
 );
@@ -23,7 +23,8 @@ IntzProvider.propTypes = {
  */
 const Intz = ({val}) => (
 	<Consumer>
-		{context => context[val] ? context[val] : `[${val}]`}
+		{context => context.locales[context.lang][val] ?
+			context.locales[context.lang][val] : `[${val}]`}
 	</Consumer>
 );
 
@@ -31,5 +32,18 @@ Intz.propTypes = {
 	val: PropTypes.string.isRequired
 };
 
+/**
+ * Meta information about the internationalization.
+ */
+const IntzMeta = ({children}) => (
+	<Consumer>
+		{context => children(context)}
+	</Consumer>
+);
+
+IntzMeta.propTypes = {
+	children: PropTypes.func.isRequired
+};
+
 export default Intz;
-export {IntzProvider};
+export {IntzProvider, IntzMeta};
