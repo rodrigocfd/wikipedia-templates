@@ -22,7 +22,8 @@ class YearMonthDay extends React.Component {
 			this.props.onChange({
 				target: {
 					name: this.props.name,
-					value: this.txYer.value + '-' + this.txMon.value + '-' + this.txDay.value
+					value: (this.txYer.value || this.txMon.value || this.txDay.value) ?
+						`${this.txYer.value}-${this.txMon.value}-${this.txDay.value}` : ''
 				}
 			});
 		}
