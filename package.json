@@ -6,8 +6,8 @@
 		"custom-react-scripts": "0.2.2",
 		"mobx": "^5.1.1",
 		"mobx-react": "^5.2.8",
-		"react": "^16.4.2",
-		"react-dom": "^16.4.2",
+		"react": "^16.5.1",
+		"react-dom": "^16.5.1",
 		"react-router-dom": "^4.3.1",
 		"styled-components": "^3.4.6"
 	},
