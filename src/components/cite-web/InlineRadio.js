@@ -13,7 +13,7 @@ const InlineRadio = ({name, onChange, values, labels}) => (
 			<LabelHand key={i}><InputRadioHand type="radio"
 				name={name} value={value}
 				defaultChecked={i === 0}
-				onChange={onChange}/> <Intz val={labels[i]}/></LabelHand>
+				onChange={onChange}/> <Intz str={labels[i]}/></LabelHand>
 		))}
 	</Fragment>
 );

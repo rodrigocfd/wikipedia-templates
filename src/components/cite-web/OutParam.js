@@ -8,7 +8,7 @@ import Intz from '../Intz';
  */
 const OutParam = ({name, val}) =>
 	val ?
-		<Fragment> |<Intz val={name}/>={val}</Fragment> :
+		<Fragment> |<Intz str={name}/>={val}</Fragment> :
 		null;
 
 OutParam.propTypes = {

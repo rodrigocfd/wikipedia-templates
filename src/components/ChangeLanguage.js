@@ -10,7 +10,7 @@ import Intz, {IntzMeta} from './Intz';
  */
 const ChangeLanguage = ({store}) => (
 	<DivWrap>
-		<DivTitle><Intz val="Language"/></DivTitle>
+		<DivTitle><Intz str="Language"/></DivTitle>
 		<DivOpts>
 			<IntzMeta>
 				{meta => Object.entries(meta.locales).map(([localeKey, _]) =>

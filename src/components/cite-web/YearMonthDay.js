@@ -32,9 +32,9 @@ class YearMonthDay extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Intz val="Year"/> <InputNum4 type="number" innerRef={e => this.txYer = e} onChange={this.changed}/>
-				<Intz val="Month"/> <InputNum2 type="number" min="1" max="12" innerRef={e => this.txMon = e} onChange={this.changed}/>
-				<Intz val="Day"/> <InputNum2 type="number" min="1" max="31" innerRef={e => this.txDay = e} onChange={this.changed}/>
+				<Intz str="Year"/> <InputNum4 type="number" innerRef={e => this.txYer = e} onChange={this.changed}/>
+				<Intz str="Month"/> <InputNum2 type="number" min="1" max="12" innerRef={e => this.txMon = e} onChange={this.changed}/>
+				<Intz str="Day"/> <InputNum2 type="number" min="1" max="31" innerRef={e => this.txDay = e} onChange={this.changed}/>
 			</Fragment>
 		);
 	}

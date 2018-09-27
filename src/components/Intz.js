@@ -21,15 +21,15 @@ IntzProvider.propTypes = {
 /**
  * Will translate one string according to current provider lang.
  */
-const Intz = ({val}) => (
+const Intz = ({str}) => (
 	<Consumer>
-		{context => context.locales[context.lang][val] ?
-			context.locales[context.lang][val] : `[${val}]`}
+		{context => context.locales[context.lang][str] ?
+			context.locales[context.lang][str] : `[${str}]`}
 	</Consumer>
 );
 
 Intz.propTypes = {
-	val: PropTypes.string.isRequired
+	str: PropTypes.string.isRequired
 };
 
 /**

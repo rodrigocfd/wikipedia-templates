@@ -10,7 +10,7 @@ import ChangeLanguage from './ChangeLanguage';
 const Header = () => (
 	<DivWrap>
 		<DivLeft>
-			<h1><Intz val="Wikipedia Templates"/></h1>
+			<h1><Intz str="Wikipedia Templates"/></h1>
 		</DivLeft>
 		<DivRight>
 			<ChangeLanguage/>

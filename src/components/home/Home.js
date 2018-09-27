@@ -9,7 +9,7 @@ import Intz from '../Intz';
 const Home = () => (
 	<div>
 		<ul>
-			<li><Link to="/cite-web"><Intz val="Cite web"/></Link></li>
+			<li><Link to="/cite-web"><Intz str="Cite web"/></Link></li>
 		</ul>
 	</div>
 );
