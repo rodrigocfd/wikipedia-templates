@@ -24,7 +24,8 @@ IntzProvider.propTypes = {
 const Intz = ({str, args}) => (
 	<ContextConsumer>
 		{contextData => {
-			if (!contextData.locales[contextData.lang][str]) {
+			let translatedStr = contextData.locales[contextData.lang][str];
+			if (!translatedStr) {
 				return `[${str}]`;
 			}
 
@@ -35,29 +36,29 @@ const Intz = ({str, args}) => (
 				let prevStartIdx = 0;
 				let curChildKey = 0;
 
-				while ((match = regex.exec(str)) !== null) {
+				while ((match = regex.exec(translatedStr)) !== null) {
 					let token = match[0];
 					let replacementIdx = Number(token.substr(1, token.length - 2));
 					let tokenIdx = match.index;
-					let prevStr = str.substr(prevStartIdx, tokenIdx - prevStartIdx);
 
+					let prevStr = translatedStr.substr(prevStartIdx, tokenIdx - prevStartIdx);
 					if (prevStr.length) {
-						retJsx.push(<Fragment key={curChildKey++}>{prevStr}</Fragment>);
+						retJsx.push(prevStr);
 					}
 
 					retJsx.push(<Fragment key={curChildKey++}>{args[replacementIdx]}</Fragment>);
 					prevStartIdx = tokenIdx + token.length;
 				}
 
-				let lastPart = str.substr(prevStartIdx);
+				let lastPart = translatedStr.substr(prevStartIdx);
 				if (lastPart.length) {
-					retJsx.push(<Fragment key={curChildKey++}>{lastPart}</Fragment>);
+					retJsx.push(lastPart);
 				}
 
 				return retJsx;
 			}
 
-			return contextData.locales[contextData.lang][str];
+			return translatedStr;
 		}}
 	</ContextConsumer>
 );
