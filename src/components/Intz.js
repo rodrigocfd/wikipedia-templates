@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const {Provider, Consumer} = React.createContext();
+const {Provider: ContextProvider, Consumer: ContextConsumer} = React.createContext();
 
 /**
  * Provider to wrap all the app components.
  */
 const IntzProvider = ({children, lang, locales}) => (
-	<Provider value={{lang, locales}}>
+	<ContextProvider value={{lang, locales}}>
 		{children}
-	</Provider>
+	</ContextProvider>
 );
 
 IntzProvider.propTypes = {
@@ -22,10 +22,10 @@ IntzProvider.propTypes = {
  * Will translate one string according to current provider lang.
  */
 const Intz = ({str}) => (
-	<Consumer>
-		{context => context.locales[context.lang][str] ?
-			context.locales[context.lang][str] : `[${str}]`}
-	</Consumer>
+	<ContextConsumer>
+		{contextData => contextData.locales[contextData.lang][str] ?
+			contextData.locales[contextData.lang][str] : `[${str}]`}
+	</ContextConsumer>
 );
 
 Intz.propTypes = {
@@ -36,9 +36,9 @@ Intz.propTypes = {
  * Meta information about the internationalization.
  */
 const IntzMeta = ({children}) => (
-	<Consumer>
-		{context => children(context)}
-	</Consumer>
+	<ContextConsumer>
+		{contextData => children(contextData)}
+	</ContextConsumer>
 );
 
 IntzMeta.propTypes = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {observer, Provider} from 'mobx-react';
+import {observer, Provider as MobxProvider} from 'mobx-react';
 import styled from 'styled-components';
 
 import {IntzProvider} from './Intz';
@@ -17,7 +17,7 @@ import CiteWeb from './cite-web/CiteWeb';
  */
 const App = () => (
 	<BrowserRouter>
-		<Provider store={store}>
+		<MobxProvider store={store}>
 			<IntzProvider lang={store.lang} locales={{en, pt}}>
 				<div>
 					<Header/>
@@ -27,7 +27,7 @@ const App = () => (
 					</DivBody>
 				</div>
 			</IntzProvider>
-		</Provider>
+		</MobxProvider>
 	</BrowserRouter>
 );
 
