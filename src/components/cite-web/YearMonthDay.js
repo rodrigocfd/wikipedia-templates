@@ -13,17 +13,25 @@ class YearMonthDay extends React.Component {
 		onChange: PropTypes.func
 	};
 
-	txYer = null;
-	txMon = null;
-	txDay = null;
+	txtYer = null;
+	txtMon = null;
+	txtDay = null;
+
+	formatDateString() {
+		if (this.txtYer.value && this.txtMon.value && this.txtDay.value) {
+			return <Intz str="Date {1} {0}, {2}"
+				args={[this.txtDay.value, this.txtMon.value, this.txtYer.value]}/>;
+		}
+		return (this.txtYer.value || this.txtMon.value || this.txtDay.value) ?
+			`${this.txtYer.value}-${this.txtMon.value}-${this.txtDay.value}` : '';
+	}
 
 	changed = () => {
 		if (this.props.onChange) {
 			this.props.onChange({
 				target: {
 					name: this.props.name,
-					value: (this.txYer.value || this.txMon.value || this.txDay.value) ?
-						`${this.txYer.value}-${this.txMon.value}-${this.txDay.value}` : ''
+					value: this.formatDateString()
 				}
 			});
 		}
@@ -32,9 +40,12 @@ class YearMonthDay extends React.Component {
 	render() {
 		return (
 			<Fragment>
-				<Intz str="Year"/> <InputNum4 type="number" innerRef={e => this.txYer = e} onChange={this.changed}/>
-				<Intz str="Month"/> <InputNum2 type="number" min="1" max="12" innerRef={e => this.txMon = e} onChange={this.changed}/>
-				<Intz str="Day"/> <InputNum2 type="number" min="1" max="31" innerRef={e => this.txDay = e} onChange={this.changed}/>
+				<Intz str="Year"/> <InputNum4 type="number"
+					innerRef={e => this.txtYer = e} onChange={this.changed}/>
+				<Intz str="Month"/> <InputNum2 type="number" min="1" max="12"
+					innerRef={e => this.txtMon = e} onChange={this.changed}/>
+				<Intz str="Day"/> <InputNum2 type="number" min="1" max="31"
+					innerRef={e => this.txtDay = e} onChange={this.changed}/>
 			</Fragment>
 		);
 	}

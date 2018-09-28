@@ -9,6 +9,7 @@
 	"access-date": "access-date",
 	"Date": "Date",
 	"date": "date",
+	"Date {1} {0}, {2}": "{1} {0}, {2}",
 	"Day": "Day",
 	"English": "English",
 	"French": "French",
