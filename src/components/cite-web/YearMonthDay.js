@@ -18,12 +18,21 @@ class YearMonthDay extends React.Component {
 	txtDay = null;
 
 	formatDateString() {
-		if (this.txtYer.value && this.txtMon.value && this.txtDay.value) {
-			return <Intz str="Date {1} {0}, {2}"
-				args={[this.txtDay.value, this.txtMon.value, this.txtYer.value]}/>;
+		const monthNames = [null, <Intz str="January"/>, <Intz str="February"/>, <Intz str="March"/>,
+			<Intz str="April"/>, <Intz str="May"/>, <Intz str="June"/>, <Intz str="July"/>, <Intz str="August"/>,
+			<Intz str="September"/>, <Intz str="October"/>, <Intz str="November"/>, <Intz str="December"/>];
+
+		let yer = this.txtYer.value;
+		let mon = this.txtMon.value;
+		let day = this.txtDay.value;
+
+		if (yer && mon && day) {
+			return <Intz str="Date {1} {0}, {2}" args={[day, monthNames[mon], yer]}/>;
+		} else if (yer && !mon && !day) {
+			return yer;
 		}
-		return (this.txtYer.value || this.txtMon.value || this.txtDay.value) ?
-			`${this.txtYer.value}-${this.txtMon.value}-${this.txtDay.value}` : '';
+
+		return (yer || mon || day) ? `${yer}-${mon}-${day}` : '';
 	}
 
 	changed = () => {
