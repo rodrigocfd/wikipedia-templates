@@ -17,3 +17,6 @@ body, input {
 a {
 	color: #0366d6;
 }
+input[type=button], button {
+	cursor: pointer;
+}

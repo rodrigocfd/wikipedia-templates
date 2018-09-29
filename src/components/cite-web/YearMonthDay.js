@@ -46,6 +46,14 @@ class YearMonthDay extends React.Component {
 		}
 	}
 
+	setToday = () => {
+		let today = new Date();
+		this.txtYer.value = today.getFullYear();
+		this.txtMon.value = today.getMonth() + 1;
+		this.txtDay.value = today.getDate();
+		this.changed();
+	}
+
 	render() {
 		return (
 			<Fragment>
@@ -55,6 +63,7 @@ class YearMonthDay extends React.Component {
 					innerRef={e => this.txtMon = e} onChange={this.changed}/>
 				<Intz str="Day"/> <InputNum2 type="number" min="1" max="31"
 					innerRef={e => this.txtDay = e} onChange={this.changed}/>
+				<button onClick={this.setToday}>today</button>
 			</Fragment>
 		);
 	}

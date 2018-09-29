@@ -43,9 +43,6 @@ const DivOpts = styled.div`
 	& > span, & > button {
 		margin: 0 5px;
 	}
-	& > button {
-		cursor: pointer;
-	}
 `;
 
 export default inject('store')(
