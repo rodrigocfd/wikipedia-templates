@@ -14,14 +14,11 @@ const ChangeLanguage = ({store}) => (
 		<DivOpts>
 			<IntzMeta>
 				{meta => Object.entries(meta.locales).map(([localeKey, _]) =>
-				{
-					console.log(meta);
-					return meta.curLang === localeKey ?
+					meta.curLang === localeKey ?
 						<span key={localeKey}>{localeKey.toUpperCase()}</span> :
 						<button key={localeKey} onClick={e => store.lang = localeKey}>
 							{localeKey.toUpperCase()}
 						</button>
-				}
 				)}
 			</IntzMeta>
 		</DivOpts>
