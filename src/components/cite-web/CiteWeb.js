@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import Intz from '../Intz';
+import Intz from '../../intz';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 import OutParam from './OutParam';
@@ -73,7 +73,7 @@ class CiteWeb extends React.Component {
 					<OutParam name="date" val={state.date}/>
 					<OutParam name="access-date" val={state.accessDate}/>
 					<OutParam name="language" val={state.language}/>
-					{' }}</ref>'}
+					{'}}</ref>'}
 				</DivOut>
 				<Link to="/"><Intz str="Home"/></Link>
 			</div>

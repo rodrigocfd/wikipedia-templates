@@ -3,7 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {observer, Provider as MobxProvider} from 'mobx-react';
 import styled from 'styled-components';
 
-import {IntzProvider} from './Intz';
+import {Provider as IntzProvider} from '../intz';
 import en from '../locales/en';
 import pt from '../locales/pt';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Intz from '../Intz';
+import Intz from '../../intz';
 
 /**
  * Main component for app route: home.

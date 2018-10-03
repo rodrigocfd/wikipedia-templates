@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Intz from '../Intz';
+import Intz from '../../intz';
 
 /**
  * Year, month and day textboxes, returning formatted date.

@@ -1,30 +1,15 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const {Provider: ContextProvider, Consumer: ContextConsumer} = React.createContext();
-
-/**
- * Provider to wrap all the app components.
- */
-const IntzProvider = ({children, lang, locales}) => (
-	<ContextProvider value={{lang, locales}}>
-		{children}
-	</ContextProvider>
-);
-
-IntzProvider.propTypes = {
-	children: PropTypes.node,
-	lang: PropTypes.string.isRequired,
-	locales: PropTypes.object.isRequired
-};
+import IntzContext from './IntzContext';
 
 /**
  * Will translate one string according to current provider lang.
  */
 const Intz = ({str, args}) => (
-	<ContextConsumer>
+	<IntzContext.Consumer>
 		{contextData => {
-			let translatedStr = contextData.locales[contextData.lang][str];
+			let translatedStr = contextData.locales[contextData.curLang][str];
 			if (!translatedStr) {
 				return `[${str}]`;
 			} else if (!args) {
@@ -59,7 +44,7 @@ const Intz = ({str, args}) => (
 
 			return retJsx;
 		}}
-	</ContextConsumer>
+	</IntzContext.Consumer>
 );
 
 Intz.propTypes = {
@@ -67,18 +52,4 @@ Intz.propTypes = {
 	args: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.element]))
 };
 
-/**
- * Meta information about the internationalization.
- */
-const IntzMeta = ({children}) => (
-	<ContextConsumer>
-		{contextData => children(contextData)}
-	</ContextConsumer>
-);
-
-IntzMeta.propTypes = {
-	children: PropTypes.func.isRequired
-};
-
 export default Intz;
-export {IntzProvider, IntzMeta};

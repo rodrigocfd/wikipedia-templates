@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Intz from './Intz';
+import Intz from '../intz';
 import ChangeLanguage from './ChangeLanguage';
 
 /**

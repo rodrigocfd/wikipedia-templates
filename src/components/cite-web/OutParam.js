@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import Intz from '../Intz';
+import Intz from '../../intz';
 
 /**
  * Outputs a single Wikipedia template parameter, if value is given.

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {inject, observer} from 'mobx-react';
 import styled from 'styled-components';
 
-import Intz, {IntzMeta} from './Intz';
+import Intz, {Meta as IntzMeta} from '../intz';
 
 /**
  * Changes the current locale file.
@@ -14,11 +14,14 @@ const ChangeLanguage = ({store}) => (
 		<DivOpts>
 			<IntzMeta>
 				{meta => Object.entries(meta.locales).map(([localeKey, _]) =>
-					meta.lang === localeKey ?
+				{
+					console.log(meta);
+					return meta.curLang === localeKey ?
 						<span key={localeKey}>{localeKey.toUpperCase()}</span> :
 						<button key={localeKey} onClick={e => store.lang = localeKey}>
 							{localeKey.toUpperCase()}
 						</button>
+				}
 				)}
 			</IntzMeta>
 		</DivOpts>
