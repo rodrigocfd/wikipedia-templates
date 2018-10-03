@@ -15,7 +15,13 @@ const Intz = ({str, args}) => (
 
 Intz.propTypes = {
 	str: PropTypes.string.isRequired,
-	args: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.element]))
+	args: PropTypes.arrayOf(
+		PropTypes.oneOfType([
+			PropTypes.element,
+			PropTypes.number,
+			PropTypes.string
+		])
+	)
 };
 
 export default Intz;
