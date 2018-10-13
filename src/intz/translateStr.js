@@ -11,25 +11,25 @@ function translateStr(contextData, str, args) {
 	let retJsx = [];
 	let regex = new RegExp('\\{\\d+\\}', 'g');
 	let match = null;
-	let prevStartIdx = 0;
+	let prevStartPos = 0;
 	let curChildKey = 0;
 
 	while ((match = regex.exec(translatedStr)) !== null) {
 		let token = match[0];
+		let tokenPos = match.index;
 		let replacementIdx = Number(token.substr(1, token.length - 2));
-		let tokenIdx = match.index;
 
-		let prevStr = translatedStr.substr(prevStartIdx, tokenIdx - prevStartIdx);
+		let prevStr = translatedStr.substr(prevStartPos, tokenPos - prevStartPos);
 		if (prevStr.length) {
 			retJsx.push(prevStr);
 		}
 
 		let replacement = args[replacementIdx] || `[MISSING ${replacementIdx}]`;
 		retJsx.push(<Fragment key={curChildKey++}>{replacement}</Fragment>);
-		prevStartIdx = tokenIdx + token.length;
+		prevStartPos = tokenPos + token.length;
 	}
 
-	let lastPart = translatedStr.substr(prevStartIdx);
+	let lastPart = translatedStr.substr(prevStartPos);
 	if (lastPart.length) {
 		retJsx.push(lastPart);
 	}
