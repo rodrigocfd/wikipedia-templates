@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import styled from 'styled-components';
 
 import Intz from '../../intz';
 
@@ -8,10 +9,15 @@ import Intz from '../../intz';
  */
 const Home = () => (
 	<div>
-		<ul>
+		<UlList>
 			<li><Link to="/cite-web"><Intz str="Cite web"/></Link></li>
-		</ul>
+			<li><Link to="/track-listing"><Intz str="Track listing"/></Link></li>
+		</UlList>
 	</div>
 );
+
+const UlList = styled.ul`
+	line-height: 150%;
+`;
 
 export default Home;

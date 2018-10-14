@@ -11,7 +11,7 @@ import OutParam from './OutParam';
  * Main component for app route: cite-web.
  */
 class CiteWeb extends React.Component {
-	state = {}
+	state = {};
 
 	txt1 = null;
 

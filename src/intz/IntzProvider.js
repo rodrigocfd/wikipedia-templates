@@ -6,16 +6,16 @@ import IntzContext from './IntzContext';
 /**
  * Provider to wrap all the app components.
  */
-const Provider = ({children, lang, locales}) => (
+const IntzProvider = ({children, lang, locales}) => (
 	<IntzContext.Provider value={{curLang: lang, locales}}>
 		{children}
 	</IntzContext.Provider>
 );
 
-Provider.propTypes = {
+IntzProvider.propTypes = {
 	children: PropTypes.node,
 	lang: PropTypes.string.isRequired,
 	locales: PropTypes.object.isRequired
 };
 
-export default Provider;
+export default IntzProvider;

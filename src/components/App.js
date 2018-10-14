@@ -11,6 +11,7 @@ import store from '../store';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
+import TrackListing from './track-listing/TrackListing';
 
 /**
  * Application root component.
@@ -24,6 +25,7 @@ const App = () => (
 					<DivBody>
 						<Route exact path="/" component={Home}/>
 						<Route path="/cite-web" component={CiteWeb}/>
+						<Route path="/track-listing" component={TrackListing}/>
 					</DivBody>
 				</div>
 			</IntzProvider>
