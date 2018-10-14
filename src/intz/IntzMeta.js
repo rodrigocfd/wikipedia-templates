@@ -7,7 +7,7 @@ import translateStr from './translateStr';
 /**
  * Meta information about the internationalization.
  */
-const Meta = ({children}) => (
+const IntzMeta = ({children}) => (
 	<IntzContext.Consumer>
 		{contextData =>
 			children({
@@ -18,8 +18,8 @@ const Meta = ({children}) => (
 	</IntzContext.Consumer>
 );
 
-Meta.propTypes = {
+IntzMeta.propTypes = {
 	children: PropTypes.func.isRequired
 };
 
-export default Meta;
+export default IntzMeta;
