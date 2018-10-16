@@ -1,14 +1,14 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import Intz from '../../intz';
+import withIntz from '../../intz';
 
 /**
  * Outputs a single Wikipedia template parameter, if value is given.
  */
-const OutParam = ({name, val}) =>
+const OutParam = ({t, name, val}) =>
 	val ?
-		<Fragment> |<Intz str={name}/>={val}</Fragment> :
+		<Fragment> |{t(name)}={val}</Fragment> :
 		null;
 
 OutParam.propTypes = {
@@ -16,4 +16,4 @@ OutParam.propTypes = {
 	val: PropTypes.any
 };
 
-export default OutParam;
+export default withIntz(OutParam);

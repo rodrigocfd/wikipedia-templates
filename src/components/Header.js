@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Intz from '../intz';
+import withIntz from '../intz';
 import ChangeLanguage from './ChangeLanguage';
 
 /**
  * Header to be shown on all pages.
  */
-const Header = () => (
+const Header = ({t}) => (
 	<DivWrap>
 		<DivLeft>
-			<h1><Intz str="Wikipedia Templates"/></h1>
+			<h1>{t`Wikipedia Templates`}</h1>
 		</DivLeft>
 		<DivRight>
 			<ChangeLanguage/>
@@ -35,4 +35,4 @@ const DivRight = styled.div`
 	padding-top: 8px;
 `;
 
-export default Header;
+export default withIntz(Header);

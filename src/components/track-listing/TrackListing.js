@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Intz from '../../intz';
+import withIntz from '../../intz';
 import Track from './Track';
 
 /**
@@ -25,10 +25,11 @@ class TrackListing extends React.Component {
 	}
 
 	render() {
+		const {t} = this.props;
 		return (
 			<div>
 				<div>
-					<h2><Intz str="Track listing"/></h2>
+					<h2>{t`Track listing`}</h2>
 					<div>
 						<button onClick={this.addTrack}>Add</button>{' '}
 						<button onClick={this.remTrack}>Remove</button>
@@ -39,10 +40,10 @@ class TrackListing extends React.Component {
 						))}
 					</div>
 				</div>
-				<Link to="/"><Intz str="Home"/></Link>
+				<Link to="/">{t`Home`}</Link>
 			</div>
 		);
 	}
 }
 
-export default TrackListing;
+export default withIntz(TrackListing);

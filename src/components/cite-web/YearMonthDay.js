@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Intz from '../../intz';
+import withIntz from '../../intz';
 
 /**
  * Year, month and day textboxes, returning formatted date.
@@ -18,19 +18,19 @@ class YearMonthDay extends React.Component {
 	txtDay = null;
 
 	formatDateString() {
-		const monthNames = [null, <Intz str="January"/>, <Intz str="February"/>,
-			<Intz str="March"/>, <Intz str="April"/>, <Intz str="May"/>, <Intz str="June"/>,
-			<Intz str="July"/>, <Intz str="August"/>, <Intz str="September"/>,
-			<Intz str="October"/>, <Intz str="November"/>, <Intz str="December"/>];
+		const {t} = this.props;
+		const monthNames = [null, t`January`, t`February`, t`March`, t`April`,
+			t`May`, t`June`, t`July`, t`August`, t`September`, t`October`,
+			t`November`, t`December`];
 
 		let yer = this.txtYer.value;
 		let mon = this.txtMon.value;
 		let day = this.txtDay.value;
 
 		if (yer && mon && day) {
-			return <Intz str="DateDMY {1} {0}, {2}" args={[day, monthNames[mon], yer]}/>;
+			return t('DateDMY {1} {0}, {2}', [day, monthNames[mon], yer]);
 		} else if (yer && mon && !day) {
-			return <Intz str="DateMY {0}, {1}" args={[monthNames[mon], yer]}/>;
+			return t('DateMY {0}, {1}', [monthNames[mon], yer]);
 		} else if (yer && !mon && !day) {
 			return yer;
 		}
@@ -39,6 +39,7 @@ class YearMonthDay extends React.Component {
 	}
 
 	changed = () => {
+console.log('oi ch')
 		if (this.props.onChange) {
 			this.props.onChange({
 				target: {
@@ -58,15 +59,16 @@ class YearMonthDay extends React.Component {
 	}
 
 	render() {
+		const {t} = this.props;
 		return (
 			<Fragment>
-				<Intz str="Year"/> <InputNum4 type="number"
+				{t`Year`} <InputNum4 type="number"
 					innerRef={e => this.txtYer = e} onChange={this.changed}/>
-				<Intz str="Month"/> <InputNum2 type="number" min="1" max="12"
+				{t`Month`} <InputNum2 type="number" min="1" max="12"
 					innerRef={e => this.txtMon = e} onChange={this.changed}/>
-				<Intz str="Day"/> <InputNum2 type="number" min="1" max="31"
+				{t`Day`} <InputNum2 type="number" min="1" max="31"
 					innerRef={e => this.txtDay = e} onChange={this.changed}/>
-				<button onClick={this.setToday}><Intz str="today"/></button>
+				<button onClick={this.setToday}>{t`today`}</button>
 			</Fragment>
 		);
 	}
@@ -81,4 +83,4 @@ const InputNum4 = styled.input`
 	margin-right: 12px;
 `;
 
-export default YearMonthDay;
+export default withIntz(YearMonthDay);

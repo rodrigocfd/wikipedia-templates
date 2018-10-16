@@ -1,6 +1,5 @@
-import Intz from './Intz';
-import IntzMeta from './IntzMeta';
+import withIntz from './withIntz';
 import IntzProvider from './IntzProvider';
 
-export default Intz;
-export {IntzMeta, IntzProvider};
+export default withIntz;
+export {IntzProvider};

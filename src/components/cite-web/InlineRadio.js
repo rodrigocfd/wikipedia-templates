@@ -2,18 +2,18 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import Intz from '../../intz';
+import withIntz from '../../intz';
 
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio = ({name, onChange, values, labels}) => (
+const InlineRadio = ({t, name, onChange, values, labels}) => (
 	<Fragment>
 		{values.map((value, i) => (
 			<LabelHand key={i}><InputRadioHand type="radio"
 				name={name} value={value}
 				defaultChecked={i === 0}
-				onChange={onChange}/> <Intz str={labels[i]}/></LabelHand>
+				onChange={onChange}/> {t(labels[i])}</LabelHand>
 		))}
 	</Fragment>
 );
@@ -33,4 +33,4 @@ const InputRadioHand = styled.input`
 	cursor: pointer;
 `;
 
-export default InlineRadio;
+export default withIntz(InlineRadio);

@@ -2,16 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import Intz from '../../intz';
+import withIntz from '../../intz';
 
 /**
  * Main component for app route: home.
  */
-const Home = () => (
+const Home = ({t}) => (
 	<div>
 		<UlList>
-			<li><Link to="/cite-web"><Intz str="Cite web"/></Link></li>
-			<li><Link to="/track-listing"><Intz str="Track listing"/></Link></li>
+			<li><Link to="/cite-web">{t`Cite web`}</Link></li>
+			<li><Link to="/track-listing">{t`Track listing`}</Link></li>
 		</UlList>
 	</div>
 );
@@ -20,4 +20,4 @@ const UlList = styled.ul`
 	line-height: 150%;
 `;
 
-export default Home;
+export default withIntz(Home);
