@@ -16,4 +16,4 @@ OutParam.propTypes = {
 	val: PropTypes.any
 };
 
-export default withIntz(OutParam);
+export default withIntz()(OutParam);

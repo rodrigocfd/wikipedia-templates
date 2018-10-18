@@ -1,8 +1,8 @@
 function sameObject() { // https://stackoverflow.com/a/1144249
-	var i, l, leftChain, rightChain;
+	let i, l, leftChain, rightChain;
 
-	function compare2Objects (x, y) {
-		var p;
+	function compareTwoObjects(x, y) {
+		let p;
 
 		// remember that NaN === NaN returns false
 		// and isNaN(undefined) returns true
@@ -74,7 +74,7 @@ function sameObject() { // https://stackoverflow.com/a/1144249
 				leftChain.push(x);
 				rightChain.push(y);
 
-				if (!compare2Objects (x[p], y[p])) {
+				if (!compareTwoObjects (x[p], y[p])) {
 					return false;
 				}
 
@@ -98,11 +98,11 @@ function sameObject() { // https://stackoverflow.com/a/1144249
 			// throw "Need two or more arguments to compare";
 	}
 
-	for (i = 1, l = arguments.length; i < l; i++) {
+	for (i = 1, l = arguments.length; i < l; ++i) {
 		leftChain = []; //Todo: this can be cached
 		rightChain = [];
 
-		if (!compare2Objects(arguments[0], arguments[i])) {
+		if (!compareTwoObjects(arguments[0], arguments[i])) {
 			return false;
 		}
 	}

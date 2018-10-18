@@ -20,4 +20,4 @@ const UlList = styled.ul`
 	line-height: 150%;
 `;
 
-export default withIntz(Home);
+export default withIntz()(Home);

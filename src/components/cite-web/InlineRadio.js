@@ -33,4 +33,4 @@ const InputRadioHand = styled.input`
 	cursor: pointer;
 `;
 
-export default withIntz(InlineRadio);
+export default withIntz()(InlineRadio);

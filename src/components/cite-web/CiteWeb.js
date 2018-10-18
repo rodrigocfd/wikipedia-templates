@@ -10,6 +10,7 @@ import OutParam from './OutParam';
 /**
  * Main component for app route: cite-web.
  */
+@withIntz()
 class CiteWeb extends React.Component {
 	state = {};
 
@@ -94,4 +95,4 @@ const DivOut = styled.div`
 	padding: 10px;
 `;
 
-export default withIntz(CiteWeb);
+export default CiteWeb;

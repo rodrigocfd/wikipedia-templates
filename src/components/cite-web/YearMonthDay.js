@@ -8,6 +8,7 @@ import sameObject from '../../sameObject';
 /**
  * Year, month and day textboxes, returning formatted date.
  */
+@withIntz()
 class YearMonthDay extends React.PureComponent {
 	static propTypes = {
 		name: PropTypes.string,
@@ -92,4 +93,4 @@ const InputNum4 = styled.input`
 	margin-right: 12px;
 `;
 
-export default withIntz(YearMonthDay);
+export default YearMonthDay;
