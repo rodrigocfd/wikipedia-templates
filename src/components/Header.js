@@ -35,4 +35,4 @@ const DivRight = styled.div`
 	padding-top: 8px;
 `;
 
-export default withIntz()(Header);
+export default withIntz('*')(Header);

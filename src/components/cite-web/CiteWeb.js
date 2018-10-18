@@ -10,7 +10,7 @@ import OutParam from './OutParam';
 /**
  * Main component for app route: cite-web.
  */
-@withIntz()
+@withIntz('*')
 class CiteWeb extends React.Component {
 	state = {};
 

@@ -1,9 +1,18 @@
-function translateStr(contextData, str, ...args) {
+/**
+ * Low-level translate function.
+ */
+function translateStr(contextData, whichLocale, str, ...args) {
 	if (str instanceof Array) {
 		str = str[0];
 	}
 
-	let translatedStr = contextData.locales[contextData.curLang][str];
+	const localeKey = whichLocale.replace('*', contextData.curLang);
+	const localeFile = contextData.locales[localeKey];
+	if (!localeFile) {
+		return `[MISSING ${localeKey}]`;
+	}
+
+	const translatedStr = localeFile[str];
 	if (!translatedStr) {
 		return `[${str}]`;
 	} else if (!args.length) {

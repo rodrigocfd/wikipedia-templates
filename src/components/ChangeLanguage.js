@@ -40,6 +40,6 @@ const DivOpts = styled.div`
 
 export default inject('store')(
 	observer(
-		withIntz()(ChangeLanguage)
+		withIntz('*')(ChangeLanguage)
 	)
 );

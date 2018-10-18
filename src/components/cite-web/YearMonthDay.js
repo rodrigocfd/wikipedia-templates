@@ -8,7 +8,7 @@ import sameObject from '../../sameObject';
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-@withIntz()
+@withIntz('*')
 class YearMonthDay extends React.PureComponent {
 	static propTypes = {
 		name: PropTypes.string,
