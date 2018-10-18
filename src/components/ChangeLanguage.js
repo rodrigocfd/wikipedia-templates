@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {inject, observer} from 'mobx-react';
 import styled from 'styled-components';
 
@@ -22,10 +21,6 @@ const ChangeLanguage = ({store, t, intzInfo}) => (
 		</DivOpts>
 	</DivWrap>
 );
-
-ChangeLanguage.propTypes = {
-	store: PropTypes.any.isRequired
-};
 
 const DivWrap = styled.div`
 	padding-top: 14px;
