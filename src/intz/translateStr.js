@@ -2,23 +2,29 @@
  * Low-level translate function.
  */
 function translateStr(contextData, whichLocale, str, ...args) {
+	const localeKey = whichLocale.replace('*', contextData.curLang);
+	const localeFile = contextData.locales[localeKey];
+	if (!localeFile) {
+		console.error(`Locale source not found: "${localeKey}".`);
+		return `[MISSING ${localeKey}]`;
+	}
+
 	if (str instanceof Array) {
 		str = str[0];
 	}
 
-	const localeKey = whichLocale.replace('*', contextData.curLang);
-	const localeFile = contextData.locales[localeKey];
-	if (!localeFile) {
-		return `[MISSING ${localeKey}]`;
-	}
-
 	const translatedStr = localeFile[str];
 	if (!translatedStr) {
+		console.error(`Key not found: "${str}".`);
 		return `[${str}]`;
 	} else if (!args.length) {
 		return translatedStr;
 	}
 
+	return interpolateString(translatedStr, args);
+}
+
+function interpolateString(translatedStr, args) {
 	let finalStr = '';
 	let regex = new RegExp('\\{\\d+\\}', 'g');
 	let match = null;
@@ -34,7 +40,11 @@ function translateStr(contextData, whichLocale, str, ...args) {
 			finalStr += prevStr;
 		}
 
-		let replacement = args[replacementIdx] || `[MISSING ${replacementIdx}]`;
+		let replacement = args[replacementIdx]
+		if (!replacement) {
+			console.error(`Interpolation {${replacementIdx}} for "${translatedStr}" not found.`);
+			replacement = `[MISSING ${replacementIdx}]`
+		}
 		finalStr += replacement;
 		prevStartPos = tokenPos + token.length;
 	}
