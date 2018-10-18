@@ -33,9 +33,9 @@ class YearMonthDay extends React.PureComponent {
 		let formatted = '';
 
 		if (yer && mon && day) {
-			formatted = t('DateDMY {1} {0}, {2}', [day, monthNames[mon], yer]);
+			formatted = t('DateDMY {1} {0}, {2}', day, monthNames[mon], yer);
 		} else if (yer && mon && !day) {
-			formatted = t('DateMY {0}, {1}', [monthNames[mon], yer]);
+			formatted = t('DateMY {0}, {1}', monthNames[mon], yer);
 		} else if (yer && !mon && !day) {
 			formatted = yer;
 		} else if (yer || mon || day) {

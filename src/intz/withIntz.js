@@ -14,7 +14,8 @@ function withIntz(opts) {
 					<IntzContext.Consumer>
 						{contextData =>
 							<WrappedComponent
-								t={(str, args) => translateStr(contextData, str, args)}
+								t={(str, ...args) =>
+									translateStr(contextData, str, ...args)}
 								intzInfo={contextData}
 								{...this.props}
 							/>

@@ -1,4 +1,4 @@
-function translateStr(contextData, str, args) {
+function translateStr(contextData, str, ...args) {
 	if (str instanceof Array) {
 		str = str[0];
 	}
@@ -6,7 +6,7 @@ function translateStr(contextData, str, args) {
 	let translatedStr = contextData.locales[contextData.curLang][str];
 	if (!translatedStr) {
 		return `[${str}]`;
-	} else if (!args) {
+	} else if (!args.length) {
 		return translatedStr;
 	}
 
