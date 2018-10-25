@@ -1,27 +1,42 @@
 /**
  * Low-level translate function.
  */
-function translateStr(contextData, whichLocale, str, ...args) {
-	const localeKey = whichLocale.replace('*', contextData.curLang);
-	const localeFile = contextData.locales[localeKey];
-	if (!localeFile) {
-		console.error(`Locale source not found: "${localeKey}".`);
-		return `[MISSING ${localeKey}]`;
+function translateStr(contextData, customLocale, str, ...args) {
+	const locale = loadLocales(contextData, customLocale);
+	if (!locale) {
+		return `[MISSING ${contextData.curLang}]`;
 	}
 
 	if (str instanceof Array) {
 		str = str[0];
 	}
 
-	const translatedStr = localeFile[str];
+	const translatedStr = (locale.custom || locale.base)[str] || locale.base[str];
 	if (!translatedStr) {
 		console.error(`Key not found: "${str}".`);
 		return `[${str}]`;
-	} else if (!args.length) {
-		return translatedStr;
 	}
 
-	return interpolateString(translatedStr, args);
+	return args.length ?
+		interpolateString(translatedStr, args) : translatedStr;
+}
+
+function loadLocales(contextData, customLocale) {
+	const {locales, curLang} = contextData;
+
+	const base = locales[curLang];
+	if (!base) {
+		console.log(`Locale source not found: "${curLang}".`);
+		return false;
+	}
+
+	const myKey = customLocale.replace('*', curLang);
+	if (myKey === curLang) {
+		return {base};
+	}
+
+	const custom = locales[myKey];
+	return custom ? {base, custom} : {base};
 }
 
 function interpolateString(translatedStr, args) {

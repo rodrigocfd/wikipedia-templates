@@ -4,8 +4,7 @@ import {inject, observer} from 'mobx-react';
 import styled from 'styled-components';
 
 import {IntzProvider} from '../intz';
-import en from '../locales/en';
-import pt from '../locales/pt';
+import locales from '../locales';
 
 import Header from './Header';
 import Home from './home/Home';
@@ -17,7 +16,7 @@ import TrackListing from './track-listing/TrackListing';
  */
 const App = ({store}) => (
 	<BrowserRouter>
-		<IntzProvider lang={store.lang} locales={{en, pt}}>
+		<IntzProvider lang={store.lang} locales={locales}>
 			<div>
 				<Header/>
 				<DivBody>

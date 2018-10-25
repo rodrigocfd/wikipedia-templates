@@ -6,7 +6,7 @@ import translateStr from './translateStr';
 /**
  * HOC to inject translation into components.
  */
-function withIntz(whichLocale) {
+function withIntz(customLocale) {
 	return function(WrappedComponent) {
 		return class extends React.Component {
 			render() {
@@ -15,7 +15,7 @@ function withIntz(whichLocale) {
 						{contextData =>
 							<WrappedComponent
 								t={(str, ...args) =>
-									translateStr(contextData, whichLocale, str, ...args)}
+									translateStr(contextData, customLocale, str, ...args)}
 								intzInfo={contextData}
 								{...this.props}
 							/>
