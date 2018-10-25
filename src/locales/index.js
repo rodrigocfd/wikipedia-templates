@@ -13,4 +13,13 @@ const locales = {
 	pt, pt_CiteWeb, pt_TrackListing
 };
 
+/**
+ * Names of available languages.
+ */
+const langs = [
+	{id: 'en', name: 'English'},
+	{id: 'pt', name: 'Portuguese'}
+];
+
 export default locales;
+export {langs};
