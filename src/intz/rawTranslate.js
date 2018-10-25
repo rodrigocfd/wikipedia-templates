@@ -1,8 +1,8 @@
 /**
  * Low-level translate function.
  */
-function translateStr(contextData, customLocale, str, ...args) {
-	const locale = loadLocales(contextData, customLocale);
+function rawTranslate(contextData, wildcard, str, ...args) {
+	const locale = loadLocales(contextData, wildcard);
 	if (!locale) {
 		return `[MISSING ${contextData.curLang}]`;
 	}
@@ -21,23 +21,25 @@ function translateStr(contextData, customLocale, str, ...args) {
 		interpolateString(translatedStr, args) : translatedStr;
 }
 
-function loadLocales(contextData, customLocale) {
+
+function loadLocales(contextData, wildcard) {
 	const {locales, curLang} = contextData;
 
 	const base = locales[curLang];
 	if (!base) {
-		console.log(`Locale source not found: "${curLang}".`);
+		console.error(`Locale source not found: "${curLang}".`);
 		return false;
 	}
 
-	const myKey = customLocale.replace('*', curLang);
-	if (myKey === curLang) {
+	const customKey = wildcard.replace('*', curLang);
+	if (customKey === curLang) {
 		return {base};
 	}
 
-	const custom = locales[myKey];
+	const custom = locales[customKey];
 	return custom ? {base, custom} : {base};
 }
+
 
 function interpolateString(translatedStr, args) {
 	let finalStr = '';
@@ -72,4 +74,4 @@ function interpolateString(translatedStr, args) {
 	return finalStr;
 }
 
-export default translateStr;
+export default rawTranslate;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import IntzContext from './IntzContext';
-import translateStr from './translateStr';
+import rawTranslate from './rawTranslate';
 
 /**
  * HOC to inject translation into components.
@@ -15,7 +15,7 @@ function withIntz(customLocale) {
 						{contextData =>
 							<WrappedComponent
 								t={(str, ...args) =>
-									translateStr(contextData, customLocale, str, ...args)}
+									rawTranslate(contextData, customLocale, str, ...args)}
 								intzInfo={contextData}
 								{...this.props}
 							/>
