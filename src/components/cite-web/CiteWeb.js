@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 import OutParam from './OutParam';
@@ -10,7 +10,7 @@ import OutParam from './OutParam';
 /**
  * Main component for app route: cite-web.
  */
-@withIntz('*_CiteWeb')
+@withLocale('*_CiteWeb')
 class CiteWeb extends React.Component {
 	state = {};
 

@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 
 /**
  * Prints a series of radio buttons, inline.
@@ -33,4 +33,4 @@ const InputRadioHand = styled.input`
 	cursor: pointer;
 `;
 
-export default withIntz('*_CiteWeb')(InlineRadio);
+export default withLocale('*_CiteWeb')(InlineRadio);

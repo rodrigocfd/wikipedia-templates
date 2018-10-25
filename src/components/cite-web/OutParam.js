@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 
 /**
  * Outputs a single Wikipedia template parameter, if value is given.
@@ -16,4 +16,4 @@ OutParam.propTypes = {
 	val: PropTypes.any
 };
 
-export default withIntz('*_CiteWeb')(OutParam);
+export default withLocale('*_CiteWeb')(OutParam);

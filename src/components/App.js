@@ -3,7 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
 import styled from 'styled-components';
 
-import {IntzProvider} from '../intz';
+import {LocaleProvider} from '../react-multi-locale';
 import locales from '../locales';
 
 import Header from './Header';
@@ -16,7 +16,7 @@ import TrackListing from './track-listing/TrackListing';
  */
 const App = ({store}) => (
 	<BrowserRouter>
-		<IntzProvider lang={store.lang} locales={locales}>
+		<LocaleProvider lang={store.lang} locales={locales}>
 			<div>
 				<Header/>
 				<DivBody>
@@ -25,7 +25,7 @@ const App = ({store}) => (
 					<Route path="/track-listing" component={TrackListing}/>
 				</DivBody>
 			</div>
-		</IntzProvider>
+		</LocaleProvider>
 	</BrowserRouter>
 );
 

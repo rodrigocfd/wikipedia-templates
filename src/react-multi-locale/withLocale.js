@@ -1,30 +1,30 @@
 import React from 'react';
 
-import IntzContext from './IntzContext';
+import LocaleContext from './LocaleContext';
 import rawTranslate from './rawTranslate';
 
 /**
  * HOC to inject translation into components.
  */
-function withIntz(customLocale) {
+function withLocale(wildcard) {
 	return function(WrappedComponent) {
 		return class extends React.Component {
 			render() {
 				return (
-					<IntzContext.Consumer>
+					<LocaleContext.Consumer>
 						{contextData =>
 							<WrappedComponent
 								t={(str, ...args) =>
-									rawTranslate(contextData, customLocale, str, ...args)}
-								intzInfo={contextData}
+									rawTranslate(contextData, wildcard, str, ...args)}
+								localeInfo={contextData}
 								{...this.props}
 							/>
 						}
-					</IntzContext.Consumer>
+					</LocaleContext.Consumer>
 				);
 			}
 		};
 	}
 }
 
-export default withIntz;
+export default withLocale;

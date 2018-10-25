@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withIntz from '../intz';
+import withLocale from '../react-multi-locale';
 import ChangeLanguage from './ChangeLanguage';
 
 /**
@@ -35,4 +35,4 @@ const DivRight = styled.div`
 	padding-top: 8px;
 `;
 
-export default withIntz('*')(Header);
+export default withLocale('*')(Header);

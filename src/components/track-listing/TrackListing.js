@@ -1,13 +1,13 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 import Track from './Track';
 
 /**
  * Main component for app route: track-listing.
  */
-@withIntz('*_TrackListing')
+@withLocale('*_TrackListing')
 class TrackListing extends React.Component {
 	state = {
 		numTracks: 3

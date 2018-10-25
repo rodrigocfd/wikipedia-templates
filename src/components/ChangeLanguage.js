@@ -2,18 +2,18 @@ import React from 'react';
 import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
 import styled from 'styled-components';
 
-import withIntz from '../intz';
+import withLocale from '../react-multi-locale';
 import {langs} from '../locales';
 
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = ({store, t, intzInfo}) => (
+const ChangeLanguage = ({store, t, localeInfo}) => (
 	<DivWrap>
 		<DivTitle>{t`Language`}</DivTitle>
 		<DivOpts>
 			{langs.map(lang =>
-				intzInfo.curLang === lang.id ?
+				localeInfo.curLang === lang.id ?
 					<span key={lang.id}>{t(lang.name)}</span> :
 					<button key={lang.id} onClick={e => store.lang = lang.id}>
 						{t(lang.name)}
@@ -41,6 +41,6 @@ const DivOpts = styled.div`
 
 export default mobxInject('store')(
 	mobxObserver(
-		withIntz('*')(ChangeLanguage)
+		withLocale('*')(ChangeLanguage)
 	)
 );

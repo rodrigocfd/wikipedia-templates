@@ -2,13 +2,13 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 import sameObject from '../../sameObject';
 
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-@withIntz('*_CiteWeb')
+@withLocale('*_CiteWeb')
 class YearMonthDay extends React.Component {
 	static propTypes = {
 		name: PropTypes.string,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 
 const Track = ({t}) => (
 	<DivWrap>
@@ -15,4 +15,4 @@ const DivWrap = styled.div`
 	padding: 6px 0;
 `;
 
-export default withIntz('*_TrackListing')(Track);
+export default withLocale('*_TrackListing')(Track);

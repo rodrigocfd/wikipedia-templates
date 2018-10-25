@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import withIntz from '../../intz';
+import withLocale from '../../react-multi-locale';
 
 /**
  * Main component for app route: home.
@@ -20,4 +20,4 @@ const UlList = styled.ul`
 	line-height: 150%;
 `;
 
-export default withIntz('*')(Home);
+export default withLocale('*')(Home);
