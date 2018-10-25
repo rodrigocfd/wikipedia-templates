@@ -7,7 +7,7 @@ import Track from './Track';
 /**
  * Main component for app route: track-listing.
  */
-@withIntz('*')
+@withIntz('*_TrackListing')
 class TrackListing extends React.Component {
 	state = {
 		numTracks: 3

@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Track = () => (
+import withIntz from '../../intz';
+
+const Track = ({t}) => (
 	<DivWrap>
-		<div>Title</div>
-		<div>Writer</div>
-		<div>Length</div>
+		<div>{t`Title`}</div>
+		<div>{t`Writer`}</div>
+		<div>{t`Length`}</div>
 	</DivWrap>
 );
 
@@ -13,4 +15,4 @@ const DivWrap = styled.div`
 	padding: 6px 0;
 `;
 
-export default Track;
+export default withIntz('*_TrackListing')(Track);
