@@ -1,5 +1,5 @@
 import React from 'react';
-import {inject, observer} from 'mobx-react';
+import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
 import styled from 'styled-components';
 
 import withIntz from '../intz';
@@ -39,8 +39,8 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default inject('store')(
-	observer(
+export default mobxInject('store')(
+	mobxObserver(
 		withIntz('*')(ChangeLanguage)
 	)
 );

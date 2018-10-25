@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {inject, observer} from 'mobx-react';
+import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
 import styled from 'styled-components';
 
 import {IntzProvider} from '../intz';
@@ -33,6 +33,6 @@ const DivBody = styled.div`
 	padding: 0 20px;
 `;
 
-export default inject('store')(
-	observer(App)
+export default mobxInject('store')(
+	mobxObserver(App)
 );
