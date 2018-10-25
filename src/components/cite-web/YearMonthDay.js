@@ -22,9 +22,11 @@ class YearMonthDay extends React.PureComponent {
 	};
 
 	componentDidUpdate(prevProps, prevState) {
-		if (sameObject(prevProps, this.props) &&
-			sameObject(prevState, this.state)) return;
+		if (!sameObject(prevProps, this.props) ||
+			!sameObject(prevState, this.state)) this.notifyParent();
+	}
 
+	notifyParent() {
 		const {t} = this.props;
 		const {yer, mon, day} = this.state;
 		const monthNames = [null, t`January`, t`February`, t`March`, t`April`,
