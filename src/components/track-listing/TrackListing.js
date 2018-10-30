@@ -10,22 +10,25 @@ import Track from './Track';
 @withLocale('*_TrackListing')
 class TrackListing extends React.Component {
 	state = {
-		numTracks: 3
+		tracks: []
 	};
 
 	addTrack = (e) => {
 		this.setState({
-			numTracks: this.state.numTracks + 1
+			tracks: [...this.state.tracks, {title: 'foo'}]
 		});
 	}
 
 	remTrack = (e) => {
-		this.setState({
-			numTracks: this.state.numTracks - 1
-		});
+		if (this.state.tracks.length) {
+			this.setState({
+				tracks: this.state.tracks.slice(0, -1)
+			});
+		}
 	}
 
 	render() {
+		const {tracks} = this.state;
 		const {t} = this.props;
 		return (
 			<div>
@@ -36,9 +39,9 @@ class TrackListing extends React.Component {
 						<button onClick={this.remTrack}>Remove</button>
 					</div>
 					<div>
-						{[...Array(this.state.numTracks)].map((_, i) => (
-							<Track key={i}/>
-						))}
+						{tracks.map((v, i) =>
+							<Track track={v} key={i}>{v.title}</Track>
+						)}
 					</div>
 				</div>
 				<Link to="/">{t`Home`}</Link>
