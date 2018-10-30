@@ -122,7 +122,7 @@ And the corresponding `pt.json`:
 }
 ```
 
-Then let's say we have a "Dogs" logical module in our app. The strings of this section can have their own locale file, `en_Dogs.json`:
+Then let's say we have a "Dogs" logical module in our app. The strings of this module can have their own locale file, `en_Dogs.json`:
 
 ```json
 {
@@ -141,7 +141,7 @@ And `pt_Dogs.json`:
 }
 ```
 
-We load all these files:
+We load all these files into `LocaleProvider`:
 
 ```javascript
 import en from './en';
@@ -159,7 +159,7 @@ const App = () => (
 );
 ```
 
-Then, you can specify a component to have strings solely read from the base file, `en.json`:
+Now you can specify a component to have strings solely read from the base file, `en.json`:
 
 ```javascript
 @withLocale('*')
@@ -174,6 +174,8 @@ class MyDogs extends React.Component {
 ```
 
 The base file is always a fallback. If a string is not found in `en_Dogs.json`, it will be searched in `en.json`.
+
+Also, notice that Dogs file can have an arbitrary name. The correct locale will be identified by replacing the `*` with the current locale, in the above example, `*_Dogs` will be replaced by `en_Dogs` and `pt_Dogs`.
 
 ## 4. Interpolating strings
 
