@@ -14,8 +14,14 @@ class TrackListing extends React.Component {
 	};
 
 	addTrack = (e) => {
+		const {tracks} = this.state;
 		this.setState({
-			tracks: [...this.state.tracks, {title: 'foo'}]
+			tracks: [...tracks, {
+				index: tracks.length,
+				title: 'foo',
+				writer: 'me',
+				length: 0
+			}]
 		});
 	}
 
