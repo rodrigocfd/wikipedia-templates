@@ -14,20 +14,22 @@ import TrackListing from './track-listing/TrackListing';
 /**
  * Application root component.
  */
-const App = ({store}) => (
-	<BrowserRouter>
-		<LocaleProvider lang={store.lang} locales={locales}>
-			<div>
-				<Header/>
-				<DivBody>
-					<Route exact path="/" component={Home}/>
-					<Route path="/cite-web" component={CiteWeb}/>
-					<Route path="/track-listing" component={TrackListing}/>
-				</DivBody>
-			</div>
-		</LocaleProvider>
-	</BrowserRouter>
-);
+function App({store}) {
+	return (
+		<BrowserRouter>
+			<LocaleProvider lang={store.lang} locales={locales}>
+				<div>
+					<Header/>
+					<DivBody>
+						<Route exact path="/" component={Home}/>
+						<Route path="/cite-web" component={CiteWeb}/>
+						<Route path="/track-listing" component={TrackListing}/>
+					</DivBody>
+				</div>
+			</LocaleProvider>
+		</BrowserRouter>
+	);
+}
 
 const DivBody = styled.div`
 	padding: 0 20px;

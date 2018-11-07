@@ -10,7 +10,6 @@ import OutParam from './OutParam';
 /**
  * Main component for app route: cite-web.
  */
-@withLocale('*_CiteWeb')
 class CiteWeb extends React.Component {
 	state = {};
 
@@ -95,4 +94,4 @@ const DivOut = styled.div`
 	padding: 10px;
 `;
 
-export default CiteWeb;
+export default withLocale('*_CiteWeb')(CiteWeb);

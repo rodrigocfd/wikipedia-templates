@@ -7,14 +7,16 @@ import withLocale from '../../react-multi-locale';
 /**
  * Main component for app route: home.
  */
-const Home = ({t}) => (
-	<div>
-		<UlList>
-			<li><Link to="/cite-web">{t`Cite web`}</Link></li>
-			<li><Link to="/track-listing">{t`Track listing`}</Link></li>
-		</UlList>
-	</div>
-);
+function Home({t}) {
+	return (
+		<div>
+			<UlList>
+				<li><Link to="/cite-web">{t`Cite web`}</Link></li>
+				<li><Link to="/track-listing">{t`Track listing`}</Link></li>
+			</UlList>
+		</div>
+	);
+}
 
 const UlList = styled.ul`
 	line-height: 150%;

@@ -8,7 +8,6 @@ import sameObject from '../../sameObject';
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-@withLocale('*_CiteWeb')
 class YearMonthDay extends React.Component {
 	static propTypes = {
 		name: PropTypes.string,
@@ -95,4 +94,4 @@ const InputNum4 = styled.input`
 	margin-right: 12px;
 `;
 
-export default YearMonthDay;
+export default withLocale('*_CiteWeb')(YearMonthDay);

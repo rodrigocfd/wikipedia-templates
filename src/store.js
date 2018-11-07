@@ -1,10 +1,14 @@
-import {observable} from 'mobx';
+import {observable, decorate} from 'mobx';
 
 /**
  * Application unique MobX store.
  */
 class Store {
-	@observable lang = 'en';
+	lang = 'en';
 }
+
+decorate(Store, {
+	lang: observable
+});
 
 export default new Store();

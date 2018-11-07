@@ -7,16 +7,18 @@ import ChangeLanguage from './ChangeLanguage';
 /**
  * Header to be shown on all pages.
  */
-const Header = ({t}) => (
-	<DivWrap>
-		<DivLeft>
-			<h1>{t`Wikipedia Templates`}</h1>
-		</DivLeft>
-		<DivRight>
-			<ChangeLanguage/>
-		</DivRight>
-	</DivWrap>
-);
+function Header({t}) {
+	return (
+		<DivWrap>
+			<DivLeft>
+				<h1>{t`Wikipedia Templates`}</h1>
+			</DivLeft>
+			<DivRight>
+				<ChangeLanguage/>
+			</DivRight>
+		</DivWrap>
+	);
+}
 
 const DivWrap = styled.div`
 	overflow: hidden;

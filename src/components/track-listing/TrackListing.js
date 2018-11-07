@@ -7,7 +7,6 @@ import Track from './Track';
 /**
  * Main component for app route: track-listing.
  */
-@withLocale('*_TrackListing')
 class TrackListing extends React.Component {
 	state = {
 		tracks: []
@@ -56,4 +55,4 @@ class TrackListing extends React.Component {
 	}
 }
 
-export default TrackListing;
+export default withLocale('*_TrackListing')(TrackListing);

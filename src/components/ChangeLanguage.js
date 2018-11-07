@@ -8,20 +8,22 @@ import {langs} from '../locales';
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = ({store, t, localeInfo}) => (
-	<DivWrap>
-		<DivTitle>{t`Language`}</DivTitle>
-		<DivOpts>
-			{langs.map(lang =>
-				localeInfo.curLang === lang.id ?
-					<span key={lang.id}>{t(lang.name)}</span> :
-					<button key={lang.id} onClick={e => store.lang = lang.id}>
-						{t(lang.name)}
-					</button>
-			)}
-		</DivOpts>
-	</DivWrap>
-);
+function ChangeLanguage({store, t, localeInfo}) {
+	return (
+		<DivWrap>
+			<DivTitle>{t`Language`}</DivTitle>
+			<DivOpts>
+				{langs.map(lang =>
+					localeInfo.curLang === lang.id ?
+						<span key={lang.id}>{t(lang.name)}</span> :
+						<button key={lang.id} onClick={e => store.lang = lang.id}>
+							{t(lang.name)}
+						</button>
+				)}
+			</DivOpts>
+		</DivWrap>
+	);
+}
 
 const DivWrap = styled.div`
 	padding-top: 14px;
