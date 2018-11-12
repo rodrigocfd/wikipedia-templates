@@ -1,5 +1,12 @@
 {
 	"Title": "Título",
 	"Writer": "Escritor",
-	"Length": "Duração"
+	"Length": "Duração",
+
+	"Add track": "Adicionar faixa",
+	"Remove": "Remover",
+	"Move up": "Mover acima",
+
+	"title{0}": "título{0}",
+	"writer{0}": "escritor{0}"
 }

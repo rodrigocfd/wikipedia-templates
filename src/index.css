@@ -9,7 +9,7 @@ body {
 	margin: 0;
 	padding: 0;
 }
-body, input {
+body, input, textarea {
 	font-family: Arial, sans-serif;
 	font-size: 11pt;
 	color: #333;

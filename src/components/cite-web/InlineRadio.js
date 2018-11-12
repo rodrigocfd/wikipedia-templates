@@ -7,29 +7,32 @@ import withLocale from '../../react-multi-locale';
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio = ({t, name, onChange, values, labels}) => (
-	<Fragment>
-		{values.map((value, i) => (
-			<LabelHand key={i}><InputRadioHand type="radio"
-				name={name} value={value}
-				defaultChecked={i === 0}
-				onChange={onChange}/> {t(labels[i])}</LabelHand>
-		))}
-	</Fragment>
-);
+function InlineRadio({name, value, options, labels, onChange, t}) {
+	return (
+		<Fragment>
+			{options.map((opt, i) => (
+				<LabelHand key={i}><InputHand type="radio"
+					name={name} value={opt}
+					checked={opt === value}
+					onChange={onChange}/> {t(labels[i])}</LabelHand>
+			))}
+		</Fragment>
+	);
+}
 
 InlineRadio.propTypes = {
 	name: PropTypes.string.isRequired,
+	value: PropTypes.string,
+	options: PropTypes.arrayOf(PropTypes.string).isRequired,
+	labels: PropTypes.arrayOf(PropTypes.string).isRequired,
 	onChange: PropTypes.func,
-	values: PropTypes.arrayOf(PropTypes.string).isRequired,
-	labels: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 const LabelHand = styled.label`
 	cursor: pointer;
 	margin-right: 8px;
 `;
-const InputRadioHand = styled.input`
+const InputHand = styled.input`
 	cursor: pointer;
 `;
 

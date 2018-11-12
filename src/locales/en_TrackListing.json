@@ -1,5 +1,12 @@
 {
 	"Title": "Title",
 	"Writer": "Writer",
-	"Length": "Length"
+	"Length": "Length",
+
+	"Add track": "Add track",
+	"Remove": "Remove",
+	"Move up": "Move up",
+
+	"title{0}": "title{0}",
+	"writer{0}": "writer{0}"
 }

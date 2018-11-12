@@ -16,7 +16,7 @@ function ChangeLanguage({store, t, localeInfo}) {
 				{langs.map(lang =>
 					localeInfo.curLang === lang.id ?
 						<span key={lang.id}>{t(lang.name)}</span> :
-						<button key={lang.id} onClick={e => store.lang = lang.id}>
+						<button key={lang.id} onClick={() => store.lang = lang.id}>
 							{t(lang.name)}
 						</button>
 				)}
