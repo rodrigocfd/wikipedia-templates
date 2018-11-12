@@ -11,10 +11,13 @@ function rawTranslate(contextData, wildcard, str, ...args) {
 		str = str[0];
 	}
 
-	const translatedStr = (locale.custom || locale.base)[str] || locale.base[str];
-	if (!translatedStr) {
-		console.error(`Key not found: "${str}".`);
-		return `[${str}]`;
+	let translatedStr = (locale.custom || locale.base)[str];
+	if (translatedStr === undefined) {
+		translatedStr = locale.base[str];
+		if (translatedStr === undefined) {
+			console.error(`Key not found: "${str}".`);
+			return `[${str}]`;
+		}
 	}
 
 	return args.length ?
@@ -33,11 +36,11 @@ function loadLocales(contextData, wildcard) {
 
 	const customKey = wildcard.replace('*', curLang);
 	if (customKey === curLang) {
-		return {base};
+		return {base, custom: null};
 	}
 
 	const custom = locales[customKey];
-	return custom ? {base, custom} : {base};
+	return {base, custom: custom || null};
 }
 
 
@@ -57,8 +60,8 @@ function interpolateString(translatedStr, args) {
 			finalStr += prevStr;
 		}
 
-		let replacement = args[replacementIdx]
-		if (!replacement) {
+		let replacement = args[replacementIdx];
+		if (replacement === undefined) {
 			console.error(`Interpolation {${replacementIdx}} for "${translatedStr}" not found.`);
 			replacement = `[MISSING ${replacementIdx}]`
 		}

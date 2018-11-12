@@ -53,8 +53,8 @@ function TrackListing({t}) {
 	function formatOutput() {
 		let ret = '{{' + t`Track listing` + '\n';
 		tracks.forEach((tra, idx) => {
-			ret += tra.title ? `|${t('title{0}', idx)}=${tra.title}` : '';
-			ret += tra.writer ? ` |${t('writer{0}', idx)}=${tra.writer}` : '';
+			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
+			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
 			ret += '\n';
 		});
 		ret += '}}'
@@ -85,7 +85,9 @@ function TrackListing({t}) {
 				}
 			</div>
 			<TextareaOut value={output} readOnly onClick={e => e.target.select()}></TextareaOut>
-			<Link to="/">{t`Home`}</Link>
+			<div>
+				<Link to="/">{t`Home`}</Link>
+			</div>
 		</div>
 	);
 }
