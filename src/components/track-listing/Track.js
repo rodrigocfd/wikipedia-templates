@@ -2,13 +2,15 @@ import React, {Fragment, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 import DurationInput from './DurationInput';
 
 /**
  * One single track, with many fields.
  */
-function Track({index, track, onRemove, onMoveUp, onChange, t}) {
+function Track({index, track, onRemove, onMoveUp, onChange}) {
+	const [t] = useLocale('*_TrackListing');
+
 	const [title, setTitle] = useState(track.title);
 	const [writer, setWriter] = useState(track.writer);
 	const [duration, setDuration] = useState(track.duration);
@@ -62,4 +64,4 @@ const ButtonSpaced = styled.button`
 	margin-left: 4px;
 `;
 
-export default withLocale('*_TrackListing')(Track);
+export default Track;

@@ -2,7 +2,7 @@ import React from 'react';
 import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
 import styled from 'styled-components';
 
-import withLocale from '../react-multi-locale';
+import {withLocale} from '../react-multi-locale';
 import {langs} from '../locales';
 
 /**

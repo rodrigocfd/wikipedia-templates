@@ -2,14 +2,16 @@ import React, {useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 
 /**
  * Main component for app route: cite-web.
  */
-function CiteWeb({t}) {
+function CiteWeb() {
+	const [t] = useLocale('*_CiteWeb');
+
 	const txt1 = useRef();
 	const [output, setOutput] = useState('');
 
@@ -107,4 +109,4 @@ const TextareaOut = styled.textarea`
 	padding: 10px;
 `;
 
-export default withLocale('*_CiteWeb')(CiteWeb);
+export default CiteWeb;

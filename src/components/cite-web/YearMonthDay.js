@@ -2,12 +2,14 @@ import React, {Fragment, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-function YearMonthDay({name, value, onChange, t}) {
+function YearMonthDay({name, value, onChange}) {
+	const [t] = useLocale('*_CiteWeb');
+
 	const [year, setYear] = useState('');
 	const [month, setMonth] = useState('');
 	const [day, setDay] = useState('');
@@ -77,4 +79,4 @@ const InputNum4 = styled.input`
 	margin-right: 12px;
 `;
 
-export default withLocale('*_CiteWeb')(YearMonthDay);
+export default YearMonthDay;

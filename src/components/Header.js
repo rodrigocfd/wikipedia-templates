@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import withLocale from '../react-multi-locale';
+import useLocale from '../react-multi-locale';
 import ChangeLanguage from './ChangeLanguage';
 
 /**
  * Header to be shown on all pages.
  */
-function Header({t}) {
+function Header() {
+	const [t] = useLocale('*');
+
 	return (
 		<DivWrap>
 			<DivLeft>
@@ -37,4 +39,4 @@ const DivRight = styled.div`
 	padding-top: 8px;
 `;
 
-export default withLocale('*')(Header);
+export default Header;

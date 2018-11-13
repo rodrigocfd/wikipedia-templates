@@ -2,12 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 
 /**
  * Main component for app route: home.
  */
-function Home({t}) {
+function Home() {
+	const [t] = useLocale('*');
+
 	return (
 		<div>
 			<UlList>
@@ -22,4 +24,4 @@ const UlList = styled.ul`
 	line-height: 150%;
 `;
 
-export default withLocale('*')(Home);
+export default Home;

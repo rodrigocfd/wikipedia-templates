@@ -2,12 +2,14 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 
 /**
  * Prints a series of radio buttons, inline.
  */
-function InlineRadio({name, value, options, labels, onChange, t}) {
+function InlineRadio({name, value, options, labels, onChange}) {
+	const [t] = useLocale('*_CiteWeb');
+
 	return (
 		<Fragment>
 			{options.map((opt, i) => (
@@ -36,4 +38,4 @@ const InputHand = styled.input`
 	cursor: pointer;
 `;
 
-export default withLocale('*_CiteWeb')(InlineRadio);
+export default InlineRadio;

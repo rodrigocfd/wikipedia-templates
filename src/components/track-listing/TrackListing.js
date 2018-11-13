@@ -2,13 +2,15 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import withLocale from '../../react-multi-locale';
+import useLocale from '../../react-multi-locale';
 import Track from './Track';
 
 /**
  * Main component for app route: track-listing.
  */
-function TrackListing({t}) {
+function TrackListing() {
+	const [t] = useLocale('*_TrackListing');
+
 	const [output, setOutput] = useState('');
 	const [tracks, setTracks] = useState([]);
 	const [uniqueId, setUniqueId] = useState(0);
@@ -113,4 +115,4 @@ const TextareaOut = styled.textarea`
 	padding: 10px;
 `;
 
-export default withLocale('*_TrackListing')(TrackListing);
+export default TrackListing;

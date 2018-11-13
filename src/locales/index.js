@@ -6,7 +6,8 @@ import en_TrackListing from './en_TrackListing';
 import pt_TrackListing from './pt_TrackListing';
 
 /**
- * App locales, grouped to ease the load in App component.
+ * App locales, files imported as JSON.
+ * Grouped to ease the load in App component.
  */
 const locales = {
 	en, en_CiteWeb, en_TrackListing,
