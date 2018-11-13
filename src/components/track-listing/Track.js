@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import withLocale from '../../react-multi-locale';
+import DurationInput from './DurationInput';
 
 /**
  * One single track, with many fields.
@@ -10,13 +11,13 @@ import withLocale from '../../react-multi-locale';
 function Track({index, track, onRemove, onMoveUp, onChange, t}) {
 	const [title, setTitle] = useState(track.title);
 	const [writer, setWriter] = useState(track.writer);
-	const [length, setLength] = useState(track.length);
+	const [duration, setDuration] = useState(track.duration);
 
 	useEffect(() => {
 		if (onChange) {
-			onChange({...track, title, writer, length});
+			onChange({...track, title, writer, duration});
 		}
-	}, [title, writer, length]);
+	}, [title, writer, duration]);
 
 	return (
 		<Fragment>
@@ -25,8 +26,8 @@ function Track({index, track, onRemove, onMoveUp, onChange, t}) {
 				onChange={e => setTitle(e.target.value)}/></DivLine>
 			<DivLine><input type="text" name="writer" value={writer}
 				onChange={e => setWriter(e.target.value)}/></DivLine>
-			<DivLine><input type="text" name="title" value={length}
-				onChange={e => setLength(e.target.value)}/></DivLine>
+			<DivLine><DurationInput type="text" name="title" value={duration}
+				onChange={e => setDuration(e.target.value)}/></DivLine>
 			<DivLine>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
 				{index > 0 &&
@@ -42,7 +43,7 @@ Track.propTypes = {
 	track: PropTypes.shape({
 			title: PropTypes.string,
 			writer: PropTypes.string,
-			length: PropTypes.number
+			duration: PropTypes.string
 		}).isRequired,
 	onRemove: PropTypes.func,
 	onMoveUp: PropTypes.func,
@@ -60,6 +61,5 @@ const DivLine = styled.div`
 const ButtonSpaced = styled.button`
 	margin-left: 4px;
 `;
-
 
 export default withLocale('*_TrackListing')(Track);

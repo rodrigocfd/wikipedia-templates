@@ -10,7 +10,7 @@ import InlineRadio from './InlineRadio';
  * Main component for app route: cite-web.
  */
 function CiteWeb({t}) {
-	const txt1 = useRef(null);
+	const txt1 = useRef();
 	const [output, setOutput] = useState('');
 
 	const [refName, setRefName] = useState('');
@@ -23,7 +23,7 @@ function CiteWeb({t}) {
 
 	useEffect(() => {
 		txt1.current.focus();
-	}, []);
+	}, [txt1]);
 
 	useEffect(() => {
 		setOutput(formatOutput());

@@ -23,7 +23,7 @@ function TrackListing({t}) {
 			id: uniqueId,
 			title: 'foo ' + uniqueId,
 			writer: 'me',
-			length: 0
+			duration: ''
 		};
 		setTracks([...tracks, newTrack]);
 	}
@@ -55,6 +55,7 @@ function TrackListing({t}) {
 		tracks.forEach((tra, idx) => {
 			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
 			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
+			ret += tra.duration ? ` |${t('length{0}', idx+1)}=${tra.duration}` : '';
 			ret += '\n';
 		});
 		ret += '}}'
@@ -69,7 +70,7 @@ function TrackListing({t}) {
 					<button onClick={addTrack}>+ {t`Add track`}</button>
 				</DivBtnAddTrack>
 				{tracks.length > 0 &&
-					<DivTrackList>
+					<DivGridTrackList>
 						<DivHeader>#</DivHeader>
 						<DivHeader>{t`Title`}</DivHeader>
 						<DivHeader>{t`Writer`}</DivHeader>
@@ -81,7 +82,7 @@ function TrackListing({t}) {
 								onMoveUp={moveTrackUp}
 								onChange={changedTrack}/>
 						)}
-					</DivTrackList>
+					</DivGridTrackList>
 				}
 			</div>
 			<TextareaOut value={output} readOnly onClick={e => e.target.select()}></TextareaOut>
@@ -95,7 +96,7 @@ function TrackListing({t}) {
 const DivBtnAddTrack = styled.div`
 	margin-bottom: 10px;
 `;
-const DivTrackList = styled.div`
+const DivGridTrackList = styled.div`
 	padding: 10px 0;
 	display: grid;
 	grid-template-columns: 20px 300px 350px 100px auto;
