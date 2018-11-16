@@ -17,10 +17,10 @@ const locales = {
 /**
  * Names of available languages.
  */
-const langs = [
+const langDescriptions = [
 	{id: 'en', name: 'English'},
 	{id: 'pt', name: 'Portuguese'}
 ];
 
 export default locales;
-export {langs};
+export {langDescriptions};

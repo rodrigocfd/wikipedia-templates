@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider as MobxProvider} from 'mobx-react';
+import {Provider} from 'react-redux';
 
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
@@ -8,8 +8,8 @@ import App from './components/App';
 import store from './store';
 
 ReactDOM.render(
-	<MobxProvider store={store}>
+	<Provider store={store}>
 		<App/>
-	</MobxProvider>,
+	</Provider>,
 	document.getElementById('root'));
 registerServiceWorker();

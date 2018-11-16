@@ -1,23 +1,32 @@
 import React from 'react';
-import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {withLocale} from '../react-multi-locale';
-import {langs} from '../locales';
+import useLocale from '../react-multi-locale';
+import {langDescriptions} from '../locales';
 
 /**
  * Changes the current locale file.
  */
-function ChangeLanguage({store, t, localeInfo}) {
+function ChangeLanguage({dispatch}) {
+	const [t, curLang] = useLocale('*');
+
+	function setLang(l) {
+		dispatch({
+			type: 'setLang',
+			payload: {lang: l}
+		});
+	}
+
 	return (
 		<DivWrap>
 			<DivTitle>{t`Language`}</DivTitle>
 			<DivOpts>
-				{langs.map(lang =>
-					localeInfo.curLang === lang.id ?
-						<span key={lang.id}>{t(lang.name)}</span> :
-						<button key={lang.id} onClick={() => store.lang = lang.id}>
-							{t(lang.name)}
+				{langDescriptions.map(langName =>
+					curLang === langName.id ?
+						<span key={langName.id}>{t(langName.name)}</span> :
+						<button key={langName.id} onClick={() => setLang(langName.id)}>
+							{t(langName.name)}
 						</button>
 				)}
 			</DivOpts>
@@ -41,8 +50,4 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default mobxInject('store')(
-	mobxObserver(
-		withLocale('*')(ChangeLanguage)
-	)
-);
+export default connect()(ChangeLanguage);

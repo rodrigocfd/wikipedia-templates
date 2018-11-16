@@ -1,14 +1,19 @@
-import {observable, decorate} from 'mobx';
+import {createStore} from 'redux';
 
 /**
- * Application unique MobX store.
+ * Application unique Redux store.
  */
-class Store {
-	lang = 'en';
+const initialState = {
+	lang: 'en'
+};
+
+function reducer(state, {type, payload}) {
+	switch (type) {
+	case 'setLang':
+		return {...state, lang: payload.lang};
+	default:
+		return state;
+	}
 }
 
-decorate(Store, {
-	lang: observable
-});
-
-export default new Store();
+export default createStore(reducer, initialState);

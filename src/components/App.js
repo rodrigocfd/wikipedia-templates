@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {inject as mobxInject, observer as mobxObserver} from 'mobx-react';
+import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import {LocaleProvider} from '../react-multi-locale';
@@ -14,10 +14,10 @@ import TrackListing from './track-listing/TrackListing';
 /**
  * Application root component.
  */
-function App({store}) {
+function App({lang}) {
 	return (
 		<BrowserRouter>
-			<LocaleProvider lang={store.lang} locales={locales}>
+			<LocaleProvider lang={lang} locales={locales}>
 				<div>
 					<Header/>
 					<DivBody>
@@ -35,6 +35,6 @@ const DivBody = styled.div`
 	padding: 0 20px;
 `;
 
-export default mobxInject('store')(
-	mobxObserver(App)
-);
+export default connect(
+	({lang}) => ({lang})
+)(App);
