@@ -28,35 +28,32 @@ const locales = {
   }
 };
 
-const App = () => (
-  <LocaleProvider lang={currentLang} locales={locales}>
-    <MyComponent/>
-  </LocaleProvider>
-);
+function App() {
+  return (
+    <LocaleProvider lang={currentLang} locales={locales}>
+      <MyComponent/>
+    </LocaleProvider>
+  );
+}
 ```
 
 Changing the `lang` parameter of the `LocaleProvider` component will automatically switch the language of all strings.
 
-Finally, on the components that will have translated strings, use the `withLocale` HOC, which will inject a `t` prop, used to translate the strings:
+Finally, on the components that will have translated strings, call the `useLocale` hook, which will return a `t` function, used to translate the strings:
 
 ```javascript
-import withLocale from 'react-multi-locale';
+import useLocale from 'react-multi-locale';
 
-const MyComponent = ({t}) => (
-  <div>
-    <div>{t`Name`}</div>
-    <div>{t`Surname`}</div>
-  </div>
-);
+function MyComponent() {
+  const [t] = useLocale('*');
 
-export default withLocale('*')(MyComponent);
-```
-
-It can also be used as a class decorator:
-
-```javascript
-@withLocale('*')
-class MyComponent extends React.Component {
+  return (
+    <div>
+      <div>{t`Name`}</div>
+      <div>{t`Surname`}</div>
+    </div>
+  );
+}
 ```
 
 ## 2. Using JSON files
@@ -93,11 +90,13 @@ import pt from './pt';
 const locales = {en, pt};
 const currentLang = 'en';
 
-const App = () => (
-  <LocaleProvider lang={currentLang} locales={locales}>
-    <MyComponent/>
-  </LocaleProvider>
-);
+function App() {
+  return (
+    <LocaleProvider lang={currentLang} locales={locales}>
+      <MyComponent/>
+    </LocaleProvider>
+  );
+}
 ```
 
 This loading can be made asynchronously as well, the library is unopinionated about this.
@@ -152,25 +151,25 @@ import pt_Dogs from './pt_Dogs';
 const locales = {en, en_Dogs, pt, pt_Dogs};
 const currentLang = 'en';
 
-const App = () => (
-  <LocaleProvider lang={currentLang} locales={locales}>
-    <MyComponent/>
-  </LocaleProvider>
-);
+function App() {
+  return (
+    <LocaleProvider lang={currentLang} locales={locales}>
+      <MyComponent/>
+    </LocaleProvider>
+  );
+}
 ```
 
 Now you can specify a component to have strings solely read from the base file, `en.json`:
 
 ```javascript
-@withLocale('*')
-class App extends React.Component {
+const [t] = useLocale('*');
 ```
 
 Or to use the strings from the Dogs file:
 
 ```javascript
-@withLocale('*_Dogs')
-class MyDogs extends React.Component {
+const [t] = useLocale('*_Dogs');
 ```
 
 The base file is always a fallback. If a string is not found in `en_Dogs.json`, it will be searched in `en.json`.
@@ -207,13 +206,15 @@ And the respective `pt.json`:
 Interpolation is done this way:
 
 ```javascript
-const MyComponent = ({t}) => (
-  <div>
-    <div>{t('This {0} is {1}', 'person', 100)}</div>
-  </div>
-);
+function MyComponent() {
+  const [t] = useLocale('*');
 
-export default withLocale('*')(MyComponent);
+  return (
+    <div>
+      <div>{t('This {0} is {1}', 'person', 100)}</div>
+    </div>
+  );
+}
 ```
 
 This will output `This person is 100` for `en`, and `Este 100 é person` for `pt`.
@@ -221,7 +222,7 @@ This will output `This person is 100` for `en`, and `Este 100 é person` for `pt
 But interpolated arguments can also be translated recursively:
 
 ```javascript
-t('This {0} is {1}', t`brother`, 100)
+t('This {0} is {1}', t`brother`, 100);
 ```
 
 What will output `This brother is 100` and `Este 100 é irmão`.
