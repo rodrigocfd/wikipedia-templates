@@ -7,12 +7,12 @@ import rawTranslate from './rawTranslate';
  * Hook that returns a function to translate strings.
  */
 function useLocale(wildcard) {
-	const contextData = useContext(LocaleContext);
+	const {curLang, locales} = useContext(LocaleContext);
 
 	return [
 		(str, ...args) =>
-			rawTranslate(contextData, wildcard, str, ...args),
-		contextData.curLang
+			rawTranslate(curLang, locales, wildcard, str, ...args),
+		curLang
 	];
 }
 

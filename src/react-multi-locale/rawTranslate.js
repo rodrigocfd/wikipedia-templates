@@ -1,10 +1,10 @@
 /**
  * Low-level translate function.
  */
-function rawTranslate(contextData, wildcard, str, ...args) {
-	const locale = loadLocales(contextData, wildcard);
+function rawTranslate(curLang, locales, wildcard, str, ...args) {
+	const locale = loadLocales(curLang, locales, wildcard);
 	if (!locale) {
-		return `[MISSING ${contextData.curLang}]`;
+		return `[MISSING ${curLang}]`;
 	}
 
 	if (str instanceof Array) {
@@ -25,9 +25,7 @@ function rawTranslate(contextData, wildcard, str, ...args) {
 }
 
 
-function loadLocales(contextData, wildcard) {
-	const {locales, curLang} = contextData;
-
+function loadLocales(curLang, locales, wildcard) {
 	const base = locales[curLang];
 	if (!base) {
 		console.error(`Locale source not found: "${curLang}".`);
