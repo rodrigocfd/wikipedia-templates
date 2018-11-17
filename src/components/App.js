@@ -3,7 +3,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import {LocaleProvider} from '../react-multi-locale';
+import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
 import Header from './Header';

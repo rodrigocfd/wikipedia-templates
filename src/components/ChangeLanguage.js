@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
-import useLocale from '../react-multi-locale';
+import useLocale from '../react-use-locale';
 import {langDescriptions} from '../locales';
 
 /**

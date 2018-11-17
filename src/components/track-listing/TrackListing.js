@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import useLocale from '../../react-multi-locale';
+import useLocale from '../../react-use-locale';
 import Track from './Track';
 
 /**

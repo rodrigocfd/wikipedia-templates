@@ -2,7 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import useLocale from '../../react-multi-locale';
+import useLocale from '../../react-use-locale';
 
 /**
  * Prints a series of radio buttons, inline.

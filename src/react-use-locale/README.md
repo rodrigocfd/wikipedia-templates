@@ -1,6 +1,6 @@
-# React Multi Locale
+# React Use Locale
 
-Simple, scalable internationalization for React.
+Simple, scalable internationalization for React using hooks.
 
 1. [Basic usage](#1-basic-usage)
 2. [Using JSON files](#2-using-json-files)
@@ -12,7 +12,7 @@ Simple, scalable internationalization for React.
 The simplest usage is having all translations in a JSON constant, then pass them as a prop to `LocaleProvider` component wrapper:
 
 ```javascript
-import {LocaleProvider} from 'react-multi-locale';
+import {LocaleProvider} from 'react-use-locale';
 import MyComponent from './MyComponent';
 
 const currentLang = 'en';
@@ -42,7 +42,7 @@ Changing the `lang` parameter of the `LocaleProvider` component will automatical
 Finally, on the components that will have translated strings, call the `useLocale` hook, which will return a `t` function, used to translate the strings:
 
 ```javascript
-import useLocale from 'react-multi-locale';
+import useLocale from 'react-use-locale';
 
 function MyComponent() {
   const [t] = useLocale('*');
@@ -81,7 +81,7 @@ Then, `pt.json`:
 Now we load both:
 
 ```javascript
-import {LocaleProvider} from 'react-multi-locale';
+import {LocaleProvider} from 'react-use-locale';
 import MyComponent from './MyComponent';
 
 import en from './en';
@@ -132,6 +132,7 @@ Then let's say we have a "Dogs" logical module in our app. The strings of this m
 ```
 
 And `pt_Dogs.json`:
+
 ```json
 {
   "Snout": "Focinho",

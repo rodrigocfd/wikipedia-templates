@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import useLocale from '../../react-multi-locale';
+import useLocale from '../../react-use-locale';
 
 /**
  * Main component for app route: home.

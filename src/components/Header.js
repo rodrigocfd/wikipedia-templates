@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import useLocale from '../react-multi-locale';
+import useLocale from '../react-use-locale';
 import ChangeLanguage from './ChangeLanguage';
 
 /**

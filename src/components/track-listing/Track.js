@@ -2,7 +2,7 @@ import React, {Fragment, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import useLocale from '../../react-multi-locale';
+import useLocale from '../../react-use-locale';
 import DurationInput from './DurationInput';
 
 /**
