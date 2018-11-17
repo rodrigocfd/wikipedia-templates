@@ -23,8 +23,8 @@ function TrackListing() {
 		setUniqueId(uniqueId + 1);
 		const newTrack = {
 			id: uniqueId,
-			title: 'foo ' + uniqueId,
-			writer: 'me',
+			title: '',
+			writer: '',
 			duration: ''
 		};
 		setTracks([...tracks, newTrack]);
