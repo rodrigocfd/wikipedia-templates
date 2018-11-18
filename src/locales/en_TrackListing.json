@@ -2,6 +2,8 @@
 	"Title": "Title",
 	"Note": "Note",
 	"Writer": "Writer",
+	"Lyrics": "Lyrics",
+	"Music": "Music",
 	"Length": "Length",
 
 	"Add track": "Add track",
@@ -11,5 +13,7 @@
 	"title{0}": "title{0}",
 	"note{0}": "note{0}",
 	"writer{0}": "writer{0}",
+	"lyrics{0}": "lyrics{0}",
+	"music{0}": "music{0}",
 	"length{0}": "length{0}"
 }

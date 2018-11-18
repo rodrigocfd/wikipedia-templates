@@ -15,6 +15,8 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 	const [title, setTitle] = useState('');
 	const [note, setNote] = useState('');
 	const [writer, setWriter] = useState('');
+	const [lyrics, setLyrics] = useState('');
+	const [music, setMusic] = useState('');
 	const [duration, setDuration] = useState('');
 
 	useEffect(() => {
@@ -23,9 +25,9 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 
 	useEffect(() => {
 		if (onChange) {
-			onChange({...track, title, note, writer, duration});
+			onChange({...track, title, note, writer, lyrics, music, duration});
 		}
-	}, [title, note, writer, duration]);
+	}, [title, note, writer, lyrics, music, duration]);
 
 	return (
 		<Fragment>
@@ -36,6 +38,10 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 				onChange={e => setNote(e.target.value)}/></DivBox>
 			<DivBox><input type="text" name="writer" value={writer}
 				onChange={e => setWriter(e.target.value)}/></DivBox>
+			<DivBox><input type="text" name="lyrics" value={lyrics}
+				onChange={e => setLyrics(e.target.value)}/></DivBox>
+			<DivBox><input type="text" name="music" value={music}
+				onChange={e => setMusic(e.target.value)}/></DivBox>
 			<DivBox><DurationInput type="text" name="title" value={duration}
 				onChange={e => setDuration(e.target.value)}/></DivBox>
 			<DivBox>
@@ -54,6 +60,8 @@ Track.propTypes = {
 			title: PropTypes.string,
 			note: PropTypes.string,
 			writer: PropTypes.string,
+			lyrics: PropTypes.string,
+			music: PropTypes.string,
 			duration: PropTypes.string
 		}).isRequired,
 	onRemove: PropTypes.func,

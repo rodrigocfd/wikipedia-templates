@@ -9,16 +9,24 @@ function DurationInput({name, value, onChange}) {
 
 	useEffect(() => {
 		if (onChange) {
-			let d = parseInt(duration);
-			d = isNaN(d) ? 0 : d;
-			let sec = d % 100;
-			let min = (d - sec) / 100;
-			sec = sec < 10 ? '0' + sec : sec;
-			onChange({
-				target: {
-					value: `${min}:${sec}`
-				}
-			});
+			if (!duration.length) {
+				onChange({
+					target: {
+						value: ''
+					}
+				});
+			} else {
+				let d = parseInt(duration);
+				d = isNaN(d) ? 0 : d;
+				let sec = d % 100;
+				let min = (d - sec) / 100;
+				sec = sec < 10 ? '0' + sec : sec;
+				onChange({
+					target: {
+						value: `${min}:${sec}`
+					}
+				});
+			}
 		}
 	}, [duration]);
 

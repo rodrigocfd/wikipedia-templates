@@ -53,6 +53,8 @@ function TrackListing() {
 			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
 			ret += tra.note ? `|${t('note{0}', idx+1)}=${tra.note}` : '';
 			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
+			ret += tra.lyrics ? ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}` : '';
+			ret += tra.music ? ` |${t('music{0}', idx+1)}=${tra.music}` : '';
 			ret += tra.duration ? ` |${t('length{0}', idx+1)}=${tra.duration}` : '';
 			ret += '\n';
 		});
@@ -73,6 +75,8 @@ function TrackListing() {
 						<DivHeader>{t`Title`}</DivHeader>
 						<DivHeader>{t`Note`}</DivHeader>
 						<DivHeader>{t`Writer`}</DivHeader>
+						<DivHeader>{t`Lyrics`}</DivHeader>
+						<DivHeader>{t`Music`}</DivHeader>
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
 						{tracks.map((tra, index) =>
@@ -98,7 +102,7 @@ const DivBtnAddTrack = styled.div`
 const DivGridTrackList = styled.div`
 	padding: 4px 0;
 	display: grid;
-	grid-template-columns: 20px 200px 180px 200px 60px auto;
+	grid-template-columns: 20px 160px 120px 180px 180px 180px 60px auto;
 `;
 const DivHeader = styled.div`
 	padding: 2px 6px;

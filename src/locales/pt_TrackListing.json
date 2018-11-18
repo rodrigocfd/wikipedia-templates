@@ -2,6 +2,8 @@
 	"Title": "Título",
 	"Note": "Nota",
 	"Writer": "Escritor",
+	"Lyrics": "Letra",
+	"Music": "Música",
 	"Length": "Duração",
 
 	"Add track": "Adicionar faixa",
@@ -11,5 +13,7 @@
 	"title{0}": "título{0}",
 	"note{0}": "nota{0}",
 	"writer{0}": "escritor{0}",
+	"lyrics{0}": "letra{0}",
+	"music{0}": "música{0}",
 	"length{0}": "duração{0}"
 }
