@@ -12,9 +12,10 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 	const [t] = useLocale('*_TrackListing');
 	const txt1 = useRef();
 
-	const [title, setTitle] = useState(track.title);
-	const [writer, setWriter] = useState(track.writer);
-	const [duration, setDuration] = useState(track.duration);
+	const [title, setTitle] = useState('');
+	const [note, setNote] = useState('');
+	const [writer, setWriter] = useState('');
+	const [duration, setDuration] = useState('');
 
 	useEffect(() => {
 		txt1.current.focus();
@@ -22,25 +23,27 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 
 	useEffect(() => {
 		if (onChange) {
-			onChange({...track, title, writer, duration});
+			onChange({...track, title, note, writer, duration});
 		}
-	}, [title, writer, duration]);
+	}, [title, note, writer, duration]);
 
 	return (
 		<Fragment>
-			<DivLine>{index + 1}</DivLine>
-			<DivLine><input type="text" name="title" value={title} ref={txt1}
-				onChange={e => setTitle(e.target.value)}/></DivLine>
-			<DivLine><input type="text" name="writer" value={writer}
-				onChange={e => setWriter(e.target.value)}/></DivLine>
-			<DivLine><DurationInput type="text" name="title" value={duration}
-				onChange={e => setDuration(e.target.value)}/></DivLine>
-			<DivLine>
+			<DivBox>{index + 1}</DivBox>
+			<DivBox><input type="text" name="title" value={title} ref={txt1}
+				onChange={e => setTitle(e.target.value)}/></DivBox>
+			<DivBox><input type="text" name="note" value={note}
+				onChange={e => setNote(e.target.value)}/></DivBox>
+			<DivBox><input type="text" name="writer" value={writer}
+				onChange={e => setWriter(e.target.value)}/></DivBox>
+			<DivBox><DurationInput type="text" name="title" value={duration}
+				onChange={e => setDuration(e.target.value)}/></DivBox>
+			<DivBox>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
 				{index > 0 &&
 					<ButtonSpaced onClick={() => onMoveUp && onMoveUp(index)}>&uarr; {t`Move up`}</ButtonSpaced>
 				}
-			</DivLine>
+			</DivBox>
 		</Fragment>
 	);
 }
@@ -49,6 +52,7 @@ Track.propTypes = {
 	index: PropTypes.number.isRequired,
 	track: PropTypes.shape({
 			title: PropTypes.string,
+			note: PropTypes.string,
 			writer: PropTypes.string,
 			duration: PropTypes.string
 		}).isRequired,
@@ -57,8 +61,8 @@ Track.propTypes = {
 	onChange: PropTypes.func
 };
 
-const DivLine = styled.div`
-	margin-right: 16px;
+const DivBox = styled.div`
+	margin-right: 6px;
 	padding: 2px;
 	& > input {
 		margin-left: 4px;

@@ -21,12 +21,7 @@ function TrackListing() {
 
 	function addTrack() {
 		setUniqueId(uniqueId + 1);
-		const newTrack = {
-			id: uniqueId,
-			title: '',
-			writer: '',
-			duration: ''
-		};
+		const newTrack = {id: uniqueId};
 		setTracks([...tracks, newTrack]);
 	}
 
@@ -56,6 +51,7 @@ function TrackListing() {
 		let ret = '{{' + t`Track listing` + '\n';
 		tracks.forEach((tra, idx) => {
 			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
+			ret += tra.note ? `|${t('note{0}', idx+1)}=${tra.note}` : '';
 			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
 			ret += tra.duration ? ` |${t('length{0}', idx+1)}=${tra.duration}` : '';
 			ret += '\n';
@@ -75,6 +71,7 @@ function TrackListing() {
 					<DivGridTrackList>
 						<DivHeader>#</DivHeader>
 						<DivHeader>{t`Title`}</DivHeader>
+						<DivHeader>{t`Note`}</DivHeader>
 						<DivHeader>{t`Writer`}</DivHeader>
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
@@ -99,9 +96,9 @@ const DivBtnAddTrack = styled.div`
 	margin-bottom: 10px;
 `;
 const DivGridTrackList = styled.div`
-	padding: 10px 0;
+	padding: 4px 0;
 	display: grid;
-	grid-template-columns: 20px 300px 350px 100px auto;
+	grid-template-columns: 20px 200px 180px 200px 60px auto;
 `;
 const DivHeader = styled.div`
 	padding: 2px 6px;

@@ -1,5 +1,6 @@
 {
 	"Title": "Title",
+	"Note": "Note",
 	"Writer": "Writer",
 	"Length": "Length",
 
@@ -8,6 +9,7 @@
 	"Move up": "Move up",
 
 	"title{0}": "title{0}",
+	"note{0}": "note{0}",
 	"writer{0}": "writer{0}",
 	"length{0}": "length{0}"
 }
