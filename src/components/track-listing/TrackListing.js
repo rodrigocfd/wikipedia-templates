@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import Track from './Track';
+import Output from './Output';
 
 /**
  * Main component for app route: track-listing.
@@ -11,13 +12,8 @@ import Track from './Track';
 function TrackListing() {
 	const [t] = useLocale('*_TrackListing');
 
-	const [output, setOutput] = useState('');
 	const [tracks, setTracks] = useState([]);
 	const [uniqueId, setUniqueId] = useState(0);
-
-	useEffect(() => {
-		setOutput(formatOutput());
-	}, [t, tracks]);
 
 	function addTrack() {
 		setUniqueId(uniqueId + 1);
@@ -47,21 +43,6 @@ function TrackListing() {
 		setTracks(updatedTracks);
 	}
 
-	function formatOutput() {
-		let ret = '{{' + t`Track listing` + '\n';
-		tracks.forEach((tra, idx) => {
-			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
-			ret += tra.note ? `|${t('note{0}', idx+1)}=${tra.note}` : '';
-			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
-			ret += tra.lyrics ? ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}` : '';
-			ret += tra.music ? ` |${t('music{0}', idx+1)}=${tra.music}` : '';
-			ret += tra.duration ? ` |${t('length{0}', idx+1)}=${tra.duration}` : '';
-			ret += '\n';
-		});
-		ret += '}}'
-		return ret;
-	}
-
 	return (
 		<div>
 			<div>
@@ -88,7 +69,7 @@ function TrackListing() {
 					</DivGridTrackList>
 				}
 			</div>
-			<TextareaOut value={output} readOnly onClick={e => e.target.select()}></TextareaOut>
+			<Output tracks={tracks}/>
 			<div>
 				<Link to="/">{t`Home`}</Link>
 			</div>
@@ -106,14 +87,6 @@ const DivGridTrackList = styled.div`
 `;
 const DivHeader = styled.div`
 	padding: 2px 6px;
-`;
-const TextareaOut = styled.textarea`
-	font-family: monospace;
-	border: 1px solid #ccc;
-	width: 600px;
-	height: 200px;
-	margin: 20px 0;
-	padding: 10px;
 `;
 
 export default TrackListing;

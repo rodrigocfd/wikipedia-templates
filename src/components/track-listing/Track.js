@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import DurationInput from './DurationInput';
+import trackPT from './trackPT';
 
 /**
  * One single track, with many fields.
@@ -56,14 +57,7 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 
 Track.propTypes = {
 	index: PropTypes.number.isRequired,
-	track: PropTypes.shape({
-			title: PropTypes.string,
-			note: PropTypes.string,
-			writer: PropTypes.string,
-			lyrics: PropTypes.string,
-			music: PropTypes.string,
-			duration: PropTypes.string
-		}).isRequired,
+	track: trackPT.isRequired,
 	onRemove: PropTypes.func,
 	onMoveUp: PropTypes.func,
 	onChange: PropTypes.func
