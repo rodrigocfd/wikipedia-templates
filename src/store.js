@@ -7,10 +7,10 @@ const initialState = {
 	lang: 'en'
 };
 
-function reducer(state, {type, payload}) {
+function reducer(state, {type, val}) {
 	switch (type) {
 	case 'setLang':
-		return {...state, lang: payload.lang};
+		return {...state, lang: val};
 	default:
 		return state;
 	}

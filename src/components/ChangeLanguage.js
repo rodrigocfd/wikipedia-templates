@@ -11,13 +11,6 @@ import {langDescriptions} from '../locales';
 function ChangeLanguage({dispatch}) {
 	const [t, curLang] = useLocale('*');
 
-	function setLang(l) {
-		dispatch({
-			type: 'setLang',
-			payload: {lang: l}
-		});
-	}
-
 	return (
 		<DivWrap>
 			<DivTitle>{t`Language`}</DivTitle>
@@ -25,7 +18,8 @@ function ChangeLanguage({dispatch}) {
 				{langDescriptions.map(langName =>
 					curLang === langName.id ?
 						<span key={langName.id}>{t(langName.name)}</span> :
-						<button key={langName.id} onClick={() => setLang(langName.id)}>
+						<button key={langName.id}
+							onClick={() => dispatch({type: 'setLang', val: langName.id})}>
 							{t(langName.name)}
 						</button>
 				)}
