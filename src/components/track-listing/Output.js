@@ -9,7 +9,7 @@ import trackPT from './trackPT';
  * Outputs the formatted track listing.
  */
 function Output({tracks}) {
-	const [t] = useLocale('*_TrackListing');
+	const t = useLocale('*_TrackListing');
 
 	function formatOutput() {
 		let ret = '{{' + t`Track listing` + '\n';

@@ -8,7 +8,7 @@ import useLocale from '../../react-use-locale';
  * Main component for app route: home.
  */
 function Home() {
-	const [t] = useLocale('*');
+	const t = useLocale('*');
 
 	return (
 		<div>

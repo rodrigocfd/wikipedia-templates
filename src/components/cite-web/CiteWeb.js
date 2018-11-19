@@ -10,7 +10,7 @@ import InlineRadio from './InlineRadio';
  * Main component for app route: cite-web.
  */
 function CiteWeb() {
-	const [t] = useLocale('*_CiteWeb');
+	const t = useLocale('*_CiteWeb');
 
 	const txt1 = useRef();
 	const [output, setOutput] = useState('');

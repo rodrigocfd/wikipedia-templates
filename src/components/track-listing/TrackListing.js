@@ -10,7 +10,7 @@ import Output from './Output';
  * Main component for app route: track-listing.
  */
 function TrackListing() {
-	const [t] = useLocale('*_TrackListing');
+	const t = useLocale('*_TrackListing');
 
 	const [tracks, setTracks] = useState([]);
 	const [uniqueId, setUniqueId] = useState(0);

@@ -8,7 +8,7 @@ import useLocale from '../../react-use-locale';
  * Prints a series of radio buttons, inline.
  */
 function InlineRadio({name, value, options, labels, onChange}) {
-	const [t] = useLocale('*_CiteWeb');
+	const t = useLocale('*_CiteWeb');
 
 	return (
 		<Fragment>

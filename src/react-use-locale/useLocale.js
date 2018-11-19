@@ -9,11 +9,11 @@ import rawTranslate from './rawTranslate';
 function useLocale(wildcard) {
 	const {curLang, locales} = useContext(LocaleContext);
 
-	return [
-		(str, ...args) =>
-			rawTranslate(curLang, locales, wildcard, str, ...args),
-		curLang
-	];
+	function t(str, ...args) {
+		return rawTranslate(curLang, locales, wildcard, str, ...args);
+	}
+
+	return t;
 }
 
 export default useLocale;

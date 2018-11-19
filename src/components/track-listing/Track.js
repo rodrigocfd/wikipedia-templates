@@ -10,7 +10,7 @@ import trackPT from './trackPT';
  * One single track, with many fields.
  */
 function Track({index, track, onRemove, onMoveUp, onChange}) {
-	const [t] = useLocale('*_TrackListing');
+	const t = useLocale('*_TrackListing');
 	const txt1 = useRef();
 
 	const [title, setTitle] = useState('');

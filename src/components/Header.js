@@ -8,7 +8,7 @@ import ChangeLanguage from './ChangeLanguage';
  * Header to be shown on all pages.
  */
 function Header() {
-	const [t] = useLocale('*');
+	const t = useLocale('*');
 
 	return (
 		<DivWrap>

@@ -45,7 +45,7 @@ Finally, on the components that will have translated strings, call the `useLocal
 import useLocale from 'react-use-locale';
 
 function MyComponent() {
-  const [t] = useLocale('*');
+  const t = useLocale('*');
 
   return (
     <div>
@@ -164,13 +164,13 @@ function App() {
 Now you can specify a component to have strings solely read from the base file, `en.json`:
 
 ```javascript
-const [t] = useLocale('*');
+const t = useLocale('*');
 ```
 
 Or to use the strings from the Dogs file:
 
 ```javascript
-const [t] = useLocale('*_Dogs');
+const t = useLocale('*_Dogs');
 ```
 
 The base file is always a fallback. If a string is not found in `en_Dogs.json`, it will be searched in `en.json`.
@@ -208,7 +208,7 @@ Interpolation is done this way:
 
 ```javascript
 function MyComponent() {
-  const [t] = useLocale('*');
+  const t = useLocale('*');
 
   return (
     <div>

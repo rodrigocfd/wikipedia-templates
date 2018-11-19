@@ -8,7 +8,7 @@ import useLocale from '../../react-use-locale';
  * Year, month and day textboxes, returning formatted date.
  */
 function YearMonthDay({name, value, onChange}) {
-	const [t] = useLocale('*_CiteWeb');
+	const t = useLocale('*_CiteWeb');
 
 	const [year, setYear] = useState('');
 	const [month, setMonth] = useState('');

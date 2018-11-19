@@ -8,19 +8,19 @@ import {langDescriptions} from '../locales';
 /**
  * Changes the current locale file.
  */
-function ChangeLanguage({dispatch}) {
-	const [t, curLang] = useLocale('*');
+function ChangeLanguage({lang, dispatch}) {
+	const t = useLocale('*');
 
 	return (
 		<DivWrap>
 			<DivTitle>{t`Language`}</DivTitle>
 			<DivOpts>
-				{langDescriptions.map(langName =>
-					curLang === langName.id ?
-						<span key={langName.id}>{t(langName.name)}</span> :
-						<button key={langName.id}
-							onClick={() => dispatch({type: 'setLang', val: langName.id})}>
-							{t(langName.name)}
+				{langDescriptions.map(langDescr =>
+					lang === langDescr.id ?
+						<span key={langDescr.id}>{t(langDescr.name)}</span> :
+						<button key={langDescr.id}
+							onClick={() => dispatch({type: 'setLang', val: langDescr.id})}>
+							{t(langDescr.name)}
 						</button>
 				)}
 			</DivOpts>
@@ -44,4 +44,6 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default connect()(ChangeLanguage);
+export default connect(
+	({lang}) => ({lang})
+)(ChangeLanguage);
