@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -14,6 +14,10 @@ function TrackListing() {
 
 	const [tracks, setTracks] = useState([]);
 	const [uniqueId, setUniqueId] = useState(0);
+
+	useEffect(() => {
+		document.title = t`Track listing` + ' - ' + t`Wikipedia Templates`;
+	}, [t]);
 
 	function addTrack() {
 		setUniqueId(uniqueId + 1);

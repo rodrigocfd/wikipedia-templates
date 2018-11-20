@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
 import useLocale from '../../react-use-locale';
@@ -8,6 +8,10 @@ import useLocale from '../../react-use-locale';
  */
 function InfoboxAlbum() {
 	const t = useLocale('*_InfoboxAlbum');
+
+	useEffect(() => {
+		document.title = t`Infobox album` + ' - ' + t`Wikipedia Templates`;
+	}, [t]);
 
 	return (
 		<div>

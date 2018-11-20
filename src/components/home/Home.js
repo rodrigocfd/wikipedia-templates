@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -9,6 +9,10 @@ import useLocale from '../../react-use-locale';
  */
 function Home() {
 	const t = useLocale('*');
+
+	useEffect(() => {
+		document.title = t`Wikipedia Templates`;
+	}, [t]);
 
 	return (
 		<div>

@@ -28,6 +28,10 @@ function CiteWeb() {
 	}, [txt1]);
 
 	useEffect(() => {
+		document.title = t`Cite web` + ' - ' + t`Wikipedia Templates`;
+	}, [t]);
+
+	useEffect(() => {
 		setOutput(formatOutput());
 	}, [t, refName, url, title, publisher, date, accessDate, language]);
 
