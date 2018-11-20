@@ -9,6 +9,7 @@ import locales from '../locales';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
+import InfoboxAlbum from './infobox-album/InfoboxAlbum';
 import TrackListing from './track-listing/TrackListing';
 
 /**
@@ -23,6 +24,7 @@ function App({lang}) {
 					<DivBody>
 						<Route exact path="/" component={Home}/>
 						<Route path="/cite-web" component={CiteWeb}/>
+						<Route path="/infobox-album" component={InfoboxAlbum}/>
 						<Route path="/track-listing" component={TrackListing}/>
 					</DivBody>
 				</div>
