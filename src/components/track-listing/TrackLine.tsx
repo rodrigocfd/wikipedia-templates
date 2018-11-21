@@ -52,7 +52,7 @@ const TrackLine: FunctionComponent<Props> =
 			<DivBox><input type="text" name="music" value={music}
 				onChange={e => setMusic(e.target.value)}/></DivBox>
 			<DivBox><DurationInput name="title" value={duration}
-				onChange={e => setDuration(e.target.value)}/></DivBox>
+				onChange={e => setDuration(e.currentTarget.value)}/></DivBox>
 			<DivBox>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
 				{index > 0 &&
