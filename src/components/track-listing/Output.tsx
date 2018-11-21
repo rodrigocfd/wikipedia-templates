@@ -1,19 +1,18 @@
 import React, {FunctionComponent} from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {Track} from './Track';
 
-interface OutputProps {
+interface Props {
 	tracks: Track[];
 }
 
 /**
  * Outputs the formatted track listing.
  */
-const Output: FunctionComponent<OutputProps> =
-		({tracks}: OutputProps) => {
+const Output: FunctionComponent<Props> =
+		({tracks}: Props) => {
 	const t = useLocale('*_TrackListing');
 
 	function formatOutput() {

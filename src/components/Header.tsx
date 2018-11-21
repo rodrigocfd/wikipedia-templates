@@ -4,10 +4,12 @@ import styled from 'styled-components';
 import useLocale from '../react-use-locale';
 import ChangeLanguage from './ChangeLanguage';
 
+interface Props { }
+
 /**
  * Header to be shown on all pages.
  */
-const Header: FunctionComponent = () => {
+const Header: FunctionComponent<Props> = () => {
 	const t = useLocale('*');
 
 	return (

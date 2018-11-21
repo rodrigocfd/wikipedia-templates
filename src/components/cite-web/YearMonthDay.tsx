@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 
-interface YearMonthDayProps {
+interface Props {
 	name: string;
 	value?: string;
 	onChange?: (e: FormEvent<HTMLInputElement>) => void;
@@ -12,8 +12,8 @@ interface YearMonthDayProps {
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-const YearMonthDay: FunctionComponent<YearMonthDayProps> =
-		({name, value, onChange}: YearMonthDayProps) => {
+const YearMonthDay: FunctionComponent<Props> =
+		({name, value, onChange}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
 	const [year, setYear] = useState('');

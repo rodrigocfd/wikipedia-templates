@@ -3,18 +3,18 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import {mapDispatchToProps, ReduxStateDispatch} from '../store';
+import {mapDispatchToProps, StateProps, DispatchProps} from '../store';
 import {langDescriptions} from '../locales';
 
-interface ChangeLanguageProps { }
+interface Props { }
 
-type ChangeLanguagePropsAll = ChangeLanguageProps & ReduxStateDispatch;
+type PropsAll = Props & StateProps & DispatchProps;
 
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage: FunctionComponent<ChangeLanguagePropsAll> =
-		({lang, dispatch}: ChangeLanguagePropsAll) => {
+const ChangeLanguage: FunctionComponent<PropsAll> =
+		({lang, dispatch}: PropsAll) => {
 	const t = useLocale('*');
 
 	return (
@@ -51,6 +51,6 @@ const DivOpts = styled.div`
 `;
 
 export default connect(
-	(state: ChangeLanguagePropsAll) => ({lang: state.lang}),
+	(state: PropsAll) => ({lang: state.lang}),
 	mapDispatchToProps
 )(ChangeLanguage);

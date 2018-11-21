@@ -4,10 +4,12 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 
+interface Props { }
+
 /**
  * Main component for app route: home.
  */
-const Home: FunctionComponent = () => {
+const Home: FunctionComponent<Props> = () => {
 	const t = useLocale('*');
 
 	useEffect(() => {

@@ -6,21 +6,21 @@ import styled from 'styled-components';
 import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
-import {ReduxState} from '../store';
+import {StateProps} from '../store';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 import TrackListing from './track-listing/TrackListing';
 
-interface AppProps { }
+interface Props { }
 
-type AppPropsAll = AppProps & ReduxState;
+type PropsAll = Props & StateProps;
 
 /**
  * Application root component.
  */
-const App: FunctionComponent<AppPropsAll> =
-		({lang}: AppPropsAll) => {
+const App: FunctionComponent<PropsAll> =
+		({lang}: PropsAll) => {
 	return (
 		<BrowserRouter>
 			<LocaleProvider lang={lang} locales={locales}>
@@ -42,5 +42,5 @@ const DivBody = styled.div`
 `;
 
 export default connect(
-	(state: AppPropsAll) => ({lang: state.lang})
+	(state: PropsAll) => ({lang: state.lang})
 )(App);

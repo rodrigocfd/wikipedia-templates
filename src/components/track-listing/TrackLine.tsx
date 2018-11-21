@@ -5,7 +5,7 @@ import useLocale from '../../react-use-locale';
 import DurationInput from './DurationInput';
 import {Track} from './Track';
 
-interface TrackLineProps {
+interface Props {
 	index: number;
 	track: Track;
 	onRemove?: (index: number) => void;
@@ -16,8 +16,8 @@ interface TrackLineProps {
 /**
  * One single track, with many fields.
  */
-const TrackLine: FunctionComponent<TrackLineProps> =
-		({index, track, onRemove, onMoveUp, onChange}: TrackLineProps) => {
+const TrackLine: FunctionComponent<Props> =
+		({index, track, onRemove, onMoveUp, onChange}: Props) => {
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 
-interface InlineRadioProps {
+interface Props {
 	name: string;
 	value?: string;
 	options: string[],
@@ -14,8 +14,8 @@ interface InlineRadioProps {
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio: FunctionComponent<InlineRadioProps> =
-		({name, value, options, labels, onChange}: InlineRadioProps) => {
+const InlineRadio: FunctionComponent<Props> =
+		({name, value, options, labels, onChange}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
 	return (

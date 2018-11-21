@@ -1,6 +1,6 @@
 import React, {FormEvent, FunctionComponent, useEffect, useState} from 'react';
 
-interface DurationInputProps {
+interface Props {
 	name: string;
 	value?: string;
 	onChange?: (e: FormEvent<HTMLInputElement>) => void;
@@ -9,8 +9,8 @@ interface DurationInputProps {
 /**
  * Input box which formats minutes:seconds.
  */
-const DurationInput: FunctionComponent<DurationInputProps> =
-		({name, value, onChange}: DurationInputProps) => {
+const DurationInput: FunctionComponent<Props> =
+		({name, value, onChange}: Props) => {
 	const [duration, setDuration] = useState(value);
 
 	useEffect(() => {

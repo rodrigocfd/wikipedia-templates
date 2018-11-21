@@ -6,12 +6,12 @@ import useLocale from '../../react-use-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 
-interface CiteWebProps { }
+interface Props { }
 
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb: FunctionComponent<CiteWebProps> = () => {
+const CiteWeb: FunctionComponent<Props> = () => {
 	const t = useLocale('*_CiteWeb');
 
 	const txt1 = useRef<HTMLInputElement>(null);
