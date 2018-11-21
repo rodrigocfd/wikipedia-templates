@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -7,7 +7,7 @@ import ChangeLanguage from './ChangeLanguage';
 /**
  * Header to be shown on all pages.
  */
-function Header() {
+const Header: FunctionComponent = () => {
 	const t = useLocale('*');
 
 	return (
@@ -20,7 +20,7 @@ function Header() {
 			</DivRight>
 		</DivWrap>
 	);
-}
+};
 
 const DivWrap = styled.div`
 	overflow: hidden;

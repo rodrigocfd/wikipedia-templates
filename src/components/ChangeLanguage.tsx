@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
+import {mapDispatchToProps, ReduxStateDispatch} from '../store';
 import {langDescriptions} from '../locales';
+
+interface ChangeLanguageProps { }
+
+type ChangeLanguagePropsAll = ChangeLanguageProps & ReduxStateDispatch;
 
 /**
  * Changes the current locale file.
  */
-function ChangeLanguage({lang, dispatch}) {
+const ChangeLanguage: FunctionComponent<ChangeLanguagePropsAll> =
+		({lang, dispatch}: ChangeLanguagePropsAll) => {
 	const t = useLocale('*');
 
 	return (
@@ -26,7 +32,7 @@ function ChangeLanguage({lang, dispatch}) {
 			</DivOpts>
 		</DivWrap>
 	);
-}
+};
 
 const DivWrap = styled.div`
 	padding-top: 14px;
@@ -45,5 +51,6 @@ const DivOpts = styled.div`
 `;
 
 export default connect(
-	({lang}) => ({lang})
+	(state: ChangeLanguagePropsAll) => ({lang: state.lang}),
+	mapDispatchToProps
 )(ChangeLanguage);
