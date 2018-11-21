@@ -80,12 +80,12 @@ const CiteWeb: FunctionComponent<CiteWebProps> = () => {
 				<div>
 					<DivName>{t`Date`}</DivName>
 					<YearMonthDay name="date" value={date}
-						onChange={e => setDate(e.target.value)}/>
+						onChange={e => setDate(e.currentTarget.value)}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
 					<YearMonthDay name="accessDate" value={accessDate}
-						onChange={e => setAccessDate(e.target.value)}/>
+						onChange={e => setAccessDate(e.currentTarget.value)}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>

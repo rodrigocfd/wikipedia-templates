@@ -1,10 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import PropTypes from 'prop-types';
+import React, {FormEvent, FunctionComponent, useEffect, useState} from 'react';
+
+interface DurationInputProps {
+	name: string;
+	value?: string;
+	onChange?: (e: FormEvent<HTMLInputElement>) => void;
+}
 
 /**
  * Input box which formats minutes:seconds.
  */
-function DurationInput({name, value, onChange}) {
+const DurationInput: FunctionComponent<DurationInputProps> =
+		({name, value, onChange}: DurationInputProps) => {
 	const [duration, setDuration] = useState(value);
 
 	useEffect(() => {
@@ -18,9 +24,9 @@ function DurationInput({name, value, onChange}) {
 			} else {
 				let d = parseInt(duration);
 				d = isNaN(d) ? 0 : d;
-				let sec = d % 100;
-				let min = (d - sec) / 100;
-				sec = sec < 10 ? '0' + sec : sec;
+				let sec: number = d % 100;
+				let min: number = (d - sec) / 100;
+				let secStr: string = (sec < 10) ? '0' + sec : sec.toString();
 				onChange({
 					target: {
 						value: `${min}:${sec}`
@@ -34,12 +40,6 @@ function DurationInput({name, value, onChange}) {
 		<input type="text" name={name} value={duration}
 			onChange={e => setDuration(e.target.value)}/>
 	);
-}
-
-DurationInput.propTypes = {
-	name: PropTypes.string,
-	value: PropTypes.string,
-	onChange: PropTypes.func
 };
 
 export default DurationInput;

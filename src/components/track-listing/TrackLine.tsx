@@ -1,17 +1,25 @@
-import React, {Fragment, useEffect, useRef, useState} from 'react';
-import PropTypes from 'prop-types';
+import React, {Fragment, FunctionComponent, useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import DurationInput from './DurationInput';
-import trackPT from './trackPT';
+import {Track} from './Track';
+
+interface TrackLineProps {
+	index: number;
+	track: Track;
+	onRemove?: (index: number) => void;
+	onMoveUp?: (index: number) => void;
+	onChange?: (track: Track) => void;
+}
 
 /**
  * One single track, with many fields.
  */
-function Track({index, track, onRemove, onMoveUp, onChange}) {
+const TrackLine: FunctionComponent<TrackLineProps> =
+		({index, track, onRemove, onMoveUp, onChange}: TrackLineProps) => {
 	const t = useLocale('*_TrackListing');
-	const txt1 = useRef();
+	const txt1 = useRef<HTMLInputElement>(null);
 
 	const [title, setTitle] = useState('');
 	const [note, setNote] = useState('');
@@ -21,7 +29,7 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 	const [duration, setDuration] = useState('');
 
 	useEffect(() => {
-		txt1.current.focus();
+		txt1 && txt1.current && txt1.current.focus();
 	}, [txt1]);
 
 	useEffect(() => {
@@ -43,7 +51,7 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 				onChange={e => setLyrics(e.target.value)}/></DivBox>
 			<DivBox><input type="text" name="music" value={music}
 				onChange={e => setMusic(e.target.value)}/></DivBox>
-			<DivBox><DurationInput type="text" name="title" value={duration}
+			<DivBox><DurationInput name="title" value={duration}
 				onChange={e => setDuration(e.target.value)}/></DivBox>
 			<DivBox>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
@@ -53,14 +61,6 @@ function Track({index, track, onRemove, onMoveUp, onChange}) {
 			</DivBox>
 		</Fragment>
 	);
-}
-
-Track.propTypes = {
-	index: PropTypes.number.isRequired,
-	track: trackPT.isRequired,
-	onRemove: PropTypes.func,
-	onMoveUp: PropTypes.func,
-	onChange: PropTypes.func
 };
 
 const DivBox = styled.div`
@@ -75,4 +75,4 @@ const ButtonSpaced = styled.button`
 	margin-left: 4px;
 `;
 
-export default Track;
+export default TrackLine;

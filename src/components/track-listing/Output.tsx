@@ -1,14 +1,19 @@
-import React from 'react';
+import React, {FunctionComponent} from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import trackPT from './trackPT';
+import {Track} from './Track';
+
+interface OutputProps {
+	tracks: Track[];
+}
 
 /**
  * Outputs the formatted track listing.
  */
-function Output({tracks}) {
+const Output: FunctionComponent<OutputProps> =
+		({tracks}: OutputProps) => {
 	const t = useLocale('*_TrackListing');
 
 	function formatOutput() {
@@ -28,12 +33,8 @@ function Output({tracks}) {
 
 	return (
 		<TextareaOut value={formatOutput()} readOnly
-			onClick={e => e.target.select()}></TextareaOut>
+			onClick={e => e.currentTarget.select()}></TextareaOut>
 	);
-}
-
-Output.propTypes = {
-	tracks: PropTypes.arrayOf(trackPT).isRequired
 };
 
 const TextareaOut = styled.textarea`

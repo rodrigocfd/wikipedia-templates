@@ -1,19 +1,12 @@
-import React, {Fragment, FunctionComponent, useEffect, useState} from 'react';
+import React, {FormEvent, Fragment, FunctionComponent, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 
-interface EventData {
-	target: {
-		name: string;
-		value: string;
-	};
-}
-
 interface YearMonthDayProps {
 	name: string;
 	value?: string;
-	onChange?: (e: EventData) => void;
+	onChange?: (e: FormEvent<HTMLInputElement>) => void;
 }
 
 /**

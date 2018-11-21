@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import Track from './Track';
+import TrackLine from './TrackLine';
 import Output from './Output';
 
 /**
@@ -65,7 +65,7 @@ function TrackListing() {
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
 						{tracks.map((tra, index) =>
-							<Track key={tra.id} index={index} track={tra}
+							<TrackLine key={tra.id} index={index} track={tra}
 								onRemove={removeTrack}
 								onMoveUp={moveTrackUp}
 								onChange={changedTrack}/>

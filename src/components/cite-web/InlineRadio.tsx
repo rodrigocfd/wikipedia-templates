@@ -8,7 +8,7 @@ interface InlineRadioProps {
 	value?: string;
 	options: string[],
 	labels: string[],
-	onChange: (e: FormEvent<HTMLInputElement>) => void;
+	onChange?: (e: FormEvent<HTMLInputElement>) => void;
 }
 
 /**
