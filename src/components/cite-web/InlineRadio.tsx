@@ -1,13 +1,21 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
+import React, {FormEvent, Fragment, FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 
+interface InlineRadioProps {
+	name: string;
+	value?: string;
+	options: string[],
+	labels: string[],
+	onChange: (e: FormEvent<HTMLInputElement>) => void;
+}
+
 /**
  * Prints a series of radio buttons, inline.
  */
-function InlineRadio({name, value, options, labels, onChange}) {
+const InlineRadio: FunctionComponent<InlineRadioProps> =
+		({name, value, options, labels, onChange}: InlineRadioProps) => {
 	const t = useLocale('*_CiteWeb');
 
 	return (
@@ -20,14 +28,6 @@ function InlineRadio({name, value, options, labels, onChange}) {
 			))}
 		</Fragment>
 	);
-}
-
-InlineRadio.propTypes = {
-	name: PropTypes.string.isRequired,
-	value: PropTypes.string,
-	options: PropTypes.arrayOf(PropTypes.string).isRequired,
-	labels: PropTypes.arrayOf(PropTypes.string).isRequired,
-	onChange: PropTypes.func,
 };
 
 const LabelHand = styled.label`
