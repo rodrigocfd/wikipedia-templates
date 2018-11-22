@@ -42,5 +42,5 @@ const DivBody = styled.div`
 `;
 
 export default connect(
-	(state: PropsAll) => ({lang: state.lang})
+	({lang}: StateProps, {}: Props) => ({lang})
 )(App);

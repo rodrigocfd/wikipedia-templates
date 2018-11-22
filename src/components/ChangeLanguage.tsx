@@ -14,7 +14,7 @@ type PropsAll = Props & StateProps & DispatchProps;
  * Changes the current locale file.
  */
 const ChangeLanguage: FunctionComponent<PropsAll> =
-		({lang, dispatch}: PropsAll) => {
+		({lang, dispatchNow}: PropsAll) => {
 	const t = useLocale('*');
 
 	return (
@@ -25,7 +25,7 @@ const ChangeLanguage: FunctionComponent<PropsAll> =
 					lang === langDescr.id ?
 						<span key={langDescr.id}>{t(langDescr.name)}</span> :
 						<button key={langDescr.id}
-							onClick={() => dispatch({type: 'setLang', val: langDescr.id})}>
+							onClick={() => dispatchNow('setLang', langDescr.id)}>
 							{t(langDescr.name)}
 						</button>
 				)}
@@ -51,6 +51,6 @@ const DivOpts = styled.div`
 `;
 
 export default connect(
-	(state: PropsAll) => ({lang: state.lang}),
+	({lang}: StateProps, {}: Props) => ({lang}),
 	mapDispatchToProps
 )(ChangeLanguage);

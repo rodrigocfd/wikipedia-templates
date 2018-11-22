@@ -1,7 +1,9 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
-export interface CustomAction {
-	type: 'setLang';
+export type PossibleActionTypes = 'setLang';
+
+export interface Action {
+	type: PossibleActionTypes;
 	val: any;
 }
 
@@ -10,14 +12,16 @@ export interface StateProps {
 }
 
 export interface DispatchProps {
-	dispatch: Dispatch<CustomAction>;
+	dispatchNow: (type: PossibleActionTypes, val: any) => Action;
 }
 
 /**
- * To be used with connect() function when dispatch is needed.
+ * dispatchNow() abbreaviates dispatch() call.
  */
-export const mapDispatchToProps =
-	(dispatch: Dispatch<CustomAction>) => ({dispatch});
+export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+	dispatchNow: (type: PossibleActionTypes, val: any) =>
+		dispatch({type, val})
+});
 
 /**
  * Initial state for application unique Redux store.
@@ -29,8 +33,8 @@ const initialState: StateProps = {
 /**
  * Reducer for application unique Redux store.
  */
-const reducer: Reducer<StateProps, CustomAction> =
-		(state: StateProps = initialState, action: CustomAction) => {
+const reducer: Reducer<StateProps, Action> =
+		(state: StateProps = initialState, action: Action) => {
 	switch (action.type) {
 	case 'setLang':
 		return {...state, lang: action.val};
