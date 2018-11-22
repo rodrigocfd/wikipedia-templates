@@ -8,7 +8,7 @@ interface Props {
 	value?: string;
 	options: string[],
 	labels: string[],
-	onChange?: (e: FormEvent<HTMLInputElement>) => void;
+	onChange?: (value: string) => void;
 }
 
 /**
@@ -24,7 +24,9 @@ const InlineRadio: FunctionComponent<Props> =
 				<LabelHand key={i}><InputHand type="radio"
 					name={name} value={opt}
 					checked={opt === value}
-					onChange={onChange}/> {t(labels[i])}</LabelHand>
+					onChange={e => onChange && onChange(e.currentTarget.value)}/>
+					{t(labels[i])}
+				</LabelHand>
 			))}
 		</Fragment>
 	);

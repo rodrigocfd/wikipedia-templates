@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import {Track} from './Track';
+import Track from './Track';
 
 interface Props {
 	tracks: Track[];

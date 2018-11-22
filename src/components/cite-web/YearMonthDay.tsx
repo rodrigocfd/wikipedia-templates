@@ -1,4 +1,4 @@
-import React, {FormEvent, Fragment, FunctionComponent, useEffect, useState} from 'react';
+import React, {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -6,7 +6,7 @@ import useLocale from '../../react-use-locale';
 interface Props {
 	name: string;
 	value?: string;
-	onChange?: (e: FormEvent<HTMLInputElement>) => void;
+	onChange?: (value: string) => void;
 }
 
 /**
@@ -21,15 +21,8 @@ const YearMonthDay: FunctionComponent<Props> =
 	const [day, setDay] = useState('');
 
 	useEffect(() => {
-		if (onChange) {
-			onChange({
-				target: {
-					name: name,
-					value: formattedDate()
-				}
-			});
-		}
-	});
+		onChange && onChange(formattedDate());
+	}, [year, month, day]);
 
 	function formattedDate(): string {
 		const monthNames = [null, t`January`, t`February`, t`March`, t`April`,

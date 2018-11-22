@@ -80,17 +80,17 @@ const CiteWeb: FunctionComponent<Props> = () => {
 				<div>
 					<DivName>{t`Date`}</DivName>
 					<YearMonthDay name="date" value={date}
-						onChange={e => setDate(e.currentTarget.value)}/>
+						onChange={val => setDate(val)}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
 					<YearMonthDay name="accessDate" value={accessDate}
-						onChange={e => setAccessDate(e.currentTarget.value)}/>
+						onChange={val => setAccessDate(val)}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>
 					<InlineRadio name="language" value={language}
-						onChange={e => setLanguage(e.currentTarget.value)}
+						onChange={val => setLanguage(val)}
 						options={['', 'en', 'es', 'fr', 'de', 'pt']}
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
 				</div>

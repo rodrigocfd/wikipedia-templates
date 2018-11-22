@@ -1,9 +1,9 @@
-import React, {FormEvent, FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 
 interface Props {
 	name: string;
 	value?: string;
-	onChange?: (e: FormEvent<HTMLInputElement>) => void;
+	onChange?: (duration: string) => void;
 }
 
 /**
@@ -15,23 +15,15 @@ const DurationInput: FunctionComponent<Props> =
 
 	useEffect(() => {
 		if (onChange) {
-			if (!duration.length) {
-				onChange({
-					target: {
-						value: ''
-					}
-				});
+			if (!duration || !duration.length) {
+				onChange('');
 			} else {
 				let d = parseInt(duration);
 				d = isNaN(d) ? 0 : d;
 				let sec: number = d % 100;
 				let min: number = (d - sec) / 100;
 				let secStr: string = (sec < 10) ? '0' + sec : sec.toString();
-				onChange({
-					target: {
-						value: `${min}:${sec}`
-					}
-				});
+				onChange(`${min}:${sec}`);
 			}
 		}
 	}, [duration]);

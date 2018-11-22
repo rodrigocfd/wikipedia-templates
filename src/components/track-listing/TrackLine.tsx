@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import DurationInput from './DurationInput';
-import {Track} from './Track';
+import Track from './Track';
 
 interface Props {
 	index: number;
@@ -52,7 +52,7 @@ const TrackLine: FunctionComponent<Props> =
 			<DivBox><input type="text" name="music" value={music}
 				onChange={e => setMusic(e.target.value)}/></DivBox>
 			<DivBox><DurationInput name="title" value={duration}
-				onChange={e => setDuration(e.currentTarget.value)}/></DivBox>
+				onChange={dur => setDuration(dur)}/></DivBox>
 			<DivBox>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
 				{index > 0 &&
