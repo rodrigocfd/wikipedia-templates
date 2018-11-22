@@ -42,15 +42,15 @@ const TrackLine: FunctionComponent<Props> =
 		<Fragment>
 			<DivBox>{index + 1}</DivBox>
 			<DivBox><input type="text" name="title" value={title} ref={txt1}
-				onChange={e => setTitle(e.target.value)}/></DivBox>
+				onChange={e => setTitle(e.target.value)} autoComplete="off"/></DivBox>
 			<DivBox><input type="text" name="note" value={note}
-				onChange={e => setNote(e.target.value)}/></DivBox>
+				onChange={e => setNote(e.target.value)} autoComplete="off"/></DivBox>
 			<DivBox><input type="text" name="writer" value={writer}
-				onChange={e => setWriter(e.target.value)}/></DivBox>
+				onChange={e => setWriter(e.target.value)} autoComplete="off"/></DivBox>
 			<DivBox><input type="text" name="lyrics" value={lyrics}
-				onChange={e => setLyrics(e.target.value)}/></DivBox>
+				onChange={e => setLyrics(e.target.value)} autoComplete="off"/></DivBox>
 			<DivBox><input type="text" name="music" value={music}
-				onChange={e => setMusic(e.target.value)}/></DivBox>
+				onChange={e => setMusic(e.target.value)} autoComplete="off"/></DivBox>
 			<DivBox><DurationInput name="title" value={duration}
 				onChange={dur => setDuration(dur)}/></DivBox>
 			<DivBox>

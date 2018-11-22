@@ -52,5 +52,5 @@ const DivOpts = styled.div`
 
 export default connect(
 	(state: PropsAll) => ({lang: state.lang}),
-	// mapDispatchToProps
+	mapDispatchToProps
 )(ChangeLanguage);

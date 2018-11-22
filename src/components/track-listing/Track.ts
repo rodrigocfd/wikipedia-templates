@@ -1,5 +1,5 @@
 /**
- * Descriptor for a single track.
+ * Model for a single track.
  */
 export default interface Track {
 	id: number;

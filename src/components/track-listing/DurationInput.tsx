@@ -30,7 +30,8 @@ const DurationInput: FunctionComponent<Props> =
 
 	return (
 		<input type="text" name={name} value={duration}
-			onChange={e => setDuration(e.target.value)}/>
+			onChange={e => setDuration(e.target.value)}
+			autoComplete="off"/>
 	);
 };
 

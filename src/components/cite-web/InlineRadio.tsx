@@ -1,4 +1,4 @@
-import React, {FormEvent, Fragment, FunctionComponent} from 'react';
+import React, {Fragment, FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';

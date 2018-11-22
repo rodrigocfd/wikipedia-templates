@@ -1,10 +1,11 @@
-import React, {FormEvent, FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
+import Cite from './Cite';
 
 interface Props { }
 
@@ -13,17 +14,10 @@ interface Props { }
  */
 const CiteWeb: FunctionComponent<Props> = () => {
 	const t = useLocale('*_CiteWeb');
-
 	const txt1 = useRef<HTMLInputElement>(null);
-	const [output, setOutput] = useState('');
 
-	const [refName, setRefName] = useState('');
-	const [url, setUrl] = useState('');
-	const [title, setTitle] = useState('');
-	const [publisher, setPublisher] = useState('');
-	const [date, setDate] = useState('');
-	const [accessDate, setAccessDate] = useState('');
-	const [language, setLanguage] = useState('');
+	const [output, setOutput] = useState('');
+	const [cite, setCite] = useState({} as Cite);
 
 	useEffect(() => {
 		txt1 && txt1.current && txt1.current.focus();
@@ -35,21 +29,21 @@ const CiteWeb: FunctionComponent<Props> = () => {
 
 	useEffect(() => {
 		setOutput(formatOutput());
-	}, [t, refName, url, title, publisher, date, accessDate, language]);
+	}, [t, cite]);
 
-	function oneParam(name: string, val: string): string {
+	function oneParam(name: string, val: string | undefined): string {
 		return val ? ` |${t(name)}=${val}` : '';
 	}
 
 	function formatOutput(): string {
-		return '<ref' + (refName && ` name="${refName}"`) + '>' +
+		return '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>' +
 			'{{' + t`Cite web` +
-			oneParam('url', url) +
-			oneParam('title', title) +
-			oneParam('publisher', publisher) +
-			oneParam('date', date) +
-			oneParam('access-date', accessDate) +
-			oneParam('language', language) +
+			oneParam('url', cite.url) +
+			oneParam('title', cite.title) +
+			oneParam('publisher', cite.publisher) +
+			oneParam('date', cite.date) +
+			oneParam('access-date', cite.accessDate) +
+			oneParam('language', cite.language) +
 			'}}</ref>';
 	}
 
@@ -59,38 +53,42 @@ const CiteWeb: FunctionComponent<Props> = () => {
 			<div>
 				<div>
 					<DivName>{t`Ref name`}</DivName>
-					<input type="text" size={18} name="refName" value={refName}
-						onChange={e => setRefName(e.target.value)} ref={txt1}/>
+					<input type="text" size={18} name="refName" value={cite.refName}
+						onChange={e => setCite({...cite, refName: e.target.value})}
+						ref={txt1}/>
 				</div>
 				<div>
 					<DivName>{t`URL`}</DivName>
-					<input type="text" size={100} name="url" value={url}
-						onChange={e => setUrl(e.target.value)} autoComplete="off"/>
+					<input type="text" size={100} name="url" value={cite.url}
+						onChange={e => setCite({...cite, url: e.target.value})}
+						autoComplete="off"/>
 				</div>
 				<div>
 					<DivName>{t`Title`}</DivName>
-					<input type="text" size={88} name="title" value={title}
-						onChange={e => setTitle(e.target.value)} autoComplete="off"/>
+					<input type="text" size={88} name="title" value={cite.title}
+						onChange={e => setCite({...cite, title: e.target.value})}
+						autoComplete="off"/>
 				</div>
 				<div>
 					<DivName>{t`Publisher`}</DivName>
-					<input type="text" size={88} name="publisher" value={publisher}
-						onChange={e => setPublisher(e.target.value)}/>
+					<input type="text" size={88} name="publisher" value={cite.publisher}
+						onChange={e => setCite({...cite, publisher: e.target.value})}
+						autoComplete="off"/>
 				</div>
 				<div>
 					<DivName>{t`Date`}</DivName>
-					<YearMonthDay name="date" value={date}
-						onChange={val => setDate(val)}/>
+					<YearMonthDay name="date" value={cite.date}
+						onChange={val => setCite({...cite, date: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
-					<YearMonthDay name="accessDate" value={accessDate}
-						onChange={val => setAccessDate(val)}/>
+					<YearMonthDay name="accessDate" value={cite.accessDate}
+						onChange={val => setCite({...cite, accessDate: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>
-					<InlineRadio name="language" value={language}
-						onChange={val => setLanguage(val)}
+					<InlineRadio name="language" value={cite.language}
+						onChange={val => setCite({...cite, language: val})}
 						options={['', 'en', 'es', 'fr', 'de', 'pt']}
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
 				</div>
