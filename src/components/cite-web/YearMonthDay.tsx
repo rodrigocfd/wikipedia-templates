@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 
 interface Props {
-	name: string;
+	name?: string;
 	value?: string;
 	onChange?: (value: string) => void;
 }
@@ -50,13 +50,17 @@ const YearMonthDay: FunctionComponent<Props> =
 		setDay(today.getDate().toString());
 	}
 
+	function genName(suffix: string): string | undefined {
+		return name ? `${name}_${suffix}` : undefined;
+	}
+
 	return (
 		<Fragment>
-			{t`Year`} <InputNum4 type="number" name="yer" value={year}
+			{t`Year`} <InputNum4 type="number" name={genName('year')} value={year}
 				onChange={e => setYear(e.target.value)}/>
-			{t`Month`} <InputNum2 type="number" name="mon" value={month}
+			{t`Month`} <InputNum2 type="number" name={genName('month')} value={month}
 				min="1" max="12" onChange={e => setMonth(e.target.value)}/>
-			{t`Day`} <InputNum2 type="number" name="day" value={day}
+			{t`Day`} <InputNum2 type="number" name={genName('day')} value={day}
 				min="1" max="31" onChange={e => setDay(e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>
 		</Fragment>

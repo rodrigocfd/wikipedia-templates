@@ -10,3 +10,15 @@ export default interface Cite {
 	accessDate?: string;
 	language?: string;
 }
+
+export function newCite(): Cite {
+	return {
+		refName: '',
+		url: '',
+		title: '',
+		publisher: '',
+		date: '',
+		accessDate: '',
+		language: ''
+	};
+}

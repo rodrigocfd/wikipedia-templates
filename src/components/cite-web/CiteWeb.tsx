@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
-import Cite from './Cite';
+import Cite, {newCite} from './Cite';
 
 interface Props { }
 
@@ -17,7 +17,7 @@ const CiteWeb: FunctionComponent<Props> = () => {
 	const txt1 = useRef<HTMLInputElement>(null);
 
 	const [output, setOutput] = useState('');
-	const [cite, setCite] = useState({} as Cite);
+	const [cite, setCite] = useState(newCite());
 
 	useEffect(() => {
 		txt1 && txt1.current && txt1.current.focus();
@@ -53,36 +53,32 @@ const CiteWeb: FunctionComponent<Props> = () => {
 			<div>
 				<div>
 					<DivName>{t`Ref name`}</DivName>
-					<input type="text" size={18} name="refName" value={cite.refName}
-						onChange={e => setCite({...cite, refName: e.target.value})}
-						ref={txt1}/>
+					<input type="text" size={18} value={cite.refName} autoComplete="off" ref={txt1}
+						onChange={e => setCite({...cite, refName: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`URL`}</DivName>
-					<input type="text" size={100} name="url" value={cite.url}
-						onChange={e => setCite({...cite, url: e.target.value})}
-						autoComplete="off"/>
+					<input type="text" size={100} value={cite.url} autoComplete="off"
+						onChange={e => setCite({...cite, url: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Title`}</DivName>
-					<input type="text" size={88} name="title" value={cite.title}
-						onChange={e => setCite({...cite, title: e.target.value})}
-						autoComplete="off"/>
+					<input type="text" size={88} value={cite.title} autoComplete="off"
+						onChange={e => setCite({...cite, title: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Publisher`}</DivName>
-					<input type="text" size={88} name="publisher" value={cite.publisher}
-						onChange={e => setCite({...cite, publisher: e.target.value})}
-						autoComplete="off"/>
+					<input type="text" size={88} value={cite.publisher} autoComplete="off"
+						onChange={e => setCite({...cite, publisher: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Date`}</DivName>
-					<YearMonthDay name="date" value={cite.date}
+					<YearMonthDay value={cite.date}
 						onChange={val => setCite({...cite, date: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
-					<YearMonthDay name="accessDate" value={cite.accessDate}
+					<YearMonthDay value={cite.accessDate}
 						onChange={val => setCite({...cite, accessDate: val})}/>
 				</div>
 				<div>
