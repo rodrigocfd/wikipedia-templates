@@ -1,37 +1,40 @@
-import React, {useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import TrackLine from './TrackLine';
 import Output from './Output';
+import Track from './Track';
+
+interface Props { }
 
 /**
  * Main component for app route: track-listing.
  */
-function TrackListing() {
+const TrackListing: FunctionComponent<Props> = () => {
 	const t = useLocale('*_TrackListing');
 
-	const [tracks, setTracks] = useState([]);
+	const [tracks, setTracks] = useState([] as Track[]);
 	const [uniqueId, setUniqueId] = useState(0);
 
 	useEffect(() => {
 		document.title = t`Track listing` + ' - ' + t`Wikipedia Templates`;
 	}, [t]);
 
-	function addTrack() {
+	function addTrack(): void {
 		setUniqueId(uniqueId + 1);
 		const newTrack = {id: uniqueId};
 		setTracks([...tracks, newTrack]);
 	}
 
-	function removeTrack(index) {
+	function removeTrack(index: number): void {
 		let newList = [...tracks];
 		newList.splice(index, 1);
 		setTracks(newList);
 	}
 
-	function moveTrackUp(index) {
+	function moveTrackUp(index: number): void {
 		let newList = [...tracks];
 		if (index > 0) {
 			const tmp = newList[index];
@@ -41,7 +44,7 @@ function TrackListing() {
 		}
 	}
 
-	function changedTrack(track) {
+	function changedTrack(track: Track): void {
 		const updatedTracks = tracks.map(tra =>
 			tra.id === track.id ? track : tra);
 		setTracks(updatedTracks);
@@ -79,7 +82,7 @@ function TrackListing() {
 			</div>
 		</div>
 	);
-}
+};
 
 const DivBtnAddTrack = styled.div`
 	margin-bottom: 10px;
