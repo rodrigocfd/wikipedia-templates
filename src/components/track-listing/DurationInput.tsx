@@ -1,7 +1,7 @@
 import React, {FunctionComponent, useEffect, useState} from 'react';
 
 interface Props {
-	name: string;
+	name?: string;
 	value?: string;
 	onChange?: (duration: string) => void;
 }

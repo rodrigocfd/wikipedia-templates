@@ -5,6 +5,7 @@ import useLocale from '../../react-use-locale';
 import Track from './Track';
 
 interface Props {
+	name?: string;
 	tracks: Track[];
 }
 
@@ -12,7 +13,7 @@ interface Props {
  * Outputs the formatted track listing.
  */
 const Output: FunctionComponent<Props> =
-		({tracks}: Props) => {
+		({name, tracks}: Props) => {
 	const t = useLocale('*_TrackListing');
 
 	function formatOutput() {
@@ -31,7 +32,7 @@ const Output: FunctionComponent<Props> =
 	}
 
 	return (
-		<TextareaOut value={formatOutput()} readOnly
+		<TextareaOut name={name} value={formatOutput()} readOnly
 			onClick={e => e.currentTarget.select()}></TextareaOut>
 	);
 };
