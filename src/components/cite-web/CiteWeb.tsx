@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
+import Output from './Output';
 import Cite, {newCite} from './Cite';
 
 interface Props { }
@@ -16,7 +17,6 @@ const CiteWeb: FunctionComponent<Props> = () => {
 	const t = useLocale('*_CiteWeb');
 	const txt1 = useRef<HTMLInputElement>(null);
 
-	const [output, setOutput] = useState('');
 	const [cite, setCite] = useState(newCite());
 
 	useEffect(() => {
@@ -26,26 +26,6 @@ const CiteWeb: FunctionComponent<Props> = () => {
 	useEffect(() => {
 		document.title = t`Cite web` + ' - ' + t`Wikipedia Templates`;
 	}, [t]);
-
-	useEffect(() => {
-		setOutput(formatOutput());
-	}, [t, cite]);
-
-	function oneParam(name: string, val: string | undefined): string {
-		return val ? ` |${t(name)}=${val}` : '';
-	}
-
-	function formatOutput(): string {
-		return '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>' +
-			'{{' + t`Cite web` +
-			oneParam('url', cite.url) +
-			oneParam('title', cite.title) +
-			oneParam('publisher', cite.publisher) +
-			oneParam('date', cite.date) +
-			oneParam('access-date', cite.accessDate) +
-			oneParam('language', cite.language) +
-			'}}</ref>';
-	}
 
 	return (
 		<div>
@@ -73,13 +53,11 @@ const CiteWeb: FunctionComponent<Props> = () => {
 				</div>
 				<div>
 					<DivName>{t`Date`}</DivName>
-					<YearMonthDay value={cite.date}
-						onChange={val => setCite({...cite, date: val})}/>
+					<YearMonthDay onChange={val => setCite({...cite, date: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
-					<YearMonthDay value={cite.accessDate}
-						onChange={val => setCite({...cite, accessDate: val})}/>
+					<YearMonthDay onChange={val => setCite({...cite, accessDate: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>
@@ -89,7 +67,7 @@ const CiteWeb: FunctionComponent<Props> = () => {
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
 				</div>
 			</div>
-			<TextareaOut value={output} readOnly onClick={e => e.currentTarget.select()}></TextareaOut>
+			<Output cite={cite}/>
 			<Link to="/">{t`Home`}</Link>
 		</div>
 	);
@@ -99,14 +77,6 @@ const DivName = styled.div`
 	display: inline-block;
 	width: 150px;
 	padding: 6px 0;
-`;
-const TextareaOut = styled.textarea`
-	font-family: monospace;
-	border: 1px solid #ccc;
-	width: 99%;
-	height: 100px;
-	margin: 20px 0;
-	padding: 10px;
 `;
 
 export default CiteWeb;

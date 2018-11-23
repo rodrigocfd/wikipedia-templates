@@ -5,8 +5,8 @@ import useLocale from '../../react-use-locale';
 
 interface Props {
 	name?: string;
-	value?: string;
-	onChange?: (value: string) => void;
+	value?: Date;
+	onChange?: (value: Date) => void;
 }
 
 /**
@@ -16,39 +16,11 @@ const YearMonthDay: FunctionComponent<Props> =
 		({name, value, onChange}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
-	const [year, setYear] = useState('');
-	const [month, setMonth] = useState('');
-	const [day, setDay] = useState('');
+	const [date, setDate] = useState(undefined);
 
 	useEffect(() => {
-		onChange && onChange(formattedDate());
-	}, [year, month, day]);
-
-	function formattedDate(): string {
-		const monthNames = [null, t`January`, t`February`, t`March`, t`April`,
-			t`May`, t`June`, t`July`, t`August`, t`September`, t`October`,
-			t`November`, t`December`];
-		let formatted = '';
-
-		if (year && month && day) {
-			formatted = t('DateDMY {1} {0}, {2}', day, monthNames[+month], year);
-		} else if (year && month && !day) {
-			formatted = t('DateMY {0}, {1}', monthNames[+month], year);
-		} else if (year && !month && !day) {
-			formatted = year;
-		} else if (year || month || day) {
-			formatted = `${year}-${month}-${day}`;
-		}
-
-		return formatted;
-	}
-
-	function setToday(): void {
-		let today = new Date();
-		setYear(today.getFullYear().toString());
-		setMonth((today.getMonth() + 1).toString());
-		setDay(today.getDate().toString());
-	}
+		onChange && onChange(date);
+	}, [date]);
 
 	function genName(suffix: string): string | undefined {
 		return name ? `${name}_${suffix}` : undefined;
@@ -56,13 +28,19 @@ const YearMonthDay: FunctionComponent<Props> =
 
 	return (
 		<Fragment>
-			{t`Year`} <InputNum4 type="number" name={genName('year')} value={year}
-				onChange={e => setYear(e.target.value)}/>
-			{t`Month`} <InputNum2 type="number" name={genName('month')} value={month}
-				min="1" max="12" onChange={e => setMonth(e.target.value)}/>
-			{t`Day`} <InputNum2 type="number" name={genName('day')} value={day}
-				min="1" max="31" onChange={e => setDay(e.target.value)}/>
-			<button onClick={setToday}>{t`today`}</button>
+			{t`Year`} <InputNum4 type="number" name={genName('year')}
+				value={date ? date.getFullYear()}
+				onChange={e => setDate(new Date(
+					+e.target.value, date.getMonth(), date.getDate()))}/>
+			{t`Month`} <InputNum2 type="number" name={genName('month')}
+				min="1" max="12" value={date.getMonth() + 1}
+				onChange={e => setDate(new Date(
+					date.getFullYear(), +e.target.value - 1, date.getDate()))}/>
+			{t`Day`} <InputNum2 type="number" name={genName('day')}
+				min="1" max="31" value={date.getDate()}
+				onChange={e => setDate(new Date(
+					date.getFullYear(), date.getMonth(), +e.target.value))}/>
+			<button onClick={() => setDate(new Date())}>{t`today`}</button>
 		</Fragment>
 	);
 };

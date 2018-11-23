@@ -6,8 +6,8 @@ export default interface Cite {
 	url?: string;
 	title?: string;
 	publisher?: string;
-	date?: string;
-	accessDate?: string;
+	date?: Date;
+	accessDate?: Date;
 	language?: string;
 }
 
@@ -17,8 +17,8 @@ export function newCite(): Cite {
 		url: '',
 		title: '',
 		publisher: '',
-		date: '',
-		accessDate: '',
+		date: new Date(),
+		accessDate: new Date(),
 		language: ''
 	};
 }
