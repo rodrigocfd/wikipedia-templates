@@ -23,6 +23,13 @@ const YearMonthDay: FunctionComponent<Props> =
 		onChange && onChange(date);
 	}, [date]);
 
+	function setDateField(fieldName: string, val?: string) {
+		setDate({
+			...date,
+			[fieldName]: val ? +val : ''
+		});
+	}
+
 	function setToday() {
 		const now = new Date();
 		setDate({
@@ -36,13 +43,13 @@ const YearMonthDay: FunctionComponent<Props> =
 		<Fragment>
 			{t`Year`} <InputNum4 type="number"
 				value={date.year} name={name && `${name}_year`}
-				onChange={e => setDate({...date, year: +e.target.value})}/>
+				onChange={e => setDateField('year', e.target.value)}/>
 			{t`Month`} <InputNum2 type="number" min="1" max="12"
 				value={date.month} name={name && `${name}_month`}
-				onChange={e => setDate({...date, month: +e.target.value})}/>
+				onChange={e => setDateField('month', e.target.value)}/>
 			{t`Day`} <InputNum2 type="number" min="1" max="31"
 				value={date.day} name={name && `${name}_day`}
-				onChange={e => setDate({...date, day: +e.target.value})}/>
+				onChange={e => setDateField('day', e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>
 		</Fragment>
 	);

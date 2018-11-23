@@ -31,15 +31,15 @@ const Output: FunctionComponent<Props> =
 			'November', 'December'];
 		let formatted = '';
 
-		if (date.year !== 0 && date.month !== 0 && date.day !== 0) {
+		if (date.year && date.month && date.day) {
 			formatted = t('DateDMY {1} {0}, {2}',
 				date.day, t(monthNames[date.month]), date.year);
-		} else if (date.year !== 0 && date.month !== 0 && date.day === 0) {
+		} else if (date.year && date.month && !date.day) {
 			formatted = t('DateMY {0}, {1}',
 				t(monthNames[date.month]), date.year);
-		} else if (date.year !== 0 && date.month === 0 && date.day === 0) {
+		} else if (date.year && !date.month && !date.day) {
 			formatted = date.year.toString();
-		} else if (date.year !== 0 || date.month !== 0 || date.day !== 0) {
+		} else if (date.year || date.month || date.day) {
 			formatted = `${date.year}-${date.month}-${date.day}`;
 		}
 
