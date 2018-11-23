@@ -10,7 +10,6 @@ function useLocale(wildcard) {
 	const {curLang, locales} = useContext(LocaleContext);
 
 	function t(str, ...args) {
-		console.log(str, curLang)
 		return rawTranslate(curLang, locales, wildcard, str, ...args);
 	}
 

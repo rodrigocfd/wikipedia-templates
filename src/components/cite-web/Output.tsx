@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DayMonthYear from './DayMonthYear';
 import Cite from './Cite';
 
 interface Props {
@@ -16,11 +17,11 @@ const Output: FunctionComponent<Props> =
 		({name, cite}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
-	function oneParam(name: string, val: string | undefined): string {
+	function oneParam(name: string, val?: string): string {
 		return val ? ` |${t(name)}=${val}` : '';
 	}
 
-	function formatDate(date: Date | undefined): string {
+	function formatDate(date?: DayMonthYear): string {
 		if (!date) {
 			return '';
 		}
@@ -28,21 +29,21 @@ const Output: FunctionComponent<Props> =
 		const monthNames = [null, 'January', 'February', 'March', 'April',
 			'May', 'June', 'July', 'August', 'September', 'October',
 			'November', 'December'];
-		// let formatted = '';
+		let formatted = '';
 
-		// if (year && month && day) {
-		// 	formatted = t('DateDMY {1} {0}, {2}', day, t(monthNames[+month]), year);
-		// } else if (year && month && !day) {
-		// 	formatted = t('DateMY {0}, {1}', t(monthNames[+month]), year);
-		// } else if (year && !month && !day) {
-		// 	formatted = year;
-		// } else if (year || month || day) {
-			// formatted = `${year}-${month}-${day}`;
-		// }
+		if (date.year !== 0 && date.month !== 0 && date.day !== 0) {
+			formatted = t('DateDMY {1} {0}, {2}',
+				date.day, t(monthNames[date.month]), date.year);
+		} else if (date.year !== 0 && date.month !== 0 && date.day === 0) {
+			formatted = t('DateMY {0}, {1}',
+				t(monthNames[date.month]), date.year);
+		} else if (date.year !== 0 && date.month === 0 && date.day === 0) {
+			formatted = date.year.toString();
+		} else if (date.year !== 0 || date.month !== 0 || date.day !== 0) {
+			formatted = `${date.year}-${date.month}-${date.day}`;
+		}
 
-		// return formatted;
-
-		return `{${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}}`;
+		return formatted;
 	}
 
 	function formatOutput(): string {

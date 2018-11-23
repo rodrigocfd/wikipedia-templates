@@ -2,11 +2,12 @@ import React, {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DayMonthYear from './DayMonthYear';
 
 interface Props {
 	name?: string;
-	value?: Date;
-	onChange?: (value: Date) => void;
+	value: DayMonthYear;
+	onChange?: (value: DayMonthYear) => void;
 }
 
 /**
@@ -16,31 +17,33 @@ const YearMonthDay: FunctionComponent<Props> =
 		({name, value, onChange}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
-	const [date, setDate] = useState(undefined);
+	const [date, setDate] = useState(value);
 
 	useEffect(() => {
 		onChange && onChange(date);
 	}, [date]);
 
-	function genName(suffix: string): string | undefined {
-		return name ? `${name}_${suffix}` : undefined;
+	function setToday() {
+		const now = new Date();
+		setDate({
+			day: now.getDate(),
+			month: now.getMonth() + 1,
+			year: now.getFullYear()
+		});
 	}
 
 	return (
 		<Fragment>
-			{t`Year`} <InputNum4 type="number" name={genName('year')}
-				value={date ? date.getFullYear()}
-				onChange={e => setDate(new Date(
-					+e.target.value, date.getMonth(), date.getDate()))}/>
-			{t`Month`} <InputNum2 type="number" name={genName('month')}
-				min="1" max="12" value={date.getMonth() + 1}
-				onChange={e => setDate(new Date(
-					date.getFullYear(), +e.target.value - 1, date.getDate()))}/>
-			{t`Day`} <InputNum2 type="number" name={genName('day')}
-				min="1" max="31" value={date.getDate()}
-				onChange={e => setDate(new Date(
-					date.getFullYear(), date.getMonth(), +e.target.value))}/>
-			<button onClick={() => setDate(new Date())}>{t`today`}</button>
+			{t`Year`} <InputNum4 type="number"
+				value={date.year} name={name && `${name}_year`}
+				onChange={e => setDate({...date, year: +e.target.value})}/>
+			{t`Month`} <InputNum2 type="number" min="1" max="12"
+				value={date.month} name={name && `${name}_month`}
+				onChange={e => setDate({...date, month: +e.target.value})}/>
+			{t`Day`} <InputNum2 type="number" min="1" max="31"
+				value={date.day} name={name && `${name}_day`}
+				onChange={e => setDate({...date, day: +e.target.value})}/>
+			<button onClick={setToday}>{t`today`}</button>
 		</Fragment>
 	);
 };

@@ -53,11 +53,13 @@ const CiteWeb: FunctionComponent<Props> = () => {
 				</div>
 				<div>
 					<DivName>{t`Date`}</DivName>
-					<YearMonthDay onChange={val => setCite({...cite, date: val})}/>
+					<YearMonthDay value={cite.date}
+						onChange={val => setCite({...cite, date: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
-					<YearMonthDay onChange={val => setCite({...cite, accessDate: val})}/>
+					<YearMonthDay value={cite.accessDate}
+						onChange={val => setCite({...cite, accessDate: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>

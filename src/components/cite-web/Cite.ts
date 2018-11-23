@@ -1,14 +1,16 @@
+import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
+
 /**
  * Model for a citation.
  */
 export default interface Cite {
-	refName?: string;
-	url?: string;
-	title?: string;
-	publisher?: string;
-	date?: Date;
-	accessDate?: Date;
-	language?: string;
+	refName: string;
+	url: string;
+	title: string;
+	publisher: string;
+	date: DayMonthYear;
+	accessDate: DayMonthYear;
+	language: string;
 }
 
 export function newCite(): Cite {
@@ -17,8 +19,8 @@ export function newCite(): Cite {
 		url: '',
 		title: '',
 		publisher: '',
-		date: new Date(),
-		accessDate: new Date(),
+		date: newDayMonthYear(),
+		accessDate: newDayMonthYear(),
 		language: ''
 	};
 }
