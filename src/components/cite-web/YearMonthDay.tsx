@@ -2,7 +2,7 @@ import React, {Fragment, FunctionComponent, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import DayMonthYear from './DayMonthYear';
+import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
 	name?: string;
@@ -51,6 +51,7 @@ const YearMonthDay: FunctionComponent<Props> =
 				value={date.day} name={name && `${name}_day`}
 				onChange={e => setDateField('day', e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>
+			{' '} <button onClick={() => setDate(newDayMonthYear())}>{t`clear`}</button>
 		</Fragment>
 	);
 };
