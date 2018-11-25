@@ -1,22 +1,29 @@
+import {ManyLocales, SingleLocale} from './model';
+
+interface UsableLocale {
+	base: SingleLocale;
+	custom?: SingleLocale;
+}
+
 /**
  * Low-level translate function.
  */
-function rawTranslate(curLang, locales, wildcard, str, ...args) {
+export default function rawTranslate(curLang: string, locales: ManyLocales,
+		wildcard: string, str: string | TemplateStringsArray,
+		...args: (string | number)[]): string {
 	const locale = loadLocales(curLang, locales, wildcard);
-	if (!locale) {
+	if (locale === null) {
 		return `[MISSING ${curLang}]`;
 	}
 
-	if (str instanceof Array) {
-		str = str[0];
-	}
+	let userStr = (str instanceof Array) ? str[0] : str;
 
-	let translatedStr = (locale.custom || locale.base)[str];
+	let translatedStr = (locale.custom || locale.base)[userStr];
 	if (translatedStr === undefined) {
-		translatedStr = locale.base[str];
+		translatedStr = locale.base[userStr];
 		if (translatedStr === undefined) {
-			console.error(`Key not found: "${str}".`);
-			return `[${str}]`;
+			console.error(`Key not found: "${userStr}".`);
+			return `[${userStr}]`;
 		}
 	}
 
@@ -24,25 +31,25 @@ function rawTranslate(curLang, locales, wildcard, str, ...args) {
 		interpolateString(translatedStr, args) : translatedStr;
 }
 
-
-function loadLocales(curLang, locales, wildcard) {
-	const base = locales[curLang];
+function loadLocales(curLang: string, locales: ManyLocales,
+		wildcard: string): UsableLocale | null {
+	const base: SingleLocale = locales[curLang];
 	if (!base) {
 		console.error(`Locale source not found: "${curLang}".`);
-		return false;
+		return null;
 	}
 
-	const customKey = wildcard.replace('*', curLang);
+	const customKey: string = wildcard.replace('*', curLang);
 	if (customKey === curLang) {
-		return {base, custom: null};
+		return {base};
 	}
 
-	const custom = locales[customKey];
-	return {base, custom: custom || null};
+	const custom: SingleLocale = locales[customKey];
+	return {base, custom: custom || undefined};
 }
 
-
-function interpolateString(translatedStr, args) {
+function interpolateString(translatedStr: string,
+		args: (string | number)[]): string {
 	let finalStr = '';
 	let regex = new RegExp('\\{\\d+\\}', 'g');
 	let match = null;
@@ -74,5 +81,3 @@ function interpolateString(translatedStr, args) {
 
 	return finalStr;
 }
-
-export default rawTranslate;

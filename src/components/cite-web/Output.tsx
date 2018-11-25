@@ -17,26 +17,22 @@ const Output: FunctionComponent<Props> =
 		({name, cite}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
-	function oneParam(name: string, val?: string): string {
-		return val ? ` |${t(name)}=${val}` : '';
-	}
-
 	function formatDate(date?: DayMonthYear): string {
 		if (!date) {
 			return '';
 		}
 
-		const monthNames = [null, 'January', 'February', 'March', 'April',
+		const monthNames = ['January', 'February', 'March', 'April',
 			'May', 'June', 'July', 'August', 'September', 'October',
 			'November', 'December'];
 		let formatted = '';
 
 		if (date.year && date.month && date.day) {
 			formatted = t('DateDMY {1} {0}, {2}',
-				date.day, t(monthNames[date.month]), date.year);
+				date.day, t(monthNames[date.month - 1]), date.year);
 		} else if (date.year && date.month && !date.day) {
 			formatted = t('DateMY {0}, {1}',
-				t(monthNames[date.month]), date.year);
+				t(monthNames[date.month - 1]), date.year);
 		} else if (date.year && !date.month && !date.day) {
 			formatted = date.year.toString();
 		} else if (date.year || date.month || date.day) {
@@ -44,6 +40,10 @@ const Output: FunctionComponent<Props> =
 		}
 
 		return formatted;
+	}
+
+	function oneParam(name: string, val?: string): string {
+		return val ? ` |${t(name)}=${val}` : '';
 	}
 
 	function formatOutput(): string {

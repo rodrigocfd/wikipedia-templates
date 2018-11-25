@@ -1,3 +1,5 @@
+import {ManyLocales} from '../react-use-locale';
+
 import en from './en.json';
 import pt from './pt.json';
 import en_CiteWeb from './en_CiteWeb.json';
@@ -9,7 +11,7 @@ import pt_TrackListing from './pt_TrackListing.json';
  * App locales, files imported as JSON.
  * Grouped to ease the load in App component.
  */
-const locales = {
+const locales: ManyLocales = {
 	en, en_CiteWeb, en_TrackListing,
 	pt, pt_CiteWeb, pt_TrackListing
 };

@@ -3,3 +3,4 @@ import LocaleProvider from './LocaleProvider';
 
 export default useLocale;
 export {LocaleProvider};
+export * from './model';
