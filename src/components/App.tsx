@@ -6,22 +6,20 @@ import styled from 'styled-components';
 import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
-import {StateProps} from '../store';
+import {mapStateToProps, StateProps} from '../store';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 import Coord from './coord/Coord';
 import TrackListing from './track-listing/TrackListing';
 
-interface Props { }
-
-type PropsAll = Props & StateProps;
+interface Props extends StateProps { }
 
 /**
  * Application root component.
  */
-const App: FunctionComponent<PropsAll> =
-		({lang}: PropsAll) => {
+const App: FunctionComponent<Props> =
+		({lang}: Props) => {
 	return (
 		<BrowserRouter>
 			<LocaleProvider lang={lang} locales={locales}>
@@ -44,5 +42,5 @@ const DivBody = styled.div`
 `;
 
 export default connect(
-	({lang}: StateProps, {}: Props) => ({lang})
+	mapStateToProps
 )(App);

@@ -16,6 +16,11 @@ export interface DispatchProps {
 }
 
 /**
+ * All members are injected, use destructuring to pick the ones you need.
+ */
+export const mapStateToProps = (state: StateProps): StateProps => state;
+
+/**
  * dispatchNow() abbreaviates dispatch() call.
  */
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
