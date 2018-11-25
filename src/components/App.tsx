@@ -10,6 +10,7 @@ import {StateProps} from '../store';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
+import Coord from './coord/Coord';
 import TrackListing from './track-listing/TrackListing';
 
 interface Props { }
@@ -29,6 +30,7 @@ const App: FunctionComponent<PropsAll> =
 					<DivBody>
 						<Route exact path="/" component={Home}/>
 						<Route path="/cite-web" component={CiteWeb}/>
+						<Route path="/coord" component={Coord}/>
 						<Route path="/track-listing" component={TrackListing}/>
 					</DivBody>
 				</div>

@@ -4,6 +4,8 @@ import en from './en.json';
 import pt from './pt.json';
 import en_CiteWeb from './en_CiteWeb.json';
 import pt_CiteWeb from './pt_CiteWeb.json';
+import en_Coord from './en_Coord.json';
+import pt_Coord from './pt_Coord.json';
 import en_TrackListing from './en_TrackListing.json';
 import pt_TrackListing from './pt_TrackListing.json';
 
@@ -12,8 +14,10 @@ import pt_TrackListing from './pt_TrackListing.json';
  * Grouped to ease the load in App component.
  */
 const locales: ManyLocales = {
-	en, en_CiteWeb, en_TrackListing,
-	pt, pt_CiteWeb, pt_TrackListing
+	en, pt,
+	en_CiteWeb, pt_CiteWeb,
+	en_Coord, pt_Coord,
+	en_TrackListing, pt_TrackListing
 };
 
 /**
