@@ -44,10 +44,10 @@ const YearMonthDay: FunctionComponent<Props> =
 			{t`Year`} <InputNum4 type="number"
 				value={date.year} name={name && `${name}_year`}
 				onChange={e => setDateField('year', e.target.value)}/>
-			{t`Month`} <InputNum2 type="number" min="1" max="12"
+			{t`Month`} <InputNum2 type="number" min={1} max={12}
 				value={date.month} name={name && `${name}_month`}
 				onChange={e => setDateField('month', e.target.value)}/>
-			{t`Day`} <InputNum2 type="number" min="1" max="31"
+			{t`Day`} <InputNum2 type="number" min={1} max={31}
 				value={date.day} name={name && `${name}_day`}
 				onChange={e => setDateField('day', e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>

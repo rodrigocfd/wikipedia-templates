@@ -2,11 +2,10 @@ import React, {Fragment, FunctionComponent, useEffect, useRef, useState} from 'r
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import DurationInput from './DurationInput';
 import Track from './Track';
 
 interface Props {
-	index: number;
+	index: number; // track position within containing array
 	track: Track;
 	onRemove?: (index: number) => void;
 	onMoveUp?: (index: number) => void;
@@ -21,38 +20,35 @@ const TrackLine: FunctionComponent<Props> =
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 
-	const [title, setTitle] = useState('');
-	const [note, setNote] = useState('');
-	const [writer, setWriter] = useState('');
-	const [lyrics, setLyrics] = useState('');
-	const [music, setMusic] = useState('');
-	const [duration, setDuration] = useState('');
+	const [tra, setTra] = useState(track);
 
 	useEffect(() => {
 		txt1 && txt1.current && txt1.current.focus();
 	}, [txt1]);
 
 	useEffect(() => {
-		if (onChange) {
-			onChange({...track, title, note, writer, lyrics, music, duration});
-		}
-	}, [title, note, writer, lyrics, music, duration]);
+		onChange && onChange(tra);
+	}, [tra]);
+
+	function setDuration(val?: string) {
+		setTra({...tra, duration: val ? +val : ''});
+	}
 
 	return (
 		<Fragment>
 			<DivBox>{index + 1}</DivBox>
-			<DivBox><input type="text" value={title} ref={txt1} autoComplete="off"
-				onChange={e => setTitle(e.target.value)}/></DivBox>
-			<DivBox><input type="text" value={note} autoComplete="off"
-				onChange={e => setNote(e.target.value)}/></DivBox>
-			<DivBox><input type="text" value={writer} autoComplete="off"
-				onChange={e => setWriter(e.target.value)}/></DivBox>
-			<DivBox><input type="text" value={lyrics} autoComplete="off"
-				onChange={e => setLyrics(e.target.value)}/></DivBox>
-			<DivBox><input type="text" value={music} autoComplete="off"
-				onChange={e => setMusic(e.target.value)}/></DivBox>
-			<DivBox><DurationInput value={duration}
-				onChange={dur => setDuration(dur)}/></DivBox>
+			<DivBox><input type="text" value={tra.title} ref={txt1} autoComplete="off"
+				onChange={e => setTra({...tra, title: e.target.value})}/></DivBox>
+			<DivBox><input type="text" value={tra.note} autoComplete="off"
+				onChange={e => setTra({...tra, note: e.target.value})}/></DivBox>
+			<DivBox><input type="text" value={tra.writer} autoComplete="off"
+				onChange={e => setTra({...tra, writer:e.target.value})}/></DivBox>
+			<DivBox><input type="text" value={tra.lyrics} autoComplete="off"
+				onChange={e => setTra({...tra, lyrics: e.target.value})}/></DivBox>
+			<DivBox><input type="text" value={tra.music} autoComplete="off"
+				onChange={e => setTra({...tra, music: e.target.value})}/></DivBox>
+			<DivBox><input type="number" value={tra.duration} min={1} max={9999}
+				onChange={e => setDuration(e.target.value)}/></DivBox>
 			<DivBox>
 				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
 				{index > 0 &&

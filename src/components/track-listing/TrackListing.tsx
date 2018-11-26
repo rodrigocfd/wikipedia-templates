@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import TrackLine from './TrackLine';
 import Output from './Output';
-import Track from './Track';
+import Track, {newTrack} from './Track';
 
 interface Props { }
 
@@ -16,16 +16,13 @@ const TrackListing: FunctionComponent<Props> = () => {
 	const t = useLocale('*_TrackListing');
 
 	const [tracks, setTracks] = useState([] as Track[]);
-	const [uniqueId, setUniqueId] = useState(0);
 
 	useEffect(() => {
 		document.title = t`Track listing` + ' - ' + t`Wikipedia Templates`;
 	}, [t]);
 
 	function addTrack(): void {
-		setUniqueId(uniqueId + 1);
-		const newTrack = {id: uniqueId};
-		setTracks([...tracks, newTrack]);
+		setTracks([...tracks, newTrack()]);
 	}
 
 	function removeTrack(index: number): void {
@@ -90,7 +87,7 @@ const DivBtnAddTrack = styled.div`
 const DivGridTrackList = styled.div`
 	padding: 4px 0;
 	display: grid;
-	grid-template-columns: 20px 160px 120px 180px 180px 180px 60px auto;
+	grid-template-columns: 20px 160px 120px 180px 180px 180px 70px auto;
 `;
 const DivHeader = styled.div`
 	padding: 2px 6px;
