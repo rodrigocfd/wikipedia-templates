@@ -13,9 +13,11 @@ import CiteWeb from './cite-web/CiteWeb';
 import Coord from './coord/Coord';
 import TrackListing from './track-listing/TrackListing';
 
-interface Props {
+interface StateProps {
 	lang: string;
 }
+
+interface Props extends StateProps { }
 
 /**
  * Application root component.
@@ -43,6 +45,6 @@ const DivBody = styled.div`
 	padding: 0 20px;
 `;
 
-export default connect(
+export default connect<StateProps, {}, {}, State>(
 	({lang}: State) => ({lang})
 )(App);

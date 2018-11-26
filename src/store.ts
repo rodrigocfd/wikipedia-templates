@@ -25,8 +25,9 @@ export interface Action {
 	val: any;
 }
 
-export type DispatchNowFunc =
-	(type: PossibleActionTypes, val: any) => Action;
+export interface DispatchProps {
+	dispatchNow: (type: PossibleActionTypes, val: any) => Action;
+}
 
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
 	dispatchNow: (type: PossibleActionTypes, val: any) =>
