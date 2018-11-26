@@ -3,10 +3,13 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import {mapStateToProps, mapDispatchToProps, StateProps, DispatchProps} from '../store';
+import {DispatchNowFunc, mapDispatchToProps, State} from '../store';
 import {langDescriptions} from '../locales';
 
-interface Props extends StateProps, DispatchProps { }
+interface Props {
+	lang: string;
+	dispatchNow: DispatchNowFunc;
+}
 
 /**
  * Changes the current locale file.
@@ -49,6 +52,6 @@ const DivOpts = styled.div`
 `;
 
 export default connect(
-	mapStateToProps,
+	({lang}: State) => ({lang}),
 	mapDispatchToProps
 )(ChangeLanguage);

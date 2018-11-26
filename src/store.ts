@@ -1,48 +1,48 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
-export type PossibleActionTypes = 'setLang';
+import Track from './components/track-listing/Track';
+
+/**
+ * Initial state for application unique Redux store.
+ */
+export interface State {
+	lang: string;
+	tracks: Track[];
+}
+
+const initialState: State = {
+	lang: 'en',
+	tracks: []
+};
+
+/**
+ * Generic action and dispatch.
+ */
+export type PossibleActionTypes = 'setLang' | 'setTracks';
 
 export interface Action {
 	type: PossibleActionTypes;
 	val: any;
 }
 
-export interface StateProps {
-	lang: string;
-}
+export type DispatchNowFunc =
+	(type: PossibleActionTypes, val: any) => Action;
 
-export interface DispatchProps {
-	dispatchNow: (type: PossibleActionTypes, val: any) => Action;
-}
-
-/**
- * All members are injected, use destructuring to pick the ones you need.
- */
-export const mapStateToProps = (state: StateProps): StateProps => state;
-
-/**
- * dispatchNow() abbreaviates dispatch() call.
- */
 export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
 	dispatchNow: (type: PossibleActionTypes, val: any) =>
 		dispatch({type, val})
 });
 
 /**
- * Initial state for application unique Redux store.
- */
-const initialState: StateProps = {
-	lang: 'en'
-};
-
-/**
  * Reducer for application unique Redux store.
  */
-const reducer: Reducer<StateProps, Action> =
-		(state: StateProps = initialState, action: Action) => {
+const reducer: Reducer<State, Action> =
+		(state: State = initialState, action: Action) => {
 	switch (action.type) {
 	case 'setLang':
 		return {...state, lang: action.val};
+	case 'setTracks':
+		return {...state, tracks: action.val};
 	default:
 		return state;
 	}

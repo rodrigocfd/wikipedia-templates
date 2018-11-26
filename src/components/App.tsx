@@ -6,14 +6,16 @@ import styled from 'styled-components';
 import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
-import {mapStateToProps, StateProps} from '../store';
+import {State} from '../store';
 import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 import Coord from './coord/Coord';
 import TrackListing from './track-listing/TrackListing';
 
-interface Props extends StateProps { }
+interface Props {
+	lang: string;
+}
 
 /**
  * Application root component.
@@ -42,5 +44,5 @@ const DivBody = styled.div`
 `;
 
 export default connect(
-	mapStateToProps
+	({lang}: State) => ({lang})
 )(App);
