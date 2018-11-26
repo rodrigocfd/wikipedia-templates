@@ -1,23 +1,28 @@
-import React, {FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {FunctionComponent, useEffect, useRef} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import {DispatchProps, mapDispatchToProps, State} from '../../store';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 import Output from './Output';
-import Cite, {newCite} from './Cite';
+import Cite from './Cite';
 
-interface Props { }
+interface StateProps {
+	cite: Cite;
+}
+
+interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb: FunctionComponent<Props> = () => {
+const CiteWeb: FunctionComponent<Props> =
+		({cite, dispatchNow}: Props) => {
 	const t = useLocale('*_CiteWeb');
 	const txt1 = useRef<HTMLInputElement>(null);
-
-	const [cite, setCite] = useState(newCite());
 
 	useEffect(() => {
 		txt1 && txt1.current && txt1.current.focus();
@@ -34,37 +39,37 @@ const CiteWeb: FunctionComponent<Props> = () => {
 				<div>
 					<DivName>{t`Ref name`}</DivName>
 					<input type="text" size={18} value={cite.refName} autoComplete="off" ref={txt1}
-						onChange={e => setCite({...cite, refName: e.target.value})}/>
+						onChange={e => dispatchNow('setCite', {...cite, refName: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`URL`}</DivName>
 					<input type="text" size={100} value={cite.url} autoComplete="off"
-						onChange={e => setCite({...cite, url: e.target.value})}/>
+						onChange={e => dispatchNow('setCite', {...cite, url: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Title`}</DivName>
 					<input type="text" size={88} value={cite.title} autoComplete="off"
-						onChange={e => setCite({...cite, title: e.target.value})}/>
+						onChange={e => dispatchNow('setCite', {...cite, title: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Publisher`}</DivName>
 					<input type="text" size={88} value={cite.publisher} autoComplete="off"
-						onChange={e => setCite({...cite, publisher: e.target.value})}/>
+						onChange={e => dispatchNow('setCite', {...cite, publisher: e.target.value})}/>
 				</div>
 				<div>
 					<DivName>{t`Date`}</DivName>
 					<YearMonthDay value={cite.date}
-						onChange={val => setCite({...cite, date: val})}/>
+						onChange={val => dispatchNow('setCite', {...cite, date: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Access date`}</DivName>
 					<YearMonthDay value={cite.accessDate}
-						onChange={val => setCite({...cite, accessDate: val})}/>
+						onChange={val => dispatchNow('setCite', {...cite, accessDate: val})}/>
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>
 					<InlineRadio name="language" value={cite.language}
-						onChange={val => setCite({...cite, language: val})}
+						onChange={val => dispatchNow('setCite', {...cite, language: val})}
 						options={['', 'en', 'es', 'fr', 'de', 'pt']}
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
 				</div>
@@ -81,4 +86,7 @@ const DivName = styled.div`
 	padding: 6px 0;
 `;
 
-export default CiteWeb;
+export default connect<StateProps, DispatchProps, {}, State>(
+	({cite}: State) => ({cite}),
+	mapDispatchToProps
+)(CiteWeb);

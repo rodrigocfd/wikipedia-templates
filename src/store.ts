@@ -1,5 +1,6 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
+import Cite, {newCite} from './components/cite-web/Cite';
 import Track from './components/track-listing/Track';
 
 /**
@@ -7,18 +8,20 @@ import Track from './components/track-listing/Track';
  */
 export interface State {
 	lang: string;
+	cite: Cite;
 	tracks: Track[];
 }
 
 const initialState: State = {
 	lang: 'en',
+	cite: newCite(),
 	tracks: []
 };
 
 /**
  * Generic action and dispatch.
  */
-export type PossibleActionTypes = 'setLang' | 'setTracks';
+export type PossibleActionTypes = 'setLang' | 'setCite' | 'setTracks';
 
 export interface Action {
 	type: PossibleActionTypes;
@@ -40,12 +43,10 @@ export const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
 const reducer: Reducer<State, Action> =
 		(state: State = initialState, action: Action) => {
 	switch (action.type) {
-	case 'setLang':
-		return {...state, lang: action.val};
-	case 'setTracks':
-		return {...state, tracks: action.val};
-	default:
-		return state;
+		case 'setLang':   return {...state, lang: action.val};
+		case 'setCite':   return {...state, cite: action.val};
+		case 'setTracks': return {...state, tracks: action.val};
+		default: return state;
 	}
 };
 
