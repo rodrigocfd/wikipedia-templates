@@ -1,10 +1,10 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import SectionFooter from '../SectionFooter';
 import TrackLine from './TrackLine';
 import Output from './Output';
 import Track, {newTrack} from './Track';
@@ -79,9 +79,7 @@ const TrackListing: FunctionComponent<Props> =
 				}
 			</div>
 			<Output tracks={tracks}/>
-			<div>
-				<Link to="/">{t`Home`}</Link>
-			</div>
+			<SectionFooter onClear={() => dispatchNow('setTracks', [])}/>
 		</div>
 	);
 };

@@ -1,14 +1,14 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import SectionFooter from '../SectionFooter';
 import YearMonthDay from './YearMonthDay';
 import InlineRadio from './InlineRadio';
 import Output from './Output';
-import Cite from './Cite';
+import Cite, { newCite } from './Cite';
 
 interface StateProps {
 	cite: Cite;
@@ -75,7 +75,7 @@ const CiteWeb: FunctionComponent<Props> =
 				</div>
 			</div>
 			<Output cite={cite}/>
-			<Link to="/">{t`Home`}</Link>
+			<SectionFooter onClear={() => dispatchNow('setCite', newCite())}/>
 		</div>
 	);
 };
