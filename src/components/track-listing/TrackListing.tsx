@@ -1,34 +1,39 @@
-import React, {FunctionComponent, useEffect, useState} from 'react';
+import React, {FunctionComponent, useEffect} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import {DispatchProps, mapDispatchToProps, State} from '../../store';
 import TrackLine from './TrackLine';
 import Output from './Output';
 import Track, {newTrack} from './Track';
 
-interface Props { }
+interface StateProps {
+	tracks: Track[];
+}
+
+interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing: FunctionComponent<Props> = () => {
+const TrackListing: FunctionComponent<Props> =
+		({tracks, dispatchNow}: Props) => {
 	const t = useLocale('*_TrackListing');
-
-	const [tracks, setTracks] = useState([] as Track[]);
 
 	useEffect(() => {
 		document.title = t`Track listing` + ' - ' + t`Wikipedia Templates`;
 	}, [t]);
 
 	function addTrack(): void {
-		setTracks([...tracks, newTrack()]);
+		dispatchNow('setTracks', [...tracks, newTrack()]);
 	}
 
 	function removeTrack(index: number): void {
 		let newList = [...tracks];
 		newList.splice(index, 1);
-		setTracks(newList);
+		dispatchNow('setTracks', newList);
 	}
 
 	function moveTrackUp(index: number): void {
@@ -37,14 +42,14 @@ const TrackListing: FunctionComponent<Props> = () => {
 			const tmp = newList[index];
 			newList[index] = newList[index - 1];
 			newList[index - 1] = tmp;
-			setTracks(newList);
+			dispatchNow('setTracks', newList);
 		}
 	}
 
 	function changedTrack(track: Track): void {
 		const updatedTracks = tracks.map(tra =>
 			tra.id === track.id ? track : tra);
-		setTracks(updatedTracks);
+		dispatchNow('setTracks', updatedTracks);
 	}
 
 	return (
@@ -93,4 +98,7 @@ const DivHeader = styled.div`
 	padding: 2px 6px;
 `;
 
-export default TrackListing;
+export default connect<StateProps, DispatchProps, {}, State>(
+	({tracks}: State) => ({tracks}),
+	mapDispatchToProps
+)(TrackListing);
