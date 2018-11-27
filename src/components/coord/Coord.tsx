@@ -1,14 +1,21 @@
 import React, {FunctionComponent, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import useLocale from '../../react-use-locale';
+import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import SectionFooter from '../SectionFooter';
 
-interface Props { }
+interface StateProps {
+	coords: string;
+}
+
+interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: coord.
  */
-const Coord: FunctionComponent<Props> = () => {
+const Coord: FunctionComponent<Props> =
+		({coords, dispatchNow}: Props) => {
 	const t = useLocale('*_Coord');
 
 	useEffect(() => {
@@ -19,10 +26,17 @@ const Coord: FunctionComponent<Props> = () => {
 		<div>
 			<h2>{t`Coord`}</h2>
 			<div>
-				<Link to="/">{t`Home`}</Link>
+				<div>
+					<input type="text" size={40} value={coords}
+						onChange={e => dispatchNow('setCoords', e.target.value)}/>
+				</div>
+				<SectionFooter onClear={() => dispatchNow('setCoords', '')}/>
 			</div>
 		</div>
 	);
 };
 
-export default Coord;
+export default connect<StateProps, DispatchProps, {}, State>(
+	({coords}: State) => ({coords}),
+	mapDispatchToProps
+)(Coord);

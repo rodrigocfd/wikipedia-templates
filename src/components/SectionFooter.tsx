@@ -16,16 +16,19 @@ const SectionFooter: FunctionComponent<Props> =
 	const t = useLocale('*');
 
 	return (
-		<div>
+		<DivWrap>
 			<Link to="/">{t`Home`}</Link>
 			{onClear &&
 				<ButtonClear onClick={e =>
 					onClear && onClear()}>{t`clear all`}</ButtonClear>
 			}
-		</div>
+		</DivWrap>
 	);
 };
 
+const DivWrap = styled.div`
+	margin-top: 20px;
+`;
 const ButtonClear = styled.button`
 	margin-left: 16px;
 `;

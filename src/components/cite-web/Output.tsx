@@ -69,7 +69,7 @@ const TextareaOut = styled.textarea`
 	border: 1px solid #ccc;
 	width: 99%;
 	height: 100px;
-	margin: 20px 0;
+	margin-top: 20px;
 	padding: 10px;
 `;
 

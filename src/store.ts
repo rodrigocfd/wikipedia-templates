@@ -8,20 +8,23 @@ import Track from './components/track-listing/Track';
  */
 export interface State {
 	lang: string;
-	cite: Cite;
-	tracks: Track[];
+	cite: Cite; // cite-web
+	coords: string; // coords
+	tracks: Track[]; // track-listing
 }
 
 const initialState: State = {
 	lang: 'en',
 	cite: newCite(),
+	coords: '',
 	tracks: []
 };
 
 /**
  * Generic action and dispatch.
  */
-export type PossibleActionTypes = 'setLang' | 'setCite' | 'setTracks';
+export type PossibleActionTypes = 'setLang' |
+	'setCite' | 'setCoords' | 'setTracks';
 
 export interface Action {
 	type: PossibleActionTypes;
@@ -45,6 +48,7 @@ const reducer: Reducer<State, Action> =
 	switch (action.type) {
 		case 'setLang':   return {...state, lang: action.val};
 		case 'setCite':   return {...state, cite: action.val};
+		case 'setCoords': return {...state, coords: action.val};
 		case 'setTracks': return {...state, tracks: action.val};
 		default: return state;
 	}
