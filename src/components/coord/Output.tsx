@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DegMinSec, {newDegMinSec} from './DegMinSec';
 
 interface Props {
 	name?: string;
@@ -15,11 +16,47 @@ const Output: FunctionComponent<Props> =
 		({name, coords}: Props) => {
 	const t = useLocale('*_CiteWeb');
 
-	function formatOutput(): string {
+	function isNumber(s: string | null | undefined): boolean {
+		return s !== undefined &&
+			s !== null &&
+			s.length > 0 &&
+			!isNaN(parseFloat(s));
+	}
+
+	function extractLatLng(): [number, number] | null {
 		if (coords === '') {
+			return null;
+		}
+
+		let ll: string[] = coords.split(',');
+		if (ll.length !== 2) {
+			return null;
+		}
+
+		ll[0] = ll[0].trim();
+		ll[1] = ll[1].trim();
+		if (!isNumber(ll[0]) || !isNumber(ll[1])) {
+			return null;
+		}
+
+		return [parseFloat(ll[0]), parseFloat(ll[1])];
+	}
+
+	function formatOutput(): string {
+		let ll = extractLatLng();
+		if (ll === null) {
 			return '';
 		}
-		return coords;
+
+		let lat = newDegMinSec(ll[0]);
+		let lng = newDegMinSec(ll[1]);
+
+		return '{{' + t`Coord`
+			+ `|${lat.d}|${lat.m}|${lat.s}`
+			+ '|' + (lat.dec < 0 ? 'S' : 'N')
+			+ `|${lng.d}|${lng.m}|${lng.s}`
+			+ '|' + (lng.dec < 0 ? 'O' : 'E')
+		+ '}}';
 	}
 
 	return (
@@ -33,8 +70,8 @@ const Output: FunctionComponent<Props> =
 const TextareaOut = styled.textarea`
 	font-family: monospace;
 	border: 1px solid #ccc;
-	width: 500px;
-	height: 80px;
+	width: 700px;
+	height: 60px;
 	margin-top: 20px;
 	padding: 10px;
 `;
