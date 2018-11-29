@@ -1,9 +1,10 @@
 import React, {Fragment, FunctionComponent} from 'react';
 import styled from 'styled-components';
 
-import useLocale from '../../react-use-locale';
+import useLocale from '../react-use-locale';
 
 interface Props {
+	locale: string;
 	name: string;
 	value?: string;
 	options: string[],
@@ -15,8 +16,8 @@ interface Props {
  * Prints a series of radio buttons, inline.
  */
 const InlineRadio: FunctionComponent<Props> =
-		({name, value, options, labels, onChange}: Props) => {
-	const t = useLocale('*_CiteWeb');
+		({locale, name, value, options, labels, onChange}: Props) => {
+	const t = useLocale(locale);
 
 	return (
 		<Fragment>

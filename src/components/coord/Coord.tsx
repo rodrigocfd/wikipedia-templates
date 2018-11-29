@@ -5,9 +5,10 @@ import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Output from './Output';
+import CoordData from './CoordData';
 
 interface StateProps {
-	coords: string;
+	coords: CoordData;
 }
 
 interface Props extends StateProps, DispatchProps { }
@@ -33,9 +34,12 @@ const Coord: FunctionComponent<Props> =
 			<h2>{t`Coord`}</h2>
 			<div>
 				<div>
-					<input type="text" size={40} value={coords} ref={txt1}
-						onChange={e => dispatchNow('setCoords', e.target.value)}/>
-					<Output coords={coords}/>
+					<input type="text" size={40} value={coords.latLng} ref={txt1}
+						onChange={e => dispatchNow('setCoords',
+							{...coords, latLng: e.target.value})}/>
+				</div>
+				<div>
+					<Output coords={coords.latLng}/>
 				</div>
 				<SectionFooter onClear={() => dispatchNow('setCoords', '')}/>
 			</div>

@@ -4,11 +4,11 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
 import YearMonthDay from './YearMonthDay';
-import InlineRadio from './InlineRadio';
 import Output from './Output';
-import Cite, { newCite } from './Cite';
+import Cite, {newCite} from './Cite';
 
 interface StateProps {
 	cite: Cite;
@@ -68,7 +68,7 @@ const CiteWeb: FunctionComponent<Props> =
 				</div>
 				<div>
 					<DivName>{t`Language`}</DivName>
-					<InlineRadio name="language" value={cite.language}
+					<InlineRadio locale="*_CiteWeb" name="language" value={cite.language}
 						onChange={val => dispatchNow('setCite', {...cite, language: val})}
 						options={['', 'en', 'es', 'fr', 'de', 'pt']}
 						labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>

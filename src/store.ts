@@ -1,6 +1,7 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
 import Cite, {newCite} from './components/cite-web/Cite';
+import CoordData, {newCoordData} from './components/coord/CoordData';
 import Track from './components/track-listing/Track';
 
 /**
@@ -9,14 +10,14 @@ import Track from './components/track-listing/Track';
 export interface State {
 	lang: string;
 	cite: Cite; // cite-web
-	coords: string; // coords
+	coords: CoordData; // coords
 	tracks: Track[]; // track-listing
 }
 
 const initialState: State = {
 	lang: 'en',
 	cite: newCite(),
-	coords: '',
+	coords: newCoordData(),
 	tracks: []
 };
 

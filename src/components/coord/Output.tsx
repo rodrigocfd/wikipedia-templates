@@ -2,7 +2,7 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import DegMinSec, {newDegMinSec} from './DegMinSec';
+import {newDegMinSec} from './DegMinSec';
 
 interface Props {
 	name?: string;
@@ -14,7 +14,7 @@ interface Props {
  */
 const Output: FunctionComponent<Props> =
 		({name, coords}: Props) => {
-	const t = useLocale('*_CiteWeb');
+	const t = useLocale('*_Coord');
 
 	function isNumber(s: string | null | undefined): boolean {
 		return s !== undefined &&
@@ -53,9 +53,9 @@ const Output: FunctionComponent<Props> =
 
 		return '{{' + t`Coord`
 			+ `|${lat.d}|${lat.m}|${lat.s}`
-			+ '|' + (lat.dec < 0 ? 'S' : 'N')
+			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
-			+ '|' + (lng.dec < 0 ? 'O' : 'E')
+			+ '|' + (lng.dec < 0 ? t`W` : t`E`)
 		+ '}}';
 	}
 
