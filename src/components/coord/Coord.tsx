@@ -1,8 +1,10 @@
 import React, {FunctionComponent, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
+import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
 import Output from './Output';
 import CoordData from './CoordData';
@@ -34,18 +36,26 @@ const Coord: FunctionComponent<Props> =
 			<h2>{t`Coord`}</h2>
 			<div>
 				<div>
-					<input type="text" size={40} value={coords.latLng} ref={txt1}
+					<InputCoords type="text" size={40} value={coords.latLng} ref={txt1}
 						onChange={e => dispatchNow('setCoords',
 							{...coords, latLng: e.target.value})}/>
+					<InlineRadio locale="*_Coord" name="type" value={coords.display}
+						onChange={val => dispatchNow('setCoords', {...coords, display: val})}
+						options={['inline', 'title', 'inline,title']}
+						labels={['inline', 'title', 'inline,title']}/>
 				</div>
 				<div>
-					<Output coords={coords.latLng}/>
+					<Output coords={coords}/>
 				</div>
 				<SectionFooter onClear={() => dispatchNow('setCoords', '')}/>
 			</div>
 		</div>
 	);
 };
+
+const InputCoords = styled.input`
+	margin-right: 20px;
+`;
 
 export default connect<StateProps, DispatchProps, {}, State>(
 	({coords}: State) => ({coords}),

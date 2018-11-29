@@ -2,5 +2,9 @@
 	"E": "L",
 	"N": "N",
 	"S": "S",
-	"W": "O"
+	"W": "O",
+
+	"inline": "emlinha",
+	"title": "título",
+	"inline,title": "emlinha,título"
 }

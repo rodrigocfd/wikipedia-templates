@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {newDegMinSec} from './DegMinSec';
+import CoordData from './CoordData';
 
 interface Props {
 	name?: string;
-	coords: string;
+	coords: CoordData;
 }
 
 /**
@@ -24,11 +25,11 @@ const Output: FunctionComponent<Props> =
 	}
 
 	function extractLatLng(): [number, number] | null {
-		if (coords === '') {
+		if (coords.latLng === '') {
 			return null;
 		}
 
-		let ll: string[] = coords.split(',');
+		let ll: string[] = coords.latLng.split(',');
 		if (ll.length !== 2) {
 			return null;
 		}
@@ -56,6 +57,7 @@ const Output: FunctionComponent<Props> =
 			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
 			+ '|' + (lng.dec < 0 ? t`W` : t`E`)
+			+ `|display=${coords.display}`
 		+ '}}';
 	}
 

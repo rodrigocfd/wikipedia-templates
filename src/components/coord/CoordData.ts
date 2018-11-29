@@ -1,14 +1,16 @@
+export type PossibleTypes = 'inline' | 'title' | 'inline,title';
+
 /**
  * Model which describes all data of Coord.
  */
 export default interface CoordData {
 	latLng: string;
-	type: 'inline' | 'title' | 'inline,title';
+	display: PossibleTypes;
 }
 
 export function newCoordData(): CoordData {
 	return {
 		latLng: '',
-		type: 'inline'
+		display: 'inline'
 	}
 }
