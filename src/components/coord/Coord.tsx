@@ -7,6 +7,7 @@ import {DispatchProps, mapDispatchToProps, State} from '../../store';
 import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
 import GoogleMapsLink from './GoogleMapsLink';
+import OsmMap from './OsmMap';
 import Output from './Output';
 import CoordData from './CoordData';
 
@@ -48,6 +49,7 @@ const Coord: FunctionComponent<Props> =
 				</div>
 				<div>
 					<GoogleMapsLink latLng={coords.latLng}/>
+					<OsmMap latLng={coords.latLng}/>
 					<Output coords={coords}/>
 				</div>
 				<SectionFooter onClear={() => dispatchNow('setCoords', '')}/>
