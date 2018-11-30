@@ -17,6 +17,7 @@ interface Props {
  */
 const TrackLine: FunctionComponent<Props> =
 		({index, track, onRemove, onMoveUp, onChange}: Props) => {
+
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 

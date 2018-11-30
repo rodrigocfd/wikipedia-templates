@@ -21,6 +21,7 @@ interface Props extends StateProps, DispatchProps { }
  */
 const Coord: FunctionComponent<Props> =
 		({coords, dispatchNow}: Props) => {
+
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 

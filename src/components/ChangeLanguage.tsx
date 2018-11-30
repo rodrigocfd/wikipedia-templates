@@ -17,6 +17,7 @@ interface Props extends StateProps, DispatchProps { }
  */
 const ChangeLanguage: FunctionComponent<Props> =
 		({lang, dispatchNow}: Props) => {
+
 	const t = useLocale('*');
 
 	return (

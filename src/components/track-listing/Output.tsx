@@ -14,6 +14,7 @@ interface Props {
  */
 const Output: FunctionComponent<Props> =
 		({name, tracks}: Props) => {
+
 	const t = useLocale('*_TrackListing');
 
 	function formatDuration(duration: number | ''): string {

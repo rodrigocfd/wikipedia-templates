@@ -17,6 +17,7 @@ interface Props {
  */
 const InlineRadio: FunctionComponent<Props> =
 		({locale, name, value, options, labels, onChange}: Props) => {
+
 	const t = useLocale(locale);
 
 	return (

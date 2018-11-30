@@ -21,6 +21,7 @@ interface Props extends StateProps, DispatchProps { }
  */
 const CiteWeb: FunctionComponent<Props> =
 		({cite, dispatchNow}: Props) => {
+
 	const t = useLocale('*_CiteWeb');
 	const txt1 = useRef<HTMLInputElement>(null);
 

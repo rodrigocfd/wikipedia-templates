@@ -10,6 +10,7 @@ interface Props { }
  * Header to be shown on all pages.
  */
 const Header: FunctionComponent<Props> = () => {
+
 	const t = useLocale('*');
 
 	return (

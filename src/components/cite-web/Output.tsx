@@ -15,6 +15,7 @@ interface Props {
  */
 const Output: FunctionComponent<Props> =
 		({name, cite}: Props) => {
+
 	const t = useLocale('*_CiteWeb');
 
 	function formatDate(date?: DayMonthYear): string {

@@ -15,6 +15,7 @@ interface Props {
  */
 const YearMonthDay: FunctionComponent<Props> =
 		({name, value, onChange}: Props) => {
+
 	const t = useLocale('*_CiteWeb');
 
 	const [date, setDate] = useState(value);

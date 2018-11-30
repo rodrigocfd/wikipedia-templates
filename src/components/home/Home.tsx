@@ -10,6 +10,7 @@ interface Props { }
  * Main component for app route: home.
  */
 const Home: FunctionComponent<Props> = () => {
+
 	const t = useLocale('*');
 
 	useEffect(() => {

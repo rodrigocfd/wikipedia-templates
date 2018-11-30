@@ -15,6 +15,7 @@ interface Props {
  */
 const Output: FunctionComponent<Props> =
 		({name, coords}: Props) => {
+
 	const t = useLocale('*_Coord');
 
 	function isNumber(s: string | null | undefined): boolean {

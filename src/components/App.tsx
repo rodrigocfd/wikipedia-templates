@@ -24,6 +24,7 @@ interface Props extends StateProps { }
  */
 const App: FunctionComponent<Props> =
 		({lang}: Props) => {
+
 	return (
 		<BrowserRouter>
 			<LocaleProvider lang={lang} locales={locales}>

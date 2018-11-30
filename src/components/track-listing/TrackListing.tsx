@@ -20,6 +20,7 @@ interface Props extends StateProps, DispatchProps { }
  */
 const TrackListing: FunctionComponent<Props> =
 		({tracks, dispatchNow}: Props) => {
+
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {

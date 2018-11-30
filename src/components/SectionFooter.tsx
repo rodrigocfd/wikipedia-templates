@@ -13,6 +13,7 @@ interface Props {
  */
 const SectionFooter: FunctionComponent<Props> =
 		({onClear}: Props) => {
+
 	const t = useLocale('*');
 
 	return (
