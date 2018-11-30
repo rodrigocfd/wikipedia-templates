@@ -1,6 +1,6 @@
 # Wikipedia Templates
 
-Automation for Wikipedia templates in various languages.
+Automation for Wikipedia templates in multiple languages.
 
 This project was written in [TypeScript](https://www.typescriptlang.org) using the following libraries:
 * [React](https://github.com/facebook/react)

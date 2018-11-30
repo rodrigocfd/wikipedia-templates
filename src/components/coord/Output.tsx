@@ -73,7 +73,7 @@ const TextareaOut = styled.textarea`
 	font-family: monospace;
 	border: 1px solid #ccc;
 	width: 700px;
-	height: 60px;
+	height: 50px;
 	margin-top: 20px;
 	padding: 10px;
 `;
