@@ -1,8 +1,8 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
-import Cite, {newCite} from './components/cite-web/Cite';
-import CoordData, {newCoordData} from './components/coord/CoordData';
-import Track from './components/track-listing/Track';
+import Cite, {newCite} from './sections/cite-web/Cite';
+import CoordData, {newCoordData} from './sections/coord/CoordData';
+import Track from './sections/track-listing/Track';
 
 /**
  * Initial state for application unique Redux store.
