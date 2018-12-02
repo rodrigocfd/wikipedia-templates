@@ -2,6 +2,7 @@ import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import StaticTextarea from '../StaticTextarea';
 import {newDegMinSec} from './DegMinSec';
 import CoordData from './CoordData';
 import extractLatLng from './extractLatLng';
@@ -36,19 +37,15 @@ const Output: FunctionComponent<Props> =
 
 	return (
 		<div>
-			<TextareaOut name={name} value={formatted} readOnly
-				onClick={e => e.currentTarget.select()}></TextareaOut>
+			<StaticTextareaOut name={name} value={formatted}/>
 		</div>
 	);
 };
 
-const TextareaOut = styled.textarea`
-	font-family: monospace;
-	border: 1px solid #ccc;
+const StaticTextareaOut = styled(StaticTextarea)`
 	width: 700px;
 	height: 50px;
 	margin-top: 20px;
-	padding: 10px;
 `;
 
 export default Output;
