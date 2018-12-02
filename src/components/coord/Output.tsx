@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import {newDegMinSec} from './DegMinSec';
 import CoordData from './CoordData';
+import extractLatLng from './extractLatLng';
 
 interface Props {
 	name?: string;
@@ -18,53 +19,24 @@ const Output: FunctionComponent<Props> =
 
 	const t = useLocale('*_Coord');
 
-	function isNumber(s: string | null | undefined): boolean {
-		return s !== undefined &&
-			s !== null &&
-			s.length > 0 &&
-			!isNaN(parseFloat(s));
-	}
-
-	function extractLatLng(): [number, number] | null {
-		if (coords.latLng === '') {
-			return null;
-		}
-
-		let ll: string[] = coords.latLng.split(',');
-		if (ll.length !== 2) {
-			return null;
-		}
-
-		ll[0] = ll[0].trim();
-		ll[1] = ll[1].trim();
-		if (!isNumber(ll[0]) || !isNumber(ll[1])) {
-			return null;
-		}
-
-		return [parseFloat(ll[0]), parseFloat(ll[1])];
-	}
-
-	function formatOutput(): string {
-		let ll = extractLatLng();
-		if (ll === null) {
-			return '';
-		}
-
+	let formatted = '';
+	let ll = extractLatLng(coords.latLng);
+	if (ll !== null) {
 		let lat = newDegMinSec(ll[0]);
 		let lng = newDegMinSec(ll[1]);
 
-		return '{{' + t`Coord`
+		formatted = '{{' + t`Coord`
 			+ `|${lat.d}|${lat.m}|${lat.s}`
 			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
 			+ '|' + (lng.dec < 0 ? t`W` : t`E`)
 			+ `|display=${coords.display}`
-		+ '}}';
+			+ '}}';
 	}
 
 	return (
 		<div>
-			<TextareaOut name={name} value={formatOutput()} readOnly
+			<TextareaOut name={name} value={formatted} readOnly
 				onClick={e => e.currentTarget.select()}></TextareaOut>
 		</div>
 	);

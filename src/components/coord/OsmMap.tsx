@@ -1,6 +1,8 @@
 import React, {FunctionComponent} from 'react';
 import styled from 'styled-components';
 
+import extractLatLng from './extractLatLng';
+
 interface Props {
 	latLng?: string;
 }
@@ -11,19 +13,17 @@ interface Props {
 const OsmMap: FunctionComponent<Props> =
 		({latLng}: Props) => {
 
-	function formatSrc() {
-		if (!latLng) {
-			return '';
-		}
-		const ll = latLng.split(',');
-		return 'https://www.openstreetmap.org/export/embed.html?bbox='
+	let url = '';
+	let ll = extractLatLng(latLng);
+	if (ll !== null) {
+		url = 'https://www.openstreetmap.org/export/embed.html?bbox='
 			+ `${ll[1]}%2C${ll[0]}%2C` +
 			+ `${ll[1]}%2C${ll[0]}&amp;layer=mapnik`;
 	}
 
-	return !latLng ? null : (
+	return !url ? null : (
 		<IframeMap width={700} height={350}
-			src={formatSrc()} scrolling="no"></IframeMap>
+			src={url} scrolling="no"></IframeMap>
 	);
 };
 
