@@ -7,7 +7,8 @@ import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
 import {State} from '../store';
-import Header from './Header';
+import AppHeader from './AppHeader';
+import AppFooter from './AppFooter';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 import Coord from './coord/Coord';
@@ -30,7 +31,7 @@ const App: FunctionComponent<Props> =
 		<BrowserRouter>
 			<LocaleProvider lang={lang} locales={locales}>
 				<div>
-					<Header/>
+					<AppHeader/>
 					<DivBody>
 						<Route exact path="/" component={Home}/>
 						<Route path="/cite-web" component={CiteWeb}/>
@@ -38,6 +39,7 @@ const App: FunctionComponent<Props> =
 						<Route path="/infobox-album" component={InfoboxAlbum}/>
 						<Route path="/track-listing" component={TrackListing}/>
 					</DivBody>
+					<AppFooter/>
 				</div>
 			</LocaleProvider>
 		</BrowserRouter>

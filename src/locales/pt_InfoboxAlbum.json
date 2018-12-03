@@ -1,6 +1,8 @@
 {
 	"Artist": "Artista",
 	"artist": "artista",
+	"Label": "Gravadora",
+	"label": "gravadora",
 	"Name": "Nome",
 	"name": "nome"
 }

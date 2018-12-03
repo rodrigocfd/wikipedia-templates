@@ -7,9 +7,9 @@ import ChangeLanguage from './ChangeLanguage';
 interface Props { }
 
 /**
- * Header to be shown on all pages.
+ * Header to be shown in all pages.
  */
-const Header: FunctionComponent<Props> = () => {
+const AppHeader: FunctionComponent<Props> = () => {
 
 	const t = useLocale('*');
 
@@ -42,4 +42,4 @@ const DivRight = styled.div`
 	padding-top: 8px;
 `;
 
-export default Header;
+export default AppHeader;
