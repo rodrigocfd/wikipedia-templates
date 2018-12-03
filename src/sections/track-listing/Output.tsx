@@ -29,23 +29,20 @@ const Output: FunctionComponent<Props> =
 		}
 	}
 
-	function formatOutput(): string {
-		let ret = '{{' + t`Track listing` + '\n';
-		tracks.forEach((tra, idx) => {
-			ret += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
-			ret += tra.note ? ` |${t('note{0}', idx+1)}=${tra.note}` : '';
-			ret += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
-			ret += tra.lyrics ? ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}` : '';
-			ret += tra.music ? ` |${t('music{0}', idx+1)}=${tra.music}` : '';
-			ret += tra.duration ? ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}` : '';
-			ret += '\n';
-		});
-		ret += '}}'
-		return ret;
-	}
+	let fmt = '{{' + t`Track listing` + '\n';
+	tracks.forEach((tra, idx) => {
+		fmt += tra.title ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
+		fmt += tra.note ? ` |${t('note{0}', idx+1)}=${tra.note}` : '';
+		fmt += tra.writer ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
+		fmt += tra.lyrics ? ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}` : '';
+		fmt += tra.music ? ` |${t('music{0}', idx+1)}=${tra.music}` : '';
+		fmt += tra.duration ? ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}` : '';
+		fmt += '\n';
+	});
+	fmt += '}}'
 
 	return (
-		<StaticTextareaOut name={name} value={formatOutput()}/>
+		<StaticTextareaOut name={name} value={fmt}/>
 	);
 };
 

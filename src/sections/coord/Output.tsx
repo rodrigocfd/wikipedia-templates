@@ -20,13 +20,13 @@ const Output: FunctionComponent<Props> =
 
 	const t = useLocale('*_Coord');
 
-	let formatted = '';
+	let fmt = '';
 	let ll = extractLatLng(coords.latLng);
 	if (ll !== null) {
 		let lat = newDegMinSec(ll[0]);
 		let lng = newDegMinSec(ll[1]);
 
-		formatted = '{{' + t`Coord`
+		fmt = '{{' + t`Coord`
 			+ `|${lat.d}|${lat.m}|${lat.s}`
 			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
@@ -37,7 +37,7 @@ const Output: FunctionComponent<Props> =
 
 	return (
 		<div>
-			<StaticTextareaOut name={name} value={formatted}/>
+			<StaticTextareaOut name={name} value={fmt}/>
 		</div>
 	);
 };

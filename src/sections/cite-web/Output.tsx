@@ -48,20 +48,18 @@ const Output: FunctionComponent<Props> =
 		return val ? ` |${t(name)}=${val}` : '';
 	}
 
-	function formatOutput(): string {
-		return '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>' +
-			'{{' + t`Cite web` +
-			oneParam('url', cite.url) +
-			oneParam('title', cite.title) +
-			oneParam('publisher', cite.publisher) +
-			oneParam('date', formatDate(cite.date)) +
-			oneParam('access-date', formatDate(cite.accessDate)) +
-			oneParam('language', cite.language) +
-			'}}</ref>';
-	}
+	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>' +
+		'{{' + t`Cite web` +
+		oneParam('url', cite.url) +
+		oneParam('title', cite.title) +
+		oneParam('publisher', cite.publisher) +
+		oneParam('date', formatDate(cite.date)) +
+		oneParam('access-date', formatDate(cite.accessDate)) +
+		oneParam('language', cite.language) +
+		'}}</ref>';
 
 	return (
-		<StaticTextareaOut name={name} value={formatOutput()}/>
+		<StaticTextareaOut name={name} value={fmt}/>
 	);
 };
 

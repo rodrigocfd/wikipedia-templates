@@ -1,3 +1,6 @@
+/**
+ * Extracts and validates latitude/longitude from user string.
+ */
 export default function extractLatLng(latLng: string | undefined):
 		[number, number] | null {
 
