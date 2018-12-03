@@ -1,6 +1,5 @@
 import React, {FunctionComponent, useEffect} from 'react';
 import {connect} from 'react-redux';
-import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';

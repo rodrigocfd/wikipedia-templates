@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import InlineRadio from '../InlineRadio';
 import YearMonthDay from './YearMonthDay';
-import Cite, {newCite} from './Cite';
+import Cite from './Cite';
 
 interface Props {
 	cite: Cite;
