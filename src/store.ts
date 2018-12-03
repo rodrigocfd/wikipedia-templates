@@ -1,5 +1,6 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
+import {Langs} from './locales';
 import Cite, {newCite} from './sections/cite-web/Cite';
 import CoordData, {newCoordData} from './sections/coord/CoordData';
 import Track from './sections/track-listing/Track';
@@ -8,7 +9,7 @@ import Track from './sections/track-listing/Track';
  * Initial state for application unique Redux store.
  */
 export interface State {
-	lang: string;
+	lang: Langs; // app-wide current language
 	cite: Cite; // cite-web
 	coords: CoordData; // coords
 	tracks: Track[]; // track-listing

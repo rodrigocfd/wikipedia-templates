@@ -19,14 +19,14 @@ const locales: ManyLocales = {
 	en_Coord, pt_Coord,
 	en_TrackListing, pt_TrackListing
 };
+export default locales;
 
 /**
  * Names of available languages.
  */
-const langDescriptions = [
+export const langDescriptions = [
 	{id: 'en', name: 'English'},
 	{id: 'pt', name: 'Portuguese'}
 ];
 
-export default locales;
-export {langDescriptions};
+export type Langs = 'en' | 'pt';
