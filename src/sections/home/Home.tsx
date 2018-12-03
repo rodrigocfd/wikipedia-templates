@@ -22,6 +22,7 @@ const Home: FunctionComponent<Props> = () => {
 			<UlList>
 				<li><Link to="/cite-web">{t`Cite web`}</Link></li>
 				<li><Link to="/coord">{t`Coord`}</Link></li>
+				<li><Link to="/infobox-album">{t`Infobox album`}</Link></li>
 				<li><Link to="/track-listing">{t`Track listing`}</Link></li>
 			</UlList>
 		</div>

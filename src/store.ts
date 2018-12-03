@@ -1,6 +1,7 @@
 import {createStore, Dispatch, Reducer} from 'redux';
 
 import {Langs} from './locales';
+import Album, {newAlbum} from './sections/infobox-album/Album';
 import Cite, {newCite} from './sections/cite-web/Cite';
 import CoordData, {newCoordData} from './sections/coord/CoordData';
 import Track from './sections/track-listing/Track';
@@ -10,6 +11,7 @@ import Track from './sections/track-listing/Track';
  */
 export interface State {
 	lang: Langs; // app-wide current language
+	album: Album; // infobox-album
 	cite: Cite; // cite-web
 	coords: CoordData; // coords
 	tracks: Track[]; // track-listing
@@ -17,6 +19,7 @@ export interface State {
 
 const initialState: State = {
 	lang: 'en',
+	album: newAlbum(),
 	cite: newCite(),
 	coords: newCoordData(),
 	tracks: []
@@ -26,7 +29,7 @@ const initialState: State = {
  * Generic action and dispatch.
  */
 export type PossibleActionTypes = 'setLang' |
-	'setCite' | 'setCoords' | 'setTracks';
+	'setAlbum' | 'setCite' | 'setCoords' | 'setTracks';
 
 export interface Action {
 	type: PossibleActionTypes;
@@ -49,6 +52,7 @@ const reducer: Reducer<State, Action> =
 		(state: State = initialState, action: Action) => {
 	switch (action.type) {
 		case 'setLang':   return {...state, lang: action.val};
+		case 'setAlbum':  return {...state, album: action.val};
 		case 'setCite':   return {...state, cite: action.val};
 		case 'setCoords': return {...state, coords: action.val};
 		case 'setTracks': return {...state, tracks: action.val};

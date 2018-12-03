@@ -44,19 +44,18 @@ const Output: FunctionComponent<Props> =
 		return formatted;
 	}
 
-	function oneParam(name: string, val?: string): string {
-		return val ? ` |${t(name)}=${val}` : '';
-	}
+	const theDate = formatDate(cite.date);
+	const theAccessDate = formatDate(cite.accessDate);
 
-	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>' +
-		'{{' + t`Cite web` +
-		oneParam('url', cite.url) +
-		oneParam('title', cite.title) +
-		oneParam('publisher', cite.publisher) +
-		oneParam('date', formatDate(cite.date)) +
-		oneParam('access-date', formatDate(cite.accessDate)) +
-		oneParam('language', cite.language) +
-		'}}</ref>';
+	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>'
+		+ '{{' + t`Cite web`
+		+ (cite.url       ? ` |${t('url')}=${cite.url}` : '')
+		+ (cite.title     ? ` |${t('title')}=${cite.title}` : '')
+		+ (cite.publisher ? ` |${t('publisher')}=${cite.publisher}` : '')
+		+ (theDate        ? ` |${t('date')}=${theDate}` : '')
+		+ (theAccessDate  ? ` |${t('access-date')}=${theAccessDate}` : '')
+		+ (cite.language  ? ` |${t('language')}=${cite.language}` : '')
+		+ '}}</ref>';
 
 	return (
 		<StaticTextareaOut name={name} value={fmt}/>

@@ -2,6 +2,8 @@ import {ManyLocales} from '../react-use-locale';
 
 import en from './en.json';
 import pt from './pt.json';
+import en_InfoboxAlbum from './en_InfoboxAlbum.json';
+import pt_InfoboxAlbum from './pt_InfoboxAlbum.json';
 import en_CiteWeb from './en_CiteWeb.json';
 import pt_CiteWeb from './pt_CiteWeb.json';
 import en_Coord from './en_Coord.json';
@@ -15,6 +17,7 @@ import pt_TrackListing from './pt_TrackListing.json';
  */
 const locales: ManyLocales = {
 	en, pt,
+	en_InfoboxAlbum, pt_InfoboxAlbum,
 	en_CiteWeb, pt_CiteWeb,
 	en_Coord, pt_Coord,
 	en_TrackListing, pt_TrackListing

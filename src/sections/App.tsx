@@ -11,6 +11,7 @@ import Header from './Header';
 import Home from './home/Home';
 import CiteWeb from './cite-web/CiteWeb';
 import Coord from './coord/Coord';
+import InfoboxAlbum from './infobox-album/InfoboxAlbum';
 import TrackListing from './track-listing/TrackListing';
 
 interface StateProps {
@@ -34,6 +35,7 @@ const App: FunctionComponent<Props> =
 						<Route exact path="/" component={Home}/>
 						<Route path="/cite-web" component={CiteWeb}/>
 						<Route path="/coord" component={Coord}/>
+						<Route path="/infobox-album" component={InfoboxAlbum}/>
 						<Route path="/track-listing" component={TrackListing}/>
 					</DivBody>
 				</div>
