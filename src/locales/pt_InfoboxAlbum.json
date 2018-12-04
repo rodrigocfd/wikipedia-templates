@@ -4,5 +4,23 @@
 	"Label": "Gravadora",
 	"label": "gravadora",
 	"Name": "Nome",
-	"name": "nome"
+	"name": "nome",
+	"Type": "Tipo",
+	"type": "tipo",
+
+	"none": "nenhum",
+	"studio": "estúdio",
+	"demo": "demo",
+	"EP": "ep",
+	"live": "ao vivo",
+	"greatest": "grandes êxitos",
+	"remix": "remistura",
+	"box": "caixa",
+	"compilation": "compilação",
+	"mixtape": "mixtape",
+	"soundtrack": "banda sonora",
+	"film": "outro",
+	"cast": "outro",
+	"video": "vídeo",
+	"other": "outro"
 }

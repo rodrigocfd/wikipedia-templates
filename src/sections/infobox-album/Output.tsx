@@ -20,6 +20,7 @@ const Output: FunctionComponent<Props> =
 
 	const fmt = '{{' + t`Infobox album` + '\n'
 		+ (album.name   ? `|${t('name')}=${album.name}\n` : '')
+		+ (album.type  ? `|${t('type')}=${album.type}\n` : '')
 		+ (album.artist ? `|${t('artist')}=[[${album.artist}]]\n` : '')
 		+ (album.label  ? `|${t('label')}=[[${album.label}]]\n` : '')
 		+ '}}';

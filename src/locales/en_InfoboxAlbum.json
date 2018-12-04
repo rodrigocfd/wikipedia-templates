@@ -4,5 +4,23 @@
 	"Label": "Label",
 	"label": "label",
 	"Name": "Name",
-	"name": "name"
+	"name": "name",
+	"Type": "Type",
+	"type": "type",
+
+	"none": "none",
+	"studio": "studio",
+	"demo": "demo",
+	"EP": "EP",
+	"live": "live",
+	"greatest": "greatest",
+	"remix": "remix",
+	"box": "box",
+	"compilation": "compilation",
+	"mixtape": "mixtape",
+	"soundtrack": "soundtrack",
+	"film": "film",
+	"cast": "cast",
+	"video": "video",
+	"other": "other"
 }

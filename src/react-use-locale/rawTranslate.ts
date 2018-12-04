@@ -18,6 +18,10 @@ export default function rawTranslate(curLang: string, locales: ManyLocales,
 
 	let userStr = (str instanceof Array) ? str[0] : str;
 
+	if (userStr === '') {
+		return '';
+	}
+
 	let translatedStr = (locale.custom || locale.base)[userStr];
 	if (translatedStr === undefined) {
 		translatedStr = locale.base[userStr];
