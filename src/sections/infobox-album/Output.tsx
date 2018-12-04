@@ -19,10 +19,11 @@ const Output: FunctionComponent<Props> =
 	const t = useLocale('*_InfoboxAlbum');
 
 	const fmt = '{{' + t`Infobox album` + '\n'
-		+ (album.name   ? `|${t('name')}=${album.name}\n` : '')
-		+ (album.type  ? `|${t('type')}=${album.type}\n` : '')
-		+ (album.artist ? `|${t('artist')}=[[${album.artist}]]\n` : '')
-		+ (album.label  ? `|${t('label')}=[[${album.label}]]\n` : '')
+		+ (album.name     ? `|${t('name')}=${album.name}\n` : '')
+		+ (album.type     ? `|${t('type')}=${album.type}\n` : '')
+		+ (album.artist   ? `|${t('artist')}=[[${album.artist}]]\n` : '')
+		+ (album.producer ? `|${t('producer')}=${album.producer}\n` : '')
+		+ (album.label    ? `|${t('label')}=[[${album.label}]]\n` : '')
 		+ '}}';
 
 	return (

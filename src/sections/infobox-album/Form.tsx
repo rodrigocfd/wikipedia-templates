@@ -50,6 +50,11 @@ const Form: FunctionComponent<Props> =
 					onChange={e => onChange && onChange({...album, artist: e.target.value})}/>
 			</div>
 			<div>
+				<DivName>{t`Producer`}</DivName>
+				<input type="text" size={40} value={album.producer} autoComplete="off"
+					onChange={e => onChange && onChange({...album, producer: e.target.value})}/>
+			</div>
+			<div>
 				<DivName>{t`Label`}</DivName>
 				<input type="text" size={20} value={album.label} autoComplete="off"
 					onChange={e => onChange && onChange({...album, label: e.target.value})}/>

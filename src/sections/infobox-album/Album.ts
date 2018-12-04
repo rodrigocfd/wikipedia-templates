@@ -5,6 +5,7 @@ export default interface Album {
 	name: string;
 	type: string;
 	artist: string;
+	producer: string;
 	label: string;
 }
 
@@ -13,6 +14,7 @@ export function newAlbum(): Album {
 		name: '',
 		type: '',
 		artist: '',
+		producer: '',
 		label: ''
 	};
 }

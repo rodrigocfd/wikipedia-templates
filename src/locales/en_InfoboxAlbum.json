@@ -5,6 +5,8 @@
 	"label": "label",
 	"Name": "Name",
 	"name": "name",
+	"Producer": "Producer",
+	"producer": "producer",
 	"Type": "Type",
 	"type": "type",
 
