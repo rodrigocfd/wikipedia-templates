@@ -1,5 +1,5 @@
 import React, {FunctionComponent} from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {HashRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -28,7 +28,7 @@ const App: FunctionComponent<Props> =
 		({lang}: Props) => {
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<LocaleProvider lang={lang} locales={locales}>
 				<div>
 					<AppHeader/>
@@ -42,7 +42,7 @@ const App: FunctionComponent<Props> =
 					<AppFooter/>
 				</div>
 			</LocaleProvider>
-		</BrowserRouter>
+		</HashRouter>
 	);
 };
 
