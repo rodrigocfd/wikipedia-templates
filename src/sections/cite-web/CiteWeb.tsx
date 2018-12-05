@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import useLocale from '../../react-use-locale';
@@ -17,9 +17,7 @@ interface Props extends StateProps, DispatchProps { }
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb: FunctionComponent<Props> =
-		({cite, dispatchNow}: Props) => {
-
+const CiteWeb = memo<Props>(({cite, dispatchNow}) => {
 	const t = useLocale('*_CiteWeb');
 
 	useEffect(() => {
@@ -34,7 +32,7 @@ const CiteWeb: FunctionComponent<Props> =
 			<SectionFooter onClear={() => dispatchNow('setCite', newCite())}/>
 		</div>
 	);
-};
+});
 
 export default connect<StateProps, DispatchProps, {}, State>(
 	({cite}: State) => ({cite}),

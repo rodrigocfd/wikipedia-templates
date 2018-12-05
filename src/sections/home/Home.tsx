@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -9,8 +9,7 @@ interface Props { }
 /**
  * Main component for app route: home.
  */
-const Home: FunctionComponent<Props> = () => {
-
+const Home = memo<Props>(({}) => {
 	const t = useLocale('*');
 
 	useEffect(() => {
@@ -27,7 +26,7 @@ const Home: FunctionComponent<Props> = () => {
 			</UlList>
 		</div>
 	);
-};
+});
 
 const UlList = styled.ul`
 	line-height: 150%;
