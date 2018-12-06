@@ -2,7 +2,7 @@ import React, {Fragment, memo, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
+import DayMonthYear, {newDayMonthYear, sameDayMonthYear} from './DayMonthYear';
 
 interface Props {
 	name?: string;
@@ -10,8 +10,12 @@ interface Props {
 	onChange?: (value: DayMonthYear) => void;
 }
 
+function areEqual(prevProps: Props, nextProps: Props): boolean {
+	return sameDayMonthYear(prevProps.value, nextProps.value);
+}
+
 /**
- * Year, month and day textboxes, returning DayMonthYear object.
+ * Year, month and day textboxes, returning formatted date.
  */
 const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 	const t = useLocale('*');
@@ -53,7 +57,7 @@ const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 			{' '} <button onClick={() => setDate(newDayMonthYear())}>{t`clear`}</button>
 		</Fragment>
 	);
-});
+}, areEqual);
 
 const InputNum2 = styled.input`
 	width: 50px;
