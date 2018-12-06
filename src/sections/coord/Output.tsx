@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -15,9 +15,7 @@ interface Props {
 /**
  * Outputs the formatted latitude and longitude.
  */
-const Output: FunctionComponent<Props> =
-		({name, coords}: Props) => {
-
+const Output = memo<Props>(({name, coords}) => {
 	const t = useLocale('*_Coord');
 
 	let fmt = '';
@@ -40,7 +38,7 @@ const Output: FunctionComponent<Props> =
 			<StaticTextareaOut name={name} value={fmt}/>
 		</div>
 	);
-};
+});
 
 const StaticTextareaOut = styled(StaticTextarea)`
 	width: 700px;

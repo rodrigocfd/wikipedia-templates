@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import extractLatLng from './extractLatLng';
@@ -10,9 +10,7 @@ interface Props {
 /**
  * Embeds an OpenStreetMap map centered at the given coordinates.
  */
-const OsmMap: FunctionComponent<Props> =
-		({latLng}: Props) => {
-
+const OsmMap = memo<Props>(({latLng}) => {
 	let url = '';
 	let ll = extractLatLng(latLng);
 	if (ll !== null) {
@@ -25,7 +23,7 @@ const OsmMap: FunctionComponent<Props> =
 		<IframeMap width={700} height={350}
 			src={url} scrolling="no"></IframeMap>
 	);
-};
+});
 
 const IframeMap = styled.iframe`
 	margin-top: 20px;

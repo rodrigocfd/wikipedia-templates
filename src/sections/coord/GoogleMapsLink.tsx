@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import extractLatLng from './extractLatLng';
@@ -10,9 +10,7 @@ interface Props {
 /**
  * Displays a Google Maps link pointing to the given coordinates.
  */
-const GoogleMapsLink: FunctionComponent<Props> =
-		({latLng}: Props) => {
-
+const GoogleMapsLink = memo<Props>(({latLng}) => {
 	let url = '';
 	let ll = extractLatLng(latLng);
 	if (ll !== null) {
@@ -25,7 +23,7 @@ const GoogleMapsLink: FunctionComponent<Props> =
 			<a href={url}>{url}</a>
 		</DivLink>
 	);
-};
+});
 
 const DivLink = styled.div`
 	margin-top: 20px;

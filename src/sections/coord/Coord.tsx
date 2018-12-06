@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -20,9 +20,7 @@ interface Props extends StateProps, DispatchProps { }
 /**
  * Main component for app route: coord.
  */
-const Coord: FunctionComponent<Props> =
-		({coords, dispatchNow}: Props) => {
-
+const Coord = memo<Props>(({coords, dispatchNow}) => {
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -56,7 +54,7 @@ const Coord: FunctionComponent<Props> =
 			</div>
 		</div>
 	);
-};
+});
 
 const InputCoords = styled.input`
 	margin-right: 20px;
