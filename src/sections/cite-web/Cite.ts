@@ -1,4 +1,4 @@
-import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
+import DayMonthYear, {newDayMonthYear} from '../DayMonthYear';
 
 /**
  * Model for a citation.

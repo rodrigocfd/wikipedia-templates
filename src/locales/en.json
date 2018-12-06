@@ -11,5 +11,11 @@
 	"Coord": "Coord",
 	"Track listing": "Track listing",
 
+	"Year": "Year",
+	"Month": "Month",
+	"Day": "Day",
+	"today": "today",
+	"clear": "clear",
+
 	"clear all": "clear all"
 }

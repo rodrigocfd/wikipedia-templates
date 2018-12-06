@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
-import DayMonthYear from './DayMonthYear';
+import DayMonthYear from '../DayMonthYear';
 import Cite from './Cite';
 
 interface Props {

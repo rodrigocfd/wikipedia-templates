@@ -1,7 +1,7 @@
 import React, {Fragment, memo, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
-import useLocale from '../../react-use-locale';
+import useLocale from '../react-use-locale';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
@@ -11,10 +11,10 @@ interface Props {
 }
 
 /**
- * Year, month and day textboxes, returning formatted date.
+ * Year, month and day textboxes, returning DayMonthYear object.
  */
 const YearMonthDay = memo<Props>(({name, value, onChange}) => {
-	const t = useLocale('*_CiteWeb');
+	const t = useLocale('*');
 
 	const [date, setDate] = useState(value);
 

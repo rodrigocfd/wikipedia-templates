@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import InlineRadio from '../InlineRadio';
-import YearMonthDay from './YearMonthDay';
+import YearMonthDay from '../YearMonthDay';
 import Cite from './Cite';
 
 interface Props {
