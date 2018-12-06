@@ -17,11 +17,7 @@ interface Props {
 const Output = memo<Props>(({name, cite}) => {
 	const t = useLocale('*_CiteWeb');
 
-	function formatDate(date?: DayMonthYear): string {
-		if (!date) {
-			return '';
-		}
-
+	function formatDate(date: DayMonthYear): string {
 		const monthNames = ['January', 'February', 'March', 'April',
 			'May', 'June', 'July', 'August', 'September', 'October',
 			'November', 'December'];

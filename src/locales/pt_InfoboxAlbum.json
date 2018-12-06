@@ -7,6 +7,9 @@
 	"name": "nome",
 	"Producer": "Produtor",
 	"producer": "produtor",
+	"Released": "Lançado",
+	"released": "lançado",
+	"start date {0} {1} {2}": "{{data de início|{0}|{1}|{2}}}",
 	"Type": "Tipo",
 	"type": "tipo",
 

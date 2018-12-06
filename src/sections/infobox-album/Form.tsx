@@ -2,7 +2,7 @@ import React, {memo, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import InlineRadio from '../InlineRadio';
+import YearMonthDay from '../YearMonthDay';
 import Album from './Album';
 
 interface Props {
@@ -46,6 +46,11 @@ const Form = memo<Props>(({album, onChange}) => {
 				<DivName>{t`Artist`}</DivName>
 				<input type="text" size={40} value={album.artist} autoComplete="off"
 					onChange={e => onChange && onChange({...album, artist: e.target.value})}/>
+			</div>
+			<div>
+				<DivName>{t`Released`}</DivName>
+				<YearMonthDay value={album.released}
+					onChange={val => onChange && onChange({...album, released: val})}/>
 			</div>
 			<div>
 				<DivName>{t`Producer`}</DivName>

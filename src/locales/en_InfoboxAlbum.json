@@ -7,6 +7,9 @@
 	"name": "name",
 	"Producer": "Producer",
 	"producer": "producer",
+	"Released": "Released",
+	"released": "released",
+	"start date {0} {1} {2}": "{{start date|{0}|{1}|{2}}}",
 	"Type": "Type",
 	"type": "type",
 
