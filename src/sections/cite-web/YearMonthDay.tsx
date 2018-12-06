@@ -1,4 +1,4 @@
-import React, {Fragment, FunctionComponent, useEffect, useState} from 'react';
+import React, {Fragment, memo, useEffect, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -13,9 +13,7 @@ interface Props {
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-const YearMonthDay: FunctionComponent<Props> =
-		({name, value, onChange}: Props) => {
-
+const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 	const t = useLocale('*_CiteWeb');
 
 	const [date, setDate] = useState(value);
@@ -55,7 +53,7 @@ const YearMonthDay: FunctionComponent<Props> =
 			{' '} <button onClick={() => setDate(newDayMonthYear())}>{t`clear`}</button>
 		</Fragment>
 	);
-};
+});
 
 const InputNum2 = styled.input`
 	width: 50px;

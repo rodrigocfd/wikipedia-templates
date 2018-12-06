@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -14,9 +14,7 @@ interface Props {
 /**
  * Outputs the formatted cite.
  */
-const Output: FunctionComponent<Props> =
-		({name, cite}: Props) => {
-
+const Output = memo<Props>(({name, cite}) => {
 	const t = useLocale('*_CiteWeb');
 
 	function formatDate(date?: DayMonthYear): string {
@@ -60,7 +58,7 @@ const Output: FunctionComponent<Props> =
 	return (
 		<StaticTextareaOut name={name} value={fmt}/>
 	);
-};
+});
 
 const StaticTextareaOut = styled(StaticTextarea)`
 	width: 99%;
