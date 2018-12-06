@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 interface Props {
@@ -10,14 +10,12 @@ interface Props {
 /**
  * Basic textarea output component for all sections.
  */
-const StaticTextarea: FunctionComponent<Props> =
-		({name, value, className}: Props) => {
-
+const StaticTextarea = memo<Props>(({name, value, className}) => {
 	return (
 		<TextareaOut readOnly name={name} value={value} className={className}
 			onClick={e => e.currentTarget.select()}></TextareaOut>
 	);
-};
+});
 
 const TextareaOut = styled.textarea`
 	font-family: monospace;

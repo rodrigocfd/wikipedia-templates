@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -15,9 +15,7 @@ interface Props extends StateProps, DispatchProps { }
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage: FunctionComponent<Props> =
-		({lang, dispatchNow}: Props) => {
-
+const ChangeLanguage = memo<Props>(({lang, dispatchNow}) => {
 	const t = useLocale('*');
 
 	return (
@@ -35,7 +33,7 @@ const ChangeLanguage: FunctionComponent<Props> =
 			</DivOpts>
 		</DivWrap>
 	);
-};
+});
 
 const DivWrap = styled.div`
 	padding-top: 14px;

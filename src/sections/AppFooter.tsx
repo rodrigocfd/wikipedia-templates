@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 interface Props { }
@@ -6,14 +6,13 @@ interface Props { }
 /**
  * Footer to be shown in all pages.
  */
-const AppFooter: FunctionComponent<Props> = () => {
-
+const AppFooter = memo<Props>(({}) => {
 	return (
 		<DivBottom>
 			<a href="https://github.com/rodrigocfd/wikipedia-templates">GitHub</a>
 		</DivBottom>
 	);
-};
+});
 
 const DivBottom = styled.div`
 	padding: 16px 18px;

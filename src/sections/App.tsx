@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import {HashRouter, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
@@ -24,9 +24,7 @@ interface Props extends StateProps { }
 /**
  * Application root component.
  */
-const App: FunctionComponent<Props> =
-		({lang}: Props) => {
-
+const App = memo<Props>(({lang}) => {
 	return (
 		<HashRouter>
 			<LocaleProvider lang={lang} locales={locales}>
@@ -44,7 +42,7 @@ const App: FunctionComponent<Props> =
 			</LocaleProvider>
 		</HashRouter>
 	);
-};
+});
 
 const DivBody = styled.div`
 	padding: 0 20px;

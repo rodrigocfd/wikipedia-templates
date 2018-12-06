@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -9,8 +9,7 @@ interface Props { }
 /**
  * Header to be shown in all pages.
  */
-const AppHeader: FunctionComponent<Props> = () => {
-
+const AppHeader = memo<Props>(({}) => {
 	const t = useLocale('*');
 
 	return (
@@ -23,7 +22,7 @@ const AppHeader: FunctionComponent<Props> = () => {
 			</DivRight>
 		</DivWrap>
 	);
-};
+});
 
 const DivWrap = styled.div`
 	overflow: hidden;

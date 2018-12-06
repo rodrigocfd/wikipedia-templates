@@ -1,4 +1,4 @@
-import React, {Fragment, FunctionComponent} from 'react';
+import React, {Fragment, memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -15,9 +15,7 @@ interface Props {
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio: FunctionComponent<Props> =
-		({locale, name, value, options, labels, onChange}: Props) => {
-
+const InlineRadio = memo<Props>(({locale, name, value, options, labels, onChange}) => {
 	const t = useLocale(locale);
 
 	return (
@@ -32,7 +30,7 @@ const InlineRadio: FunctionComponent<Props> =
 			))}
 		</Fragment>
 	);
-};
+});
 
 const LabelHand = styled.label`
 	cursor: pointer;
