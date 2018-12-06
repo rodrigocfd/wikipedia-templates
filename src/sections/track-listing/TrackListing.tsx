@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
 
@@ -18,9 +18,7 @@ interface Props extends StateProps, DispatchProps { }
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing: FunctionComponent<Props> =
-		({tracks, dispatchNow}: Props) => {
-
+const TrackListing = memo<Props>(({tracks, dispatchNow}) => {
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {
@@ -83,7 +81,7 @@ const TrackListing: FunctionComponent<Props> =
 			<SectionFooter onClear={() => dispatchNow('setTracks', [])}/>
 		</div>
 	);
-};
+});
 
 const DivBtnAddTrack = styled.div`
 	margin-bottom: 10px;

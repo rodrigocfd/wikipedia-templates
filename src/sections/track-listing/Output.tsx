@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -13,9 +13,7 @@ interface Props {
 /**
  * Outputs the formatted track listing.
  */
-const Output: FunctionComponent<Props> =
-		({name, tracks}: Props) => {
-
+const Output = memo<Props>(({name, tracks}) => {
 	const t = useLocale('*_TrackListing');
 
 	function formatDuration(duration: number | ''): string {
@@ -44,7 +42,7 @@ const Output: FunctionComponent<Props> =
 	return (
 		<StaticTextareaOut name={name} value={fmt}/>
 	);
-};
+});
 
 const StaticTextareaOut = styled(StaticTextarea)`
 	width: 900px;

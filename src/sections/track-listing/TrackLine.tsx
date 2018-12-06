@@ -1,4 +1,4 @@
-import React, {Fragment, FunctionComponent, useEffect, useRef, useState} from 'react';
+import React, {Fragment, memo, useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -15,9 +15,7 @@ interface Props {
 /**
  * One single track, with many fields.
  */
-const TrackLine: FunctionComponent<Props> =
-		({index, track, onRemove, onMoveUp, onChange}: Props) => {
-
+const TrackLine = memo<Props>(({index, track, onRemove, onMoveUp, onChange}) => {
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -58,7 +56,7 @@ const TrackLine: FunctionComponent<Props> =
 			</DivBox>
 		</Fragment>
 	);
-};
+});
 
 const DivBox = styled.div`
 	margin-right: 6px;
