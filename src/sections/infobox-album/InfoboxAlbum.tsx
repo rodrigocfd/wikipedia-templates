@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect} from 'react';
+import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import useLocale from '../../react-use-locale';
@@ -17,9 +17,7 @@ interface Props extends StateProps, DispatchProps { }
 /**
  * Main component for app route: infobox-album.
  */
-const InfoboxAlbum: FunctionComponent<Props> =
-		({album, dispatchNow}: Props) => {
-
+const InfoboxAlbum = memo<Props>(({album, dispatchNow}) => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	useEffect(() => {
@@ -34,7 +32,7 @@ const InfoboxAlbum: FunctionComponent<Props> =
 			<SectionFooter onClear={() => dispatchNow('setAlbum', newAlbum())}/>
 		</div>
 	);
-};
+});
 
 export default connect<StateProps, DispatchProps, {}, State>(
 	({album}: State) => ({album}),

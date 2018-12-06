@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -13,9 +13,7 @@ interface Props {
 /**
  * Outputs the formatted album.
  */
-const Output: FunctionComponent<Props> =
-		({name, album}: Props) => {
-
+const Output = memo<Props>(({name, album}) => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	const fmt = '{{' + t`Infobox album` + '\n'
@@ -29,7 +27,7 @@ const Output: FunctionComponent<Props> =
 	return (
 		<StaticTextareaOut name={name} value={fmt}/>
 	);
-};
+});
 
 const StaticTextareaOut = styled(StaticTextarea)`
 	width: 600px;

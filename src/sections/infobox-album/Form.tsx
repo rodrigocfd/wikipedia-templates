@@ -1,4 +1,4 @@
-import React, {FunctionComponent, useEffect, useRef} from 'react';
+import React, {memo, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -13,9 +13,7 @@ interface Props {
 /**
  * Form with all the fields; receives data and notifies changes.
  */
-const Form: FunctionComponent<Props> =
-		({album, onChange}: Props) => {
-
+const Form = memo<Props>(({album, onChange}) => {
 	const t = useLocale('*_InfoboxAlbum');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -61,7 +59,7 @@ const Form: FunctionComponent<Props> =
 			</div>
 		</div>
 	);
-};
+});
 
 const DivName = styled.div`
 	display: inline-block;
