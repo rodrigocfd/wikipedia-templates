@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
+import onlyIf from '../onlyIf';
 import DayMonthYear from '../DayMonthYear';
 import Album, {albumTypes} from './Album';
 
@@ -31,13 +32,13 @@ const Output = memo<Props>(({name, album}) => {
 	const theReleased = formatDate(album.released);
 
 	const fmt = '{{' + t`Infobox album` + '\n'
-		+ (album.name     ? `|${t`Name`.toLowerCase()}=${album.name}\n` : '')
-		+ (album.type     ? `|${t`Type`.toLowerCase()}=${t(albumTypes[album.type])}\n` : '')
-		+ (album.artist   ? `|${t`Artist`.toLowerCase()}=[[${album.artist}]]\n` : '')
-		+ (album.cover    ? `|${t`Cover`.toLowerCase()}=${album.cover}\n` : '')
-		+ (album.producer ? `|${t`Producer`.toLowerCase()}=${album.producer}\n` : '')
-		+ (album.label    ? `|${t`Label`.toLowerCase()}=${album.label}\n` : '')
-		+ (theReleased    ? `|${t`Released`.toLowerCase()}=${theReleased}\n` : '')
+		+ onlyIf(album.name,     `|${t`Name`.toLowerCase()}=${album.name}\n`)
+		+ onlyIf(album.type,     `|${t`Type`.toLowerCase()}=${t(albumTypes[album.type])}\n`)
+		+ onlyIf(album.artist,   `|${t`Artist`.toLowerCase()}=[[${album.artist}]]\n`)
+		+ onlyIf(album.cover,    `|${t`Cover`.toLowerCase()}=${album.cover}\n`)
+		+ onlyIf(album.producer, `|${t`Producer`.toLowerCase()}=${album.producer}\n`)
+		+ onlyIf(album.label,    `|${t`Label`.toLowerCase()}=${album.label}\n`)
+		+ onlyIf(theReleased,    `|${t`Released`.toLowerCase()}=${theReleased}\n`)
 		+ '}}';
 
 	return (

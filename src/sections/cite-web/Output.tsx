@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import DayMonthYear from '../DayMonthYear';
+import onlyIf from '../onlyIf';
 import Cite from './Cite';
 
 interface Props {
@@ -43,12 +44,12 @@ const Output = memo<Props>(({name, cite}) => {
 
 	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>'
 		+ '{{' + t`Cite web`
-		+ (cite.url       ? ` |${t`Url`.toLowerCase()}=${cite.url}` : '')
-		+ (cite.title     ? ` |${t`Title`.toLowerCase()}=${cite.title}` : '')
-		+ (cite.publisher ? ` |${t`publisher`}=${cite.publisher}` : '')
-		+ (theDate        ? ` |${t`Date`.toLowerCase()}=${theDate}` : '')
-		+ (theAccessDate  ? ` |${t`access-date`}=${theAccessDate}` : '')
-		+ (cite.language  ? ` |${t`language`}=${cite.language}` : '')
+		+ onlyIf(cite.url,       ` |${t`URL`.toLowerCase()}=${cite.url}`)
+		+ onlyIf(cite.title,     ` |${t`Title`.toLowerCase()}=${cite.title}`)
+		+ onlyIf(cite.publisher, ` |${t`publisher`}=${cite.publisher}`)
+		+ onlyIf(theDate,        ` |${t`Date`.toLowerCase()}=${theDate}`)
+		+ onlyIf(theAccessDate,  ` |${t`access-date`}=${theAccessDate}`)
+		+ onlyIf(cite.language,  ` |${t`language`}=${cite.language}`)
 		+ '}}</ref>';
 
 	return (

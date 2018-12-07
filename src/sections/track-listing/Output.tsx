@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
+import onlyIf from '../onlyIf';
 import Track from './Track';
 
 interface Props {
@@ -29,13 +30,13 @@ const Output = memo<Props>(({name, tracks}) => {
 
 	let fmt = '{{' + t`Track listing` + '\n';
 	tracks.forEach((tra, idx) => {
-		fmt += tra.title    ? `|${t('title{0}', idx+1)}=${tra.title}` : '';
-		fmt += tra.note     ? ` |${t('note{0}', idx+1)}=${tra.note}` : '';
-		fmt += tra.writer   ? ` |${t('writer{0}', idx+1)}=${tra.writer}` : '';
-		fmt += tra.lyrics   ? ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}` : '';
-		fmt += tra.music    ? ` |${t('music{0}', idx+1)}=${tra.music}` : '';
-		fmt += tra.duration ? ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}` : '';
-		fmt += '\n';
+		fmt += onlyIf(tra.title,   `|${t('title{0}', idx+1)}=${tra.title}`)
+			+ onlyIf(tra.note,     ` |${t('note{0}', idx+1)}=${tra.note}`)
+			+ onlyIf(tra.writer,   ` |${t('writer{0}', idx+1)}=${tra.writer}`)
+			+ onlyIf(tra.lyrics,   ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}`)
+			+ onlyIf(tra.music,    ` |${t('music{0}', idx+1)}=${tra.music}`)
+			+ onlyIf(tra.duration, ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}`)
+			+ '\n';
 	});
 	fmt += '}}'
 
