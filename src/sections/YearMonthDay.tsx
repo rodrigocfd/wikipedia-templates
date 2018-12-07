@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useEffect, useState} from 'react';
+import React, {Fragment, memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -11,7 +11,8 @@ interface Props {
 }
 
 function areEqual(prevProps: Props, nextProps: Props): boolean {
-	return sameDayMonthYear(prevProps.value, nextProps.value);
+	return name == name &&
+		sameDayMonthYear(prevProps.value, nextProps.value);
 }
 
 /**
@@ -20,22 +21,16 @@ function areEqual(prevProps: Props, nextProps: Props): boolean {
 const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 	const t = useLocale('*');
 
-	const [date, setDate] = useState(value);
-
-	useEffect(() => {
-		onChange && onChange(date);
-	}, [date]);
-
 	function setDateField(fieldName: string, val?: string) {
-		setDate({
-			...date,
+		onChange && onChange({
+			...value,
 			[fieldName]: val ? +val : ''
 		});
 	}
 
 	function setToday() {
 		const now = new Date();
-		setDate({
+		onChange && onChange({
 			day: now.getDate(),
 			month: now.getMonth() + 1,
 			year: now.getFullYear()
@@ -45,16 +40,16 @@ const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 	return (
 		<Fragment>
 			{t`Year`} <InputNum4 type="number"
-				value={date.year} name={name && `${name}_year`}
+				value={value.year} name={name && `${name}_year`}
 				onChange={e => setDateField('year', e.target.value)}/>
 			{t`Month`} <InputNum2 type="number" min={1} max={12}
-				value={date.month} name={name && `${name}_month`}
+				value={value.month} name={name && `${name}_month`}
 				onChange={e => setDateField('month', e.target.value)}/>
 			{t`Day`} <InputNum2 type="number" min={1} max={31}
-				value={date.day} name={name && `${name}_day`}
+				value={value.day} name={name && `${name}_day`}
 				onChange={e => setDateField('day', e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>
-			{' '} <button onClick={() => setDate(newDayMonthYear())}>{t`clear`}</button>
+			{' '} <button onClick={() => onChange && onChange(newDayMonthYear())}>{t`clear`}</button>
 		</Fragment>
 	);
 }, areEqual);
