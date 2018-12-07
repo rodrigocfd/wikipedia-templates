@@ -31,13 +31,13 @@ const Output = memo<Props>(({name, album}) => {
 	const theReleased = formatDate(album.released);
 
 	const fmt = '{{' + t`Infobox album` + '\n'
-		+ (album.name     ? `|${t('name')}=${album.name}\n` : '')
-		+ (album.type     ? `|${t('type')}=${t(albumTypes[album.type])}\n` : '')
-		+ (album.artist   ? `|${t('artist')}=[[${album.artist}]]\n` : '')
-		+ (album.cover    ? `|${t('cover')}=${album.cover}\n` : '')
-		+ (album.producer ? `|${t('producer')}=${album.producer}\n` : '')
-		+ (album.label    ? `|${t('label')}=${album.label}\n` : '')
-		+ (theReleased    ? `|${t('released')}=${theReleased}\n` : '')
+		+ (album.name     ? `|${t`Name`.toLowerCase()}=${album.name}\n` : '')
+		+ (album.type     ? `|${t`Type`.toLowerCase()}=${t(albumTypes[album.type])}\n` : '')
+		+ (album.artist   ? `|${t`Artist`.toLowerCase()}=[[${album.artist}]]\n` : '')
+		+ (album.cover    ? `|${t`Cover`.toLowerCase()}=${album.cover}\n` : '')
+		+ (album.producer ? `|${t`Producer`.toLowerCase()}=${album.producer}\n` : '')
+		+ (album.label    ? `|${t`Label`.toLowerCase()}=${album.label}\n` : '')
+		+ (theReleased    ? `|${t`Released`.toLowerCase()}=${theReleased}\n` : '')
 		+ '}}';
 
 	return (

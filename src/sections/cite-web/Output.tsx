@@ -43,12 +43,12 @@ const Output = memo<Props>(({name, cite}) => {
 
 	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>'
 		+ '{{' + t`Cite web`
-		+ (cite.url       ? ` |${t('url')}=${cite.url}` : '')
-		+ (cite.title     ? ` |${t('title')}=${cite.title}` : '')
-		+ (cite.publisher ? ` |${t('publisher')}=${cite.publisher}` : '')
-		+ (theDate        ? ` |${t('date')}=${theDate}` : '')
-		+ (theAccessDate  ? ` |${t('access-date')}=${theAccessDate}` : '')
-		+ (cite.language  ? ` |${t('language')}=${cite.language}` : '')
+		+ (cite.url       ? ` |${t`Url`.toLowerCase()}=${cite.url}` : '')
+		+ (cite.title     ? ` |${t`Title`.toLowerCase()}=${cite.title}` : '')
+		+ (cite.publisher ? ` |${t`publisher`}=${cite.publisher}` : '')
+		+ (theDate        ? ` |${t`Date`.toLowerCase()}=${theDate}` : '')
+		+ (theAccessDate  ? ` |${t`access-date`}=${theAccessDate}` : '')
+		+ (cite.language  ? ` |${t`language`}=${cite.language}` : '')
 		+ '}}</ref>';
 
 	return (

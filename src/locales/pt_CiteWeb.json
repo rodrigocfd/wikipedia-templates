@@ -2,7 +2,6 @@
 	"Access date": "Data de acesso",
 	"access-date": "accessodata",
 	"Date": "Data",
-	"date": "data",
 	"DateDMY {1} {0}, {2}": "{0} de {1} de {2}",
 	"DateMY {0}, {1}": "{0} de {1}",
 	"English": "Inglês",
@@ -16,9 +15,7 @@
 	"Ref name": "Ref name",
 	"Spanish": "Espanhol",
 	"Title": "Título",
-	"title": "titulo",
 	"URL": "URL",
-	"url": "url",
 
 	"January": "janeiro",
 	"February": "fevereiro",
