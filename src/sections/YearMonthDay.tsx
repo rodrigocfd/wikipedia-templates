@@ -2,17 +2,12 @@ import React, {Fragment, memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import DayMonthYear, {newDayMonthYear, sameDayMonthYear} from './DayMonthYear';
+import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
 	name?: string;
 	value: DayMonthYear;
 	onChange?: (value: DayMonthYear) => void;
-}
-
-function areEqual(prevProps: Props, nextProps: Props): boolean {
-	return name == name &&
-		sameDayMonthYear(prevProps.value, nextProps.value);
 }
 
 /**
@@ -37,6 +32,10 @@ const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 		});
 	}
 
+	function setClear() {
+		onChange && onChange(newDayMonthYear());
+	}
+
 	return (
 		<Fragment>
 			{t`Year`} <InputNum4 type="number"
@@ -49,10 +48,10 @@ const YearMonthDay = memo<Props>(({name, value, onChange}) => {
 				value={value.day} name={name && `${name}_day`}
 				onChange={e => setDateField('day', e.target.value)}/>
 			<button onClick={setToday}>{t`today`}</button>
-			{' '} <button onClick={() => onChange && onChange(newDayMonthYear())}>{t`clear`}</button>
+			{' '} <button onClick={setClear}>{t`clear`}</button>
 		</Fragment>
 	);
-}, areEqual);
+});
 
 const InputNum2 = styled.input`
 	width: 50px;

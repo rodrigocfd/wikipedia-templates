@@ -14,9 +14,3 @@ export function newDayMonthYear(): DayMonthYear {
 		year: ''
 	};
 }
-
-export function sameDayMonthYear(v1: DayMonthYear, v2: DayMonthYear): boolean {
-	return v1.day == v2.day &&
-		v1.month == v2.month &&
-		v1.year == v2.year;
-}
