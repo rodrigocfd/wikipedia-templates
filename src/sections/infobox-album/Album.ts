@@ -5,7 +5,7 @@ import DayMonthYear, {newDayMonthYear} from '../DayMonthYear';
  */
 export default interface Album {
 	name: string;
-	type: string;
+	type: number;
 	artist: string;
 	cover: string;
 	released: DayMonthYear;
@@ -16,7 +16,7 @@ export default interface Album {
 export function newAlbum(): Album {
 	return {
 		name: '',
-		type: '',
+		type: 0,
 		artist: '',
 		cover: '',
 		released: newDayMonthYear(),
@@ -24,3 +24,6 @@ export function newAlbum(): Album {
 		label: ''
 	};
 }
+
+export const albumTypes = ['none', 'studio', 'demo', 'EP', 'live', 'greatest', 'remix',
+	'box', 'compilation', 'mixtape', 'soundtrack', 'film', 'cast', 'video', 'other'];

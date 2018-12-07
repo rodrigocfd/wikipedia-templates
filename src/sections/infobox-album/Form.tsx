@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import YearMonthDay from '../YearMonthDay';
-import Album from './Album';
+import Album, {albumTypes} from './Album';
 
 interface Props {
 	album: Album;
@@ -21,11 +21,6 @@ const Form = memo<Props>(({album, onChange}) => {
 		txt1 && txt1.current && txt1.current.focus();
 	}, [txt1]);
 
-	const albumTypes = ['studio', 'demo', 'EP', 'live', 'greatest', 'remix', 'box',
-		'compilation', 'mixtape', 'soundtrack', 'film', 'cast', 'video', 'other'];
-	const albumOptions = ['', ...albumTypes];
-	const albumLabels = ['none', ...albumTypes];
-
 	return (
 		<div>
 			<div>
@@ -36,9 +31,9 @@ const Form = memo<Props>(({album, onChange}) => {
 			<div>
 				<DivName>{t`Type`}</DivName>
 				<select value={album.type}
-					onChange={e => onChange && onChange({...album, type: e.target.value})}>
-					{albumOptions.map((opt: string, i: number) =>
-						<option key={opt} value={t(opt)}>{t(albumLabels[i])}</option>
+					onChange={e => onChange && onChange({...album, type: +e.target.value})}>
+					{albumTypes.map((aType: string, i: number) =>
+						<option key={aType} value={i}>{t(aType)}</option>
 					)}
 				</select>
 			</div>

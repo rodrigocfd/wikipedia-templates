@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import DayMonthYear from '../DayMonthYear';
-import Album from './Album';
+import Album, {albumTypes} from './Album';
 
 interface Props {
 	name?: string;
@@ -32,7 +32,7 @@ const Output = memo<Props>(({name, album}) => {
 
 	const fmt = '{{' + t`Infobox album` + '\n'
 		+ (album.name     ? `|${t('name')}=${album.name}\n` : '')
-		+ (album.type     ? `|${t('type')}=${album.type}\n` : '')
+		+ (album.type     ? `|${t('type')}=${t(albumTypes[album.type])}\n` : '')
 		+ (album.artist   ? `|${t('artist')}=[[${album.artist}]]\n` : '')
 		+ (album.cover    ? `|${t('cover')}=${album.cover}\n` : '')
 		+ (album.producer ? `|${t('producer')}=${album.producer}\n` : '')
