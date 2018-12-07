@@ -34,6 +34,7 @@ const Output = memo<Props>(({name, album}) => {
 		+ (album.name     ? `|${t('name')}=${album.name}\n` : '')
 		+ (album.type     ? `|${t('type')}=${album.type}\n` : '')
 		+ (album.artist   ? `|${t('artist')}=[[${album.artist}]]\n` : '')
+		+ (album.cover    ? `|${t('cover')}=${album.cover}\n` : '')
 		+ (album.producer ? `|${t('producer')}=${album.producer}\n` : '')
 		+ (album.label    ? `|${t('label')}=${album.label}\n` : '')
 		+ (theReleased    ? `|${t('released')}=${theReleased}\n` : '')

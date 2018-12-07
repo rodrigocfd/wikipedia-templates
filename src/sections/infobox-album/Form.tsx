@@ -48,6 +48,11 @@ const Form = memo<Props>(({album, onChange}) => {
 					onChange={e => onChange && onChange({...album, artist: e.target.value})}/>
 			</div>
 			<div>
+				<DivName>{t`Cover`}</DivName>
+				<input type="text" size={30} value={album.cover} autoComplete="off"
+					onChange={e => onChange && onChange({...album, cover: e.target.value})}/>
+			</div>
+			<div>
 				<DivName>{t`Released`}</DivName>
 				<YearMonthDay value={album.released}
 					onChange={val => onChange && onChange({...album, released: val})}/>
