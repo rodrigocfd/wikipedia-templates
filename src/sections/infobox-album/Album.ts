@@ -10,6 +10,7 @@ export default interface Album {
 	cover: string;
 	released: DayMonthYear;
 	producer: string;
+	studio: string;
 	label: string;
 }
 
@@ -21,6 +22,7 @@ export function newAlbum(): Album {
 		cover: '',
 		released: newDayMonthYear(),
 		producer: '',
+		studio: '',
 		label: ''
 	};
 }

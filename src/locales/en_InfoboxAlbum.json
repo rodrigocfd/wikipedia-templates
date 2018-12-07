@@ -6,6 +6,7 @@
 	"Producer": "Producer",
 	"Released": "Released",
 	"start date {0} {1} {2}": "{{start date|{0}|{1}|{2}}}",
+	"Studio": "Studio",
 	"Type": "Type",
 
 	"none": "none",

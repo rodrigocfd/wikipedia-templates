@@ -37,6 +37,7 @@ const Output = memo<Props>(({name, album}) => {
 		+ onlyIf(album.artist,   `|${t`Artist`.toLowerCase()}=[[${album.artist}]]\n`)
 		+ onlyIf(album.cover,    `|${t`Cover`.toLowerCase()}=${album.cover}\n`)
 		+ onlyIf(album.producer, `|${t`Producer`.toLowerCase()}=${album.producer}\n`)
+		+ onlyIf(album.studio,   `|${t`Studio`.toLowerCase()}=${album.studio}\n`)
 		+ onlyIf(album.label,    `|${t`Label`.toLowerCase()}=${album.label}\n`)
 		+ onlyIf(theReleased,    `|${t`Released`.toLowerCase()}=${theReleased}\n`)
 		+ '}}';
