@@ -1,13 +1,13 @@
 {
-  "main.css": "/wikipedia-templates/static/css/main.0b1bc1ba.chunk.css",
-  "main.js": "/wikipedia-templates/static/js/main.40956bb9.chunk.js",
-  "main.js.map": "/wikipedia-templates/static/js/main.40956bb9.chunk.js.map",
-  "static/js/1.54ab203e.chunk.js": "/wikipedia-templates/static/js/1.54ab203e.chunk.js",
-  "static/js/1.54ab203e.chunk.js.map": "/wikipedia-templates/static/js/1.54ab203e.chunk.js.map",
+  "main.css": "/wikipedia-templates/static/css/main.6b4e9869.chunk.css",
+  "main.js": "/wikipedia-templates/static/js/main.94413ad9.chunk.js",
+  "main.js.map": "/wikipedia-templates/static/js/main.94413ad9.chunk.js.map",
+  "static/js/1.8bde2080.chunk.js": "/wikipedia-templates/static/js/1.8bde2080.chunk.js",
+  "static/js/1.8bde2080.chunk.js.map": "/wikipedia-templates/static/js/1.8bde2080.chunk.js.map",
   "runtime~main.js": "/wikipedia-templates/static/js/runtime~main.8a767f41.js",
   "runtime~main.js.map": "/wikipedia-templates/static/js/runtime~main.8a767f41.js.map",
-  "static/css/main.0b1bc1ba.chunk.css.map": "/wikipedia-templates/static/css/main.0b1bc1ba.chunk.css.map",
+  "static/css/main.6b4e9869.chunk.css.map": "/wikipedia-templates/static/css/main.6b4e9869.chunk.css.map",
   "index.html": "/wikipedia-templates/index.html",
-  "precache-manifest.71d5d5a80285f498c075f32fec89a8a5.js": "/wikipedia-templates/precache-manifest.71d5d5a80285f498c075f32fec89a8a5.js",
+  "precache-manifest.dfb58e1c62253f0201828a6bf216a2d0.js": "/wikipedia-templates/precache-manifest.dfb58e1c62253f0201828a6bf216a2d0.js",
   "service-worker.js": "/wikipedia-templates/service-worker.js"
 }
