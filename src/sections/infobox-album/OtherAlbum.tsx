@@ -1,4 +1,4 @@
-import React, {memo, Fragment, useEffect} from 'react';
+import React, {memo, Fragment} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';

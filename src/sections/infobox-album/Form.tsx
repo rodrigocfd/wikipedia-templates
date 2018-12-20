@@ -54,6 +54,11 @@ const Form = memo<Props>(({album, onChange}) => {
 					onChange={val => onChange && onChange({...album, released: val})}/>
 			</div>
 			<div>
+				<DivName>{t`Genre`}</DivName>
+				<input type="text" size={20} value={album.genre} autoComplete="off"
+					onChange={e => onChange && onChange({...album, genre: e.target.value})}/>
+			</div>
+			<div>
 				<DivName>{t`Producer`}</DivName>
 				<input type="text" size={40} value={album.producer} autoComplete="off"
 					onChange={e => onChange && onChange({...album, producer: e.target.value})}/>

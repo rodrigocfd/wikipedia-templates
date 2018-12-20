@@ -2,6 +2,7 @@
 	"Artist": "Artist",
 	"Cover": "Cover",
 	"Label": "Label",
+	"Genre": "Genre",
 	"Name": "Name",
 	"next_title": "next_title",
 	"next_year": "next_year",
