@@ -1,4 +1,5 @@
 import DayMonthYear, {newDayMonthYear} from '../DayMonthYear';
+import NameYear, {newNameYear} from './NameYear';
 
 /**
  * Model for an album.
@@ -12,6 +13,8 @@ export default interface Album {
 	producer: string;
 	studio: string;
 	label: string;
+	prevAlbum: NameYear;
+	nextAlbum: NameYear;
 }
 
 export function newAlbum(): Album {
@@ -23,7 +26,9 @@ export function newAlbum(): Album {
 		released: newDayMonthYear(),
 		producer: '',
 		studio: '',
-		label: ''
+		label: '',
+		prevAlbum: newNameYear(),
+		nextAlbum: newNameYear()
 	};
 }
 

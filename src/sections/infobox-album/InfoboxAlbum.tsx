@@ -39,7 +39,7 @@ const InfoboxAlbum = memo<Props>(({album, dispatchNow}) => {
 
 const DivGridWrap = styled.div`
 	display: grid;
-	grid-template-columns: 600px auto;
+	grid-template-columns: 650px auto;
 `;
 
 export default connect<StateProps, DispatchProps, {}, State>(

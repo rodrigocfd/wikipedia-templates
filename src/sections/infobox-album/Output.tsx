@@ -6,6 +6,7 @@ import StaticTextarea from '../StaticTextarea';
 import onlyIf from '../onlyIf';
 import DayMonthYear from '../DayMonthYear';
 import Album, {albumTypes} from './Album';
+import NameYear from './NameYear';
 
 interface Props {
 	name?: string;
@@ -29,7 +30,16 @@ const Output = memo<Props>(({name, album}) => {
 		return formatted;
 	}
 
+	function formatNameYear(pref: 'prev' | 'next', nameYear: NameYear): string {
+		return nameYear.name && nameYear.year ?
+			`|${t(pref + '_title')}=[[${nameYear.name}]]\n` +
+			`|${t(pref + '_year')}=${nameYear.year}\n`
+			: '';
+	}
+
 	const theReleased = formatDate(album.released);
+	const thePrev = formatNameYear('prev', album.prevAlbum);
+	const theNext = formatNameYear('next', album.nextAlbum);
 
 	const fmt = '{{' + t`Infobox album` + '\n'
 		+ onlyIf(album.name,     `|${t`Name`.toLowerCase()}=${album.name}\n`)
@@ -40,6 +50,8 @@ const Output = memo<Props>(({name, album}) => {
 		+ onlyIf(album.studio,   `|${t`Studio`.toLowerCase()}=${album.studio}\n`)
 		+ onlyIf(album.label,    `|${t`Label`.toLowerCase()}=${album.label}\n`)
 		+ onlyIf(theReleased,    `|${t`Released`.toLowerCase()}=${theReleased}\n`)
+		+ thePrev
+		+ theNext
 		+ '}}';
 
 	return (

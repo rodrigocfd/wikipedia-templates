@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
 import YearMonthDay from '../YearMonthDay';
+import OtherAlbum from './OtherAlbum';
 import Album, {albumTypes} from './Album';
 
 interface Props {
@@ -67,13 +68,23 @@ const Form = memo<Props>(({album, onChange}) => {
 				<input type="text" size={20} value={album.label} autoComplete="off"
 					onChange={e => onChange && onChange({...album, label: e.target.value})}/>
 			</div>
+			<div>
+				<DivName>{t`Previous album`}</DivName>
+				<OtherAlbum value={album.prevAlbum}
+					onChange={val => onChange && onChange({...album, prevAlbum: val})}/>
+			</div>
+			<div>
+				<DivName>{t`Next album`}</DivName>
+				<OtherAlbum value={album.nextAlbum}
+					onChange={val => onChange && onChange({...album, nextAlbum: val})}/>
+			</div>
 		</div>
 	);
 });
 
 const DivName = styled.div`
 	display: inline-block;
-	width: 90px;
+	width: 120px;
 	padding: 6px 0;
 `;
 
