@@ -17,7 +17,7 @@ const AppFooter = memo<Props>(({}) => {
 const DivBottom = styled.div`
 	padding: 16px 18px;
 	font-size: 80%;
-	position: fixed
+	position: fixed;
 	bottom: 0;
 	right: 0;
 `;
