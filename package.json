@@ -3,6 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"homepage": "https://rodrigocfd.github.io/wikipedia-templates/",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rodrigocfd/wikipedia-templates.git"
+	},
 	"dependencies": {
 		"@types/jest": "^23.3.10",
 		"@types/node": "^10.12.18",
