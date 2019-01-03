@@ -63,8 +63,8 @@ const Form = memo<Props>(({cite, onChange}) => {
 				<DivName>{t`Language`}</DivName>
 				<InlineRadio locale="*_CiteWeb" name="language" value={cite.language}
 					onChange={val => onChange && onChange({...cite, language: val})}
-					options={['', 'en', 'es', 'fr', 'de', 'pt']}
-					labels={['none', 'English', 'Spanish', 'French', 'German', 'Portuguese']}/>
+					options={['', 'en', 'es', 'fr', 'de', 'it', 'pt']}
+					labels={['none', 'English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese']}/>
 			</div>
 		</div>
 	);
