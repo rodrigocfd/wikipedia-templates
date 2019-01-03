@@ -40,6 +40,11 @@ const Form = memo<Props>(({cite, onChange}) => {
 					onChange={e => onChange && onChange({...cite, title: e.target.value})}/>
 			</div>
 			<div>
+				<DivName>{t`Translated title`}</DivName>
+				<input type="text" size={88} value={cite.transTitle} autoComplete="off"
+					onChange={e => onChange && onChange({...cite, transTitle: e.target.value})}/>
+			</div>
+			<div>
 				<DivName>{t`Publisher`}</DivName>
 				<input type="text" size={88} value={cite.publisher} autoComplete="off"
 					onChange={e => onChange && onChange({...cite, publisher: e.target.value})}/>

@@ -44,12 +44,13 @@ const Output = memo<Props>(({name, cite}) => {
 
 	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>'
 		+ '{{' + t`Cite web`
-		+ onlyIf(cite.url,       ` |${t`URL`.toLowerCase()}=${cite.url}`)
-		+ onlyIf(cite.title,     ` |${t`Title`.toLowerCase()}=${cite.title}`)
-		+ onlyIf(cite.publisher, ` |${t`publisher`}=${cite.publisher}`)
-		+ onlyIf(theDate,        ` |${t`Date`.toLowerCase()}=${theDate}`)
-		+ onlyIf(theAccessDate,  ` |${t`access-date`}=${theAccessDate}`)
-		+ onlyIf(cite.language,  ` |${t`language`}=${cite.language}`)
+		+ onlyIf(cite.url,        ` |${t`URL`.toLowerCase()}=${cite.url}`)
+		+ onlyIf(cite.title,      ` |${t`Title`.toLowerCase()}=${cite.title}`)
+		+ onlyIf(cite.transTitle, ` |${t`trans-title`}=${cite.transTitle}`)
+		+ onlyIf(cite.publisher,  ` |${t`publisher`}=${cite.publisher}`)
+		+ onlyIf(theDate,         ` |${t`Date`.toLowerCase()}=${theDate}`)
+		+ onlyIf(theAccessDate,   ` |${t`access-date`}=${theAccessDate}`)
+		+ onlyIf(cite.language,   ` |${t`language`}=${cite.language}`)
 		+ '}}</ref>';
 
 	return (

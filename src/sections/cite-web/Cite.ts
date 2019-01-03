@@ -7,6 +7,7 @@ export default interface Cite {
 	refName: string;
 	url: string;
 	title: string;
+	transTitle: string;
 	publisher: string;
 	date: DayMonthYear;
 	accessDate: DayMonthYear;
@@ -18,6 +19,7 @@ export function newCite(): Cite {
 		refName: '',
 		url: '',
 		title: '',
+		transTitle: '',
 		publisher: '',
 		date: newDayMonthYear(),
 		accessDate: newDayMonthYear(),
