@@ -5,6 +5,7 @@ import useLocale from '../../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
+import Iframe from './Iframe';
 import Output from './Output';
 import Cite, {newCite} from './Cite';
 
@@ -29,6 +30,7 @@ const CiteWeb = memo<Props>(({cite, dispatchNow}) => {
 			<h2>{t`Cite web`}</h2>
 			<Form cite={cite} onChange={ci => dispatchNow('setCite', ci)}/>
 			<Output cite={cite}/>
+			<Iframe cite={cite}/>
 			<SectionFooter onClear={() => dispatchNow('setCite', newCite())}/>
 		</div>
 	);

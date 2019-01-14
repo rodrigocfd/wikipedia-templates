@@ -59,7 +59,7 @@ const Output = memo<Props>(({name, cite}) => {
 });
 
 const StaticTextareaOut = styled(StaticTextarea)`
-	width: 85%;
+	width: 90%;
 	height: 70px;
 	margin-top: 20px;
 `;

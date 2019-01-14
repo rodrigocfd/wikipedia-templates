@@ -1,0 +1,36 @@
+import React, {memo} from 'react';
+import styled from 'styled-components';
+
+import Cite from './Cite';
+
+interface Props {
+	cite: Cite;
+}
+
+/**
+ * Renders the URL into an iframe.
+ */
+const Iframe = memo<Props>(({cite}) => {
+	let theUrl = '';
+
+	if (cite.url &&
+		(cite.url.startsWith('http://') || cite.url.startsWith('https://')) &&
+		cite.url.length > 10)
+	{
+		theUrl = cite.url;
+	}
+
+	return (
+		!theUrl ? null :
+			<DispIframe src={theUrl} frameBorder={0}></DispIframe>
+	);
+});
+
+const DispIframe = styled.iframe`
+	width: 90%;
+	height: 400px;
+	margin-top: 18px;
+	border: 1px solid #ddd;
+`;
+
+export default Iframe;
