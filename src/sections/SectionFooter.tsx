@@ -11,15 +11,15 @@ interface Props {
 /**
  * Footer common to all sections.
  */
-const SectionFooter = memo<Props>(({onClear}) => {
+const SectionFooter = memo<Props>(p => {
 	const t = useLocale('*');
 
 	return (
 		<DivWrap>
 			<Link to="/">{t`Home`}</Link>
-			{onClear &&
+			{p.onClear &&
 				<ButtonClear onClick={e =>
-					onClear && onClear()}>{t`clear all`}</ButtonClear>
+					p.onClear && p.onClear()}>{t`clear all`}</ButtonClear>
 			}
 		</DivWrap>
 	);

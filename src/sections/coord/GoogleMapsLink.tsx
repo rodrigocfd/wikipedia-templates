@@ -10,9 +10,9 @@ interface Props {
 /**
  * Displays a Google Maps link pointing to the given coordinates.
  */
-const GoogleMapsLink = memo<Props>(({latLng}) => {
+const GoogleMapsLink = memo<Props>(p => {
 	let url = '';
-	let ll = extractLatLng(latLng);
+	let ll = extractLatLng(p.latLng);
 	if (ll !== null) {
 		url = `http://maps.google.com/maps?ll=${ll[0]},${ll[1]}`
 			+ `&spn=0.01,0.01&q=${ll[0]},${ll[1]}`;

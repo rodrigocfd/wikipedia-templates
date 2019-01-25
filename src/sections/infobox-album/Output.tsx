@@ -16,7 +16,7 @@ interface Props {
 /**
  * Outputs the formatted album.
  */
-const Output = memo<Props>(({name, album}) => {
+const Output = memo<Props>(p => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	function formatDate(date: DayMonthYear): string {
@@ -37,26 +37,26 @@ const Output = memo<Props>(({name, album}) => {
 			: '';
 	}
 
-	const theReleased = formatDate(album.released);
-	const thePrev = formatNameYear('prev', album.prevAlbum);
-	const theNext = formatNameYear('next', album.nextAlbum);
+	const theReleased = formatDate(p.album.released);
+	const thePrev = formatNameYear('prev', p.album.prevAlbum);
+	const theNext = formatNameYear('next', p.album.nextAlbum);
 
 	const fmt = '{{' + t`Infobox album` + '\n'
-		+ onlyIf(album.name,     `|${t`Name`.toLowerCase()}=${album.name}\n`)
-		+ onlyIf(album.type,     `|${t`Type`.toLowerCase()}=${t(albumTypes[album.type])}\n`)
-		+ onlyIf(album.artist,   `|${t`Artist`.toLowerCase()}=[[${album.artist}]]\n`)
-		+ onlyIf(album.cover,    `|${t`Cover`.toLowerCase()}=${album.cover}\n`)
-		+ onlyIf(album.genre,    `|${t`Genre`.toLowerCase()}=${album.genre}\n`)
-		+ onlyIf(album.producer, `|${t`Producer`.toLowerCase()}=${album.producer}\n`)
-		+ onlyIf(album.studio,   `|${t`Studio`.toLowerCase()}=${album.studio}\n`)
-		+ onlyIf(album.label,    `|${t`Label`.toLowerCase()}=${album.label}\n`)
-		+ onlyIf(theReleased,    `|${t`Released`.toLowerCase()}=${theReleased}\n`)
+		+ onlyIf(p.album.name,     `|${t`Name`.toLowerCase()}=${p.album.name}\n`)
+		+ onlyIf(p.album.type,     `|${t`Type`.toLowerCase()}=${t(albumTypes[p.album.type])}\n`)
+		+ onlyIf(p.album.artist,   `|${t`Artist`.toLowerCase()}=[[${p.album.artist}]]\n`)
+		+ onlyIf(p.album.cover,    `|${t`Cover`.toLowerCase()}=${p.album.cover}\n`)
+		+ onlyIf(p.album.genre,    `|${t`Genre`.toLowerCase()}=${p.album.genre}\n`)
+		+ onlyIf(p.album.producer, `|${t`Producer`.toLowerCase()}=${p.album.producer}\n`)
+		+ onlyIf(p.album.studio,   `|${t`Studio`.toLowerCase()}=${p.album.studio}\n`)
+		+ onlyIf(p.album.label,    `|${t`Label`.toLowerCase()}=${p.album.label}\n`)
+		+ onlyIf(theReleased,      `|${t`Released`.toLowerCase()}=${theReleased}\n`)
 		+ thePrev
 		+ theNext
 		+ '}}';
 
 	return (
-		<StaticTextareaOut name={name} value={fmt}/>
+		<StaticTextareaOut name={p.name} value={fmt}/>
 	);
 });
 

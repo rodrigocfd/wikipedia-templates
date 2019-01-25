@@ -6,7 +6,7 @@ interface Props { }
 /**
  * Footer to be shown in all pages.
  */
-const AppFooter = memo<Props>(({}) => {
+const AppFooter = memo<Props>(() => {
 	return (
 		<DivBottom>
 			<a href="https://github.com/rodrigocfd/wikipedia-templates">GitHub</a>

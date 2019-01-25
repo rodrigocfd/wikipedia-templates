@@ -10,9 +10,9 @@ interface Props {
 /**
  * Embeds an OpenStreetMap map centered at the given coordinates.
  */
-const OsmMap = memo<Props>(({latLng}) => {
+const OsmMap = memo<Props>(p => {
 	let url = '';
-	let ll = extractLatLng(latLng);
+	let ll = extractLatLng(p.latLng);
 	if (ll !== null) {
 		url = 'https://www.openstreetmap.org/export/embed.html?bbox='
 			+ `${ll[1]}%2C${ll[0]}%2C` +

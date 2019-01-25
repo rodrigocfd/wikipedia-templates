@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: infobox-album.
  */
-const InfoboxAlbum = memo<Props & DispatchProps>(({album, dispatchNow}) => {
+const InfoboxAlbum = memo<Props & DispatchProps>(p => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	useEffect(() => {
@@ -27,10 +27,10 @@ const InfoboxAlbum = memo<Props & DispatchProps>(({album, dispatchNow}) => {
 		<div>
 			<h2>{t`Infobox album`}</h2>
 			<DivGridWrap>
-				<Form album={album} onChange={al => dispatchNow('setAlbum', al)}/>
-				<Output album={album}/>
+				<Form album={p.album} onChange={al => p.dispatchNow('setAlbum', al)}/>
+				<Output album={p.album}/>
 			</DivGridWrap>
-			<SectionFooter onClear={() => dispatchNow('setAlbum', newAlbum())}/>
+			<SectionFooter onClear={() => p.dispatchNow('setAlbum', newAlbum())}/>
 		</div>
 	);
 });

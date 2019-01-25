@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb = memo<Props & DispatchProps>(({cite, dispatchNow}) => {
+const CiteWeb = memo<Props & DispatchProps>(p => {
 	const t = useLocale('*_CiteWeb');
 
 	useEffect(() => {
@@ -26,10 +26,10 @@ const CiteWeb = memo<Props & DispatchProps>(({cite, dispatchNow}) => {
 	return (
 		<div>
 			<h2>{t`Cite web`}</h2>
-			<Form cite={cite} onChange={ci => dispatchNow('setCite', ci)}/>
-			<Output cite={cite}/>
-			<Iframe cite={cite}/>
-			<SectionFooter onClear={() => dispatchNow('setCite', newCite())}/>
+			<Form cite={p.cite} onChange={ci => p.dispatchNow('setCite', ci)}/>
+			<Output cite={p.cite}/>
+			<Iframe cite={p.cite}/>
+			<SectionFooter onClear={() => p.dispatchNow('setCite', newCite())}/>
 		</div>
 	);
 });

@@ -15,7 +15,7 @@ interface Props {
 /**
  * Outputs the formatted cite.
  */
-const Output = memo<Props>(({name, cite}) => {
+const Output = memo<Props>(p => {
 	const t = useLocale('*_CiteWeb');
 
 	function formatDate(date: DayMonthYear): string {
@@ -39,22 +39,22 @@ const Output = memo<Props>(({name, cite}) => {
 		return formatted;
 	}
 
-	const theDate = formatDate(cite.date);
-	const theAccessDate = formatDate(cite.accessDate);
+	const theDate = formatDate(p.cite.date);
+	const theAccessDate = formatDate(p.cite.accessDate);
 
-	const fmt = '<ref' + (cite.refName && ` name="${cite.refName}"`) + '>'
+	const fmt = '<ref' + (p.cite.refName && ` name="${p.cite.refName}"`) + '>'
 		+ '{{' + t`Cite web`
-		+ onlyIf(cite.url,        ` |${t`URL`.toLowerCase()}=${cite.url}`)
-		+ onlyIf(cite.title,      ` |${t`Title`.toLowerCase()}=${cite.title}`)
-		+ onlyIf(cite.transTitle, ` |${t`trans-title`}=${cite.transTitle}`)
-		+ onlyIf(cite.publisher,  ` |${t`publisher`}=${cite.publisher}`)
-		+ onlyIf(theDate,         ` |${t`Date`.toLowerCase()}=${theDate}`)
-		+ onlyIf(theAccessDate,   ` |${t`access-date`}=${theAccessDate}`)
-		+ onlyIf(cite.language,   ` |${t`language`}=${cite.language}`)
+		+ onlyIf(p.cite.url,        ` |${t`URL`.toLowerCase()}=${p.cite.url}`)
+		+ onlyIf(p.cite.title,      ` |${t`Title`.toLowerCase()}=${p.cite.title}`)
+		+ onlyIf(p.cite.transTitle, ` |${t`trans-title`}=${p.cite.transTitle}`)
+		+ onlyIf(p.cite.publisher,  ` |${t`publisher`}=${p.cite.publisher}`)
+		+ onlyIf(theDate,           ` |${t`Date`.toLowerCase()}=${theDate}`)
+		+ onlyIf(theAccessDate,     ` |${t`access-date`}=${theAccessDate}`)
+		+ onlyIf(p.cite.language,   ` |${t`language`}=${p.cite.language}`)
 		+ '}}</ref>';
 
 	return (
-		<StaticTextareaOut name={name} value={fmt}/>
+		<StaticTextareaOut name={p.name} value={fmt}/>
 	);
 });
 

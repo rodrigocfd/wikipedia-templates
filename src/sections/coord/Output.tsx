@@ -15,11 +15,11 @@ interface Props {
 /**
  * Outputs the formatted latitude and longitude.
  */
-const Output = memo<Props>(({name, coords}) => {
+const Output = memo<Props>(p => {
 	const t = useLocale('*_Coord');
 
 	let fmt = '';
-	let ll = extractLatLng(coords.latLng);
+	let ll = extractLatLng(p.coords.latLng);
 	if (ll !== null) {
 		let lat = newDegMinSec(ll[0]);
 		let lng = newDegMinSec(ll[1]);
@@ -29,13 +29,13 @@ const Output = memo<Props>(({name, coords}) => {
 			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
 			+ '|' + (lng.dec < 0 ? t`W` : t`E`)
-			+ `|display=${coords.display}`
+			+ `|display=${p.coords.display}`
 			+ '}}';
 	}
 
 	return (
 		<div>
-			<StaticTextareaOut name={name} value={fmt}/>
+			<StaticTextareaOut name={p.name} value={fmt}/>
 		</div>
 	);
 });

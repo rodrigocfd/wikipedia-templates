@@ -10,9 +10,9 @@ interface Props {
 /**
  * Basic textarea output component for all sections.
  */
-const StaticTextarea = memo<Props>(({name, value, className}) => {
+const StaticTextarea = memo<Props>(p => {
 	return (
-		<TextareaOut readOnly name={name} value={value} className={className}
+		<TextareaOut readOnly name={name} value={p.value} className={p.className}
 			onClick={e => e.currentTarget.select()}></TextareaOut>
 	);
 });

@@ -15,18 +15,18 @@ interface Props {
 /**
  * One single track, with many fields.
  */
-const TrackLine = memo<Props>(({index, track, onRemove, onMoveUp, onChange}) => {
+const TrackLine = memo<Props>(p => {
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 
-	const [tra, setTra] = useState(track);
+	const [tra, setTra] = useState(p.track);
 
 	useEffect(() => {
 		txt1 && txt1.current && txt1.current.focus();
 	}, [txt1]);
 
 	useEffect(() => {
-		onChange && onChange(tra);
+		p.onChange && p.onChange(tra);
 	}, [tra]);
 
 	function setDuration(val?: string) {
@@ -35,7 +35,7 @@ const TrackLine = memo<Props>(({index, track, onRemove, onMoveUp, onChange}) => 
 
 	return (
 		<Fragment>
-			<DivBox>{index + 1}</DivBox>
+			<DivBox>{p.index + 1}</DivBox>
 			<DivBox><input type="text" value={tra.title} ref={txt1} autoComplete="off"
 				onChange={e => setTra({...tra, title: e.target.value})}/></DivBox>
 			<DivBox><input type="text" value={tra.note} autoComplete="off"
@@ -49,9 +49,9 @@ const TrackLine = memo<Props>(({index, track, onRemove, onMoveUp, onChange}) => 
 			<DivBox><input type="number" value={tra.duration} min={1} max={9999}
 				onChange={e => setDuration(e.target.value)}/></DivBox>
 			<DivBox>
-				<ButtonSpaced onClick={() => onRemove && onRemove(index)}>&times; {t`Remove`}</ButtonSpaced>
-				{index > 0 &&
-					<ButtonSpaced onClick={() => onMoveUp && onMoveUp(index)}>&uarr; {t`Move up`}</ButtonSpaced>
+				<ButtonSpaced onClick={() => p.onRemove && p.onRemove(p.index)}>&times; {t`Remove`}</ButtonSpaced>
+				{p.index > 0 &&
+					<ButtonSpaced onClick={() => p.onMoveUp && p.onMoveUp(p.index)}>&uarr; {t`Move up`}</ButtonSpaced>
 				}
 			</DivBox>
 		</Fragment>

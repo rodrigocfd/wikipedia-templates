@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
+const TrackListing = memo<Props & DispatchProps>(p => {
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {
@@ -24,29 +24,29 @@ const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
 	}, [t]);
 
 	function addTrack(): void {
-		dispatchNow('setTracks', [...tracks, newTrack()]);
+		p.dispatchNow('setTracks', [...p.tracks, newTrack()]);
 	}
 
 	function removeTrack(index: number): void {
-		let newList = [...tracks];
+		let newList = [...p.tracks];
 		newList.splice(index, 1);
-		dispatchNow('setTracks', newList);
+		p.dispatchNow('setTracks', newList);
 	}
 
 	function moveTrackUp(index: number): void {
-		let newList = [...tracks];
+		let newList = [...p.tracks];
 		if (index > 0) {
 			const tmp = newList[index];
 			newList[index] = newList[index - 1];
 			newList[index - 1] = tmp;
-			dispatchNow('setTracks', newList);
+			p.dispatchNow('setTracks', newList);
 		}
 	}
 
 	function changedTrack(track: Track): void {
-		const updatedTracks = tracks.map(tra =>
+		const updatedTracks = p.tracks.map(tra =>
 			tra.id === track.id ? track : tra);
-		dispatchNow('setTracks', updatedTracks);
+		p.dispatchNow('setTracks', updatedTracks);
 	}
 
 	return (
@@ -56,7 +56,7 @@ const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
 				<DivBtnAddTrack>
 					<button onClick={addTrack}>+ {t`Add track`}</button>
 				</DivBtnAddTrack>
-				{tracks.length > 0 &&
+				{p.tracks.length > 0 &&
 					<DivGridTrackList>
 						<DivHeader>#</DivHeader>
 						<DivHeader>{t`Title`}</DivHeader>
@@ -66,7 +66,7 @@ const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
 						<DivHeader>{t`Music`}</DivHeader>
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
-						{tracks.map((tra, index) =>
+						{p.tracks.map((tra, index) =>
 							<TrackLine key={tra.id} index={index} track={tra}
 								onRemove={removeTrack}
 								onMoveUp={moveTrackUp}
@@ -75,8 +75,8 @@ const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
 					</DivGridTrackList>
 				}
 			</div>
-			<Output tracks={tracks}/>
-			<SectionFooter onClear={() => dispatchNow('setTracks', [])}/>
+			<Output tracks={p.tracks}/>
+			<SectionFooter onClear={() => p.dispatchNow('setTracks', [])}/>
 		</div>
 	);
 });

@@ -9,7 +9,7 @@ interface Props { }
 /**
  * Main component for app route: home.
  */
-const Home = memo<Props>(({}) => {
+const Home = memo<Props>(() => {
 	const t = useLocale('*');
 
 	useEffect(() => {

@@ -22,10 +22,10 @@ interface Props {
 /**
  * Application root component.
  */
-const App = memo<Props>(({lang}) => {
+const App = memo<Props>(p => {
 	return (
 		<HashRouter>
-			<LocaleProvider lang={lang} locales={locales}>
+			<LocaleProvider lang={p.lang} locales={locales}>
 				<div>
 					<AppHeader/>
 					<DivBody>

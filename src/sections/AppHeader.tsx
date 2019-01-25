@@ -9,7 +9,7 @@ interface Props { }
 /**
  * Header to be shown in all pages.
  */
-const AppHeader = memo<Props>(({}) => {
+const AppHeader = memo<Props>(() => {
 	const t = useLocale('*');
 
 	return (

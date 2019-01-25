@@ -13,7 +13,7 @@ interface Props {
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = memo<Props & DispatchProps>(({lang, dispatchNow}) => {
+const ChangeLanguage = memo<Props & DispatchProps>(p => {
 	const t = useLocale('*');
 
 	return (
@@ -21,10 +21,10 @@ const ChangeLanguage = memo<Props & DispatchProps>(({lang, dispatchNow}) => {
 			<DivTitle>{t`Language`}</DivTitle>
 			<DivOpts>
 				{langDescriptions.map(langDescr =>
-					lang === langDescr.id ?
+					p.lang === langDescr.id ?
 						<span key={langDescr.id}>{t(langDescr.name)}</span> :
 						<button key={langDescr.id}
-							onClick={() => dispatchNow('setLang', langDescr.id)}>
+							onClick={() => p.dispatchNow('setLang', langDescr.id)}>
 							{t(langDescr.name)}
 						</button>
 				)}

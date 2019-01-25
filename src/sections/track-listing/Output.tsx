@@ -14,7 +14,7 @@ interface Props {
 /**
  * Outputs the formatted track listing.
  */
-const Output = memo<Props>(({name, tracks}) => {
+const Output = memo<Props>(p => {
 	const t = useLocale('*_TrackListing');
 
 	function formatDuration(duration: number | ''): string {
@@ -29,7 +29,7 @@ const Output = memo<Props>(({name, tracks}) => {
 	}
 
 	let fmt = '{{' + t`Track listing` + '\n';
-	tracks.forEach((tra, idx) => {
+	p.tracks.forEach((tra, idx) => {
 		fmt += onlyIf(tra.title,   `|${t('title{0}', idx+1)}=${tra.title}`)
 			+ onlyIf(tra.note,     ` |${t('note{0}', idx+1)}=${tra.note}`)
 			+ onlyIf(tra.writer,   ` |${t('writer{0}', idx+1)}=${tra.writer}`)
@@ -41,7 +41,7 @@ const Output = memo<Props>(({name, tracks}) => {
 	fmt += '}}'
 
 	return (
-		<StaticTextareaOut name={name} value={fmt}/>
+		<StaticTextareaOut name={p.name} value={fmt}/>
 	);
 });
 

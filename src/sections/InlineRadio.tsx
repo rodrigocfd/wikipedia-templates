@@ -15,17 +15,17 @@ interface Props {
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio = memo<Props>(({locale, name, value, options, labels, onChange}) => {
-	const t = useLocale(locale);
+const InlineRadio = memo<Props>(p => {
+	const t = useLocale(p.locale);
 
 	return (
 		<Fragment>
-			{options.map((opt, i) => (
+			{p.options.map((opt, i) => (
 				<LabelHand key={i}><InputHand type="radio"
 					name={name} value={opt}
-					checked={opt === value}
-					onChange={e => onChange && onChange(e.currentTarget.value)}/>
-					{t(labels[i])}
+					checked={opt === p.value}
+					onChange={e => p.onChange && p.onChange(e.currentTarget.value)}/>
+					{t(p.labels[i])}
 				</LabelHand>
 			))}
 		</Fragment>

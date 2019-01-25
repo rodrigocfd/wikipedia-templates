@@ -18,7 +18,7 @@ interface Props {
 /**
  * Main component for app route: coord.
  */
-const Coord = memo<Props & DispatchProps>(({coords, dispatchNow}) => {
+const Coord = memo<Props & DispatchProps>(p => {
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -35,20 +35,20 @@ const Coord = memo<Props & DispatchProps>(({coords, dispatchNow}) => {
 			<h2>{t`Coord`}</h2>
 			<div>
 				<div>
-					<InputCoords type="text" size={40} value={coords.latLng} ref={txt1}
-						onChange={e => dispatchNow('setCoords',
-							{...coords, latLng: e.target.value})}/>
-					<InlineRadio locale="*_Coord" name="type" value={coords.display}
-						onChange={val => dispatchNow('setCoords', {...coords, display: val})}
+					<InputCoords type="text" size={40} value={p.coords.latLng} ref={txt1}
+						onChange={e => p.dispatchNow('setCoords',
+							{...p.coords, latLng: e.target.value})}/>
+					<InlineRadio locale="*_Coord" name="type" value={p.coords.display}
+						onChange={val => p.dispatchNow('setCoords', {...p.coords, display: val})}
 						options={['inline', 'title', 'inline,title']}
 						labels={['inline', 'title', 'inline,title']}/>
 				</div>
 				<div>
-					<GoogleMapsLink latLng={coords.latLng}/>
-					<OsmMap latLng={coords.latLng}/>
-					<Output coords={coords}/>
+					<GoogleMapsLink latLng={p.coords.latLng}/>
+					<OsmMap latLng={p.coords.latLng}/>
+					<Output coords={p.coords}/>
 				</div>
-				<SectionFooter onClear={() => dispatchNow('setCoords', '')}/>
+				<SectionFooter onClear={() => p.dispatchNow('setCoords', '')}/>
 			</div>
 		</div>
 	);

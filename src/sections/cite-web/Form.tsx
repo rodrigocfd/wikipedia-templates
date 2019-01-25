@@ -14,7 +14,7 @@ interface Props {
 /**
  * Form with all the fields; receives data and notifies changes.
  */
-const Form = memo<Props>(({cite, onChange}) => {
+const Form = memo<Props>(p => {
 	const t = useLocale('*_CiteWeb');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -26,43 +26,43 @@ const Form = memo<Props>(({cite, onChange}) => {
 		<div>
 			<div>
 				<DivName>{t`Ref name`}</DivName>
-				<input type="text" size={18} value={cite.refName} autoComplete="off" ref={txt1}
-					onChange={e => onChange && onChange({...cite, refName: e.target.value})}/>
+				<input type="text" size={18} value={p.cite.refName} autoComplete="off" ref={txt1}
+					onChange={e => p.onChange && p.onChange({...p.cite, refName: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`URL`}</DivName>
-				<input type="text" size={100} value={cite.url} autoComplete="off"
-					onChange={e => onChange && onChange({...cite, url: e.target.value})}/>
+				<input type="text" size={100} value={p.cite.url} autoComplete="off"
+					onChange={e => p.onChange && p.onChange({...p.cite, url: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Title`}</DivName>
-				<input type="text" size={88} value={cite.title} autoComplete="off"
-					onChange={e => onChange && onChange({...cite, title: e.target.value})}/>
+				<input type="text" size={88} value={p.cite.title} autoComplete="off"
+					onChange={e => p.onChange && p.onChange({...p.cite, title: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Translated title`}</DivName>
-				<input type="text" size={88} value={cite.transTitle} autoComplete="off"
-					onChange={e => onChange && onChange({...cite, transTitle: e.target.value})}/>
+				<input type="text" size={88} value={p.cite.transTitle} autoComplete="off"
+					onChange={e => p.onChange && p.onChange({...p.cite, transTitle: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Publisher`}</DivName>
-				<input type="text" size={88} value={cite.publisher} autoComplete="off"
-					onChange={e => onChange && onChange({...cite, publisher: e.target.value})}/>
+				<input type="text" size={88} value={p.cite.publisher} autoComplete="off"
+					onChange={e => p.onChange && p.onChange({...p.cite, publisher: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Date`}</DivName>
-				<YearMonthDay value={cite.date}
-					onChange={val => onChange && onChange({...cite, date: val})}/>
+				<YearMonthDay value={p.cite.date}
+					onChange={val => p.onChange && p.onChange({...p.cite, date: val})}/>
 			</div>
 			<div>
 				<DivName>{t`Access date`}</DivName>
-				<YearMonthDay value={cite.accessDate}
-					onChange={val => onChange && onChange({...cite, accessDate: val})}/>
+				<YearMonthDay value={p.cite.accessDate}
+					onChange={val => p.onChange && p.onChange({...p.cite, accessDate: val})}/>
 			</div>
 			<div>
 				<DivName>{t`Language`}</DivName>
-				<InlineRadio locale="*_CiteWeb" name="language" value={cite.language}
-					onChange={val => onChange && onChange({...cite, language: val})}
+				<InlineRadio locale="*_CiteWeb" name="language" value={p.cite.language}
+					onChange={val => p.onChange && p.onChange({...p.cite, language: val})}
 					options={['', 'en', 'es', 'fr', 'de', 'it', 'pt']}
 					labels={['none', 'English', 'Spanish', 'French', 'German', 'Italian', 'Portuguese']}/>
 			</div>

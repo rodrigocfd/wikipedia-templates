@@ -10,14 +10,14 @@ interface Props {
 /**
  * Renders the URL into an iframe.
  */
-const Iframe = memo<Props>(({cite}) => {
+const Iframe = memo<Props>(p => {
 	let theUrl = '';
 
-	if (cite.url &&
-		(cite.url.startsWith('http://') || cite.url.startsWith('https://')) &&
-		cite.url.length > 10)
+	if (p.cite.url &&
+		(p.cite.url.startsWith('http://') || p.cite.url.startsWith('https://')) &&
+		p.cite.url.length > 10)
 	{
-		theUrl = cite.url;
+		theUrl = p.cite.url;
 	}
 
 	return (
