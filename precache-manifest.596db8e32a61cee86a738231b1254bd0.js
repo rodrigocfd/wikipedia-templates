@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/wikipedia-templates/static/js/main.c472a493.chunk.js"
   },
   {
-    "revision": "948968f2dd418092bffb",
-    "url": "/wikipedia-templates/static/js/1.948968f2.chunk.js"
+    "revision": "fae5c74d7bd3ce5efebb",
+    "url": "/wikipedia-templates/static/js/1.fae5c74d.chunk.js"
   },
   {
     "revision": "c472a49347d5db2a8107",
     "url": "/wikipedia-templates/static/css/main.46521d13.chunk.css"
   },
   {
-    "revision": "46cb5f56e46a31eceb24463d2a012a5a",
+    "revision": "1fe1645199c3fcc0f4ae0e3ca78b3f85",
     "url": "/wikipedia-templates/index.html"
   }
 ];
