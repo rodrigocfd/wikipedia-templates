@@ -1,4 +1,4 @@
-import React, {memo, Fragment} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -23,16 +23,14 @@ const OtherAlbum = memo<Props>(p => {
 		});
 	}
 
-	return (
-		<Fragment>
-			<input type="text" size={40} name={name && `${name}_name`}
-				value={p.value.name}
-				onChange={e => p.onChange && p.onChange({...p.value, name: e.target.value})}/>
-			{' '} {t`year`} <InputYear type="number" name={name && `${name}_year`}
-				value={p.value.year}
-				onChange={e => setYear(e.target.value)}/>
-		</Fragment>
-	);
+	return (<>
+		<input type="text" size={40} name={name && `${name}_name`}
+			value={p.value.name}
+			onChange={e => p.onChange && p.onChange({...p.value, name: e.target.value})}/>
+		{' '} {t`year`} <InputYear type="number" name={name && `${name}_year`}
+			value={p.value.year}
+			onChange={e => setYear(e.target.value)}/>
+	</>);
 });
 
 const InputYear = styled.input`

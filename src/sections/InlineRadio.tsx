@@ -1,4 +1,4 @@
-import React, {Fragment, memo} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -18,18 +18,16 @@ interface Props {
 const InlineRadio = memo<Props>(p => {
 	const t = useLocale(p.locale);
 
-	return (
-		<Fragment>
-			{p.options.map((opt, i) => (
-				<LabelHand key={i}><InputHand type="radio"
-					name={name} value={opt}
-					checked={opt === p.value}
-					onChange={e => p.onChange && p.onChange(e.currentTarget.value)}/>
-					{t(p.labels[i])}
-				</LabelHand>
-			))}
-		</Fragment>
-	);
+	return (<>
+		{p.options.map((opt, i) => (
+			<LabelHand key={i}><InputHand type="radio"
+				name={name} value={opt}
+				checked={opt === p.value}
+				onChange={e => p.onChange && p.onChange(e.currentTarget.value)}/>
+				{t(p.labels[i])}
+			</LabelHand>
+		))}
+	</>);
 });
 
 const LabelHand = styled.label`

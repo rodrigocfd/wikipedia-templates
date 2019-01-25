@@ -1,4 +1,4 @@
-import React, {Fragment, memo} from 'react';
+import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -36,21 +36,19 @@ const YearMonthDay = memo<Props>(p => {
 		p.onChange && p.onChange(newDayMonthYear());
 	}
 
-	return (
-		<Fragment>
-			{t`Year`} <InputNum4 type="number"
-				value={p.value.year} name={name && `${name}_year`}
-				onChange={e => setDateField('year', e.target.value)}/>
-			{t`Month`} <InputNum2 type="number" min={1} max={12}
-				value={p.value.month} name={name && `${name}_month`}
-				onChange={e => setDateField('month', e.target.value)}/>
-			{t`Day`} <InputNum2 type="number" min={1} max={31}
-				value={p.value.day} name={name && `${name}_day`}
-				onChange={e => setDateField('day', e.target.value)}/>
-			<button onClick={setToday}>{t`today`}</button>
-			{' '} <button onClick={setClear}>{t`clear`}</button>
-		</Fragment>
-	);
+	return (<>
+		{t`Year`} <InputNum4 type="number"
+			value={p.value.year} name={name && `${name}_year`}
+			onChange={e => setDateField('year', e.target.value)}/>
+		{t`Month`} <InputNum2 type="number" min={1} max={12}
+			value={p.value.month} name={name && `${name}_month`}
+			onChange={e => setDateField('month', e.target.value)}/>
+		{t`Day`} <InputNum2 type="number" min={1} max={31}
+			value={p.value.day} name={name && `${name}_day`}
+			onChange={e => setDateField('day', e.target.value)}/>
+		<button onClick={setToday}>{t`today`}</button>
+		{' '} <button onClick={setClear}>{t`clear`}</button>
+	</>);
 });
 
 const InputNum2 = styled.input`

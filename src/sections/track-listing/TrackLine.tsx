@@ -1,4 +1,4 @@
-import React, {Fragment, memo, useEffect, useRef, useState} from 'react';
+import React, {memo, useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -33,29 +33,27 @@ const TrackLine = memo<Props>(p => {
 		setTra({...tra, duration: val ? +val : ''});
 	}
 
-	return (
-		<Fragment>
-			<DivBox>{p.index + 1}</DivBox>
-			<DivBox><input type="text" value={tra.title} ref={txt1} autoComplete="off"
-				onChange={e => setTra({...tra, title: e.target.value})}/></DivBox>
-			<DivBox><input type="text" value={tra.note} autoComplete="off"
-				onChange={e => setTra({...tra, note: e.target.value})}/></DivBox>
-			<DivBox><input type="text" value={tra.writer} autoComplete="off"
-				onChange={e => setTra({...tra, writer:e.target.value})}/></DivBox>
-			<DivBox><input type="text" value={tra.lyrics} autoComplete="off"
-				onChange={e => setTra({...tra, lyrics: e.target.value})}/></DivBox>
-			<DivBox><input type="text" value={tra.music} autoComplete="off"
-				onChange={e => setTra({...tra, music: e.target.value})}/></DivBox>
-			<DivBox><input type="number" value={tra.duration} min={1} max={9999}
-				onChange={e => setDuration(e.target.value)}/></DivBox>
-			<DivBox>
-				<ButtonSpaced onClick={() => p.onRemove && p.onRemove(p.index)}>&times; {t`Remove`}</ButtonSpaced>
-				{p.index > 0 &&
-					<ButtonSpaced onClick={() => p.onMoveUp && p.onMoveUp(p.index)}>&uarr; {t`Move up`}</ButtonSpaced>
-				}
-			</DivBox>
-		</Fragment>
-	);
+	return (<>
+		<DivBox>{p.index + 1}</DivBox>
+		<DivBox><input type="text" value={tra.title} ref={txt1} autoComplete="off"
+			onChange={e => setTra({...tra, title: e.target.value})}/></DivBox>
+		<DivBox><input type="text" value={tra.note} autoComplete="off"
+			onChange={e => setTra({...tra, note: e.target.value})}/></DivBox>
+		<DivBox><input type="text" value={tra.writer} autoComplete="off"
+			onChange={e => setTra({...tra, writer:e.target.value})}/></DivBox>
+		<DivBox><input type="text" value={tra.lyrics} autoComplete="off"
+			onChange={e => setTra({...tra, lyrics: e.target.value})}/></DivBox>
+		<DivBox><input type="text" value={tra.music} autoComplete="off"
+			onChange={e => setTra({...tra, music: e.target.value})}/></DivBox>
+		<DivBox><input type="number" value={tra.duration} min={1} max={9999}
+			onChange={e => setDuration(e.target.value)}/></DivBox>
+		<DivBox>
+			<ButtonSpaced onClick={() => p.onRemove && p.onRemove(p.index)}>&times; {t`Remove`}</ButtonSpaced>
+			{p.index > 0 &&
+				<ButtonSpaced onClick={() => p.onMoveUp && p.onMoveUp(p.index)}>&uarr; {t`Move up`}</ButtonSpaced>
+			}
+		</DivBox>
+	</>);
 });
 
 const DivBox = styled.div`
