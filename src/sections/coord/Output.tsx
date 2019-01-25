@@ -8,8 +8,8 @@ import CoordData from './CoordData';
 import extractLatLng from './extractLatLng';
 
 interface Props {
-	name?: string;
-	coords: CoordData;
+	readonly name?: string;
+	readonly coords: CoordData;
 }
 
 /**

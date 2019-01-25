@@ -16,7 +16,7 @@ import InfoboxAlbum from './infobox-album/InfoboxAlbum';
 import TrackListing from './track-listing/TrackListing';
 
 interface Props {
-	lang: string;
+	readonly lang: string;
 }
 
 /**

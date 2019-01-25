@@ -8,8 +8,8 @@ import onlyIf from '../onlyIf';
 import Cite from './Cite';
 
 interface Props {
-	name?: string;
-	cite: Cite;
+	readonly name?: string;
+	readonly cite: Cite;
 }
 
 /**

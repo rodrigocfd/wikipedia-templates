@@ -5,8 +5,8 @@ import useLocale from '../../react-use-locale';
 import Track from './Track';
 
 interface Props {
-	index: number; // track position within containing array
-	track: Track;
+	readonly index: number; // track position within containing array
+	readonly track: Track;
 	onRemove?: (index: number) => void;
 	onMoveUp?: (index: number) => void;
 	onChange?: (track: Track) => void;

@@ -2,9 +2,9 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 
 interface Props {
-	name?: string;
-	value?: string;
-	className?: string;
+	readonly name?: string;
+	readonly value?: string;
+	readonly className?: string;
 }
 
 /**
@@ -12,7 +12,7 @@ interface Props {
  */
 const StaticTextarea = memo<Props>(p => {
 	return (
-		<TextareaOut readOnly name={name} value={p.value} className={p.className}
+		<TextareaOut readOnly name={p.name} value={p.value} className={p.className}
 			onClick={e => e.currentTarget.select()}></TextareaOut>
 	);
 });

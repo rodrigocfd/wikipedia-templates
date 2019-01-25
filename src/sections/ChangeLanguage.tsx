@@ -7,7 +7,7 @@ import {DispatchProps, mapDispatchToProps, State} from '../store';
 import {langDescriptions} from '../locales';
 
 interface Props {
-	lang: string;
+	readonly lang: string;
 }
 
 /**

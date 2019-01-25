@@ -7,7 +7,7 @@ import OtherAlbum from './OtherAlbum';
 import Album, {albumTypes} from './Album';
 
 interface Props {
-	album: Album;
+	readonly album: Album;
 	onChange?: (album: Album) => void;
 }
 

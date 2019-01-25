@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import extractLatLng from './extractLatLng';
 
 interface Props {
-	latLng?: string;
+	readonly latLng?: string;
 }
 
 /**

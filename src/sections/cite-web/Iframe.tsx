@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Cite from './Cite';
 
 interface Props {
-	cite: Cite;
+	readonly cite: Cite;
 }
 
 /**

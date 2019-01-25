@@ -7,7 +7,7 @@ import YearMonthDay from '../YearMonthDay';
 import Cite from './Cite';
 
 interface Props {
-	cite: Cite;
+	readonly cite: Cite;
 	onChange?: (cite: Cite) => void;
 }
 

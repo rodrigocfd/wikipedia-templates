@@ -5,8 +5,8 @@ import useLocale from '../../react-use-locale';
 import NameYear from './NameYear';
 
 interface Props {
-	name?: string;
-	value: NameYear;
+	readonly name?: string;
+	readonly value: NameYear;
 	onChange?: (value: NameYear) => void;
 }
 
@@ -24,10 +24,10 @@ const OtherAlbum = memo<Props>(p => {
 	}
 
 	return (<>
-		<input type="text" size={40} name={name && `${name}_name`}
+		<input type="text" size={40} name={p.name && `${p.name}_name`}
 			value={p.value.name}
 			onChange={e => p.onChange && p.onChange({...p.value, name: e.target.value})}/>
-		{' '} {t`year`} <InputYear type="number" name={name && `${name}_year`}
+		{' '} {t`year`} <InputYear type="number" name={p.name && `${p.name}_year`}
 			value={p.value.year}
 			onChange={e => setYear(e.target.value)}/>
 	</>);

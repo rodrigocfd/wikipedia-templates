@@ -9,8 +9,8 @@ import Album, {albumTypes} from './Album';
 import NameYear from './NameYear';
 
 interface Props {
-	name?: string;
-	album: Album;
+	readonly name?: string;
+	readonly album: Album;
 }
 
 /**

@@ -7,8 +7,8 @@ import onlyIf from '../onlyIf';
 import Track from './Track';
 
 interface Props {
-	name?: string;
-	tracks: Track[];
+	readonly name?: string;
+	readonly tracks: Track[];
 }
 
 /**

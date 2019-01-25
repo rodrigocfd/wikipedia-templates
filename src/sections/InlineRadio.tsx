@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import useLocale from '../react-use-locale';
 
 interface Props {
-	locale: string;
-	name: string;
-	value?: string;
-	options: string[],
-	labels: string[],
+	readonly locale: string;
+	readonly name: string;
+	readonly value?: string;
+	readonly options: string[],
+	readonly labels: string[],
 	onChange?: (value: string) => void;
 }
 
@@ -21,7 +21,8 @@ const InlineRadio = memo<Props>(p => {
 	return (<>
 		{p.options.map((opt, i) => (
 			<LabelHand key={i}><InputHand type="radio"
-				name={name} value={opt}
+				name={p.name}
+				value={opt}
 				checked={opt === p.value}
 				onChange={e => p.onChange && p.onChange(e.currentTarget.value)}/>
 				{t(p.labels[i])}
