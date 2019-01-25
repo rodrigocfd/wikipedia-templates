@@ -9,16 +9,14 @@ import Iframe from './Iframe';
 import Output from './Output';
 import Cite, {newCite} from './Cite';
 
-interface StateProps {
+interface Props {
 	cite: Cite;
 }
-
-interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb = memo<Props>(({cite, dispatchNow}) => {
+const CiteWeb = memo<Props & DispatchProps>(({cite, dispatchNow}) => {
 	const t = useLocale('*_CiteWeb');
 
 	useEffect(() => {
@@ -36,7 +34,7 @@ const CiteWeb = memo<Props>(({cite, dispatchNow}) => {
 	);
 });
 
-export default connect<StateProps, DispatchProps, {}, State>(
+export default connect<Props, DispatchProps, {}, State>(
 	({cite}: State) => ({cite}),
 	mapDispatchToProps
 )(CiteWeb);

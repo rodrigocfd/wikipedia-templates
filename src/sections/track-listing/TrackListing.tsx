@@ -9,16 +9,14 @@ import TrackLine from './TrackLine';
 import Output from './Output';
 import Track, {newTrack} from './Track';
 
-interface StateProps {
+interface Props {
 	tracks: Track[];
 }
-
-interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing = memo<Props>(({tracks, dispatchNow}) => {
+const TrackListing = memo<Props & DispatchProps>(({tracks, dispatchNow}) => {
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {
@@ -95,7 +93,7 @@ const DivHeader = styled.div`
 	padding: 2px 6px;
 `;
 
-export default connect<StateProps, DispatchProps, {}, State>(
+export default connect<Props, DispatchProps, {}, State>(
 	({tracks}: State) => ({tracks}),
 	mapDispatchToProps
 )(TrackListing);

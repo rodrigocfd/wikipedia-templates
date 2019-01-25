@@ -9,16 +9,14 @@ import Form from './Form';
 import Output from './Output';
 import Album, {newAlbum} from './Album';
 
-interface StateProps {
+interface Props {
 	album: Album;
 }
-
-interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: infobox-album.
  */
-const InfoboxAlbum = memo<Props>(({album, dispatchNow}) => {
+const InfoboxAlbum = memo<Props & DispatchProps>(({album, dispatchNow}) => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	useEffect(() => {
@@ -42,7 +40,7 @@ const DivGridWrap = styled.div`
 	grid-template-columns: 650px auto;
 `;
 
-export default connect<StateProps, DispatchProps, {}, State>(
+export default connect<Props, DispatchProps, {}, State>(
 	({album}: State) => ({album}),
 	mapDispatchToProps
 )(InfoboxAlbum);

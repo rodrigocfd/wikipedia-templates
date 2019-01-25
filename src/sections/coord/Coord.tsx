@@ -11,16 +11,14 @@ import OsmMap from './OsmMap';
 import Output from './Output';
 import CoordData from './CoordData';
 
-interface StateProps {
+interface Props {
 	coords: CoordData;
 }
-
-interface Props extends StateProps, DispatchProps { }
 
 /**
  * Main component for app route: coord.
  */
-const Coord = memo<Props>(({coords, dispatchNow}) => {
+const Coord = memo<Props & DispatchProps>(({coords, dispatchNow}) => {
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -60,7 +58,7 @@ const InputCoords = styled.input`
 	margin-right: 20px;
 `;
 
-export default connect<StateProps, DispatchProps, {}, State>(
+export default connect<Props, DispatchProps, {}, State>(
 	({coords}: State) => ({coords}),
 	mapDispatchToProps
 )(Coord);

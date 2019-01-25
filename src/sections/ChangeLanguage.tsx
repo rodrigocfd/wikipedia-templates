@@ -6,16 +6,14 @@ import useLocale from '../react-use-locale';
 import {DispatchProps, mapDispatchToProps, State} from '../store';
 import {langDescriptions} from '../locales';
 
-interface StateProps {
+interface Props {
 	lang: string;
 }
-
-interface Props extends StateProps, DispatchProps { }
 
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = memo<Props>(({lang, dispatchNow}) => {
+const ChangeLanguage = memo<Props & DispatchProps>(({lang, dispatchNow}) => {
 	const t = useLocale('*');
 
 	return (
@@ -51,7 +49,7 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default connect<StateProps, DispatchProps, {}, State>(
+export default connect<Props, DispatchProps, {}, State>(
 	({lang}: State) => ({lang}),
 	mapDispatchToProps
 )(ChangeLanguage);

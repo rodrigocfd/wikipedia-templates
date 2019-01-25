@@ -15,11 +15,9 @@ import Coord from './coord/Coord';
 import InfoboxAlbum from './infobox-album/InfoboxAlbum';
 import TrackListing from './track-listing/TrackListing';
 
-interface StateProps {
+interface Props {
 	lang: string;
 }
-
-interface Props extends StateProps { }
 
 /**
  * Application root component.
@@ -48,6 +46,6 @@ const DivBody = styled.div`
 	padding: 0 20px;
 `;
 
-export default connect<StateProps, {}, {}, State>(
+export default connect<Props, {}, {}, State>(
 	({lang}: State) => ({lang})
 )(App);
