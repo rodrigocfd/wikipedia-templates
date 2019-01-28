@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import {LocaleProvider} from '../react-use-locale';
 import locales from '../locales';
 
-import {State} from '../store';
+import {ReduxState} from '../store';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import Home from './home/Home';
@@ -46,6 +46,6 @@ const DivBody = styled.div`
 	padding: 0 20px;
 `;
 
-export default connect<Props, {}, {}, State>(
-	({lang}: State) => ({lang})
+export default connect<Props, {}, {}, ReduxState>(
+	({lang}: ReduxState) => ({lang})
 )(App);

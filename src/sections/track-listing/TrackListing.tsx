@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import TrackLine from './TrackLine';
 import Output from './Output';
@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing = memo<Props & DispatchProps>(p => {
+const TrackListing = memo<Props & DispatchProp>(p => {
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {
@@ -93,7 +93,7 @@ const DivHeader = styled.div`
 	padding: 2px 6px;
 `;
 
-export default connect<Props, DispatchProps, {}, State>(
-	({tracks}: State) => ({tracks}),
+export default connect<Props, DispatchProp, {}, ReduxState>(
+	({tracks}: ReduxState) => ({tracks}),
 	mapDispatchToProps
 )(TrackListing);

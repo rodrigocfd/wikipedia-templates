@@ -2,7 +2,7 @@ import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Iframe from './Iframe';
@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb = memo<Props & DispatchProps>(p => {
+const CiteWeb = memo<Props & DispatchProp>(p => {
 	const t = useLocale('*_CiteWeb');
 
 	useEffect(() => {
@@ -34,7 +34,7 @@ const CiteWeb = memo<Props & DispatchProps>(p => {
 	);
 });
 
-export default connect<Props, DispatchProps, {}, State>(
-	({cite}: State) => ({cite}),
+export default connect<Props, DispatchProp, {}, ReduxState>(
+	({cite}: ReduxState) => ({cite}),
 	mapDispatchToProps
 )(CiteWeb);

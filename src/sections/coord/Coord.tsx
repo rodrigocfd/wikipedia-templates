@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
 import GoogleMapsLink from './GoogleMapsLink';
@@ -18,7 +18,7 @@ interface Props {
 /**
  * Main component for app route: coord.
  */
-const Coord = memo<Props & DispatchProps>(p => {
+const Coord = memo<Props & DispatchProp>(p => {
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -58,7 +58,7 @@ const InputCoords = styled.input`
 	margin-right: 20px;
 `;
 
-export default connect<Props, DispatchProps, {}, State>(
-	({coords}: State) => ({coords}),
+export default connect<Props, DispatchProp, {}, ReduxState>(
+	({coords}: ReduxState) => ({coords}),
 	mapDispatchToProps
 )(Coord);

@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import {DispatchProps, mapDispatchToProps, State} from '../store';
-import {langDescriptions} from '../locales';
+import {DispatchProp, mapDispatchToProps, ReduxState} from '../store';
+import {langDescriptions, LangDescription} from '../locales';
 
 interface Props {
 	readonly lang: string;
@@ -13,14 +13,14 @@ interface Props {
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = memo<Props & DispatchProps>(p => {
+const ChangeLanguage = memo<Props & DispatchProp>(p => {
 	const t = useLocale('*');
 
 	return (
 		<DivWrap>
 			<DivTitle>{t`Language`}</DivTitle>
 			<DivOpts>
-				{langDescriptions.map(langDescr =>
+				{langDescriptions.map((langDescr: LangDescription) =>
 					p.lang === langDescr.id ?
 						<span key={langDescr.id}>{t(langDescr.name)}</span> :
 						<button key={langDescr.id}
@@ -49,7 +49,7 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default connect<Props, DispatchProps, {}, State>(
-	({lang}: State) => ({lang}),
+export default connect<Props, DispatchProp, {}, ReduxState>(
+	({lang}: ReduxState) => ({lang}),
 	mapDispatchToProps
 )(ChangeLanguage);

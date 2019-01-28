@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProps, mapDispatchToProps, State} from '../../store';
+import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Output from './Output';
@@ -16,7 +16,7 @@ interface Props {
 /**
  * Main component for app route: infobox-album.
  */
-const InfoboxAlbum = memo<Props & DispatchProps>(p => {
+const InfoboxAlbum = memo<Props & DispatchProp>(p => {
 	const t = useLocale('*_InfoboxAlbum');
 
 	useEffect(() => {
@@ -40,7 +40,7 @@ const DivGridWrap = styled.div`
 	grid-template-columns: 650px auto;
 `;
 
-export default connect<Props, DispatchProps, {}, State>(
-	({album}: State) => ({album}),
+export default connect<Props, DispatchProp, {}, ReduxState>(
+	({album}: ReduxState) => ({album}),
 	mapDispatchToProps
 )(InfoboxAlbum);
