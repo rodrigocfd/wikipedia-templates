@@ -28,8 +28,8 @@ export default locales;
  * Names of available languages.
  */
 export interface LangDescription {
-	id: string;
-	name: string;
+	readonly id: string;
+	readonly name: string;
 }
 export const langDescriptions: LangDescription[] = [
 	{id: 'en', name: 'English'},

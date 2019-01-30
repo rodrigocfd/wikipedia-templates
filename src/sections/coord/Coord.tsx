@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
@@ -12,7 +13,7 @@ import Output from './Output';
 import CoordData from './CoordData';
 
 interface Props {
-	coords: CoordData;
+	coords: DeepReadonly<CoordData>;
 }
 
 /**

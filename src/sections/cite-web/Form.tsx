@@ -2,12 +2,13 @@ import React, {memo, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import InlineRadio from '../InlineRadio';
 import YearMonthDay from '../YearMonthDay';
 import Cite from './Cite';
 
 interface Props {
-	readonly cite: Cite;
+	cite: DeepReadonly<Cite>;
 	onChange?: (cite: Cite) => void;
 }
 

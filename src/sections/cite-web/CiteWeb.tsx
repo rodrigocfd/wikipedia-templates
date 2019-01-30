@@ -2,6 +2,7 @@ import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
@@ -10,7 +11,7 @@ import Output from './Output';
 import Cite, {newCite} from './Cite';
 
 interface Props {
-	cite: Cite;
+	cite: DeepReadonly<Cite>;
 }
 
 /**

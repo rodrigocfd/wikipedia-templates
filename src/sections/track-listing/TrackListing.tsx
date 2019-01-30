@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import TrackLine from './TrackLine';
@@ -10,7 +11,7 @@ import Output from './Output';
 import Track, {newTrack} from './Track';
 
 interface Props {
-	tracks: Track[];
+	tracks: DeepReadonly<Track[]>;
 }
 
 /**

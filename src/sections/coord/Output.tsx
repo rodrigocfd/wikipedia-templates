@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import StaticTextarea from '../StaticTextarea';
 import {newDegMinSec} from './DegMinSec';
 import CoordData from './CoordData';
@@ -9,7 +10,7 @@ import extractLatLng from './extractLatLng';
 
 interface Props {
 	readonly name?: string;
-	readonly coords: CoordData;
+	coords: DeepReadonly<CoordData>;
 }
 
 /**

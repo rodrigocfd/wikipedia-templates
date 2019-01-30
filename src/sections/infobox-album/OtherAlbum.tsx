@@ -2,11 +2,12 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import NameYear from './NameYear';
 
 interface Props {
 	readonly name?: string;
-	readonly value: NameYear;
+	value: DeepReadonly<NameYear>;
 	onChange?: (value: NameYear) => void;
 }
 

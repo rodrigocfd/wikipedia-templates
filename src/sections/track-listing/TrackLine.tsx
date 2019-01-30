@@ -2,11 +2,12 @@ import React, {memo, useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import Track from './Track';
 
 interface Props {
 	readonly index: number; // track position within containing array
-	readonly track: Track;
+	track: DeepReadonly<Track>;
 	onRemove?: (index: number) => void;
 	onMoveUp?: (index: number) => void;
 	onChange?: (track: Track) => void;

@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
@@ -10,7 +11,7 @@ import Output from './Output';
 import Album, {newAlbum} from './Album';
 
 interface Props {
-	album: Album;
+	album: DeepReadonly<Album>;
 }
 
 /**

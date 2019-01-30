@@ -2,11 +2,12 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
+import DeepReadonly from '../DeepReadonly';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
 	name?: string;
-	value: DayMonthYear;
+	value: DeepReadonly<DayMonthYear>;
 	onChange?: (value: DayMonthYear) => void;
 }
 

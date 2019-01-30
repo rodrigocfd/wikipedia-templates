@@ -2,12 +2,13 @@ import React, {memo, useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import YearMonthDay from '../YearMonthDay';
 import OtherAlbum from './OtherAlbum';
 import Album, {albumTypes} from './Album';
 
 interface Props {
-	readonly album: Album;
+	album: DeepReadonly<Album>;
 	onChange?: (album: Album) => void;
 }
 

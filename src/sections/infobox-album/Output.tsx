@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
+import DeepReadonly from '../../DeepReadonly';
 import StaticTextarea from '../StaticTextarea';
 import onlyIf from '../onlyIf';
 import DayMonthYear from '../DayMonthYear';
@@ -10,7 +11,7 @@ import NameYear from './NameYear';
 
 interface Props {
 	readonly name?: string;
-	readonly album: Album;
+	album: DeepReadonly<Album>;
 }
 
 /**
