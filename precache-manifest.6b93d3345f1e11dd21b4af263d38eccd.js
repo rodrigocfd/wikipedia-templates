@@ -4,19 +4,19 @@ self.__precacheManifest = [
     "url": "/wikipedia-templates/static/js/runtime~main.8a767f41.js"
   },
   {
-    "revision": "f0bd34c0e102f80e4324",
-    "url": "/wikipedia-templates/static/js/main.f0bd34c0.chunk.js"
+    "revision": "20890e70bf51d9b8f655",
+    "url": "/wikipedia-templates/static/js/main.20890e70.chunk.js"
   },
   {
     "revision": "8f258acd155b2bf75814",
     "url": "/wikipedia-templates/static/js/1.8f258acd.chunk.js"
   },
   {
-    "revision": "f0bd34c0e102f80e4324",
+    "revision": "20890e70bf51d9b8f655",
     "url": "/wikipedia-templates/static/css/main.f50a4a1d.chunk.css"
   },
   {
-    "revision": "06a8152136d3c228adec2e763073a6b0",
+    "revision": "85f34ce91ca9dd30884c649b75168294",
     "url": "/wikipedia-templates/index.html"
   }
 ];
