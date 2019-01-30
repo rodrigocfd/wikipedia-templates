@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -9,13 +9,13 @@ import Album, {albumTypes} from './Album';
 
 interface Props {
 	album: DeepReadonly<Album>;
-	onChange?: (album: Album) => void;
+	onChange: (album: Album) => void;
 }
 
 /**
  * Form with all the fields; receives data and notifies changes.
  */
-const Form = memo<Props>(p => {
+function Form(p: Props) {
 	const t = useLocale('*_InfoboxAlbum');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -86,7 +86,7 @@ const Form = memo<Props>(p => {
 			</div>
 		</div>
 	);
-});
+}
 
 const DivName = styled.div`
 	display: inline-block;

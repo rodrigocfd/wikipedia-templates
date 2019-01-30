@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -10,13 +10,13 @@ interface Props {
 	readonly value?: string;
 	options: DeepReadonly<string[]>;
 	labels: DeepReadonly<string[]>;
-	onChange?: (value: string) => void;
+	onChange: (value: string) => void;
 }
 
 /**
  * Prints a series of radio buttons, inline.
  */
-const InlineRadio = memo<Props>(p => {
+function InlineRadio(p: Props) {
 	const t = useLocale(p.locale);
 
 	return (<>
@@ -30,7 +30,7 @@ const InlineRadio = memo<Props>(p => {
 			</LabelHand>
 		))}
 	</>);
-});
+}
 
 const LabelHand = styled.label`
 	cursor: pointer;

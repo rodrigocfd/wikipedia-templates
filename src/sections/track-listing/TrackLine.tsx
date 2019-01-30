@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -8,15 +8,15 @@ import Track from './Track';
 interface Props {
 	readonly index: number; // track position within containing array
 	track: DeepReadonly<Track>;
-	onRemove?: (index: number) => void;
-	onMoveUp?: (index: number) => void;
-	onChange?: (track: Track) => void;
+	onRemove: (index: number) => void;
+	onMoveUp: (index: number) => void;
+	onChange: (track: Track) => void;
 }
 
 /**
  * One single track, with many fields.
  */
-const TrackLine = memo<Props>(p => {
+function TrackLine(p: Props) {
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -55,7 +55,7 @@ const TrackLine = memo<Props>(p => {
 			}
 		</DivBox>
 	</>);
-});
+}
 
 const DivBox = styled.div`
 	margin-right: 6px;

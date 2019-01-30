@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../../react-use-locale';
@@ -9,13 +9,13 @@ import Cite from './Cite';
 
 interface Props {
 	cite: DeepReadonly<Cite>;
-	onChange?: (cite: Cite) => void;
+	onChange: (cite: Cite) => void;
 }
 
 /**
  * Form with all the fields; receives data and notifies changes.
  */
-const Form = memo<Props>(p => {
+function Form(p: Props) {
 	const t = useLocale('*_CiteWeb');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -69,7 +69,7 @@ const Form = memo<Props>(p => {
 			</div>
 		</div>
 	);
-});
+}
 
 const DivName = styled.div`
 	display: inline-block;

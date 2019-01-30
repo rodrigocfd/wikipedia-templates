@@ -5,6 +5,7 @@ import DeepReadonly from '../../DeepReadonly';
 import Cite from './Cite';
 
 interface Props {
+	readonly name?: string;
 	cite: DeepReadonly<Cite>;
 }
 
@@ -23,7 +24,7 @@ const Iframe = memo<Props>(p => {
 
 	return (
 		!theUrl ? null :
-			<DispIframe src={theUrl} frameBorder={0}></DispIframe>
+			<DispIframe src={theUrl} name={p.name} frameBorder={0}></DispIframe>
 	);
 });
 

@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
@@ -6,15 +6,15 @@ import DeepReadonly from '../DeepReadonly';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
-	name?: string;
+	readonly name?: string;
 	value: DeepReadonly<DayMonthYear>;
-	onChange?: (value: DayMonthYear) => void;
+	onChange: (value: DayMonthYear) => void;
 }
 
 /**
  * Year, month and day textboxes, returning formatted date.
  */
-const YearMonthDay = memo<Props>(p => {
+function YearMonthDay(p: Props) {
 	const t = useLocale('*');
 
 	function setDateField(fieldName: string, val?: string) {
@@ -50,7 +50,7 @@ const YearMonthDay = memo<Props>(p => {
 		<button onClick={setToday}>{t`today`}</button>
 		{' '} <button onClick={setClear}>{t`clear`}</button>
 	</>);
-});
+}
 
 const InputNum2 = styled.input`
 	width: 50px;

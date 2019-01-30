@@ -1,4 +1,4 @@
-import React, {memo} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -11,7 +11,7 @@ interface Props {
 /**
  * Footer common to all sections.
  */
-const SectionFooter = memo<Props>(p => {
+function SectionFooter(p: Props) {
 	const t = useLocale('*');
 
 	return (
@@ -23,7 +23,7 @@ const SectionFooter = memo<Props>(p => {
 			}
 		</DivWrap>
 	);
-});
+}
 
 const DivWrap = styled.div`
 	margin-top: 20px;

@@ -27,7 +27,7 @@ const CiteWeb = memo<Props & DispatchProp>(p => {
 	return (
 		<div>
 			<h2>{t`Cite web`}</h2>
-			<Form cite={p.cite} onChange={ci => p.dispatchNow('setCite', ci)}/>
+			<Form cite={p.cite} onChange={(ci: Cite) => p.dispatchNow('setCite', ci)}/>
 			<Output cite={p.cite}/>
 			<Iframe cite={p.cite}/>
 			<SectionFooter onClear={() => p.dispatchNow('setCite', newCite())}/>
