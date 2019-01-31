@@ -9,7 +9,7 @@ type tFunc = (str: string | TemplateStringsArray,
 /**
  * Hook that returns a function to translate strings.
  */
-function useLocale(wildcard: string): tFunc {
+export default function useLocale(wildcard: string): tFunc {
 	const {curLang, locales} = useContext(LocaleContext);
 
 	function t(str: string | TemplateStringsArray,
@@ -19,5 +19,3 @@ function useLocale(wildcard: string): tFunc {
 
 	return t;
 }
-
-export default useLocale;

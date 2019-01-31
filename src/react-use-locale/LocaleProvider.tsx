@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ReactNode} from 'react';
+import React, {ReactNode} from 'react';
 
 import LocaleContext from './LocaleContext';
 import {ManyLocales} from './model'
@@ -12,13 +12,10 @@ interface Props {
 /**
  * Provider to wrap all the app components.
  */
-const LocaleProvider: FunctionComponent<Props> =
-		({children, lang, locales}: Props) => {
+export default function LocaleProvider(p: Props) {
 	return (
-		<LocaleContext.Provider value={{curLang: lang, locales}}>
-			{children}
+		<LocaleContext.Provider value={{curLang: p.lang, locales: p.locales}}>
+			{p.children}
 		</LocaleContext.Provider>
 	);
-};
-
-export default LocaleProvider;
+}
