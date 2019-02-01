@@ -1,23 +1,20 @@
-import React, {memo, useEffect} from 'react';
-import {connect} from 'react-redux';
-import {DeepReadonly} from 'ts-essentials';
+import React, {memo, useContext, useEffect} from 'react';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
+import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Iframe from './Iframe';
 import Output from './Output';
 import Cite, {newCite} from './Cite';
 
-interface Props {
-	cite: DeepReadonly<Cite>;
-}
+interface Props { }
 
 /**
  * Main component for app route: cite-web.
  */
-const CiteWeb = memo<Props & DispatchProp>(p => {
+const CiteWeb = memo<Props>(() => {
+	const [store, setStore] = useContext(StoreContext);
 	const t = useLocale('*_CiteWeb');
 
 	useEffect(() => {
@@ -27,15 +24,12 @@ const CiteWeb = memo<Props & DispatchProp>(p => {
 	return (
 		<div>
 			<h2>{t`Cite web`}</h2>
-			<Form cite={p.cite} onChange={(ci: Cite) => p.dispatchNow('setCite', ci)}/>
-			<Output cite={p.cite}/>
-			<Iframe cite={p.cite}/>
-			<SectionFooter onClear={() => p.dispatchNow('setCite', newCite())}/>
+			<Form cite={store.cite} onChange={(ci: Cite) => setStore({...store, cite: ci})}/>
+			<Output cite={store.cite}/>
+			<Iframe cite={store.cite}/>
+			<SectionFooter onClear={() => setStore({...store, cite: newCite()})}/>
 		</div>
 	);
 });
 
-export default connect<Props, DispatchProp, {}, ReduxState>(
-	({cite}: ReduxState) => ({cite}),
-	mapDispatchToProps
-)(CiteWeb);
+export default CiteWeb;

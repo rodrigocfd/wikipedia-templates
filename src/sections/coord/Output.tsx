@@ -10,7 +10,7 @@ import extractLatLng from './extractLatLng';
 
 interface Props {
 	readonly name?: string;
-	coords: DeepReadonly<CoordData>;
+	coord: DeepReadonly<CoordData>;
 }
 
 /**
@@ -20,7 +20,7 @@ const Output = memo<Props>(p => {
 	const t = useLocale('*_Coord');
 
 	let fmt = '';
-	let ll = extractLatLng(p.coords.latLng);
+	let ll = extractLatLng(p.coord.latLng);
 	if (ll !== null) {
 		let lat = newDegMinSec(ll[0]);
 		let lng = newDegMinSec(ll[1]);
@@ -30,7 +30,7 @@ const Output = memo<Props>(p => {
 			+ '|' + (lat.dec < 0 ? t`S` : t`N`)
 			+ `|${lng.d}|${lng.m}|${lng.s}`
 			+ '|' + (lng.dec < 0 ? t`W` : t`E`)
-			+ `|display=${p.coords.display}`
+			+ `|display=${p.coord.display}`
 			+ '}}';
 	}
 

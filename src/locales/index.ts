@@ -27,13 +27,13 @@ export default locales;
 /**
  * Names of available languages.
  */
+export type AvailableLangs = 'en' | 'pt';
+
 export interface LangDescription {
-	readonly id: string;
+	readonly id: AvailableLangs;
 	readonly name: string;
 }
 export const langDescriptions: LangDescription[] = [
 	{id: 'en', name: 'English'},
 	{id: 'pt', name: 'Portuguese'}
 ];
-
-export type AvailableLangs = 'en' | 'pt';

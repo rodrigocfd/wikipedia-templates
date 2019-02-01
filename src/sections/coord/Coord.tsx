@@ -1,25 +1,22 @@
-import React, {memo, useEffect, useRef} from 'react';
-import {connect} from 'react-redux';
+import React, {memo, useContext, useEffect, useRef} from 'react';
 import styled from 'styled-components';
-import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
+import StoreContext from '../../StoreContext';
 import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';
 import GoogleMapsLink from './GoogleMapsLink';
 import OsmMap from './OsmMap';
 import Output from './Output';
-import CoordData from './CoordData';
+import {PossibleTypes, newCoordData} from './CoordData';
 
-interface Props {
-	coords: DeepReadonly<CoordData>;
-}
+interface Props { }
 
 /**
  * Main component for app route: coord.
  */
-const Coord = memo<Props & DispatchProp>(p => {
+const Coord = memo<Props>(() => {
+	const [store, setStore] = useContext(StoreContext);
 	const t = useLocale('*_Coord');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -36,20 +33,19 @@ const Coord = memo<Props & DispatchProp>(p => {
 			<h2>{t`Coord`}</h2>
 			<div>
 				<div>
-					<InputCoords type="text" size={40} value={p.coords.latLng} ref={txt1}
-						onChange={e => p.dispatchNow('setCoords',
-							{...p.coords, latLng: e.target.value})}/>
-					<InlineRadio locale="*_Coord" name="type" value={p.coords.display}
-						onChange={val => p.dispatchNow('setCoords', {...p.coords, display: val})}
+					<InputCoords type="text" size={40} value={store.coord.latLng} ref={txt1}
+						onChange={e => setStore({...store, coord: {...store.coord, latLng: e.target.value}})}/>
+					<InlineRadio locale="*_Coord" name="type" value={store.coord.display}
+						onChange={val => setStore({...store, coord: {...store.coord, display: val as PossibleTypes}})}
 						options={['inline', 'title', 'inline,title']}
 						labels={['inline', 'title', 'inline,title']}/>
 				</div>
 				<div>
-					<GoogleMapsLink latLng={p.coords.latLng}/>
-					<OsmMap latLng={p.coords.latLng}/>
-					<Output coords={p.coords}/>
+					<GoogleMapsLink latLng={store.coord.latLng}/>
+					<OsmMap latLng={store.coord.latLng}/>
+					<Output coord={store.coord}/>
 				</div>
-				<SectionFooter onClear={() => p.dispatchNow('setCoords', '')}/>
+				<SectionFooter onClear={() => setStore({...store, coord: newCoordData()})}/>
 			</div>
 		</div>
 	);
@@ -59,7 +55,4 @@ const InputCoords = styled.input`
 	margin-right: 20px;
 `;
 
-export default connect<Props, DispatchProp, {}, ReduxState>(
-	({coords}: ReduxState) => ({coords}),
-	mapDispatchToProps
-)(Coord);
+export default Coord;

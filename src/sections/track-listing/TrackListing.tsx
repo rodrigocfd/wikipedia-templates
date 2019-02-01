@@ -1,23 +1,20 @@
-import React, {memo, useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, {memo, useContext, useEffect} from 'react';
 import styled from 'styled-components';
-import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
+import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
 import TrackLine from './TrackLine';
 import Output from './Output';
 import Track, {newTrack} from './Track';
 
-interface Props {
-	tracks: DeepReadonly<Track[]>;
-}
+interface Props { }
 
 /**
  * Main component for app route: track-listing.
  */
-const TrackListing = memo<Props & DispatchProp>(p => {
+const TrackListing = memo<Props>(() => {
+	const [store, setStore] = useContext(StoreContext);
 	const t = useLocale('*_TrackListing');
 
 	useEffect(() => {
@@ -25,29 +22,29 @@ const TrackListing = memo<Props & DispatchProp>(p => {
 	}, [t]);
 
 	function addTrack(): void {
-		p.dispatchNow('setTracks', [...p.tracks, newTrack()]);
+		setStore({...store, tracks: [...store.tracks, newTrack()]});
 	}
 
 	function removeTrack(index: number): void {
-		let newList = [...p.tracks];
+		let newList = [...store.tracks];
 		newList.splice(index, 1);
-		p.dispatchNow('setTracks', newList);
+		setStore({...store, tracks: newList});
 	}
 
 	function moveTrackUp(index: number): void {
-		let newList = [...p.tracks];
+		let newList = [...store.tracks];
 		if (index > 0) {
 			const tmp = newList[index];
 			newList[index] = newList[index - 1];
 			newList[index - 1] = tmp;
-			p.dispatchNow('setTracks', newList);
+			setStore({...store, tracks: newList});
 		}
 	}
 
 	function changedTrack(track: Track): void {
-		const updatedTracks = p.tracks.map(tra =>
+		const updatedTracks = store.tracks.map((tra: Track) =>
 			tra.id === track.id ? track : tra);
-		p.dispatchNow('setTracks', updatedTracks);
+			setStore({...store, tracks: updatedTracks});
 	}
 
 	return (
@@ -57,7 +54,7 @@ const TrackListing = memo<Props & DispatchProp>(p => {
 				<DivBtnAddTrack>
 					<button onClick={addTrack}>+ {t`Add track`}</button>
 				</DivBtnAddTrack>
-				{p.tracks.length > 0 &&
+				{store.tracks.length > 0 &&
 					<DivGridTrackList>
 						<DivHeader>#</DivHeader>
 						<DivHeader>{t`Title`}</DivHeader>
@@ -67,7 +64,7 @@ const TrackListing = memo<Props & DispatchProp>(p => {
 						<DivHeader>{t`Music`}</DivHeader>
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
-						{p.tracks.map((tra, index) =>
+						{store.tracks.map((tra: Track, index: number) =>
 							<TrackLine key={tra.id} index={index} track={tra}
 								onRemove={removeTrack}
 								onMoveUp={moveTrackUp}
@@ -76,8 +73,8 @@ const TrackListing = memo<Props & DispatchProp>(p => {
 					</DivGridTrackList>
 				}
 			</div>
-			<Output tracks={p.tracks}/>
-			<SectionFooter onClear={() => p.dispatchNow('setTracks', [])}/>
+			<Output tracks={store.tracks}/>
+			<SectionFooter onClear={() => setStore({...store, tracks: []})}/>
 		</div>
 	);
 });
@@ -94,7 +91,4 @@ const DivHeader = styled.div`
 	padding: 2px 6px;
 `;
 
-export default connect<Props, DispatchProp, {}, ReduxState>(
-	({tracks}: ReduxState) => ({tracks}),
-	mapDispatchToProps
-)(TrackListing);
+export default TrackListing;

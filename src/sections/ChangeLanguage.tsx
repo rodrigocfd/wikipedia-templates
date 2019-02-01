@@ -1,19 +1,17 @@
-import React, {memo} from 'react';
-import {connect} from 'react-redux';
+import React, {memo, useContext} from 'react';
 import styled from 'styled-components';
 
 import useLocale from '../react-use-locale';
-import {DispatchProp, mapDispatchToProps, ReduxState} from '../store';
+import StoreContext from '../StoreContext';
 import {langDescriptions, LangDescription} from '../locales';
 
-interface Props {
-	readonly lang: string;
-}
+interface Props { }
 
 /**
  * Changes the current locale file.
  */
-const ChangeLanguage = memo<Props & DispatchProp>(p => {
+const ChangeLanguage = memo<Props>(p => {
+	const [store, setStore] = useContext(StoreContext);
 	const t = useLocale('*');
 
 	return (
@@ -21,10 +19,10 @@ const ChangeLanguage = memo<Props & DispatchProp>(p => {
 			<DivTitle>{t`Language`}</DivTitle>
 			<DivOpts>
 				{langDescriptions.map((langDescr: LangDescription) =>
-					p.lang === langDescr.id ?
+					store.lang === langDescr.id ?
 						<span key={langDescr.id}>{t(langDescr.name)}</span> :
 						<button key={langDescr.id}
-							onClick={() => p.dispatchNow('setLang', langDescr.id)}>
+							onClick={() => setStore({...store, lang: langDescr.id})}>
 							{t(langDescr.name)}
 						</button>
 				)}
@@ -49,7 +47,4 @@ const DivOpts = styled.div`
 	}
 `;
 
-export default connect<Props, DispatchProp, {}, ReduxState>(
-	({lang}: ReduxState) => ({lang}),
-	mapDispatchToProps
-)(ChangeLanguage);
+export default ChangeLanguage;

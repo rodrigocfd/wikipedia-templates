@@ -1,23 +1,20 @@
-import React, {memo, useEffect} from 'react';
-import {connect} from 'react-redux';
+import React, {memo, useContext, useEffect} from 'react';
 import styled from 'styled-components';
-import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
+import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Output from './Output';
-import Album, {newAlbum} from './Album';
+import {newAlbum} from './Album';
 
-interface Props {
-	album: DeepReadonly<Album>;
-}
+interface Props { }
 
 /**
  * Main component for app route: infobox-album.
  */
-const InfoboxAlbum = memo<Props & DispatchProp>(p => {
+const InfoboxAlbum = memo<Props>(() => {
+	const [store, setStore] = useContext(StoreContext);
 	const t = useLocale('*_InfoboxAlbum');
 
 	useEffect(() => {
@@ -28,10 +25,10 @@ const InfoboxAlbum = memo<Props & DispatchProp>(p => {
 		<div>
 			<h2>{t`Infobox album`}</h2>
 			<DivGridWrap>
-				<Form album={p.album} onChange={al => p.dispatchNow('setAlbum', al)}/>
-				<Output album={p.album}/>
+				<Form album={store.album} onChange={al => setStore({...store, album: al})}/>
+				<Output album={store.album}/>
 			</DivGridWrap>
-			<SectionFooter onClear={() => p.dispatchNow('setAlbum', newAlbum())}/>
+			<SectionFooter onClear={() => setStore({...store, album: newAlbum()})}/>
 		</div>
 	);
 });
@@ -41,7 +38,4 @@ const DivGridWrap = styled.div`
 	grid-template-columns: 650px auto;
 `;
 
-export default connect<Props, DispatchProp, {}, ReduxState>(
-	({album}: ReduxState) => ({album}),
-	mapDispatchToProps
-)(InfoboxAlbum);
+export default InfoboxAlbum;
