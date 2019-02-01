@@ -1,4 +1,5 @@
 import {createContext} from 'react';
+import {DeepReadonly} from 'ts-essentials';
 
 import {AvailableLangs} from './locales';
 import Album, {newAlbum} from './sections/infobox-album/Album';
@@ -9,13 +10,15 @@ import Track from './sections/track-listing/Track';
 /**
  * Global app store.
  */
-interface Store {
+interface StoreBase {
 	lang: AvailableLangs; // app-wide current language
 	album: Album; // infobox-album
 	cite: Cite; // cite-web
 	coord: CoordData; // coords
 	tracks: Track[]; // track-listing
 }
+
+type Store = DeepReadonly<StoreBase>; // store is immutable
 
 type StoreGetSet = [Store, (s: Store) => void]; // tuple returned by useContext()
 
