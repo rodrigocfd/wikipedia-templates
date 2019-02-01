@@ -1,8 +1,8 @@
 import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import DeepReadonly from '../../DeepReadonly';
 import InlineRadio from '../InlineRadio';
 import YearMonthDay from '../YearMonthDay';
 import Cite from './Cite';

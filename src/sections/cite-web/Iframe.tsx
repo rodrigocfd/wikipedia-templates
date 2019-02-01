@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
-import DeepReadonly from '../../DeepReadonly';
 import Cite from './Cite';
 
 interface Props {

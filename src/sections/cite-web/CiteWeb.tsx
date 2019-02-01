@@ -1,8 +1,8 @@
 import React, {memo, useEffect} from 'react';
 import {connect} from 'react-redux';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';

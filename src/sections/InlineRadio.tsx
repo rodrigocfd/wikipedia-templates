@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../react-use-locale';
-import DeepReadonly from '../DeepReadonly';
 
 interface Props {
 	readonly locale: string;

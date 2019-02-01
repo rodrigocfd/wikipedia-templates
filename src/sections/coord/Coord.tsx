@@ -1,9 +1,9 @@
 import React, {memo, useEffect, useRef} from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import DeepReadonly from '../../DeepReadonly';
 import {DispatchProp, mapDispatchToProps, ReduxState} from '../../store';
 import InlineRadio from '../InlineRadio';
 import SectionFooter from '../SectionFooter';

@@ -1,8 +1,8 @@
 import React, {memo} from 'react';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import DeepReadonly from '../../DeepReadonly';
 import StaticTextarea from '../StaticTextarea';
 import DayMonthYear from '../DayMonthYear';
 import onlyIf from '../onlyIf';

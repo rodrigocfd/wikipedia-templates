@@ -1,8 +1,8 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styled from 'styled-components';
+import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
-import DeepReadonly from '../../DeepReadonly';
 import Track from './Track';
 
 interface Props {
