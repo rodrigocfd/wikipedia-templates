@@ -16,7 +16,7 @@ interface Props {
 /**
  * One single track, with many fields.
  */
-function TrackLine(p: Props) {
+function TrackForm(p: Props) {
 	const t = useLocale('*_TrackListing');
 	const txt1 = useRef<HTMLInputElement>(null);
 
@@ -69,4 +69,4 @@ const ButtonSpaced = styled.button`
 	margin-left: 4px;
 `;
 
-export default TrackLine;
+export default TrackForm;

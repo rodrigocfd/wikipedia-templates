@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
-import TrackLine from './TrackLine';
+import TrackForm from './TrackForm';
 import Output from './Output';
 import Track, {newTrack} from './Track';
 
@@ -44,7 +44,7 @@ const TrackListing = memo<Props>(() => {
 	function changedTrack(track: Track): void {
 		const updatedTracks = store.tracks.map((tra: Track) =>
 			tra.id === track.id ? track : tra);
-			setStore({...store, tracks: updatedTracks});
+		setStore({...store, tracks: updatedTracks});
 	}
 
 	return (
@@ -65,7 +65,7 @@ const TrackListing = memo<Props>(() => {
 						<DivHeader>{t`Length`}</DivHeader>
 						<DivHeader></DivHeader>
 						{store.tracks.map((tra: Track, index: number) =>
-							<TrackLine key={tra.id} index={index} track={tra}
+							<TrackForm key={tra.id} index={index} track={tra}
 								onRemove={removeTrack}
 								onMoveUp={moveTrackUp}
 								onChange={changedTrack}/>
