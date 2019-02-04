@@ -17,20 +17,13 @@ interface Props {
 function OtherAlbum(p: Props) {
 	const t = useLocale('*_InfoboxAlbum');
 
-	function setYear(val?: string) {
-		p.onChange && p.onChange({
-			...p.value,
-			year: val ? +val : ''
-		});
-	}
-
 	return (<>
 		<input type="text" size={40} name={p.name && `${p.name}_name`}
 			value={p.value.name}
-			onChange={e => p.onChange && p.onChange({...p.value, name: e.target.value})}/>
+			onChange={e => p.onChange({...p.value, name: e.target.value})}/>
 		{' '} {t`year`} <InputYear type="number" name={p.name && `${p.name}_year`}
 			value={p.value.year}
-			onChange={e => setYear(e.target.value)}/>
+			onChange={e => p.onChange({...p.value, year: e.target.value ? +e.target.value : ''})}/>
 	</>);
 }
 

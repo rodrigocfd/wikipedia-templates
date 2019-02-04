@@ -28,12 +28,12 @@ function Form(p: Props) {
 			<div>
 				<DivName>{t`Name`}</DivName>
 				<input type="text" size={40} value={p.album.name} autoComplete="off" ref={txt1}
-					onChange={e => p.onChange && p.onChange({...p.album, name: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, name: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Type`}</DivName>
 				<select value={p.album.type}
-					onChange={e => p.onChange && p.onChange({...p.album, type: +e.target.value})}>
+					onChange={e => p.onChange({...p.album, type: +e.target.value})}>
 					{albumTypes.map((aType: string, i: number) =>
 						<option key={aType} value={i}>{t(aType)}</option>
 					)}
@@ -42,47 +42,47 @@ function Form(p: Props) {
 			<div>
 				<DivName>{t`Artist`}</DivName>
 				<input type="text" size={40} value={p.album.artist} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, artist: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, artist: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Cover`}</DivName>
 				<input type="text" size={30} value={p.album.cover} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, cover: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, cover: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Released`}</DivName>
 				<YearMonthDay value={p.album.released}
-					onChange={val => p.onChange && p.onChange({...p.album, released: val})}/>
+					onChange={val => p.onChange({...p.album, released: val})}/>
 			</div>
 			<div>
 				<DivName>{t`Genre`}</DivName>
 				<input type="text" size={20} value={p.album.genre} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, genre: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, genre: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Producer`}</DivName>
 				<input type="text" size={40} value={p.album.producer} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, producer: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, producer: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Studio`}</DivName>
 				<input type="text" size={40} value={p.album.studio} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, studio: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, studio: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Label`}</DivName>
 				<input type="text" size={20} value={p.album.label} autoComplete="off"
-					onChange={e => p.onChange && p.onChange({...p.album, label: e.target.value})}/>
+					onChange={e => p.onChange({...p.album, label: e.target.value})}/>
 			</div>
 			<div>
 				<DivName>{t`Previous album`}</DivName>
 				<OtherAlbum value={p.album.prevAlbum}
-					onChange={val => p.onChange && p.onChange({...p.album, prevAlbum: val})}/>
+					onChange={val => p.onChange({...p.album, prevAlbum: val})}/>
 			</div>
 			<div>
 				<DivName>{t`Next album`}</DivName>
 				<OtherAlbum value={p.album.nextAlbum}
-					onChange={val => p.onChange && p.onChange({...p.album, nextAlbum: val})}/>
+					onChange={val => p.onChange({...p.album, nextAlbum: val})}/>
 			</div>
 		</div>
 	);

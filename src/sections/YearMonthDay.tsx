@@ -18,7 +18,7 @@ function YearMonthDay(p: Props) {
 	const t = useLocale('*');
 
 	function setDateField(fieldName: string, val?: string) {
-		p.onChange && p.onChange({
+		p.onChange({
 			...p.value,
 			[fieldName]: val ? +val : ''
 		});
@@ -26,15 +26,11 @@ function YearMonthDay(p: Props) {
 
 	function setToday() {
 		const now = new Date();
-		p.onChange && p.onChange({
+		p.onChange({
 			day: now.getDate(),
 			month: now.getMonth() + 1,
 			year: now.getFullYear()
 		});
-	}
-
-	function setClear() {
-		p.onChange && p.onChange(newDayMonthYear());
 	}
 
 	return (<>
@@ -48,7 +44,7 @@ function YearMonthDay(p: Props) {
 			value={p.value.day} name={name && `${name}_day`}
 			onChange={e => setDateField('day', e.target.value)}/>
 		<button onClick={setToday}>{t`today`}</button>
-		{' '} <button onClick={setClear}>{t`clear`}</button>
+		{' '} <button onClick={() => p.onChange(newDayMonthYear())}>{t`clear`}</button>
 	</>);
 }
 

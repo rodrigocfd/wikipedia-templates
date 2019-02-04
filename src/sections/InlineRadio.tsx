@@ -25,7 +25,7 @@ function InlineRadio(p: Props) {
 				name={p.name}
 				value={opt}
 				checked={opt === p.value}
-				onChange={e => p.onChange && p.onChange(e.currentTarget.value)}/>
+				onChange={e => p.onChange(e.currentTarget.value)}/>
 				{t(p.labels[i])}
 			</LabelHand>
 		))}
