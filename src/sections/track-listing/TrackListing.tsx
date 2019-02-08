@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import useLocale from '../../react-use-locale';
 import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
+import Cell from './Cell';
 import TrackForm from './TrackForm';
 import Output from './Output';
 import Track, {newTrack} from './Track';
@@ -55,22 +56,24 @@ const TrackListing = memo<Props>(() => {
 					<button onClick={addTrack}>+ {t`Add track`}</button>
 				</DivBtnAddTrack>
 				{store.tracks.length > 0 &&
-					<DivGridTrackList>
-						<DivHeader>#</DivHeader>
-						<DivHeader>{t`Title`}</DivHeader>
-						<DivHeader>{t`Note`}</DivHeader>
-						<DivHeader>{t`Writer`}</DivHeader>
-						<DivHeader>{t`Lyrics`}</DivHeader>
-						<DivHeader>{t`Music`}</DivHeader>
-						<DivHeader>{t`Length`}</DivHeader>
-						<DivHeader></DivHeader>
+					<DivTrackList>
+						<Cell w={20}>#</Cell>
+						<Cell w={160}>{t`Title`}</Cell>
+						<Cell w={120}>{t`Note`}</Cell>
+						<Cell w={180}>{t`Writer`}</Cell>
+						<Cell w={180}>{t`Lyrics`}</Cell>
+						<Cell w={180}>{t`Music`}</Cell>
+						<Cell w={70}>{t`Length`}</Cell>
+						<Cell></Cell>
 						{store.tracks.map((tra: Track, index: number) =>
-							<TrackForm key={tra.id} index={index} track={tra}
-								onRemove={removeTrack}
-								onMoveUp={moveTrackUp}
-								onChange={changedTrack}/>
+							<div key={tra.id}>
+								<TrackForm index={index} track={tra}
+									onRemove={removeTrack}
+									onMoveUp={moveTrackUp}
+									onChange={changedTrack}/>
+							</div>
 						)}
-					</DivGridTrackList>
+					</DivTrackList>
 				}
 			</div>
 			<Output tracks={store.tracks}/>
@@ -82,13 +85,8 @@ const TrackListing = memo<Props>(() => {
 const DivBtnAddTrack = styled.div`
 	margin-bottom: 10px;
 `;
-const DivGridTrackList = styled.div`
+const DivTrackList = styled.div`
 	padding: 4px 0;
-	display: grid;
-	grid-template-columns: 20px 160px 120px 180px 180px 180px 70px auto;
-`;
-const DivHeader = styled.div`
-	padding: 2px 6px;
 `;
 
 export default TrackListing;
