@@ -5,17 +5,17 @@ import {AvailableLangs} from './locales';
 import InfoboxAlbumData, {newInfoboxAlbumData} from './sections/infobox-album/InfoboxAlbumData';
 import CiteWebData, {newCiteWebData} from './sections/cite-web/CiteWebData';
 import CoordData, {newCoordData} from './sections/coord/CoordData';
-import Track from './sections/track-listing/Track';
+import TrackListingData, {newTrackListingData} from './sections/track-listing/TrackListingData';
 
 /**
  * Global app store.
  */
 interface StoreBase {
 	lang: AvailableLangs; // app-wide current language
-	album: InfoboxAlbumData; // infobox-album
-	cite: CiteWebData; // cite-web
-	coord: CoordData; // coords
-	tracks: Track[]; // track-listing
+	album: InfoboxAlbumData;
+	cite: CiteWebData;
+	coord: CoordData;
+	trackListing: TrackListingData;
 }
 
 type Store = DeepReadonly<StoreBase>; // store is immutable
@@ -28,7 +28,7 @@ export function newStore(): Store {
 		album: newInfoboxAlbumData(),
 		cite: newCiteWebData(),
 		coord: newCoordData(),
-		tracks: []
+		trackListing: newTrackListingData()
 	};
 }
 

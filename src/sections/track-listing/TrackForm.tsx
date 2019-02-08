@@ -4,13 +4,13 @@ import {DeepReadonly} from 'ts-essentials';
 
 import useLocale from '../../react-use-locale';
 import Track from './Track';
-import ShowFields from './ShowFields';
+import Fields from './Fields';
 import Cell from './Cell';
 
 interface Props {
 	readonly index: number; // track position within containing array
 	track: DeepReadonly<Track>;
-	showFields: DeepReadonly<ShowFields>;
+	fields: DeepReadonly<Fields>;
 	onRemove: (index: number) => void;
 	onMoveUp: (index: number) => void;
 	onChange: (track: Track) => void;
@@ -31,19 +31,19 @@ function TrackForm(p: Props) {
 		<Cell w={20}>{p.index + 1}</Cell>
 		<Cell w={160}><InputW type="text" value={p.track.title} ref={txt1} autoComplete="off"
 			onChange={e => p.onChange({...p.track, title: e.target.value})}/></Cell>
-		{p.showFields.notes &&
+		{p.fields.notes &&
 			<Cell w={120}><InputW type="text" value={p.track.note} autoComplete="off"
 				onChange={e => p.onChange({...p.track, note: e.target.value})}/></Cell>
 		}
-		{p.showFields.writer &&
+		{p.fields.writer &&
 			<Cell w={180}><InputW type="text" value={p.track.writer} autoComplete="off"
 				onChange={e => p.onChange({...p.track, writer:e.target.value})}/></Cell>
 		}
-		{p.showFields.lyrics &&
+		{p.fields.lyrics &&
 			<Cell w={180}><InputW type="text" value={p.track.lyrics} autoComplete="off"
 				onChange={e => p.onChange({...p.track, lyrics: e.target.value})}/></Cell>
 		}
-		{p.showFields.music &&
+		{p.fields.music &&
 			<Cell w={180}><InputW type="text" value={p.track.music} autoComplete="off"
 				onChange={e => p.onChange({...p.track, music: e.target.value})}/></Cell>
 		}

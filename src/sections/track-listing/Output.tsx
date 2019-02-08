@@ -6,12 +6,12 @@ import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import onlyIf from '../onlyIf';
 import Track from './Track';
-import ShowFields from './ShowFields';
+import Fields from './Fields';
 
 interface Props {
 	readonly name?: string;
 	tracks: DeepReadonly<Track[]>;
-	showFields: DeepReadonly<ShowFields>;
+	showFields: DeepReadonly<Fields>;
 }
 
 /**

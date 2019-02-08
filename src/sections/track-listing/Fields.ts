@@ -1,14 +1,14 @@
 /**
  * The fields that can be hidden/shown for a track.
  */
-export default interface ShowFields {
+export default interface Fields {
 	notes: boolean;
 	writer: boolean;
 	lyrics: boolean;
 	music: boolean;
 }
 
-export function newShowFields(): ShowFields {
+export function newFields(): Fields {
 	return {
 		notes: false,
 		writer: false,
