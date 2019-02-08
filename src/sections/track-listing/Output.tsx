@@ -11,7 +11,7 @@ import Fields from './Fields';
 interface Props {
 	readonly name?: string;
 	tracks: DeepReadonly<Track[]>;
-	showFields: DeepReadonly<Fields>;
+	fields: DeepReadonly<Fields>;
 }
 
 /**
@@ -34,10 +34,10 @@ const Output = memo<Props>(p => {
 	let fmt = '{{' + t`Track listing` + '\n';
 	p.tracks.forEach((tra, idx) => {
 		let fi = onlyIf(tra.title,                      `|${t('title{0}', idx+1)}=${tra.title}`)
-			+ onlyIf(p.showFields.notes  && tra.note,   ` |${t('note{0}', idx+1)}=${tra.note}`)
-			+ onlyIf(p.showFields.writer && tra.writer, ` |${t('writer{0}', idx+1)}=${tra.writer}`)
-			+ onlyIf(p.showFields.lyrics && tra.lyrics, ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}`)
-			+ onlyIf(p.showFields.music  && tra.music,  ` |${t('music{0}', idx+1)}=${tra.music}`)
+			+ onlyIf(p.fields.notes  && tra.note,   ` |${t('note{0}', idx+1)}=${tra.note}`)
+			+ onlyIf(p.fields.writer && tra.writer, ` |${t('writer{0}', idx+1)}=${tra.writer}`)
+			+ onlyIf(p.fields.lyrics && tra.lyrics, ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}`)
+			+ onlyIf(p.fields.music  && tra.music,  ` |${t('music{0}', idx+1)}=${tra.music}`)
 			+ onlyIf(tra.duration,                      ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}`);
 		if (fi.length) {
 			fmt += fi + '\n';
