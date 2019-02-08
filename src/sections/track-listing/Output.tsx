@@ -6,10 +6,12 @@ import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import onlyIf from '../onlyIf';
 import Track from './Track';
+import ShowFields from './ShowFields';
 
 interface Props {
 	readonly name?: string;
 	tracks: DeepReadonly<Track[]>;
+	showFields: DeepReadonly<ShowFields>;
 }
 
 /**
@@ -31,13 +33,15 @@ const Output = memo<Props>(p => {
 
 	let fmt = '{{' + t`Track listing` + '\n';
 	p.tracks.forEach((tra, idx) => {
-		fmt += onlyIf(tra.title,   `|${t('title{0}', idx+1)}=${tra.title}`)
-			+ onlyIf(tra.note,     ` |${t('note{0}', idx+1)}=${tra.note}`)
-			+ onlyIf(tra.writer,   ` |${t('writer{0}', idx+1)}=${tra.writer}`)
-			+ onlyIf(tra.lyrics,   ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}`)
-			+ onlyIf(tra.music,    ` |${t('music{0}', idx+1)}=${tra.music}`)
-			+ onlyIf(tra.duration, ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}`)
-			+ '\n';
+		let fi = onlyIf(tra.title,                      `|${t('title{0}', idx+1)}=${tra.title}`)
+			+ onlyIf(p.showFields.notes  && tra.note,   ` |${t('note{0}', idx+1)}=${tra.note}`)
+			+ onlyIf(p.showFields.writer && tra.writer, ` |${t('writer{0}', idx+1)}=${tra.writer}`)
+			+ onlyIf(p.showFields.lyrics && tra.lyrics, ` |${t('lyrics{0}', idx+1)}=${tra.lyrics}`)
+			+ onlyIf(p.showFields.music  && tra.music,  ` |${t('music{0}', idx+1)}=${tra.music}`)
+			+ onlyIf(tra.duration,                      ` |${t('length{0}', idx+1)}=${formatDuration(tra.duration)}`);
+		if (fi.length) {
+			fmt += fi + '\n';
+		}
 	});
 	fmt += '}}'
 
