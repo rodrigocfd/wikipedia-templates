@@ -5,11 +5,11 @@ import {DeepReadonly} from 'ts-essentials';
 import useLocale from '../../react-use-locale';
 import InlineRadio from '../InlineRadio';
 import YearMonthDay from '../YearMonthDay';
-import Cite from './Cite';
+import CiteWebData from './CiteWebData';
 
 interface Props {
-	cite: DeepReadonly<Cite>;
-	onChange: (cite: Cite) => void;
+	cite: DeepReadonly<CiteWebData>;
+	onChange: (cite: CiteWebData) => void;
 }
 
 /**

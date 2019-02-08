@@ -4,7 +4,7 @@ import NameYear, {newNameYear} from './NameYear';
 /**
  * Model for an album.
  */
-export default interface Album {
+export default interface InfoboxAlbumData {
 	name: string;
 	type: number;
 	artist: string;
@@ -18,7 +18,7 @@ export default interface Album {
 	nextAlbum: NameYear;
 }
 
-export function newAlbum(): Album {
+export function newInfoboxAlbumData(): InfoboxAlbumData {
 	return {
 		name: '',
 		type: 0,

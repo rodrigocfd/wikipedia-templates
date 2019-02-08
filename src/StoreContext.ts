@@ -2,8 +2,8 @@ import {createContext} from 'react';
 import {DeepReadonly} from 'ts-essentials';
 
 import {AvailableLangs} from './locales';
-import Album, {newAlbum} from './sections/infobox-album/Album';
-import Cite, {newCite} from './sections/cite-web/Cite';
+import InfoboxAlbumData, {newInfoboxAlbumData} from './sections/infobox-album/InfoboxAlbumData';
+import CiteWebData, {newCiteWebData} from './sections/cite-web/CiteWebData';
 import CoordData, {newCoordData} from './sections/coord/CoordData';
 import Track from './sections/track-listing/Track';
 
@@ -12,8 +12,8 @@ import Track from './sections/track-listing/Track';
  */
 interface StoreBase {
 	lang: AvailableLangs; // app-wide current language
-	album: Album; // infobox-album
-	cite: Cite; // cite-web
+	album: InfoboxAlbumData; // infobox-album
+	cite: CiteWebData; // cite-web
 	coord: CoordData; // coords
 	tracks: Track[]; // track-listing
 }
@@ -25,8 +25,8 @@ type StoreGetSet = [Store, (s: Store) => void]; // tuple returned by useContext(
 export function newStore(): Store {
 	return {
 		lang: 'en',
-		album: newAlbum(),
-		cite: newCite(),
+		album: newInfoboxAlbumData(),
+		cite: newCiteWebData(),
 		coord: newCoordData(),
 		tracks: []
 	};

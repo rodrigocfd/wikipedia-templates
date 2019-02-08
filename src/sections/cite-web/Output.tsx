@@ -6,11 +6,11 @@ import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import DayMonthYear from '../DayMonthYear';
 import onlyIf from '../onlyIf';
-import Cite from './Cite';
+import CiteWebData from './CiteWebData';
 
 interface Props {
 	readonly name?: string;
-	cite: DeepReadonly<Cite>;
+	cite: DeepReadonly<CiteWebData>;
 }
 
 /**

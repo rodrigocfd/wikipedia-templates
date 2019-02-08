@@ -6,7 +6,7 @@ import StoreContext from '../../StoreContext';
 import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Output from './Output';
-import {newAlbum} from './Album';
+import {newInfoboxAlbumData} from './InfoboxAlbumData';
 
 interface Props { }
 
@@ -28,7 +28,7 @@ const InfoboxAlbum = memo<Props>(() => {
 				<Form album={store.album} onChange={al => setStore({...store, album: al})}/>
 				<Output album={store.album}/>
 			</DivGridWrap>
-			<SectionFooter onClear={() => setStore({...store, album: newAlbum()})}/>
+			<SectionFooter onClear={() => setStore({...store, album: newInfoboxAlbumData()})}/>
 		</div>
 	);
 });

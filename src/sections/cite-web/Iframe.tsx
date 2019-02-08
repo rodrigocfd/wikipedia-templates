@@ -2,11 +2,11 @@ import React, {memo} from 'react';
 import styled from 'styled-components';
 import {DeepReadonly} from 'ts-essentials';
 
-import Cite from './Cite';
+import CiteWebData from './CiteWebData';
 
 interface Props {
 	readonly name?: string;
-	cite: DeepReadonly<Cite>;
+	cite: DeepReadonly<CiteWebData>;
 }
 
 /**

@@ -6,12 +6,12 @@ import useLocale from '../../react-use-locale';
 import StaticTextarea from '../StaticTextarea';
 import onlyIf from '../onlyIf';
 import DayMonthYear from '../DayMonthYear';
-import Album, {albumTypes} from './Album';
+import InfoboxAlbumData, {albumTypes} from './InfoboxAlbumData';
 import NameYear from './NameYear';
 
 interface Props {
 	readonly name?: string;
-	album: DeepReadonly<Album>;
+	album: DeepReadonly<InfoboxAlbumData>;
 }
 
 /**

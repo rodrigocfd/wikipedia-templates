@@ -6,7 +6,7 @@ import SectionFooter from '../SectionFooter';
 import Form from './Form';
 import Iframe from './Iframe';
 import Output from './Output';
-import Cite, {newCite} from './Cite';
+import CiteWebData, {newCiteWebData} from './CiteWebData';
 
 interface Props { }
 
@@ -24,10 +24,10 @@ const CiteWeb = memo<Props>(() => {
 	return (
 		<div>
 			<h2>{t`Cite web`}</h2>
-			<Form cite={store.cite} onChange={(ci: Cite) => setStore({...store, cite: ci})}/>
+			<Form cite={store.cite} onChange={(ci: CiteWebData) => setStore({...store, cite: ci})}/>
 			<Output cite={store.cite}/>
 			<Iframe cite={store.cite}/>
-			<SectionFooter onClear={() => setStore({...store, cite: newCite()})}/>
+			<SectionFooter onClear={() => setStore({...store, cite: newCiteWebData()})}/>
 		</div>
 	);
 });

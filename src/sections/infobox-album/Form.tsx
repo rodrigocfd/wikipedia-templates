@@ -5,11 +5,11 @@ import {DeepReadonly} from 'ts-essentials';
 import useLocale from '../../react-use-locale';
 import YearMonthDay from '../YearMonthDay';
 import OtherAlbum from './OtherAlbum';
-import Album, {albumTypes} from './Album';
+import InfoboxAlbumData, {albumTypes} from './InfoboxAlbumData';
 
 interface Props {
-	album: DeepReadonly<Album>;
-	onChange: (album: Album) => void;
+	album: DeepReadonly<InfoboxAlbumData>;
+	onChange: (album: InfoboxAlbumData) => void;
 }
 
 /**

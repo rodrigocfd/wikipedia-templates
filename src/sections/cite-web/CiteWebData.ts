@@ -3,7 +3,7 @@ import DayMonthYear, {newDayMonthYear} from '../DayMonthYear';
 /**
  * Model for a citation.
  */
-export default interface Cite {
+export default interface CiteWebData {
 	refName: string;
 	url: string;
 	title: string;
@@ -14,7 +14,7 @@ export default interface Cite {
 	language: string;
 }
 
-export function newCite(): Cite {
+export function newCiteWebData(): CiteWebData {
 	return {
 		refName: '',
 		url: '',
