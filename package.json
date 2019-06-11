@@ -10,20 +10,20 @@
 	"dependencies": {
 		"react": "^16.8.6",
 		"react-dom": "^16.8.6",
-		"react-router-dom": "^5.0.0",
-		"styled-components": "^4.2.0"
+		"react-router-dom": "^5.0.1",
+		"styled-components": "^4.3.1"
 	},
 	"devDependencies": {
-		"@types/jest": "^24.0.11",
-		"@types/node": "^11.13.4",
-		"@types/react": "^16.8.13",
+		"@types/jest": "^24.0.13",
+		"@types/node": "^12.0.7",
+		"@types/react": "^16.8.19",
 		"@types/react-dom": "^16.8.4",
-		"@types/react-router-dom": "^4.3.2",
+		"@types/react-router-dom": "^4.3.3",
 		"@types/styled-components": "4.1.8",
 		"gh-pages": "^2.0.1",
 		"react-scripts": "^2.1.8",
-		"ts-essentials": "^2.0.3",
-		"typescript": "^3.4.3"
+		"ts-essentials": "^2.0.8",
+		"typescript": "^3.5.1"
 	},
 	"scripts": {
 		"start": "react-scripts start",
