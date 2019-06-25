@@ -15,7 +15,12 @@ function useLocale(curLang: Lang, locales: LocaleBatch): TrFunc {
 		if (theKey === '') {
 			return '';
 		}
-		return curLocale[theKey];
+		const ret = curLocale[theKey];
+		if (ret === undefined) {
+			console.error(`Key not found: "${theKey}".`);
+			return `[${theKey}]`;
+		}
+		return ret;
 	}
 
 	return t;

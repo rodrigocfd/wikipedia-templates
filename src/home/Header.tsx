@@ -1,5 +1,4 @@
 import React, {FC} from 'react';
-import {Link} from 'react-router-dom';
 
 import useStore from '../app/ContextStore';
 import useLocale from '../app/useLocale';
@@ -7,16 +6,15 @@ import locales from './locales';
 
 interface Props { }
 
-const CiteWeb: FC<Props> = () => {
+const Header: FC<Props> = () => {
 	const [store] = useStore();
 	const t = useLocale(store.lang, locales);
 
 	return (
 		<div>
-			<div>{t`Cite web`}</div>
-			<div><Link to="/">{t`Home`}</Link></div>
+			{t`Wikipedia Templates`}
 		</div>
 	);
 };
 
-export default CiteWeb;
+export default Header;
