@@ -4,15 +4,25 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
+import {LangName, langNames} from '../app/LangName';
 
 const ChangeLang: FC = () => {
-	const [store] = useStore();
+	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (
 		<Wrap>
 			<div>{t`Language`}</div>
-			<div>opts</div>
+			<div>
+				{langNames.map((l: LangName) =>
+					store.lang === l.id ?
+						<span key={l.id}>{t(l.name)}</span> :
+						<button key={l.id}
+							onClick={() => setStore({lang: l.id})}>
+							{t(l.name)}
+						</button>
+				)}
+			</div>
 		</Wrap>
 	);
 };
@@ -28,6 +38,10 @@ const Wrap = styled.div`
 		border: 1px solid #ccc;
 		margin-left: 10px;
 		padding: 3px;
+
+		& > span, & > button {
+			margin: 0 5px;
+		}
 	}
 `;
 

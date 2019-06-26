@@ -1,9 +1,9 @@
 /**
  * One single locale file.
  */
-interface Locale {
+export interface Locale {
 	[key: string]: string;
-}
+};
 
 /**
  * All the locales.
