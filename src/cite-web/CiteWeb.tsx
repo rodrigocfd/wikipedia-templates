@@ -2,14 +2,14 @@ import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
 
 import useStore from '../app/ContextStore';
-import useLocale from '../app/useLocale';
+import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
 
 interface Props { }
 
 const CiteWeb: FC<Props> = () => {
 	const [store] = useStore();
-	const t = useLocale(store.lang, locales);
+	const t = genLocaleFunc(store.lang, locales);
 
 	return (
 		<div>

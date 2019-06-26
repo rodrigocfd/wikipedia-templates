@@ -1,13 +1,13 @@
 import Lang from './Lang';
-import LocaleBatch from './LocaleBatch';
+import LocaleList from './LocaleList';
 
-type TrFunc = (str: string | TemplateStringsArray,
+export type LocaleFunc = (str: string | TemplateStringsArray,
 	...args: (string | number)[]) => string;
 
 /**
  * Returns the function used to retrieve string from locale key.
  */
-function useLocale(curLang: Lang, locales: LocaleBatch): TrFunc {
+function genLocaleFunc(curLang: Lang, locales: LocaleList): LocaleFunc {
 	function t(key: string | TemplateStringsArray,
 			...args: (string | number)[]): string {
 		const curLocale = locales[curLang];
@@ -22,8 +22,7 @@ function useLocale(curLang: Lang, locales: LocaleBatch): TrFunc {
 		}
 		return ret;
 	}
-
 	return t;
 }
 
-export default useLocale;
+export default genLocaleFunc;

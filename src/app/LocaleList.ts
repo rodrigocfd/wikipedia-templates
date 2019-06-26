@@ -8,8 +8,8 @@ interface Locale {
 /**
  * All the locales.
  */
-interface LocaleBatch {
+interface LocaleList {
 	[lang: string]: Locale;
 }
 
-export default LocaleBatch;
+export default LocaleList;

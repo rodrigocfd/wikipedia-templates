@@ -1,6 +1,6 @@
-import LocaleBatch from '../app/LocaleBatch';
+import LocaleList from '../app/LocaleList';
 import en from './en.json';
 import pt from './pt.json';
 
-const locales: LocaleBatch = {en, pt};
+const locales: LocaleList = {en, pt};
 export default locales;
