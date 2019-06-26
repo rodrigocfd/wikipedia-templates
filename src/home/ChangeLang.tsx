@@ -4,40 +4,31 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
-import ChangeLang from './ChangeLang';
 
-const Header: FC = () => {
+const ChangeLang: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (
 		<Wrap>
-			<div>
-				<h1>{t`Wikipedia Templates`}</h1>
-			</div>
-			<div>
-				<ChangeLang />
-			</div>
+			<div>{t`Language`}</div>
+			<div>opts</div>
 		</Wrap>
 	);
 };
 
 const Wrap = styled.div`
-	overflow: hidden;
-	background-color: #f8f8f8;
-	padding: 0 20px;
-	border-bottom: 1px solid #f2f2f2;
+	padding-top: 14px;
 
 	& > div:nth-of-type(1) {
-		float: left;
-		width: 60%;
+		display: inline-block;
 	}
 	& > div:nth-of-type(2) {
-		float: left;
-		width: 40%;
-		text-align: right;
-		padding-top: 8px;
+		display: inline-block;
+		border: 1px solid #ccc;
+		margin-left: 10px;
+		padding: 3px;
 	}
 `;
 
-export default Header;
+export default ChangeLang;

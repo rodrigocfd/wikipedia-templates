@@ -5,9 +5,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
 
-interface Props { }
-
-const CiteWeb: FC<Props> = () => {
+const CiteWeb: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 

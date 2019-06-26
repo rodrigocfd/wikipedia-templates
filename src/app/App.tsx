@@ -6,12 +6,10 @@ import Header from '../home/Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';
 
-interface Props { }
-
 /**
  * Application root component.
  */
-const App: FC<Props> = () => (
+const App: FC = () => (
 	<HashRouter>
 		<ContextStore.Provider value={newStore()}>
 			<Header />
