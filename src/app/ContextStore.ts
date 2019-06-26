@@ -1,12 +1,14 @@
 import React from 'react';
 
 import Lang from './Lang';
+import CiteWebData from '../cite-web/CiteWebData';
 
 /**
  * Global app context store.
  */
 export interface Store {
 	lang: Lang;
+	citeWeb: CiteWebData;
 };
 
 /**
@@ -22,7 +24,8 @@ export type ContextGetSetTuple = [Readonly<Store>, SetStoreFunc];
  */
 export function newStore(): ContextGetSetTuple {
 	return React.useState(<Store>{
-		lang: 'pt'
+		lang: 'pt',
+		citeWeb: {}
 	});
 };
 
