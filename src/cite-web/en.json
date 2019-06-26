@@ -2,5 +2,9 @@
 	"Home": "Home",
 	"Cite web": "Cite web",
 
-	"Ref name": "Ref name"
+	"Ref name": "Ref name",
+	"Publisher": "Publisher",
+	"Title": "Title",
+	"Translated title": "Translated title",
+	"URL": "URL"
 }

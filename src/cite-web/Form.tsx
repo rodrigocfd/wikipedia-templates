@@ -1,19 +1,16 @@
-import React, {FC, useEffect, useRef} from 'react';
+import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
+import useRefFocusFirst from '../app/useRefFocusFirst';
 import CiteWebData from './CiteWebData';
 
 const Form: FC = () => {
-	const txt1 = useRef<HTMLInputElement>(null);
+	const txtRefName = useRefFocusFirst<HTMLInputElement>();
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
-
-	useEffect(() => {
-		txt1 && txt1.current && txt1.current.focus();
-	}, [txt1]);
 
 	function setCiteWeb(d: Partial<CiteWebData>) {
 		setStore({
@@ -26,7 +23,27 @@ const Form: FC = () => {
 			<div>
 				<div>{t`Ref name`}</div>
 				<input type="text" size={18} value={store.citeWeb.refName} autoComplete="off"
-					onChange={e => setCiteWeb({refName: e.target.value})} ref={txt1} />
+					onChange={e => setCiteWeb({refName: e.target.value})} ref={txtRefName} />
+			</div>
+			<div>
+				<div>{t`URL`}</div>
+				<input type="text" size={100} value={store.citeWeb.url} autoComplete="off"
+					onChange={e => setCiteWeb({url: e.target.value})} />
+			</div>
+			<div>
+				<div>{t`Title`}</div>
+				<input type="text" size={88} value={store.citeWeb.title} autoComplete="off"
+					onChange={e => setCiteWeb({title: e.target.value})}/>
+			</div>
+			<div>
+				<div>{t`Translated title`}</div>
+				<input type="text" size={88} value={store.citeWeb.transTitle} autoComplete="off"
+					onChange={e => setCiteWeb({transTitle: e.target.value})}/>
+			</div>
+			<div>
+				<div>{t`Publisher`}</div>
+				<input type="text" size={88} value={store.citeWeb.publisher} autoComplete="off"
+					onChange={e => setCiteWeb({publisher: e.target.value})}/>
 			</div>
 		</Wrap>
 	);
