@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Lang from './Lang';
-import CiteWebData from '../cite-web/CiteWebData';
+import CiteWebData, {newCiteWebData} from '../cite-web/CiteWebData';
 
 /**
  * Global app context store.
@@ -25,7 +25,7 @@ export type ContextGetSetTuple = [Readonly<Store>, SetStoreFunc];
 export function newStore(): ContextGetSetTuple {
 	return React.useState(<Store>{
 		lang: 'pt',
-		citeWeb: {}
+		citeWeb: newCiteWebData()
 	});
 };
 

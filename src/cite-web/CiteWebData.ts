@@ -1,12 +1,17 @@
-import DayMonthYear from '../app/DayMonthYear';
+import {newDayMonthYear} from '../app/DayMonthYear';
 
-export default interface CiteWebData {
-	refName: string;
-	url: string;
-	title: string;
-	transTitle: string;
-	publisher: string;
-	date: DayMonthYear;
-	accessDate: DayMonthYear;
-	language: string;
+export function newCiteWebData() {
+	return {
+		refName: '',
+		url: '',
+		title: '',
+		transTitle: '',
+		publisher: '',
+		date: newDayMonthYear(),
+		accessDate: newDayMonthYear(),
+		language: ''
+	};
 };
+
+type CiteWebData = ReturnType<typeof newCiteWebData>;
+export default CiteWebData;
