@@ -5,6 +5,9 @@ import useStore from './ContextStore';
 import genLocaleFunc from './genLocaleFunc';
 import ChangeLang from './ChangeLang';
 
+/**
+ * Main app header.
+ */
 const Header: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);

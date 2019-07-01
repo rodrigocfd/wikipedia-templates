@@ -1,14 +1,14 @@
 import React, {FC, RefObject} from 'react';
 
 interface Props {
-	readonly label: string;
-	readonly size: number;
-	readonly value: string;
-	readonly ref?: RefObject<HTMLInputElement>;
-	readonly onChange: (val: string) => void;
+	label: string;
+	size: number;
+	value: string;
+	ref?: RefObject<HTMLInputElement>;
+	onChange: (val: string) => void;
 }
 
-const InputRow: FC<Props> = p => {
+const InputRow: FC<Readonly<Props>> = p => {
 	return (
 		<div>
 			<div>{p.label}</div>

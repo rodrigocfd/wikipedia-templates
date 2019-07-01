@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 
+/**
+ * Footer for a section.
+ */
 const Footer: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);

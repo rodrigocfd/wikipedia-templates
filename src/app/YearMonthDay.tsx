@@ -6,16 +6,16 @@ import genLocaleFunc from './genLocaleFunc';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
-	readonly name?: string;
-	readonly value: DayMonthYear;
-	readonly onChange: (value: DayMonthYear) => void;
+	name?: string;
+	value: DayMonthYear;
+	onChange: (value: DayMonthYear) => void;
 }
 
 /**
  * Displays fields for year, month and day, receiving and returning
  * a DayMonthYear object.
  */
-const YearMonthDay: FC<Props> = p => {
+const YearMonthDay: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
