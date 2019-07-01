@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
-import {Link} from 'react-router-dom';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
+import Footer from '../app/Footer';
 import Form from './Form';
 
 const CiteWeb: FC = () => {
@@ -13,7 +13,7 @@ const CiteWeb: FC = () => {
 		<div>
 			<h2>{t`Cite web`}</h2>
 			<Form />
-			<div><Link to="/">{t`Home`}</Link></div>
+			<Footer />
 		</div>
 	);
 };
