@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
-import {LangName, langNames} from '../app/LangName';
+import useStore from './ContextStore';
+import genLocaleFunc from './genLocaleFunc';
+import {LangName, langNames} from './LangName';
 
 const ChangeLang: FC = () => {
 	const [store, setStore] = useStore();

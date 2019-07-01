@@ -3,7 +3,7 @@ import {HashRouter, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {ContextStore, newStore} from './ContextStore';
-import Header from '../home/Header';
+import Header from './Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';
 
