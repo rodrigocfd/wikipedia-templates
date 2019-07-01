@@ -22,7 +22,7 @@ const Form: FC = () => {
 	return (
 		<Wrap>
 			<InputRow label={t`Ref name`} size={18} value={store.citeWeb.refName}
-				onChange={val => setCiteWeb({refName: val})} ref={txtRefName} />
+				onChange={val => setCiteWeb({refName: val})} refVal={txtRefName} />
 			<InputRow label={t`URL`} size={100} value={store.citeWeb.url}
 				onChange={val => setCiteWeb({url: val})} />
 			<InputRow label={t`Title`} size={88} value={store.citeWeb.title}

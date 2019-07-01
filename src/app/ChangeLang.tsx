@@ -5,6 +5,9 @@ import useStore from './ContextStore';
 import genLocaleFunc from './genLocaleFunc';
 import {LangName, langNames} from './LangName';
 
+/**
+ * Renders all available languages and allows switching.
+ */
 const ChangeLang: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);

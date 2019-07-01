@@ -46,7 +46,7 @@ const Output: FC = () => {
 		+ '}}</ref>';
 
 	return (
-		<textarea value={out}></textarea>
+		<textarea value={out} onChange={e => {}}></textarea>
 	);
 };
 
