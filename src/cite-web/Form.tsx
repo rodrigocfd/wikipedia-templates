@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../home/YearMonthDay';
 import CiteWebData from './CiteWebData';
@@ -67,5 +66,26 @@ const Wrap = styled.div`
 		padding: 6px 0;
 	}
 `;
+
+const locales = {
+	en: {
+		'Ref name': 'Ref name',
+		'URL': 'URL',
+		'Title': 'Title',
+		'Translated title': 'Translated title',
+		'Publisher': 'Publisher',
+		'Date': 'Date',
+		'Access date': 'Access date'
+	},
+	pt: {
+		'Ref name': 'Ref name',
+		'URL': 'URL',
+		'Title': 'Título',
+		'Translated title': 'Título traduzido',
+		'Publisher': 'Publicado por',
+		'Date': 'Data',
+		'Access date': 'Data de acesso'
+	}
+};
 
 export default Form;

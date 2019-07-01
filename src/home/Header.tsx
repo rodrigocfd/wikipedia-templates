@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 import ChangeLang from './ChangeLang';
 
 const Header: FC = () => {
@@ -39,5 +38,14 @@ const Wrap = styled.div`
 		padding-top: 8px;
 	}
 `;
+
+const locales = {
+	en: {
+		'Wikipedia Templates': 'Wikipedia Templates'
+	},
+	pt: {
+		'Wikipedia Templates': 'Predefinições da Wikipédia'
+	}
+};
 
 export default Header;

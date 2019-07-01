@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
@@ -59,5 +58,22 @@ const InputNum4 = styled.input`
 	width: 75px;
 	margin-right: 12px;
 `;
+
+const locales = {
+	en: {
+		'Year': 'Year',
+		'Month': 'Month',
+		'Day': 'Day',
+		'today': 'today',
+		'clear': 'clear'
+	},
+	pt: {
+		'Year': 'Ano',
+		'Month': 'Mês',
+		'Day': 'Dia',
+		'today': 'hoje',
+		'clear': 'limpar'
+	}
+};
 
 export default YearMonthDay;

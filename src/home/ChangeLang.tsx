@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 import {LangName, langNames} from '../app/LangName';
 
 const ChangeLang: FC = () => {
@@ -44,5 +43,18 @@ const Wrap = styled.div`
 		}
 	}
 `;
+
+const locales = {
+	en: {
+		'Language': 'Language',
+		'English': 'Inglês',
+		'Portuguese': 'Português'
+	},
+	pt: {
+		'Language': 'Idioma',
+		'English': 'English',
+		'Portuguese': 'Portuguese'
+	}
+};
 
 export default ChangeLang;

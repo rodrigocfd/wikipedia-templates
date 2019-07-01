@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 
 const Home: FC = () => {
 	const [store] = useStore();
@@ -27,5 +26,20 @@ const Wrap = styled.div`
 		line-height: 150%;
 	}
 `;
+
+const locales = {
+	en: {
+		'Cite web': 'Cite web',
+		'Coord': 'Coord',
+		'Infobox album': 'Infobox album',
+		'Track listing': 'Track listing'
+	},
+	pt: {
+		'Cite web': 'Citar web',
+		'Coord': 'Coor dms',
+		'Infobox album': 'Info/Álbum',
+		'Track listing': 'Lista de faixas'
+	}
+};
 
 export default Home;

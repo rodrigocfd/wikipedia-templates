@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
-import locales from './locales';
 import Form from './Form';
 
 const CiteWeb: FC = () => {
@@ -17,6 +16,15 @@ const CiteWeb: FC = () => {
 			<div><Link to="/">{t`Home`}</Link></div>
 		</div>
 	);
+};
+
+const locales = {
+	en: {
+		'Cite web': 'Cite web'
+	},
+	pt: {
+		'Cite web': 'Citar web'
+	}
 };
 
 export default CiteWeb;
