@@ -5,6 +5,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import locales from './locales';
 import useRefFocusFirst from '../app/useRefFocusFirst';
+import YearMonthDay from '../home/YearMonthDay';
 import CiteWebData from './CiteWebData';
 
 const Form: FC = () => {
@@ -33,17 +34,27 @@ const Form: FC = () => {
 			<div>
 				<div>{t`Title`}</div>
 				<input type="text" size={88} value={store.citeWeb.title} autoComplete="off"
-					onChange={e => setCiteWeb({title: e.target.value})}/>
+					onChange={e => setCiteWeb({title: e.target.value})} />
 			</div>
 			<div>
 				<div>{t`Translated title`}</div>
 				<input type="text" size={88} value={store.citeWeb.transTitle} autoComplete="off"
-					onChange={e => setCiteWeb({transTitle: e.target.value})}/>
+					onChange={e => setCiteWeb({transTitle: e.target.value})} />
 			</div>
 			<div>
 				<div>{t`Publisher`}</div>
 				<input type="text" size={88} value={store.citeWeb.publisher} autoComplete="off"
-					onChange={e => setCiteWeb({publisher: e.target.value})}/>
+					onChange={e => setCiteWeb({publisher: e.target.value})} />
+			</div>
+			<div>
+				<div>{t`Date`}</div>
+				<YearMonthDay value={store.citeWeb.date}
+					onChange={val => setCiteWeb({date: val})} />
+			</div>
+			<div>
+				<div>{t`Access date`}</div>
+				<YearMonthDay value={store.citeWeb.accessDate}
+					onChange={val => setCiteWeb({accessDate: val})} />
 			</div>
 		</Wrap>
 	);
