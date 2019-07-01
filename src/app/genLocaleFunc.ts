@@ -1,15 +1,20 @@
 import Lang from './Lang';
 import LocaleList from './LocaleList';
 
-export type LocaleFunc = (str: string | TemplateStringsArray,
+type StringOrTaggedTemplate = string | TemplateStringsArray;
+
+export type LocaleFunc = (str: StringOrTaggedTemplate,
 	...args: (string | number)[]) => string;
 
 /**
  * Returns the function used to retrieve string from locale key.
  */
-function genLocaleFunc(curLang: Lang, locales: LocaleList): LocaleFunc {
-	function t(key: string | TemplateStringsArray,
+export default function genLocaleFunc(curLang: Lang,
+		locales: LocaleList): LocaleFunc {
+
+	function t(key: StringOrTaggedTemplate,
 			...args: (string | number)[]): string {
+
 		const curLocale = locales[curLang];
 		let theKey = (key instanceof Array) ? key[0] : key;
 		if (theKey === '') {
@@ -22,7 +27,6 @@ function genLocaleFunc(curLang: Lang, locales: LocaleList): LocaleFunc {
 		}
 		return ret;
 	}
-	return t;
-}
 
-export default genLocaleFunc;
+	return t;
+};

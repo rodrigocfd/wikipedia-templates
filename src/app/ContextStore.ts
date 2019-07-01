@@ -1,15 +1,20 @@
 import React from 'react';
 
 import Lang from './Lang';
-import CiteWebData, {newCiteWebData} from '../cite-web/CiteWebData';
+import {newCiteWebData} from '../cite-web/CiteWebData';
 
 /**
  * Global app context store.
  */
-export interface Store {
-	lang: Lang;
-	citeWeb: CiteWebData;
-};
+function createStore() {
+	return {
+		lang: <Lang>'pt',
+		citeWeb: newCiteWebData()
+	};
+}
+
+export interface Store
+	extends ReturnType<typeof createStore> { }
 
 /**
  * Tuple returned by useContext hook.
@@ -23,10 +28,7 @@ export type ContextGetSetTuple = [Readonly<Store>, SetStoreFunc];
  * Return value can be passed to ContextStore.Provider.
  */
 export function newStore(): ContextGetSetTuple {
-	return React.useState(<Store>{
-		lang: 'pt',
-		citeWeb: newCiteWebData()
-	});
+	return React.useState(createStore());
 };
 
 /**

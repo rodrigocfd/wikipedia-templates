@@ -13,5 +13,5 @@ export function newCiteWebData() {
 	};
 };
 
-type CiteWebData = ReturnType<typeof newCiteWebData>;
-export default CiteWebData;
+export default interface CiteWebData
+	extends ReturnType<typeof newCiteWebData> { }

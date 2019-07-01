@@ -1,13 +1,10 @@
-export default interface DayMonthYear {
-	day: number | '';
-	month: number | ''; // one-based
-	year: number | '';
-};
-
-export function newDayMonthYear(): DayMonthYear {
-	return <DayMonthYear>{
-		day: '',
-		month: '',
-		year: ''
+export function newDayMonthYear() {
+	return {
+		day: '' as number | '',
+		month: '' as number | '', // one-based
+		year: '' as number | ''
 	};
 };
+
+export default interface DayMonthYear
+	extends ReturnType<typeof newDayMonthYear> { }
