@@ -4,6 +4,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
 import Form from './Form';
+import Output from './Output';
 
 const CiteWeb: FC = () => {
 	const [store] = useStore();
@@ -13,6 +14,7 @@ const CiteWeb: FC = () => {
 		<div>
 			<h2>{t`Cite web`}</h2>
 			<Form />
+			<Output />
 			<Footer />
 		</div>
 	);
