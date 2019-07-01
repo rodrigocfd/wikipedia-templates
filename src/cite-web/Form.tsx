@@ -6,6 +6,7 @@ import genLocaleFunc from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../app/YearMonthDay';
 import CiteWebData from './CiteWebData';
+import InputRow from './InputRow';
 
 const Form: FC = () => {
 	const txtRefName = useRefFocusFirst<HTMLInputElement>();
@@ -20,31 +21,16 @@ const Form: FC = () => {
 
 	return (
 		<Wrap>
-			<div>
-				<div>{t`Ref name`}</div>
-				<input type="text" size={18} value={store.citeWeb.refName} autoComplete="off"
-					onChange={e => setCiteWeb({refName: e.target.value})} ref={txtRefName} />
-			</div>
-			<div>
-				<div>{t`URL`}</div>
-				<input type="text" size={100} value={store.citeWeb.url} autoComplete="off"
-					onChange={e => setCiteWeb({url: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Title`}</div>
-				<input type="text" size={88} value={store.citeWeb.title} autoComplete="off"
-					onChange={e => setCiteWeb({title: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Translated title`}</div>
-				<input type="text" size={88} value={store.citeWeb.transTitle} autoComplete="off"
-					onChange={e => setCiteWeb({transTitle: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Publisher`}</div>
-				<input type="text" size={88} value={store.citeWeb.publisher} autoComplete="off"
-					onChange={e => setCiteWeb({publisher: e.target.value})} />
-			</div>
+			<InputRow label={t`Ref name`} size={18} value={store.citeWeb.refName}
+				onChange={val => setCiteWeb({refName: val})} ref={txtRefName} />
+			<InputRow label={t`URL`} size={100} value={store.citeWeb.url}
+				onChange={val => setCiteWeb({url: val})} />
+			<InputRow label={t`Title`} size={88} value={store.citeWeb.title}
+				onChange={val => setCiteWeb({title: val})} />
+			<InputRow label={t`Translated title`} size={88} value={store.citeWeb.transTitle}
+				onChange={val => setCiteWeb({transTitle: val})} />
+			<InputRow label={t`Publisher`} size={88} value={store.citeWeb.publisher}
+				onChange={val => setCiteWeb({publisher: val})} />
 			<div>
 				<div>{t`Date`}</div>
 				<YearMonthDay value={store.citeWeb.date}
