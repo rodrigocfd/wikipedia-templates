@@ -1,8 +1,10 @@
 import React, {FC} from 'react';
+import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import DayMonthYear from '../app/DayMonthYear';
+import TextAreaOut from '../app/TextAreaOut';
 import months from './months';
 
 const Output: FC = () => {
@@ -46,9 +48,15 @@ const Output: FC = () => {
 		+ '}}</ref>';
 
 	return (
-		<textarea value={out} onChange={e => {}}></textarea>
+		<TextAreaCiteWeb value={out} />
 	);
 };
+
+const TextAreaCiteWeb = styled(TextAreaOut)`
+	width: 90%;
+	height: 70px;
+	margin-top: 20px;
+`;
 
 const locales = {
 	en: {
