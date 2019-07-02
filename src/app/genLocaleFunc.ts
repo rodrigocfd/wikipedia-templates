@@ -1,4 +1,4 @@
-import Lang from './Lang';
+import {Lang} from './Lang';
 
 /**
  * Describes the locales and its keys/values.

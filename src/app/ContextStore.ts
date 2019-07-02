@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Lang from './Lang';
+import {newLang} from './Lang';
 import {newCiteWebData} from '../cite-web/CiteWebData';
 
 /**
@@ -8,7 +8,7 @@ import {newCiteWebData} from '../cite-web/CiteWebData';
  */
 function createStore() {
 	return {
-		lang: <Lang>'pt',
+		lang: newLang(),
 		citeWeb: newCiteWebData()
 	};
 }

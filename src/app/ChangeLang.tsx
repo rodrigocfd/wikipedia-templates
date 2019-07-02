@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useStore from './ContextStore';
 import genLocaleFunc, {LocaleList} from './genLocaleFunc';
-import {LangName, langNames} from './LangName';
+import {LangName, langNames} from './Lang';
 
 /**
  * Renders all available languages and allows switching.
