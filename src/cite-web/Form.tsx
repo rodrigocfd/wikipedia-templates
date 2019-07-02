@@ -5,6 +5,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../app/YearMonthDay';
+import RadiosInline from '../app/RadiosInline';
 import CiteWebData from './CiteWebData';
 import InputRow from './InputRow';
 
@@ -41,6 +42,13 @@ const Form: FC = () => {
 				<YearMonthDay value={store.citeWeb.accessDate}
 					onChange={val => setCiteWeb({accessDate: val})} />
 			</div>
+			<div>
+				<div>{t`Language`}</div>
+				<RadiosInline name="language" value={store.citeWeb.language}
+					onChange={val => setCiteWeb({language: val})}
+					options={['', 'en', 'es', 'fr', 'de', 'it', 'pt']}
+					labels={[t`none`, t`English`, t`Spanish`, t`French`, t`German`, t`Italian`, t`Portuguese`]}/>
+			</div>
 		</Wrap>
 	);
 };
@@ -50,7 +58,7 @@ const Wrap = styled.div`
 		display: inline-block;
 		width: 150px;
 		padding: 6px 0;
-	}
+	};
 `;
 
 const locales = {
@@ -61,7 +69,15 @@ const locales = {
 		'Translated title': 'Translated title',
 		'Publisher': 'Publisher',
 		'Date': 'Date',
-		'Access date': 'Access date'
+		'Access date': 'Access date',
+		'Language': 'Language',
+		'none': 'none',
+		'English': 'English',
+		'Spanish': 'Spanish',
+		'French': 'French',
+		'German': 'German',
+		'Italian': 'Italian',
+		'Portuguese': 'Portuguese'
 	},
 	pt: {
 		'Ref name': 'Ref name',
@@ -70,7 +86,15 @@ const locales = {
 		'Translated title': 'Título traduzido',
 		'Publisher': 'Publicado por',
 		'Date': 'Data',
-		'Access date': 'Data de acesso'
+		'Access date': 'Data de acesso',
+		'none': 'nenhum',
+		'Language': 'Idioma',
+		'English': 'Inglês',
+		'Spanish': 'Espanhol',
+		'French': 'Francês',
+		'German': 'Alemão',
+		'Italian': 'Italiano',
+		'Portuguese': 'Português'
 	}
 };
 

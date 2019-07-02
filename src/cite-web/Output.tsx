@@ -67,6 +67,7 @@ const locales = {
 		'publisher': 'publisher',
 		'date': 'date',
 		'access-date': 'access-date',
+		'language': 'language',
 		'DateDMY {1} {0}, {2}': '{1} {0}, {2}',
 		'DateMY {0}, {1}': '{0}, {1}',
 		...months.en
@@ -79,6 +80,7 @@ const locales = {
 		'publisher': 'publicado',
 		'date': 'data',
 		'access-date': 'accessodata',
+		'language': 'lingua',
 		'DateDMY {1} {0}, {2}': '{0} de {1} de {2}',
 		'DateMY {0}, {1}': '{0} de {1}',
 		...months.pt
