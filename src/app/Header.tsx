@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import genLocaleFunc from './genLocaleFunc';
+import genLocaleFunc, {LocaleList} from './genLocaleFunc';
 import ChangeLang from './ChangeLang';
 
 /**
@@ -42,7 +42,7 @@ const Wrap = styled.div`
 	}
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Wikipedia Templates': 'Wikipedia Templates'
 	},

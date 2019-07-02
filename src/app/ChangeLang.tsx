@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import genLocaleFunc from './genLocaleFunc';
+import genLocaleFunc, {LocaleList} from './genLocaleFunc';
 import {LangName, langNames} from './LangName';
 
 /**
@@ -47,7 +47,7 @@ const Wrap = styled.div`
 	}
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Language': 'Language',
 		'English': 'Inglês',

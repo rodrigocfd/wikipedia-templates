@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import DayMonthYear from '../app/DayMonthYear';
 import TextAreaOut from '../app/TextAreaOut';
 import months from './months';
@@ -58,7 +58,7 @@ const TextAreaCiteWeb = styled(TextAreaOut)`
 	margin-top: 20px;
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Cite web': 'Cite web',
 		'url': 'url',

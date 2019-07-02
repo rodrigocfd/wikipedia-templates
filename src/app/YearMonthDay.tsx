@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import genLocaleFunc from './genLocaleFunc';
+import genLocaleFunc, {LocaleList} from './genLocaleFunc';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {
@@ -59,7 +59,7 @@ const InputNum4 = styled.input`
 	margin-right: 12px;
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Year': 'Year',
 		'Month': 'Month',

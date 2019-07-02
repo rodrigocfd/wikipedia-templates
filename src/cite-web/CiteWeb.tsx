@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
@@ -20,7 +20,7 @@ const CiteWeb: FC = () => {
 	);
 };
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Cite web': 'Cite web'
 	},

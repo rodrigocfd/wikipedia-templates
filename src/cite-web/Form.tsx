@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../app/YearMonthDay';
 import RadiosInline from '../app/RadiosInline';
@@ -61,7 +61,7 @@ const Wrap = styled.div`
 	};
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Ref name': 'Ref name',
 		'URL': 'URL',

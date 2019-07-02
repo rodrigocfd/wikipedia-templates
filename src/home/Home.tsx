@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 
 const Home: FC = () => {
 	const [store] = useStore();
@@ -27,7 +27,7 @@ const Wrap = styled.div`
 	}
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Cite web': 'Cite web',
 		'Coord': 'Coord',

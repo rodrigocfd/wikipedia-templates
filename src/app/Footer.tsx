@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 
 /**
  * Footer for a section.
@@ -25,7 +25,7 @@ const Wrap = styled.div`
 	padding-top: 10px;
 `;
 
-const locales = {
+const locales: LocaleList = {
 	en: {
 		'Home': 'Home'
 	},

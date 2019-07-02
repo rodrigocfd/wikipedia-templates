@@ -1,5 +1,13 @@
 import Lang from './Lang';
-import LocaleList from './LocaleList';
+
+/**
+ * Describes the locales and its keys/values.
+ */
+export interface LocaleList {
+	[lang: string]: {
+		[key: string]: string;
+	}
+};
 
 type StringOrTaggedTemplate = string | TemplateStringsArray;
 
