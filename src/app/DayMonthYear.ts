@@ -1,3 +1,6 @@
+/**
+ * Simple date representation.
+ */
 export function newDayMonthYear() {
 	return {
 		day: '' as number | '',

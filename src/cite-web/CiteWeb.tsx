@@ -5,6 +5,7 @@ import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
+import IframeWebsite from './IframeWebsite';
 
 const CiteWeb: FC = () => {
 	const [store] = useStore();
@@ -15,6 +16,7 @@ const CiteWeb: FC = () => {
 			<h2>{t`Cite web`}</h2>
 			<Form />
 			<Output />
+			<IframeWebsite />
 			<Footer />
 		</div>
 	);
