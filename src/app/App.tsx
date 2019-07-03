@@ -6,6 +6,7 @@ import {ContextStore, newStore} from './ContextStore';
 import Header from './Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';
+import Coord from '../coord/Coord';
 
 /**
  * Application root component.
@@ -17,6 +18,7 @@ const App: FC = () => (
 			<DivBodyContent>
 				<Route exact path="/" component={Home} />
 				<Route path="/cite-web" component={CiteWeb} />
+				<Route path="/coord" component={Coord} />
 			</DivBodyContent>
 		</ContextStore.Provider>
 	</HashRouter>

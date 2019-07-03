@@ -2,6 +2,7 @@ import React from 'react';
 
 import {newLang} from './Lang';
 import {newCiteWebData} from '../cite-web/CiteWebData';
+import {newCoordData} from '../coord/CoordData';
 
 /**
  * Global app context store.
@@ -9,7 +10,8 @@ import {newCiteWebData} from '../cite-web/CiteWebData';
 function createStore() {
 	return {
 		lang: newLang(),
-		citeWeb: newCiteWebData()
+		citeWeb: newCiteWebData(),
+		coord: newCoordData()
 	};
 }
 

@@ -47,7 +47,8 @@ const Form: FC = () => {
 				<RadiosInline name="language" value={store.citeWeb.language}
 					onChange={val => setCiteWeb({language: val})}
 					options={['', 'en', 'es', 'fr', 'de', 'it', 'pt']}
-					labels={[t`none`, t`English`, t`Spanish`, t`French`, t`German`, t`Italian`, t`Portuguese`]}/>
+					labels={[t`none`, t`English`, t`Spanish`, t`French`,
+						t`German`, t`Italian`, t`Portuguese`]} />
 			</div>
 		</Wrap>
 	);
