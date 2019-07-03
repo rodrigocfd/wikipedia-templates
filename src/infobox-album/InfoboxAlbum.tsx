@@ -2,6 +2,7 @@ import React, {FC} from 'react'
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import Footer from '../app/Footer';
 import Form from './Form';
 
 const InfoboxAlbum: FC = () => {
@@ -12,6 +13,7 @@ const InfoboxAlbum: FC = () => {
 		<div>
 			<h2>{t`Infobox album`}</h2>
 			<Form />
+			<Footer />
 		</div>
 	);
 };
