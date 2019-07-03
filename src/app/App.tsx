@@ -7,6 +7,7 @@ import Header from './Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';
 import Coord from '../coord/Coord';
+import InfoboxAlbum from '../infobox-album/InfoboxAlbum';
 
 /**
  * Application root component.
@@ -19,6 +20,7 @@ const App: FC = () => (
 				<Route exact path="/" component={Home} />
 				<Route path="/cite-web" component={CiteWeb} />
 				<Route path="/coord" component={Coord} />
+				<Route path="/infobox-album" component={InfoboxAlbum} />
 			</DivBodyContent>
 		</ContextStore.Provider>
 	</HashRouter>

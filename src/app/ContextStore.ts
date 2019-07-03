@@ -3,6 +3,7 @@ import React from 'react';
 import {newLang} from './Lang';
 import {newCiteWebData} from '../cite-web/CiteWebData';
 import {newCoordData} from '../coord/CoordData';
+import {newInfoboxAlbumData} from '../infobox-album/InfoboxAlbumData';
 
 /**
  * Global app context store.
@@ -11,7 +12,8 @@ function createStore() {
 	return {
 		lang: newLang(),
 		citeWeb: newCiteWebData(),
-		coord: newCoordData()
+		coord: newCoordData(),
+		infoboxAlbum: newInfoboxAlbumData()
 	};
 }
 

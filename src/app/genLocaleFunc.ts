@@ -24,7 +24,7 @@ export default function genLocaleFunc(curLang: Lang,
 			...args: (string | number)[]): string {
 
 		const curLocale = locales[curLang];
-		let theKey = (key instanceof Array) ? key[0] : key;
+		const theKey = (key instanceof Array) ? key[0] : key;
 		if (theKey === '') {
 			return '';
 		}
@@ -43,16 +43,16 @@ function interpolateString(translatedStr: string,
 		args: (string | number)[]): string {
 
 	let finalStr = '';
-	let regex = new RegExp('\\{\\d+\\}', 'g');
+	const regex = new RegExp('\\{\\d+\\}', 'g');
 	let match = null;
 	let prevStartPos = 0;
 
 	while ((match = regex.exec(translatedStr)) !== null) {
-		let token = match[0];
-		let tokenPos = match.index;
-		let replacementIdx = Number(token.substr(1, token.length - 2));
+		const token = match[0];
+		const tokenPos = match.index;
+		const replacementIdx = Number(token.substr(1, token.length - 2));
 
-		let prevStr = translatedStr.substr(prevStartPos,
+		const prevStr = translatedStr.substr(prevStartPos,
 			tokenPos - prevStartPos);
 		if (prevStr.length) {
 			finalStr += prevStr;
@@ -67,7 +67,7 @@ function interpolateString(translatedStr: string,
 		prevStartPos = tokenPos + token.length;
 	}
 
-	let lastPart = translatedStr.substr(prevStartPos);
+	const lastPart = translatedStr.substr(prevStartPos);
 	if (lastPart.length) {
 		finalStr += lastPart;
 	}

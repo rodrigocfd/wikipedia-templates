@@ -1,0 +1,28 @@
+import React, {FC} from 'react'
+
+import useStore from '../app/ContextStore';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import Form from './Form';
+
+const InfoboxAlbum: FC = () => {
+	const [store] = useStore();
+	const t = genLocaleFunc(store.lang, locales);
+
+	return (
+		<div>
+			<h2>{t`Infobox album`}</h2>
+			<Form />
+		</div>
+	);
+};
+
+const locales: LocaleList = {
+	en: {
+		'Infobox album': 'Infobox album'
+	},
+	pt: {
+		'Infobox album': 'Info/Álbum'
+	}
+};
+
+export default InfoboxAlbum;
