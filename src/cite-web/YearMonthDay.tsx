@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from './ContextStore';
-import genLocaleFunc, {LocaleList} from './genLocaleFunc';
+import useStore from '../app/ContextStore';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 interface Props {

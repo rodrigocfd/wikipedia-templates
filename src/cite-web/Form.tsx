@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
-import YearMonthDay from '../app/YearMonthDay';
 import RadiosInline from '../app/RadiosInline';
 import CiteWebData from './CiteWebData';
 import InputRow from './InputRow';
+import YearMonthDay from './YearMonthDay';
 
 const Form: FC = () => {
 	const txtRefName = useRefFocusFirst<HTMLInputElement>();

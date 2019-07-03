@@ -3,8 +3,8 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import DayMonthYear from '../app/DayMonthYear';
 import TextAreaOut from '../app/TextAreaOut';
+import DayMonthYear from './DayMonthYear';
 import months from './months';
 
 const Output: FC = () => {
