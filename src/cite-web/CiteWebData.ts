@@ -1,4 +1,4 @@
-import {newDayMonthYear} from './DayMonthYear';
+import {newDayMonthYear} from '../app/DayMonthYear';
 
 export function newCiteWebData() {
 	return {
