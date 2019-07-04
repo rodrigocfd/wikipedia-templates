@@ -4,6 +4,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
 import Form from './Form';
+import Output from './Output';
 
 const InfoboxAlbum: FC = () => {
 	const [store] = useStore();
@@ -13,6 +14,7 @@ const InfoboxAlbum: FC = () => {
 		<div>
 			<h2>{t`Infobox album`}</h2>
 			<Form />
+			<Output />
 			<Footer />
 		</div>
 	);
