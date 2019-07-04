@@ -3,6 +3,7 @@ import React, {FC} from 'react'
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
+import YearMonthDay from '../app/YearMonthDay';
 import InfoboxAlbumData, {AlbumType, albumTypes} from './InfoboxAlbumData';
 
 const Form: FC = () => {
@@ -42,6 +43,31 @@ const Form: FC = () => {
 				<input type="text" size={30} value={store.infoboxAlbum.cover} autoComplete="off"
 					onChange={e => setInfoboxAlbum({cover: e.target.value})} />
 			</div>
+			<div>
+				<div>{t`Released`}</div>
+				<YearMonthDay value={store.infoboxAlbum.released}
+					onChange={val => setInfoboxAlbum({released: val})} />
+			</div>
+			<div>
+				<div>{t`Genre`}</div>
+				<input type="text" size={20} value={store.infoboxAlbum.genre} autoComplete="off"
+					onChange={e => setInfoboxAlbum({genre: e.target.value})} />
+			</div>
+			<div>
+				<div>{t`Producer`}</div>
+				<input type="text" size={40} value={store.infoboxAlbum.producer} autoComplete="off"
+					onChange={e => setInfoboxAlbum({producer: e.target.value})} />
+			</div>
+			<div>
+				<div>{t`Studio`}</div>
+				<input type="text" size={40} value={store.infoboxAlbum.studio} autoComplete="off"
+					onChange={e => setInfoboxAlbum({studio: e.target.value})} />
+			</div>
+			<div>
+				<div>{t`Label`}</div>
+				<input type="text" size={20} value={store.infoboxAlbum.label} autoComplete="off"
+					onChange={e => setInfoboxAlbum({label: e.target.value})} />
+			</div>
 		</div>
 	);
 };
@@ -52,6 +78,11 @@ const locales: LocaleList = {
 		'Type': 'Type',
 		'Artist': 'Artist',
 		'Cover': 'Cover',
+		'Released': 'Released',
+		'Genre': 'Genre',
+		'Producer': 'Producer',
+		'Studio': 'Studio',
+		'Label': 'Label',
 		'none': 'none',
 		'studio': 'studio',
 		'demo': 'demo',
@@ -73,6 +104,11 @@ const locales: LocaleList = {
 		'Type': 'Tipo',
 		'Artist': 'Artista',
 		'Cover': 'Imagem',
+		'Released': 'Lançado',
+		'Genre': 'Gênero',
+		'Producer': 'Produtor',
+		'Studio': 'Estúdio',
+		'Label': 'Gravadora',
 		'none': 'nenhum',
 		'studio': 'estúdio',
 		'demo': 'demo',

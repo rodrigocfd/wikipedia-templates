@@ -1,3 +1,5 @@
+import {newDayMonthYear} from '../app/DayMonthYear';
+
 export const albumTypes = <const>['none', 'studio', 'demo',
 	'EP', 'live', 'greatest', 'remix', 'box', 'compilation',
 	'mixtape', 'soundtrack', 'film', 'cast', 'video', 'other'];
@@ -9,7 +11,12 @@ export function newInfoboxAlbumData() {
 		name: '',
 		type: 'none' as AlbumType,
 		artist: '',
-		cover: ''
+		cover: '',
+		released: newDayMonthYear(),
+		genre: '',
+		producer: '',
+		studio: '',
+		label: ''
 	};
 };
 
