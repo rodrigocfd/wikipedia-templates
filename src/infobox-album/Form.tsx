@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import useRefFocusFirst from '../app/useRefFocusFirst';
+import InputFocused from '../app/InputFocused';
 import YearMonthDay from '../app/YearMonthDay';
 import OtherAlbum from './OtherAlbum';
 import InfoboxAlbumData from './InfoboxAlbumData';
@@ -12,7 +12,6 @@ import {AlbumType, albumTypes, albumTypeLocale} from './AlbumType';
 const Form: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
-	const txtName = useRefFocusFirst<HTMLInputElement>();
 
 	function setInfoboxAlbum(d: Partial<InfoboxAlbumData>) {
 		setStore({
@@ -23,8 +22,8 @@ const Form: FC = () => {
 	return (
 		<Wrap>
 			<div>{t`Name`}</div>
-			<input type="text" value={store.infoboxAlbum.name} autoComplete="off"
-				onChange={e => setInfoboxAlbum({name: e.target.value})} ref={txtName} />
+			<InputFocused type="text" value={store.infoboxAlbum.name} autoComplete="off"
+				onChange={e => setInfoboxAlbum({name: e.target.value})} />
 
 			<div>{t`Type`}</div>
 			<div>

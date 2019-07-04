@@ -3,13 +3,12 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import useRefFocusFirst from '../app/useRefFocusFirst';
+import InputFocused from '../app/InputFocused';
 import RadiosInline from '../app/RadiosInline';
-import CiteWebData from './CiteWebData';
 import YearMonthDay from '../app/YearMonthDay';
+import CiteWebData from './CiteWebData';
 
 const Form: FC = () => {
-	const txtRefName = useRefFocusFirst<HTMLInputElement>();
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
@@ -23,8 +22,8 @@ const Form: FC = () => {
 		<Wrap>
 			<div>{t`Ref name`}</div>
 			<div>
-				<input type="text" size={18} value={store.citeWeb.refName} autoComplete="off"
-					onChange={e => setCiteWeb({refName: e.target.value})} ref={txtRefName} />
+				<InputFocused type="text" size={18} value={store.citeWeb.refName} autoComplete="off"
+					onChange={e => setCiteWeb({refName: e.target.value})} />
 			</div>
 
 			<div>{t`URL`}</div>

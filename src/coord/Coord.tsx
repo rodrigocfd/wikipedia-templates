@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
-import useRefFocusFirst from '../app/useRefFocusFirst';
+import InputFocused from '../app/InputFocused';
 import RadiosInline from '../app/RadiosInline';
 import GoogleMapsLink from './GoogleMapsLink';
 import OsmMap from './OsmMap';
@@ -12,7 +12,6 @@ import Output from './Output';
 import CoordData, {CoordDisplay} from './CoordData';
 
 const Coord: FC = () => {
-	const txtCoords = useRefFocusFirst<HTMLInputElement>();
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
@@ -27,7 +26,7 @@ const Coord: FC = () => {
 		<div>
 			<div>
 				{t`Latitude, longitude`}
-				<InputCoords type="text" size={20} value={store.coord.latLng} ref={txtCoords}
+				<InputFocusedCoords type="text" size={20} value={store.coord.latLng}
 					onChange={e => setCoord({latLng: e.target.value})} />
 				<RadiosInline name="type" value={store.coord.display}
 					onChange={val => setCoord({display: val as CoordDisplay})}
@@ -44,7 +43,7 @@ const Coord: FC = () => {
 	</>);
 };
 
-const InputCoords = styled.input`
+const InputFocusedCoords = styled(InputFocused)`
 	margin-left: 8px;
 	margin-right: 20px;
 `;
