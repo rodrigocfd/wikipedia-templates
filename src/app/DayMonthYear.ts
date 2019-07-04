@@ -10,4 +10,4 @@ export function newDayMonthYear() {
 };
 
 export default interface DayMonthYear
-	extends ReturnType<typeof newDayMonthYear> { }
+	extends ReturnType<typeof newDayMonthYear> { };

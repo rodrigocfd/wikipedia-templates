@@ -18,7 +18,7 @@ function createStore() {
 }
 
 export interface Store
-	extends ReturnType<typeof createStore> { }
+	extends ReturnType<typeof createStore> { };
 
 /**
  * Tuple returned by useContext hook.

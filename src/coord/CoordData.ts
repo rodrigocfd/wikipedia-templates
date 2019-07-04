@@ -8,4 +8,4 @@ export function newCoordData() {
 };
 
 export default interface CoordData
-	extends ReturnType<typeof newCoordData> { }
+	extends ReturnType<typeof newCoordData> { };

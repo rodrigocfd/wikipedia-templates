@@ -16,4 +16,4 @@ export function newInfoboxAlbumData() {
 };
 
 export default interface InfoboxAlbumData
-	extends ReturnType<typeof newInfoboxAlbumData> { }
+	extends ReturnType<typeof newInfoboxAlbumData> { };

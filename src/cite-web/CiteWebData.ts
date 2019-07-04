@@ -14,4 +14,4 @@ export function newCiteWebData() {
 };
 
 export default interface CiteWebData
-	extends ReturnType<typeof newCiteWebData> { }
+	extends ReturnType<typeof newCiteWebData> { };
