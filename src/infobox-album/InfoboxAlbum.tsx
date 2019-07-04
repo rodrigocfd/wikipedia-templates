@@ -11,16 +11,14 @@ const InfoboxAlbum: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
-	return (
-		<div>
-			<h2>{t`Infobox album`}</h2>
-			<DivTwoColumns>
-				<Form />
-				<Output />
-			</DivTwoColumns>
-			<Footer />
-		</div>
-	);
+	return (<>
+		<h2>{t`Infobox album`}</h2>
+		<DivTwoColumns>
+			<Form />
+			<Output />
+		</DivTwoColumns>
+		<Footer />
+	</>);
 };
 
 const DivTwoColumns = styled.div`

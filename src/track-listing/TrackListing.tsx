@@ -1,32 +1,26 @@
-import React, {FC} from 'react';
+import React, {FC} from 'react'
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
-import Form from './Form';
-import Output from './Output';
-import IframeWebsite from './IframeWebsite';
 
-const CiteWeb: FC = () => {
+const TrackListing: FC = () => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
-		<h2>{t`Cite web`}</h2>
-		<Form />
-		<Output />
-		<IframeWebsite />
+		<h2>{t`Track listing`}</h2>
 		<Footer />
 	</>);
 };
 
 const locales: LocaleList = {
 	en: {
-		'Cite web': 'Cite web'
+		'Track listing': 'Track listing'
 	},
 	pt: {
-		'Cite web': 'Citar web'
+		'Track listing': 'Lista de faixas'
 	}
 };
 
-export default CiteWeb;
+export default TrackListing;
