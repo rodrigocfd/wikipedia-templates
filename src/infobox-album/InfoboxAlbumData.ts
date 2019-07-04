@@ -1,5 +1,6 @@
 import {newDayMonthYear} from '../app/DayMonthYear';
 import {AlbumType} from './AlbumType';
+import {newNameYear} from './NameYear';
 
 export function newInfoboxAlbumData() {
 	return {
@@ -11,7 +12,9 @@ export function newInfoboxAlbumData() {
 		genre: '',
 		producer: '',
 		studio: '',
-		label: ''
+		label: '',
+		prevAlbum: newNameYear(),
+		nextAlbum: newNameYear()
 	};
 };
 

@@ -5,6 +5,7 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../app/YearMonthDay';
+import OtherAlbum from './OtherAlbum';
 import InfoboxAlbumData from './InfoboxAlbumData';
 import {AlbumType, albumTypes, albumTypeLocale} from './AlbumType';
 
@@ -70,6 +71,16 @@ const Form: FC = () => {
 				<input type="text" size={20} value={store.infoboxAlbum.label} autoComplete="off"
 					onChange={e => setInfoboxAlbum({label: e.target.value})} />
 			</div>
+			<div>
+				<div>{t`Previous album`}</div>
+				<OtherAlbum value={store.infoboxAlbum.prevAlbum}
+					onChange={val => setInfoboxAlbum({prevAlbum: val})} />
+			</div>
+			<div>
+				<div>{t`Next album`}</div>
+				<OtherAlbum value={store.infoboxAlbum.nextAlbum}
+					onChange={val => setInfoboxAlbum({nextAlbum: val})} />
+			</div>
 		</Wrap>
 	);
 };
@@ -93,6 +104,8 @@ const locales: LocaleList = {
 		'Producer': 'Producer',
 		'Studio': 'Studio',
 		'Label': 'Label',
+		'Previous album': 'Previous album',
+		'Next album': 'Next album',
 		...albumTypeLocale.en
 	},
 	pt: {
@@ -105,6 +118,8 @@ const locales: LocaleList = {
 		'Producer': 'Produtor',
 		'Studio': 'Estúdio',
 		'Label': 'Gravadora',
+		'Previous album': 'Álbum anterior',
+		'Next album': 'Próximo álbum',
 		...albumTypeLocale.pt
 	}
 };
