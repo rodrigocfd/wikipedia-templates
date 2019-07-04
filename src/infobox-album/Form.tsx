@@ -88,7 +88,7 @@ const Form: FC = () => {
 const Wrap = styled.div`
 	& > div > div:nth-of-type(1) {
 		display: inline-block;
-		width: 150px;
+		width: 120px;
 		padding: 6px 0;
 	};
 `;
