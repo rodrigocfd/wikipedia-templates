@@ -4,7 +4,8 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import useRefFocusFirst from '../app/useRefFocusFirst';
 import YearMonthDay from '../app/YearMonthDay';
-import InfoboxAlbumData, {AlbumType, albumTypes} from './InfoboxAlbumData';
+import InfoboxAlbumData from './InfoboxAlbumData';
+import {AlbumType, albumTypes, albumTypeLocale} from './AlbumType';
 
 const Form: FC = () => {
 	const [store, setStore] = useStore();
@@ -83,21 +84,7 @@ const locales: LocaleList = {
 		'Producer': 'Producer',
 		'Studio': 'Studio',
 		'Label': 'Label',
-		'none': 'none',
-		'studio': 'studio',
-		'demo': 'demo',
-		'EP': 'EP',
-		'live': 'live',
-		'greatest': 'greatest',
-		'remix': 'remix',
-		'box': 'box',
-		'compilation': 'compilation',
-		'mixtape': 'mixtape',
-		'soundtrack': 'soundtrack',
-		'film': 'film',
-		'cast': 'cast',
-		'video': 'video',
-		'other': 'other'
+		...albumTypeLocale.en
 	},
 	pt: {
 		'Name': 'Nome',
@@ -109,21 +96,7 @@ const locales: LocaleList = {
 		'Producer': 'Produtor',
 		'Studio': 'Estúdio',
 		'Label': 'Gravadora',
-		'none': 'nenhum',
-		'studio': 'estúdio',
-		'demo': 'demo',
-		'EP': 'ep',
-		'live': 'ao vivo',
-		'greatest': 'grandes êxitos',
-		'remix': 'remistura',
-		'box': 'caixa',
-		'compilation': 'compilação',
-		'mixtape': 'mixtape',
-		'soundtrack': 'banda sonora',
-		'film': 'outro',
-		'cast': 'outro',
-		'video': 'vídeo',
-		'other': 'outro'
+		...albumTypeLocale.pt
 	}
 };
 
