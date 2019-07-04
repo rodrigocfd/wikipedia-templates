@@ -1,4 +1,5 @@
 import React, {FC} from 'react'
+import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
@@ -19,7 +20,7 @@ const Form: FC = () => {
 	}
 
 	return (
-		<div>
+		<Wrap>
 			<div>
 				<div>{t`Name`}</div>
 				<input type="text" size={40} value={store.infoboxAlbum.name} autoComplete="off"
@@ -69,9 +70,17 @@ const Form: FC = () => {
 				<input type="text" size={20} value={store.infoboxAlbum.label} autoComplete="off"
 					onChange={e => setInfoboxAlbum({label: e.target.value})} />
 			</div>
-		</div>
+		</Wrap>
 	);
 };
+
+const Wrap = styled.div`
+	& > div > div:nth-of-type(1) {
+		display: inline-block;
+		width: 150px;
+		padding: 6px 0;
+	};
+`;
 
 const locales: LocaleList = {
 	en: {
