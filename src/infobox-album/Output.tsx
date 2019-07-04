@@ -55,7 +55,6 @@ const Output: FC = () => {
 const TextAreaInfoboxAlbum = styled(TextAreaOut)`
 	width: 600px;
 	height: 200px;
-	margin-top: 20px;
 `;
 
 const locales: LocaleList = {

@@ -1,4 +1,5 @@
 import React, {FC} from 'react'
+import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
@@ -13,12 +14,19 @@ const InfoboxAlbum: FC = () => {
 	return (
 		<div>
 			<h2>{t`Infobox album`}</h2>
-			<Form />
-			<Output />
+			<DivTwoColumns>
+				<Form />
+				<Output />
+			</DivTwoColumns>
 			<Footer />
 		</div>
 	);
 };
+
+const DivTwoColumns = styled.div`
+	display: grid;
+	grid-template-columns: auto auto;
+`;
 
 const locales: LocaleList = {
 	en: {
