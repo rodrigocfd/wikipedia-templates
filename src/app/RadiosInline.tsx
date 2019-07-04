@@ -13,17 +13,19 @@ interface Props {
  * Prints a series of radio buttons, inline.
  */
 const RadiosInline: FC<Readonly<Props>> = p => {
-	return (<>
-		{p.options.map((opt: string, i: number) => (
-			<LabelHand key={i}><InputHand type="radio"
-				name={p.name}
-				value={opt}
-				checked={opt === p.value}
-				onChange={e => p.onChange(e.currentTarget.value)} />
-				{p.labels[i]}
-			</LabelHand>
-		))}
-	</>);
+	return (
+		<div>
+			{p.options.map((opt: string, i: number) => (
+				<LabelHand key={i}><InputHand type="radio"
+					name={p.name}
+					value={opt}
+					checked={opt === p.value}
+					onChange={e => p.onChange(e.currentTarget.value)} />
+					{p.labels[i]}
+				</LabelHand>
+			))}
+		</div>
+	);
 };
 
 const LabelHand = styled.label`

@@ -35,19 +35,21 @@ const YearMonthDay: FC<Readonly<Props>> = p => {
 		});
 	}
 
-	return (<>
-		{t`Year`} <InputNum4 type="number"
-			value={p.value.year} name={p.name && `${p.name}_year`}
-			onChange={e => setDateField('year', e.target.value)} />
-		{t`Month`} <InputNum2 type="number" min={1} max={12}
-			value={p.value.month} name={p.name && `${p.name}_month`}
-			onChange={e => setDateField('month', e.target.value)} />
-		{t`Day`} <InputNum2 type="number" min={1} max={31}
-			value={p.value.day} name={p.name && `${p.name}_day`}
-			onChange={e => setDateField('day', e.target.value)} />
-		<button onClick={setToday}>{t`today`}</button>
-		{' '} <button onClick={() => p.onChange(newDayMonthYear())}>{t`clear`}</button>
-	</>);
+	return (
+		<div>
+			{t`Year`} <InputNum4 type="number"
+				value={p.value.year} name={p.name && `${p.name}_year`}
+				onChange={e => setDateField('year', e.target.value)} />
+			{t`Month`} <InputNum2 type="number" min={1} max={12}
+				value={p.value.month} name={p.name && `${p.name}_month`}
+				onChange={e => setDateField('month', e.target.value)} />
+			{t`Day`} <InputNum2 type="number" min={1} max={31}
+				value={p.value.day} name={p.name && `${p.name}_day`}
+				onChange={e => setDateField('day', e.target.value)} />
+			<button onClick={setToday}>{t`today`}</button>
+			{' '} <button onClick={() => p.onChange(newDayMonthYear())}>{t`clear`}</button>
+		</div>
+	);
 };
 
 const InputNum2 = styled.input`

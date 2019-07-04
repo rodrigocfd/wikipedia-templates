@@ -19,14 +19,16 @@ const OtherAlbum: FC<Readonly<Props>> = p => {
 		p.onChange({...p.value, ...d});
 	}
 
-	return (<>
-		<input type="text" size={40} name={p.name && `${p.name}_name`}
-			value={p.value.name} autoComplete="off"
-			onChange={e => setNameYear({name: e.target.value})} />
-		{' '} {t`year`} <InputYear type="number" name={p.name && `${p.name}_year`}
-			value={p.value.year}
-			onChange={e => setNameYear({year: e.target.value ? +e.target.value : ''})} />
-	</>);
+	return (
+		<div>
+			<input type="text" size={40} name={p.name && `${p.name}_name`}
+				value={p.value.name} autoComplete="off"
+				onChange={e => setNameYear({name: e.target.value})} />
+			{' '} {t`year`} <InputYear type="number" name={p.name && `${p.name}_year`}
+				value={p.value.year}
+				onChange={e => setNameYear({year: e.target.value ? +e.target.value : ''})} />
+		</div>
+	);
 };
 
 const InputYear = styled.input`

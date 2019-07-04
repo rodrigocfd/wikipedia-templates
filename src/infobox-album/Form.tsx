@@ -22,13 +22,12 @@ const Form: FC = () => {
 
 	return (
 		<Wrap>
+			<div>{t`Name`}</div>
+			<input type="text" value={store.infoboxAlbum.name} autoComplete="off"
+				onChange={e => setInfoboxAlbum({name: e.target.value})} ref={txtName} />
+
+			<div>{t`Type`}</div>
 			<div>
-				<div>{t`Name`}</div>
-				<input type="text" size={40} value={store.infoboxAlbum.name} autoComplete="off"
-					onChange={e => setInfoboxAlbum({name: e.target.value})} ref={txtName} />
-			</div>
-			<div>
-				<div>{t`Type`}</div>
 				<select value={store.infoboxAlbum.type}
 					onChange={e => setInfoboxAlbum({type: e.target.value as AlbumType})}>
 					{albumTypes.map((albumType: AlbumType) =>
@@ -36,61 +35,55 @@ const Form: FC = () => {
 					)}
 				</select>
 			</div>
+
+			<div>{t`Artist`}</div>
+			<input type="text" value={store.infoboxAlbum.artist} autoComplete="off"
+				onChange={e => setInfoboxAlbum({artist: e.target.value})} />
+
+			<div>{t`Cover`}</div>
+			<input type="text" value={store.infoboxAlbum.cover} autoComplete="off"
+				onChange={e => setInfoboxAlbum({cover: e.target.value})} />
+
+			<div>{t`Released`}</div>
+			<YearMonthDay value={store.infoboxAlbum.released}
+				onChange={val => setInfoboxAlbum({released: val})} />
+
+			<div>{t`Genre`}</div>
 			<div>
-				<div>{t`Artist`}</div>
-				<input type="text" size={40} value={store.infoboxAlbum.artist} autoComplete="off"
-					onChange={e => setInfoboxAlbum({artist: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Cover`}</div>
-				<input type="text" size={30} value={store.infoboxAlbum.cover} autoComplete="off"
-					onChange={e => setInfoboxAlbum({cover: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Released`}</div>
-				<YearMonthDay value={store.infoboxAlbum.released}
-					onChange={val => setInfoboxAlbum({released: val})} />
-			</div>
-			<div>
-				<div>{t`Genre`}</div>
 				<input type="text" size={20} value={store.infoboxAlbum.genre} autoComplete="off"
 					onChange={e => setInfoboxAlbum({genre: e.target.value})} />
 			</div>
+
+			<div>{t`Producer`}</div>
+			<input type="text" value={store.infoboxAlbum.producer} autoComplete="off"
+				onChange={e => setInfoboxAlbum({producer: e.target.value})} />
+
+			<div>{t`Studio`}</div>
+			<input type="text" value={store.infoboxAlbum.studio} autoComplete="off"
+				onChange={e => setInfoboxAlbum({studio: e.target.value})} />
+
+			<div>{t`Label`}</div>
 			<div>
-				<div>{t`Producer`}</div>
-				<input type="text" size={40} value={store.infoboxAlbum.producer} autoComplete="off"
-					onChange={e => setInfoboxAlbum({producer: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Studio`}</div>
-				<input type="text" size={40} value={store.infoboxAlbum.studio} autoComplete="off"
-					onChange={e => setInfoboxAlbum({studio: e.target.value})} />
-			</div>
-			<div>
-				<div>{t`Label`}</div>
-				<input type="text" size={20} value={store.infoboxAlbum.label} autoComplete="off"
+				<input type="text" size={25} value={store.infoboxAlbum.label} autoComplete="off"
 					onChange={e => setInfoboxAlbum({label: e.target.value})} />
 			</div>
-			<div>
-				<div>{t`Previous album`}</div>
-				<OtherAlbum value={store.infoboxAlbum.prevAlbum}
-					onChange={val => setInfoboxAlbum({prevAlbum: val})} />
-			</div>
-			<div>
-				<div>{t`Next album`}</div>
-				<OtherAlbum value={store.infoboxAlbum.nextAlbum}
-					onChange={val => setInfoboxAlbum({nextAlbum: val})} />
-			</div>
+
+			<div>{t`Previous album`}</div>
+			<OtherAlbum value={store.infoboxAlbum.prevAlbum}
+				onChange={val => setInfoboxAlbum({prevAlbum: val})} />
+
+			<div>{t`Next album`}</div>
+			<OtherAlbum value={store.infoboxAlbum.nextAlbum}
+				onChange={val => setInfoboxAlbum({nextAlbum: val})} />
 		</Wrap>
 	);
 };
 
 const Wrap = styled.div`
-	& > div > div:nth-of-type(1) {
-		display: inline-block;
-		width: 120px;
-		padding: 6px 0;
-	};
+	display: grid;
+	grid-template-columns: 120px 500px;
+	grid-column-gap: 6px;
+	grid-row-gap: 3px;
 `;
 
 const locales: LocaleList = {
