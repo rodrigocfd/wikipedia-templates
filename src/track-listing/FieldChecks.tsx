@@ -34,7 +34,7 @@ const FieldChecks: FC = () => {
 	);
 };
 
-const Wrap = styled.div`
+const Wrap = styled.span`
 	& > label {
 		margin-right: 12px;
 	}

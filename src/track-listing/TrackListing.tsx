@@ -4,7 +4,10 @@ import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
 import FieldChecks from './FieldChecks';
+import TrackRow from './TrackRow';
+import AddTrack from './AddTrack';
 import Output from './Output';
+import Track from './Track';
 
 const TrackListing: FC = () => {
 	const [store] = useStore();
@@ -13,7 +16,15 @@ const TrackListing: FC = () => {
 	return (
 		<div>
 			<h2>{t`Track listing`}</h2>
-			<FieldChecks />
+			<div>
+				<FieldChecks />
+				<AddTrack />
+			</div>
+			<div>
+				{store.trackListing.tracks.map((t: Track, i: number) =>
+					<TrackRow key={t.id} id={t.id} index={i} />
+				)}
+			</div>
 			<Output />
 			<Footer />
 		</div>
