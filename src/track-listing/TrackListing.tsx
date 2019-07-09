@@ -3,6 +3,7 @@ import React, {FC} from 'react'
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Footer from '../app/Footer';
+import Output from './Output';
 
 const TrackListing: FC = () => {
 	const [store] = useStore();
@@ -10,6 +11,7 @@ const TrackListing: FC = () => {
 
 	return (<>
 		<h2>{t`Track listing`}</h2>
+		<Output />
 		<Footer />
 	</>);
 };

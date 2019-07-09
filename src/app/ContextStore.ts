@@ -4,6 +4,7 @@ import {newLang} from './Lang';
 import {newCiteWebData} from '../cite-web/CiteWebData';
 import {newCoordData} from '../coord/CoordData';
 import {newInfoboxAlbumData} from '../infobox-album/InfoboxAlbumData';
+import {newTrackListingData} from '../track-listing/TrackListingData';
 
 /**
  * Global app context store.
@@ -13,7 +14,8 @@ function createStore() {
 		lang: newLang(),
 		citeWeb: newCiteWebData(),
 		coord: newCoordData(),
-		infoboxAlbum: newInfoboxAlbumData()
+		infoboxAlbum: newInfoboxAlbumData(),
+		trackListing: newTrackListingData()
 	};
 }
 
