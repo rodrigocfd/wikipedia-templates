@@ -17,6 +17,6 @@ body, input, textarea {
 a {
 	color: #0366d6;
 }
-input[type=button], button {
+input[type=button], input[type=checkbox], button, label {
 	cursor: pointer;
 }
