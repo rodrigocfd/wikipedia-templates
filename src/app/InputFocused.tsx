@@ -1,4 +1,4 @@
-import React, {FC, InputHTMLAttributes, useEffect, useRef} from 'react'
+import React, {FC, InputHTMLAttributes, useEffect, useRef} from 'react';
 
 type Props = InputHTMLAttributes<HTMLInputElement>;
 
