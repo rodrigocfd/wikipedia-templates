@@ -1,4 +1,5 @@
 import React, {ChangeEvent, FC} from 'react';
+import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import Track from './Track';
@@ -28,8 +29,8 @@ const TrackRow: FC<Readonly<Props>> = p => {
 	}
 
 	return (
-		<div>
-			<span>{p.position}</span>
+		<Wrap>
+			<div>{p.position}</div>
 			<input type="text" value={track.title}
 				onChange={e => setTrack('title', e)} />
 			{store.trackListing.fields.notes &&
@@ -50,8 +51,22 @@ const TrackRow: FC<Readonly<Props>> = p => {
 			}
 			<input type="number" value={track.duration} min={1} max={9999}
 				onChange={e => setTrack('duration', e)} />
-		</div>
+		</Wrap>
 	);
 };
+
+const Wrap = styled.div`
+	margin: 6px 0;
+
+	& > div:first-child {
+		display: inline-block;
+		width: 24px;
+		margin-right: 8px;
+		text-align: right;
+	}
+	& > input {
+		margin: 0 4px;
+	}
+`;
 
 export default TrackRow;
