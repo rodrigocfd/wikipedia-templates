@@ -32,6 +32,24 @@ const TrackRow: FC<Readonly<Props>> = p => {
 			<span>{p.position}</span>
 			<input type="text" value={track.title}
 				onChange={e => setTrack('title', e)} />
+			{store.trackListing.fields.notes &&
+				<input type="text" value={track.note}
+					onChange={e => setTrack('note', e)} />
+			}
+			{store.trackListing.fields.writer &&
+				<input type="text" value={track.writer}
+					onChange={e => setTrack('writer', e)} />
+			}
+			{store.trackListing.fields.lyrics &&
+				<input type="text" value={track.lyrics}
+					onChange={e => setTrack('lyrics', e)} />
+			}
+			{store.trackListing.fields.music &&
+				<input type="text" value={track.music}
+					onChange={e => setTrack('music', e)} />
+			}
+			<input type="number" value={track.duration} min={1} max={9999}
+				onChange={e => setTrack('duration', e)} />
 		</div>
 	);
 };
