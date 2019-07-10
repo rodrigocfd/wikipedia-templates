@@ -25,7 +25,7 @@ const FieldChecks: FC = () => {
 			<Check label={t`Note`} checked={f.notes}
 				onChange={e => setFields({notes: e.target.checked})} />
 			<Check label={t`Writer`} checked={f.writer}
-				onChange={e => setFields({ writer: e.target.checked})} />
+				onChange={e => setFields({writer: e.target.checked})} />
 			<Check label={t`Lyrics`} checked={f.lyrics}
 				onChange={e => setFields({lyrics: e.target.checked})} />
 			<Check label={t`Music`} checked={f.music}

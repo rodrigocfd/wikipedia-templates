@@ -22,7 +22,7 @@ const TrackListing: FC = () => {
 			</div>
 			<div>
 				{store.trackListing.tracks.map((t: Track, i: number) =>
-					<TrackRow key={t.id} id={t.id} index={i} />
+					<TrackRow key={t.id} id={t.id} position={i + 1} />
 				)}
 			</div>
 			<Output />
