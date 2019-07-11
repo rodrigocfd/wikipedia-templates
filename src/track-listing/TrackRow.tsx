@@ -33,19 +33,19 @@ const TrackRow: FC<Readonly<Props>> = p => {
 			<div>{p.position}</div>
 			<input type="text" value={track.title}
 				onChange={e => setTrack('title', e)} />
-			{store.trackListing.fields.notes &&
+			{store.trackListing.fieldsShown.notes &&
 				<input type="text" value={track.note}
 					onChange={e => setTrack('note', e)} />
 			}
-			{store.trackListing.fields.writer &&
+			{store.trackListing.fieldsShown.writer &&
 				<input type="text" value={track.writer}
 					onChange={e => setTrack('writer', e)} />
 			}
-			{store.trackListing.fields.lyrics &&
+			{store.trackListing.fieldsShown.lyrics &&
 				<input type="text" value={track.lyrics}
 					onChange={e => setTrack('lyrics', e)} />
 			}
-			{store.trackListing.fields.music &&
+			{store.trackListing.fieldsShown.music &&
 				<input type="text" value={track.music}
 					onChange={e => setTrack('music', e)} />
 			}

@@ -1,10 +1,10 @@
 import Track from './Track';
-import {newFields} from './Fields';
+import {newFieldsShown} from './FieldsShown';
 
 export function newTrackListingData() {
 	return {
 		tracks: [] as Track[],
-		fields: newFields()
+		fieldsShown: newFieldsShown()
 	};
 };
 

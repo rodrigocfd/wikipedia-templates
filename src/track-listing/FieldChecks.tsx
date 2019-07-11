@@ -4,31 +4,31 @@ import styled from 'styled-components';
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Check from '../app/Check';
-import Fields from './Fields';
+import FieldsShown from './FieldsShown';
 
 const FieldChecks: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
-	const f = store.trackListing.fields;
+	const fs = store.trackListing.fieldsShown;
 
-	function setFields(d: Partial<Fields>) {
+	function setFields(d: Partial<FieldsShown>) {
 		setStore({
 			trackListing: {
 				...store.trackListing,
-				fields: { ...f, ...d }
+				fieldsShown: { ...fs, ...d }
 			}
 		});
 	}
 
 	return (
 		<Wrap>
-			<Check label={t`Note`} checked={f.notes}
+			<Check label={t`Note`} checked={fs.notes}
 				onChange={e => setFields({notes: e.target.checked})} />
-			<Check label={t`Writer`} checked={f.writer}
+			<Check label={t`Writer`} checked={fs.writer}
 				onChange={e => setFields({writer: e.target.checked})} />
-			<Check label={t`Lyrics`} checked={f.lyrics}
+			<Check label={t`Lyrics`} checked={fs.lyrics}
 				onChange={e => setFields({lyrics: e.target.checked})} />
-			<Check label={t`Music`} checked={f.music}
+			<Check label={t`Music`} checked={fs.music}
 				onChange={e => setFields({music: e.target.checked})} />
 		</Wrap>
 	);

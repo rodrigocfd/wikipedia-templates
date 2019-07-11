@@ -1,7 +1,7 @@
 /**
  * Fields that can be hidden/shown for a track.
  */
-export function newFields() {
+export function newFieldsShown() {
 	return {
 		notes: true,
 		writer: true,
@@ -10,5 +10,5 @@ export function newFields() {
 	};
 };
 
-export default interface Fields
-	extends ReturnType<typeof newFields> { };
+export default interface FieldsShown
+	extends ReturnType<typeof newFieldsShown> { };
