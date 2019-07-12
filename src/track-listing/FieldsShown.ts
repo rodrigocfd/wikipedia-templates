@@ -3,10 +3,10 @@
  */
 export function newFieldsShown() {
 	return {
-		notes: true,
-		writer: true,
-		lyrics: true,
-		music: true
+		notes: false,
+		writer: false,
+		lyrics: false,
+		music: false
 	};
 };
 

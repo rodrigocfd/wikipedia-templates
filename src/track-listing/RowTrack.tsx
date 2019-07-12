@@ -9,9 +9,10 @@ interface Props {
 	position: number;
 }
 
-const TrackRow: FC<Readonly<Props>> = p => {
+const RowTrack: FC<Readonly<Props>> = p => {
 	const [store, setStore] = useStore();
 	const track = store.trackListing.tracks.filter(t => t.id === p.id)[0];
+	const fs = store.trackListing.fieldsShown;
 
 	function setTrack(param: keyof Track, e: ChangeEvent<HTMLInputElement>) {
 		setStore({
@@ -33,19 +34,19 @@ const TrackRow: FC<Readonly<Props>> = p => {
 			<div>{p.position}</div>
 			<input type="text" value={track.title}
 				onChange={e => setTrack('title', e)} />
-			{store.trackListing.fieldsShown.notes &&
+			{fs.notes &&
 				<input type="text" value={track.note}
 					onChange={e => setTrack('note', e)} />
 			}
-			{store.trackListing.fieldsShown.writer &&
+			{fs.writer &&
 				<input type="text" value={track.writer}
 					onChange={e => setTrack('writer', e)} />
 			}
-			{store.trackListing.fieldsShown.lyrics &&
+			{fs.lyrics &&
 				<input type="text" value={track.lyrics}
 					onChange={e => setTrack('lyrics', e)} />
 			}
-			{store.trackListing.fieldsShown.music &&
+			{fs.music &&
 				<input type="text" value={track.music}
 					onChange={e => setTrack('music', e)} />
 			}
@@ -58,7 +59,7 @@ const TrackRow: FC<Readonly<Props>> = p => {
 const Wrap = styled.div`
 	margin: 6px 0;
 
-	& > div:first-child {
+	& > div:first-of-type {
 		display: inline-block;
 		width: 24px;
 		margin-right: 8px;
@@ -66,7 +67,11 @@ const Wrap = styled.div`
 	}
 	& > input {
 		margin: 0 4px;
+		width: 180px;
+	}
+	& > input:last-of-type {
+		width: 70px;
 	}
 `;
 
-export default TrackRow;
+export default RowTrack;
