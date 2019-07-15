@@ -26,7 +26,7 @@ const TrackListing: FC = () => {
 		<div>
 			<RowHeader />
 			{store.trackListing.tracks.map((t: Track, i: number) =>
-				<RowTrack key={t.id} id={t.id} position={i + 1} />
+				<RowTrack key={t.id} track={t} position={i + 1} />
 			)}
 		</div>
 		<Output />

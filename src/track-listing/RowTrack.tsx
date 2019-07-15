@@ -2,18 +2,16 @@ import React, {ChangeEvent, FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import RemoveTrack from './RemoveTrack';
 import Track from './Track';
 
 interface Props {
-	id: number;
+	track: Track;
 	position: number;
 }
 
 const RowTrack: FC<Readonly<Props>> = p => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
-	const track = store.trackListing.tracks.filter(t => t.id === p.id)[0];
 	const fs = store.trackListing.fieldsShown;
 
 	function setTrack(param: keyof Track, e: ChangeEvent<HTMLInputElement>) {
@@ -21,7 +19,7 @@ const RowTrack: FC<Readonly<Props>> = p => {
 			trackListing: {
 				...store.trackListing,
 				tracks: store.trackListing.tracks.map((t: Track) => {
-					return (t.id !== p.id) ? t
+					return (t.id !== p.track.id) ? t
 						: {
 							...t,
 							[param]: e.target.value
@@ -31,40 +29,30 @@ const RowTrack: FC<Readonly<Props>> = p => {
 		});
 	}
 
-	function deleteTrack() {
-		setStore({
-			trackListing: {
-				...store.trackListing,
-				tracks: store.trackListing.tracks
-					.filter((t: Track) => t.id !== track.id)
-			}
-		});
-	}
-
 	return (
 		<Wrap>
 			<div>{p.position}</div>
-			<input type="text" value={track.title}
+			<input type="text" value={p.track.title}
 				onChange={e => setTrack('title', e)} />
 			{fs.note &&
-				<input type="text" value={track.note}
+				<input type="text" value={p.track.note}
 					onChange={e => setTrack('note', e)} />
 			}
 			{fs.writer &&
-				<input type="text" value={track.writer}
+				<input type="text" value={p.track.writer}
 					onChange={e => setTrack('writer', e)} />
 			}
 			{fs.lyrics &&
-				<input type="text" value={track.lyrics}
+				<input type="text" value={p.track.lyrics}
 					onChange={e => setTrack('lyrics', e)} />
 			}
 			{fs.music &&
-				<input type="text" value={track.music}
+				<input type="text" value={p.track.music}
 					onChange={e => setTrack('music', e)} />
 			}
-			<input type="number" value={track.duration} min={1} max={9999}
+			<input type="number" value={p.track.duration} min={1} max={9999}
 				onChange={e => setTrack('duration', e)} />
-			<button onClick={() => deleteTrack()}>{t`remove`}</button>
+			<RemoveTrack track={p.track} />
 		</Wrap>
 	);
 };
@@ -85,18 +73,6 @@ const Wrap = styled.div`
 	& > input:last-of-type {
 		width: 70px;
 	}
-	& > button:first-of-type {
-		margin-left: 10px;
-	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'remove': 'remove'
-	},
-	pt: {
-		'remove': 'remover'
-	}
-};
 
 export default RowTrack;
