@@ -13,7 +13,7 @@ const RowHeader: FC = () => {
 		<Wrap>
 			<div>#</div>
 			<div>{t`Title`}</div>
-			{fs.notes  && <div>{t`Note`}</div>}
+			{fs.note   && <div>{t`Note`}</div>}
 			{fs.writer && <div>{t`Writer`}</div>}
 			{fs.lyrics && <div>{t`Lyrics`}</div>}
 			{fs.music  && <div>{t`Music`}</div>}

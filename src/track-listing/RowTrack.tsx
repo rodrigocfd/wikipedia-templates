@@ -18,7 +18,7 @@ const RowTrack: FC<Readonly<Props>> = p => {
 		setStore({
 			trackListing: {
 				...store.trackListing,
-				tracks: store.trackListing.tracks.map(t => {
+				tracks: store.trackListing.tracks.map((t: Track) => {
 					return (t.id !== p.id) ? t
 						: {
 							...t,
@@ -34,7 +34,7 @@ const RowTrack: FC<Readonly<Props>> = p => {
 			<div>{p.position}</div>
 			<input type="text" value={track.title}
 				onChange={e => setTrack('title', e)} />
-			{fs.notes &&
+			{fs.note &&
 				<input type="text" value={track.note}
 					onChange={e => setTrack('note', e)} />
 			}

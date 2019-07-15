@@ -3,7 +3,7 @@
  */
 export function newFieldsShown() {
 	return {
-		notes: false,
+		note: false,
 		writer: false,
 		lyrics: false,
 		music: false

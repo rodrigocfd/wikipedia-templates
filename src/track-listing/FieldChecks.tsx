@@ -22,8 +22,8 @@ const FieldChecks: FC = () => {
 
 	return (
 		<Wrap>
-			<Check label={t`Note`} checked={fs.notes}
-				onChange={e => setFields({notes: e.target.checked})} />
+			<Check label={t`Note`} checked={fs.note}
+				onChange={e => setFields({note: e.target.checked})} />
 			<Check label={t`Writer`} checked={fs.writer}
 				onChange={e => setFields({writer: e.target.checked})} />
 			<Check label={t`Lyrics`} checked={fs.lyrics}
