@@ -10,7 +10,7 @@ import RadiosInline from '../app/RadiosInline';
 import GoogleMapsLink from './GoogleMapsLink';
 import OsmMap from './OsmMap';
 import Output from './Output';
-import CoordData, {CoordDisplay} from './CoordData';
+import CoordData, {CoordDisplay, newCoordData} from './CoordData';
 
 const Coord: FC = () => {
 	const [store, setStore] = useStore();
@@ -41,7 +41,7 @@ const Coord: FC = () => {
 				<Output />
 			</div>
 		</div>
-		<Footer />
+		<Footer onClear={() => setStore({coord: newCoordData()})} />
 	</>);
 };
 

@@ -7,9 +7,10 @@ import PageTitle from '../app/PageTitle';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
+import {newInfoboxAlbumData} from './InfoboxAlbumData';
 
 const InfoboxAlbum: FC = () => {
-	const [store] = useStore();
+	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
@@ -19,7 +20,7 @@ const InfoboxAlbum: FC = () => {
 			<Form />
 			<Output />
 		</DivTwoColumns>
-		<Footer />
+		<Footer onClear={() => setStore({infoboxAlbum: newInfoboxAlbumData()})} />
 	</>);
 };
 

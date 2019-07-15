@@ -7,9 +7,10 @@ import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
 import IframeWebsite from './IframeWebsite';
+import {newCiteWebData} from './CiteWebData';
 
 const CiteWeb: FC = () => {
-	const [store] = useStore();
+	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
@@ -18,7 +19,7 @@ const CiteWeb: FC = () => {
 		<Form />
 		<Output />
 		<IframeWebsite />
-		<Footer />
+		<Footer onClear={() => setStore({citeWeb: newCiteWebData()})} />
 	</>);
 };
 
