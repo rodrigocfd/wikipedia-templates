@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import RemoveTrack from './RemoveTrack';
+import MoveUpTrack from './MoveUpTrack';
 import Track from './Track';
 
 interface Props {
@@ -53,6 +54,7 @@ const RowTrack: FC<Readonly<Props>> = p => {
 			<input type="number" value={p.track.duration} min={1} max={9999}
 				onChange={e => setTrack('duration', e)} />
 			<RemoveTrack track={p.track} />
+			<MoveUpTrack track={p.track} position={p.position} />
 		</Wrap>
 	);
 };
