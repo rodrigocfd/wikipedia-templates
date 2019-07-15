@@ -2,6 +2,7 @@ import React, {ChangeEvent, FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
+import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
 import Track from './Track';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
 
 const RowTrack: FC<Readonly<Props>> = p => {
 	const [store, setStore] = useStore();
+	const t = genLocaleFunc(store.lang, locales);
 	const track = store.trackListing.tracks.filter(t => t.id === p.id)[0];
 	const fs = store.trackListing.fieldsShown;
 
@@ -25,6 +27,16 @@ const RowTrack: FC<Readonly<Props>> = p => {
 							[param]: e.target.value
 						};
 				})
+			}
+		});
+	}
+
+	function deleteTrack() {
+		setStore({
+			trackListing: {
+				...store.trackListing,
+				tracks: store.trackListing.tracks
+					.filter((t: Track) => t.id !== track.id)
 			}
 		});
 	}
@@ -52,6 +64,7 @@ const RowTrack: FC<Readonly<Props>> = p => {
 			}
 			<input type="number" value={track.duration} min={1} max={9999}
 				onChange={e => setTrack('duration', e)} />
+			<button onClick={() => deleteTrack()}>{t`remove`}</button>
 		</Wrap>
 	);
 };
@@ -72,6 +85,18 @@ const Wrap = styled.div`
 	& > input:last-of-type {
 		width: 70px;
 	}
+	& > button:first-of-type {
+		margin-left: 10px;
+	}
 `;
+
+const locales: LocaleList = {
+	en: {
+		'remove': 'remove'
+	},
+	pt: {
+		'remove': 'remover'
+	}
+};
 
 export default RowTrack;

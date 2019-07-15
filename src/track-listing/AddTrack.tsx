@@ -22,7 +22,7 @@ const AddTrack: FC = () => {
 	}
 
 	return (
-		<ButtonAdd onClick={addTrack}>{t`Add track`}</ButtonAdd>
+		<ButtonAdd onClick={addTrack}>{t`add track`}</ButtonAdd>
 	);
 };
 
@@ -32,10 +32,10 @@ const ButtonAdd = styled.button`
 
 const locales: LocaleList = {
 	en: {
-		'Add track': 'Add track'
+		'add track': 'add track'
 	},
 	pt: {
-		'Add track': 'Adicionar faixa'
+		'add track': 'adicionar faixa'
 	}
 };
 
