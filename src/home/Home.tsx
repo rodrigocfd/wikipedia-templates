@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import PageTitle from '../app/PageTitle';
 
 const Home: FC = () => {
 	const [store] = useStore();
@@ -11,6 +12,7 @@ const Home: FC = () => {
 
 	return (
 		<Wrap>
+			<PageTitle title="" />
 			<ul>
 				<li><Link to="/cite-web">{t`Cite web`}</Link></li>
 				<li><Link to="/coord">{t`Coord`}</Link></li>

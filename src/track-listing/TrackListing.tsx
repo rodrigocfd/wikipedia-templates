@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import PageTitle from '../app/PageTitle';
 import Footer from '../app/Footer';
 import FieldChecks from './FieldChecks';
 import AddTrack from './AddTrack';
@@ -16,6 +17,7 @@ const TrackListing: FC = () => {
 
 	return (
 		<div>
+			<PageTitle title={t`Track listing`} />
 			<h2>{t`Track listing`}</h2>
 			<div>
 				<FieldChecks />
