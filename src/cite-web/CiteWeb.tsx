@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import PageTitle from '../app/PageTitle';
+import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
@@ -14,7 +14,7 @@ const CiteWeb: FC = () => {
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
-		<PageTitle title={t`Cite web`} />
+		<BrowserTitlebar title={t`Cite web`} />
 		<h2>{t`Cite web`}</h2>
 		<Form />
 		<Output />

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import PageTitle from '../app/PageTitle';
+import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
@@ -14,7 +14,7 @@ const InfoboxAlbum: FC = () => {
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
-		<PageTitle title={t`Infobox album`} />
+		<BrowserTitlebar title={t`Infobox album`} />
 		<h2>{t`Infobox album`}</h2>
 		<DivTwoColumns>
 			<Form />

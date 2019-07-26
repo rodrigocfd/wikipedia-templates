@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import PageTitle from '../app/PageTitle';
+import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import InputFocused from '../app/InputFocused';
 import RadiosInline from '../app/RadiosInline';
@@ -23,7 +23,7 @@ const Coord: FC = () => {
 	}
 
 	return (<>
-		<PageTitle title={t`Coord`} />
+		<BrowserTitlebar title={t`Coord`} />
 		<h2>{t`Coord`}</h2>
 		<div>
 			<div>

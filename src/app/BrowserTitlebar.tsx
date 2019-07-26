@@ -1,13 +1,13 @@
 import {FC, useEffect} from 'react';
 
-import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import useStore from './ContextStore';
+import genLocaleFunc, {LocaleList} from './genLocaleFunc';
 
 interface Props {
 	title: string;
 }
 
-const PageTitle: FC<Readonly<Props>> = p => {
+const BrowserTitlebar: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
 	const t = genLocaleFunc(store.lang, locales);
 
@@ -27,4 +27,4 @@ const locales: LocaleList = {
 	}
 };
 
-export default PageTitle;
+export default BrowserTitlebar;

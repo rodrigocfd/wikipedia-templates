@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
 import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
-import PageTitle from '../app/PageTitle';
+import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import FieldChecks from './FieldChecks';
 import AddTrack from './AddTrack';
@@ -17,7 +17,7 @@ const TrackListing: FC = () => {
 	const t = genLocaleFunc(store.lang, locales);
 
 	return (<>
-		<PageTitle title={t`Track listing`} />
+		<BrowserTitlebar title={t`Track listing`} />
 		<h2>{t`Track listing`}</h2>
 		<div>
 			<FieldChecks />
