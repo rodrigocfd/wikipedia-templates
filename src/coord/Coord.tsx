@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import InputFocused from '../app/InputFocused';
@@ -12,9 +12,12 @@ import OsmMap from './OsmMap';
 import Output from './Output';
 import CoordData, {CoordDisplay, newCoordData} from './CoordData';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const Coord: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Coord', {en, pt});
 
 	function setCoord(d: Partial<CoordData>) {
 		setStore({
@@ -49,22 +52,5 @@ const InputFocusedCoords = styled(InputFocused)`
 	margin-left: 8px;
 	margin-right: 20px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Coord': 'Coord',
-		'Latitude, longitude': 'Latitude, longitude',
-		'inline': 'inline',
-		'title': 'title',
-		'inline,title': 'inline,title'
-	},
-	pt: {
-		'Coord': 'Coor dms',
-		'Latitude, longitude': 'Latitude, longitude',
-		'inline': 'emlinha',
-		'title': 'título',
-		'inline,title': 'emlinha,título'
-	}
-};
 
 export default Coord;

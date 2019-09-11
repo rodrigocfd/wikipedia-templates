@@ -1,0 +1,16 @@
+{
+	"Coord": {
+		"Coord": "Coor dms",
+		"Latitude, longitude": "Latitude, longitude",
+		"inline": "emlinha",
+		"title": "título",
+		"inline,title": "emlinha,título"
+	},
+	"Output": {
+		"Coord": "Coor dms",
+		"E": "L",
+		"N": "N",
+		"S": "S",
+		"W": "O"
+	}
+}

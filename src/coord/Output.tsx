@@ -2,14 +2,17 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import TextAreaOut from '../app/TextAreaOut';
 import extractLatLng from './extractLatLng';
 import {newDegMinSec} from './DegMinSec';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const Output: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Output', {en, pt});
 
 	let fmt = '';
 	const ll: [number, number] | null = extractLatLng(store.coord.latLng);
@@ -39,22 +42,5 @@ const TextAreaCoord = styled(TextAreaOut)`
 	height: 50px;
 	margin-top: 20px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Coord': 'Coord',
-		'E': 'E',
-		'N': 'N',
-		'S': 'S',
-		'W': 'W'
-	},
-	pt: {
-		'Coord': 'Coor dms',
-		'E': 'L',
-		'N': 'N',
-		'S': 'S',
-		'W': 'O'
-	}
-};
 
 export default Output;

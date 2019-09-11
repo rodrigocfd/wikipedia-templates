@@ -1,0 +1,16 @@
+{
+	"Coord": {
+		"Coord": "Coord",
+		"Latitude, longitude": "Latitude, longitude",
+		"inline": "inline",
+		"title": "title",
+		"inline,title": "inline,title"
+	},
+	"Output": {
+		"Coord": "Coord",
+		"E": "E",
+		"N": "N",
+		"S": "S",
+		"W": "W"
+	}
+}
