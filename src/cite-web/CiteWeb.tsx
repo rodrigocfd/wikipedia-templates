@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
@@ -9,9 +9,12 @@ import Output from './Output';
 import IframeWebsite from './IframeWebsite';
 import {newCiteWebData} from './CiteWebData';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const CiteWeb: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'CiteWeb', {en, pt});
 
 	return (<>
 		<BrowserTitlebar title={t`Cite web`} />
@@ -21,15 +24,6 @@ const CiteWeb: FC = () => {
 		<IframeWebsite />
 		<Footer onClear={() => setStore({citeWeb: newCiteWebData()})} />
 	</>);
-};
-
-const locales: LocaleList = {
-	en: {
-		'Cite web': 'Cite web'
-	},
-	pt: {
-		'Cite web': 'Citar web'
-	}
 };
 
 export default CiteWeb;

@@ -2,14 +2,16 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import TextAreaOut from '../app/TextAreaOut';
 import DayMonthYear from '../app/DayMonthYear';
-import months from './months';
+
+import en from './en.json';
+import pt from './pt.json';
 
 const Output: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Output', {en, pt});
 	const c = store.citeWeb;
 
 	function formatDate(date: DayMonthYear): string {
@@ -57,34 +59,5 @@ const TextAreaCiteWeb = styled(TextAreaOut)`
 	height: 70px;
 	margin-top: 20px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Cite web': 'Cite web',
-		'url': 'url',
-		'title': 'title',
-		'trans-title': 'trans-title',
-		'publisher': 'publisher',
-		'date': 'date',
-		'access-date': 'access-date',
-		'language': 'language',
-		'DateDMY {1} {0}, {2}': '{1} {0}, {2}',
-		'DateMY {0}, {1}': '{0}, {1}',
-		...months.en
-	},
-	pt: {
-		'Cite web': 'Citar web',
-		'url': 'url',
-		'title': 'titulo',
-		'trans-title': 'titulotrad',
-		'publisher': 'publicado',
-		'date': 'data',
-		'access-date': 'accessodata',
-		'language': 'lingua',
-		'DateDMY {1} {0}, {2}': '{0} de {1} de {2}',
-		'DateMY {0}, {1}': '{0} de {1}',
-		...months.pt
-	}
-};
 
 export default Output;

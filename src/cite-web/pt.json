@@ -1,0 +1,46 @@
+{
+	"CiteWeb": {
+		"Cite web": "Citar web"
+	},
+	"Form": {
+		"Ref name": "Ref name",
+		"URL": "URL",
+		"Title": "Título",
+		"Translated title": "Título traduzido",
+		"Publisher": "Publicado por",
+		"Date": "Data",
+		"Access date": "Data de acesso",
+		"Language": "Idioma",
+		"none": "nenhum",
+		"English": "Inglês",
+		"Spanish": "Espanhol",
+		"French": "Francês",
+		"German": "Alemão",
+		"Italian": "Italiano",
+		"Portuguese": "Português"
+	},
+	"Output": {
+		"Cite web": "Citar web",
+		"url": "url",
+		"title": "titulo",
+		"trans-title": "titulotrad",
+		"publisher": "publicado",
+		"date": "data",
+		"access-date": "accessodata",
+		"language": "lingua",
+		"DateDMY {1} {0}, {2}": "{0} de {1} de {2}",
+		"DateMY {0}, {1}": "{0} de {1}",
+		"January": "janeiro",
+		"February": "fevereiro",
+		"March": "março",
+		"April": "abril",
+		"May": "maio",
+		"June": "junho",
+		"July": "julho",
+		"August": "agosto",
+		"September": "setembro",
+		"October": "outubro",
+		"November": "novembro",
+		"December": "dezembro"
+	}
+}

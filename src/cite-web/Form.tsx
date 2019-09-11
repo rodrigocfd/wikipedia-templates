@@ -2,15 +2,18 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import InputFocused from '../app/InputFocused';
 import RadiosInline from '../app/RadiosInline';
 import YearMonthDay from '../app/YearMonthDay';
 import CiteWebData from './CiteWebData';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const Form: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Form', {en, pt});
 
 	function setCiteWeb(d: Partial<CiteWebData>) {
 		setStore({
@@ -66,42 +69,5 @@ const Wrap = styled.div`
 	grid-column-gap: 6px;
 	grid-row-gap: 3px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Ref name': 'Ref name',
-		'URL': 'URL',
-		'Title': 'Title',
-		'Translated title': 'Translated title',
-		'Publisher': 'Publisher',
-		'Date': 'Date',
-		'Access date': 'Access date',
-		'Language': 'Language',
-		'none': 'none',
-		'English': 'English',
-		'Spanish': 'Spanish',
-		'French': 'French',
-		'German': 'German',
-		'Italian': 'Italian',
-		'Portuguese': 'Portuguese'
-	},
-	pt: {
-		'Ref name': 'Ref name',
-		'URL': 'URL',
-		'Title': 'Título',
-		'Translated title': 'Título traduzido',
-		'Publisher': 'Publicado por',
-		'Date': 'Data',
-		'Access date': 'Data de acesso',
-		'none': 'nenhum',
-		'Language': 'Idioma',
-		'English': 'Inglês',
-		'Spanish': 'Espanhol',
-		'French': 'Francês',
-		'German': 'Alemão',
-		'Italian': 'Italiano',
-		'Portuguese': 'Português'
-	}
-};
 
 export default Form;

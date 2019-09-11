@@ -3,6 +3,13 @@ import {Lang} from './Lang';
 /**
  * Describes the locales and its keys/values.
  */
+export interface LocaleList2 {
+	[lang: string]: {
+		[componentName: string]: {
+			[key: string]: string;
+		}
+	}
+};
 export interface LocaleList {
 	[lang: string]: {
 		[key: string]: string;
@@ -17,6 +24,28 @@ export type LocaleFunc = (str: StringOrTaggedTemplate,
 /**
  * Returns the function used to retrieve string from locale key.
  */
+export function genLocaleFunc2(curLang: Lang, componentName: string,
+		locales: LocaleList2): LocaleFunc {
+
+	function t(key: StringOrTaggedTemplate,
+			...args: (string | number)[]): string {
+
+		const curLocale = locales[curLang][componentName];
+		const theKey = (key instanceof Array) ? key[0] : key;
+		if (theKey === '') {
+			return '';
+		}
+		const ret = curLocale[theKey];
+		if (ret === undefined) {
+			console.error(`Key not found: "${theKey}".`);
+			return `[${theKey}]`;
+		}
+		return args.length ? interpolateString(ret, args) : ret;
+	}
+
+	return t;
+};
+
 export default function genLocaleFunc(curLang: Lang,
 		locales: LocaleList): LocaleFunc {
 
