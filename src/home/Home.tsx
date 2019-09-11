@@ -3,12 +3,15 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
+
+import en from './en.json';
+import pt from './pt.json';
 
 const Home: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Home', {en, pt});
 
 	return (
 		<Wrap>
@@ -28,20 +31,5 @@ const Wrap = styled.div`
 		line-height: 150%;
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Cite web': 'Cite web',
-		'Coord': 'Coord',
-		'Infobox album': 'Infobox album',
-		'Track listing': 'Track listing'
-	},
-	pt: {
-		'Cite web': 'Citar web',
-		'Coord': 'Coor dms',
-		'Infobox album': 'Info/Álbum',
-		'Track listing': 'Lista de faixas'
-	}
-};
 
 export default Home;
