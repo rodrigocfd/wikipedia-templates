@@ -2,16 +2,19 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import InputFocused from '../app/InputFocused';
 import YearMonthDay from '../app/YearMonthDay';
 import OtherAlbum from './OtherAlbum';
 import InfoboxAlbumData from './InfoboxAlbumData';
-import {AlbumType, albumTypes, albumTypeLocale} from './AlbumType';
+import {AlbumType, albumTypes} from './AlbumType';
+
+import en from './en.json';
+import pt from './pt.json';
 
 const Form: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Form', {en, pt});
 
 	function setInfoboxAlbum(d: Partial<InfoboxAlbumData>) {
 		setStore({
@@ -84,36 +87,5 @@ const Wrap = styled.div`
 	grid-column-gap: 6px;
 	grid-row-gap: 3px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Name': 'Name',
-		'Type': 'Type',
-		'Artist': 'Artist',
-		'Cover': 'Cover',
-		'Released': 'Released',
-		'Genre': 'Genre',
-		'Producer': 'Producer',
-		'Studio': 'Studio',
-		'Label': 'Label',
-		'Previous album': 'Previous album',
-		'Next album': 'Next album',
-		...albumTypeLocale.en
-	},
-	pt: {
-		'Name': 'Nome',
-		'Type': 'Tipo',
-		'Artist': 'Artista',
-		'Cover': 'Imagem',
-		'Released': 'Lançado',
-		'Genre': 'Gênero',
-		'Producer': 'Produtor',
-		'Studio': 'Estúdio',
-		'Label': 'Gravadora',
-		'Previous album': 'Álbum anterior',
-		'Next album': 'Próximo álbum',
-		...albumTypeLocale.pt
-	}
-};
 
 export default Form;

@@ -11,6 +11,7 @@
 		"Date": "Data",
 		"Access date": "Data de acesso",
 		"Language": "Idioma",
+
 		"none": "nenhum",
 		"English": "Inglês",
 		"Spanish": "Espanhol",
@@ -30,6 +31,7 @@
 		"language": "lingua",
 		"DateDMY {1} {0}, {2}": "{0} de {1} de {2}",
 		"DateMY {0}, {1}": "{0} de {1}",
+
 		"January": "janeiro",
 		"February": "fevereiro",
 		"March": "março",

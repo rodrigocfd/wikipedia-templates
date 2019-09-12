@@ -2,8 +2,11 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import NameYear from './NameYear';
+
+import en from './en.json';
+import pt from './pt.json';
 
 interface Props {
 	name?: string;
@@ -13,7 +16,7 @@ interface Props {
 
 const OtherAlbum: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'OtherAlbum', {en, pt});
 
 	function setNameYear(d: Partial<NameYear>) {
 		p.onChange({...p.value, ...d});
@@ -35,14 +38,5 @@ const InputYear = styled.input`
 	width: 75px;
 	margin-right: 12px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'year': 'year'
-	},
-	pt: {
-		'year': 'ano'
-	}
-};
 
 export default OtherAlbum;

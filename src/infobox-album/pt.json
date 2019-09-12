@@ -1,0 +1,69 @@
+{
+	"Form": {
+		"Name": "Nome",
+		"Type": "Tipo",
+		"Artist": "Artista",
+		"Cover": "Imagem",
+		"Released": "Lançado",
+		"Genre": "Gênero",
+		"Producer": "Produtor",
+		"Studio": "Estúdio",
+		"Label": "Gravadora",
+		"Previous album": "Álbum anterior",
+		"Next album": "Próximo álbum",
+
+		"none": "nenhum",
+		"studio": "estúdio",
+		"demo": "demo",
+		"EP": "ep",
+		"live": "ao vivo",
+		"greatest": "grandes êxitos",
+		"remix": "remistura",
+		"box": "caixa",
+		"compilation": "compilação",
+		"mixtape": "mixtape",
+		"soundtrack": "banda sonora",
+		"film": "outro",
+		"cast": "outro",
+		"video": "vídeo",
+		"other": "outro"
+	},
+	"InfoboxAlbum": {
+		"Infobox album": "Info/Álbum"
+	},
+	"OtherAlbum": {
+		"year": "ano"
+	},
+	"Output": {
+		"Infobox album": "Info/Álbum",
+		"name": "nome",
+		"type": "tipo",
+		"artist": "artista",
+		"cover": "imagem",
+		"genre": "gênero",
+		"producer": "produtor",
+		"label": "gravadora",
+		"released": "lançado",
+		"start date {0} {1} {2}": "{{data de início|{0}|{1}|{2}}}",
+		"prev_title": "último álbum",
+		"prev_year": "ano anterior",
+		"next_title": "próximo álbum",
+		"next_year": "ano seguinte",
+
+		"none": "nenhum",
+		"studio": "estúdio",
+		"demo": "demo",
+		"EP": "ep",
+		"live": "ao vivo",
+		"greatest": "grandes êxitos",
+		"remix": "remistura",
+		"box": "caixa",
+		"compilation": "compilação",
+		"mixtape": "mixtape",
+		"soundtrack": "banda sonora",
+		"film": "outro",
+		"cast": "outro",
+		"video": "vídeo",
+		"other": "outro"
+	}
+}

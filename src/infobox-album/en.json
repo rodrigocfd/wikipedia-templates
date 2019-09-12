@@ -1,0 +1,69 @@
+{
+	"Form": {
+		"Name": "Name",
+		"Type": "Type",
+		"Artist": "Artist",
+		"Cover": "Cover",
+		"Released": "Released",
+		"Genre": "Genre",
+		"Producer": "Producer",
+		"Studio": "Studio",
+		"Label": "Label",
+		"Previous album": "Previous album",
+		"Next album": "Next album",
+
+		"none": "none",
+		"studio": "studio",
+		"demo": "demo",
+		"EP": "EP",
+		"live": "live",
+		"greatest": "greatest",
+		"remix": "remix",
+		"box": "box",
+		"compilation": "compilation",
+		"mixtape": "mixtape",
+		"soundtrack": "soundtrack",
+		"film": "film",
+		"cast": "cast",
+		"video": "video",
+		"other": "other"
+	},
+	"InfoboxAlbum": {
+		"Infobox album": "Infobox album"
+	},
+	"OtherAlbum": {
+		"year": "year"
+	},
+	"Output": {
+		"Infobox album": "Infobox album",
+		"name": "name",
+		"type": "type",
+		"artist": "artist",
+		"cover": "cover",
+		"genre": "genre",
+		"producer": "producer",
+		"label": "label",
+		"released": "released",
+		"start date {0} {1} {2}": "{{start date|{0}|{1}|{2}}}",
+		"prev_title": "prev_title",
+		"prev_year": "prev_year",
+		"next_title": "next_title",
+		"next_year": "next_year",
+
+		"none": "none",
+		"studio": "studio",
+		"demo": "demo",
+		"EP": "EP",
+		"live": "live",
+		"greatest": "greatest",
+		"remix": "remix",
+		"box": "box",
+		"compilation": "compilation",
+		"mixtape": "mixtape",
+		"soundtrack": "soundtrack",
+		"film": "film",
+		"cast": "cast",
+		"video": "video",
+		"other": "other"
+	}
+}
