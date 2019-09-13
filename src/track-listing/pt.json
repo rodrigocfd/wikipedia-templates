@@ -1,0 +1,37 @@
+{
+	"AddTrack": {
+		"add track": "adicionar faixa"
+	},
+	"FieldChecks": {
+		"Note": "Nota",
+		"Writer": "Escritor",
+		"Lyrics": "Letra",
+		"Music": "Música"
+	},
+	"MoveUpTrack": {
+		"move up": "mover acima"
+	},
+	"Output": {
+		"Track listing": "Lista de faixas",
+		"title{0}": "título{0}",
+		"note{0}": "nota{0}",
+		"writer{0}": "escritor{0}",
+		"lyrics{0}": "letra{0}",
+		"music{0}": "música{0}",
+		"length{0}": "duração{0}"
+	},
+	"RemoveTrack": {
+		"remove": "remover"
+	},
+	"RowHeader": {
+		"Title": "Título",
+		"Note": "Nota",
+		"Writer": "Escritor",
+		"Lyrics": "Letra",
+		"Music": "Música",
+		"Duration": "Duração"
+	},
+	"TrackListing": {
+		"Track listing": "Lista de faixas"
+	}
+}

@@ -2,8 +2,11 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import Track from './Track';
+
+import en from './en.json';
+import pt from './pt.json';
 
 interface Props {
 	track: Track;
@@ -12,7 +15,7 @@ interface Props {
 
 const MoveUpTrack: FC<Readonly<Props>> = p => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'MoveUpTrack', {en, pt});
 	const index = p.position - 1;
 
 	function moveUpTrack() {
@@ -38,14 +41,5 @@ const MoveUpTrack: FC<Readonly<Props>> = p => {
 const ButtonMarged = styled.button`
 	margin-left: 10px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'move up': 'move up'
-	},
-	pt: {
-		'move up': 'mover acima'
-	}
-};
 
 export default MoveUpTrack;

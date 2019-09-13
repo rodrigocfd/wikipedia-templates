@@ -2,11 +2,14 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
+
+import en from './en.json';
+import pt from './pt.json';
 
 const RowHeader: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'RowHeader', {en, pt});
 	const fs = store.trackListing.fieldsShown;
 
 	return !store.trackListing.tracks.length ? null : (
@@ -40,24 +43,5 @@ const Wrap = styled.div`
 		width: 70px;
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Title': 'Títle',
-		'Note': 'Note',
-		'Writer': 'Writer',
-		'Lyrics': 'Lyrics',
-		'Music': 'Music',
-		'Duration': 'Duration'
-	},
-	pt: {
-		'Title': 'Título',
-		'Note': 'Nota',
-		'Writer': 'Escritor',
-		'Lyrics': 'Letra',
-		'Music': 'Música',
-		'Duration': 'Duração'
-	}
-};
 
 export default RowHeader;

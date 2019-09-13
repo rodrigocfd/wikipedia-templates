@@ -2,13 +2,16 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import Check from '../app/Check';
 import FieldsShown from './FieldsShown';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const FieldChecks: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'FieldChecks', {en, pt});
 	const fs = store.trackListing.fieldsShown;
 
 	function setFields(d: Partial<FieldsShown>) {
@@ -39,20 +42,5 @@ const Wrap = styled.span`
 		margin-right: 12px;
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Note': 'Note',
-		'Writer': 'Writer',
-		'Lyrics': 'Lyrics',
-		'Music': 'Music'
-	},
-	pt: {
-		'Note': 'Nota',
-		'Writer': 'Escritor',
-		'Lyrics': 'Letra',
-		'Music': 'Música'
-	}
-};
 
 export default FieldChecks;

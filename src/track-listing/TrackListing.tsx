@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import FieldChecks from './FieldChecks';
@@ -12,9 +12,12 @@ import Output from './Output';
 import Track from './Track';
 import {newTrackListingData} from './TrackListingData';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const TrackListing: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'TrackListing', {en, pt});
 
 	return (<>
 		<BrowserTitlebar title={t`Track listing`} />
@@ -32,15 +35,6 @@ const TrackListing: FC = () => {
 		<Output />
 		<Footer onClear={() => setStore({trackListing: newTrackListingData()})} />
 	</>);
-};
-
-const locales: LocaleList = {
-	en: {
-		'Track listing': 'Track listing'
-	},
-	pt: {
-		'Track listing': 'Lista de faixas'
-	}
 };
 
 export default TrackListing;

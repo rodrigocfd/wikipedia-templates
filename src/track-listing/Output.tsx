@@ -2,13 +2,16 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import TextAreaOut from '../app/TextAreaOut';
 import Track from './Track';
 
+import en from './en.json';
+import pt from './pt.json';
+
 const Output: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Output', {en, pt});
 	const fs = store.trackListing.fieldsShown;
 
 	function fmtDuration(duration: number | ''): string {
@@ -50,26 +53,5 @@ const TextAreaTrackListing = styled(TextAreaOut)`
 	height: 200px;
 	margin-top: 20px;
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Track listing': 'Track listing',
-		'title{0}': 'title{0}',
-		'note{0}': 'note{0}',
-		'writer{0}': 'writer{0}',
-		'lyrics{0}': 'lyrics{0}',
-		'music{0}': 'music{0}',
-		'length{0}': 'length{0}'
-	},
-	pt: {
-		'Track listing': 'Lista de faixas',
-		'title{0}': 'título{0}',
-		'note{0}': 'nota{0}',
-		'writer{0}': 'escritor{0}',
-		'lyrics{0}': 'letra{0}',
-		'music{0}': 'música{0}',
-		'length{0}': 'duração{0}'
-	}
-};
 
 export default Output;
