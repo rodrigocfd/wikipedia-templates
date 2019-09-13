@@ -2,15 +2,18 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import genLocaleFunc, {LocaleList} from './genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import ChangeLang from './ChangeLang';
+
+import en from './en.json';
+import pt from './pt.json';
 
 /**
  * Main app header.
  */
 const Header: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Header', {en, pt});
 
 	return (
 		<Wrap>
@@ -41,14 +44,5 @@ const Wrap = styled.div`
 		padding-top: 8px;
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Wikipedia Templates': 'Wikipedia Templates'
-	},
-	pt: {
-		'Wikipedia Templates': 'Predefinições da Wikipédia'
-	}
-};
 
 export default Header;

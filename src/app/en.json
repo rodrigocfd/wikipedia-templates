@@ -1,0 +1,24 @@
+{
+	"BrowserTitlebar": {
+		"Wikipedia Templates": "Wikipedia Templates"
+	},
+	"ChangeLang": {
+		"Language": "Language",
+		"English": "Inglês",
+		"Portuguese": "Português"
+	},
+	"Footer": {
+		"Home": "Home",
+		"clear all": "clear all"
+	},
+	"Header": {
+		"Wikipedia Templates": "Wikipedia Templates"
+	},
+	"YearMonthDay": {
+		"Year": "Year",
+		"Month": "Month",
+		"Day": "Day",
+		"today": "today",
+		"clear": "clear"
+	}
+}

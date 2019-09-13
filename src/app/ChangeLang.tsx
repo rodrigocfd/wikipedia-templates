@@ -2,15 +2,18 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import genLocaleFunc, {LocaleList} from './genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
 import {LangName, langNames} from './Lang';
+
+import en from './en.json';
+import pt from './pt.json';
 
 /**
  * Renders all available languages and allows switching.
  */
 const ChangeLang: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'ChangeLang', {en, pt});
 
 	return (
 		<Wrap>
@@ -46,18 +49,5 @@ const Wrap = styled.div`
 		}
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Language': 'Language',
-		'English': 'Inglês',
-		'Portuguese': 'Português'
-	},
-	pt: {
-		'Language': 'Idioma',
-		'English': 'English',
-		'Portuguese': 'Portuguese'
-	}
-};
 
 export default ChangeLang;

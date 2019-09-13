@@ -3,7 +3,10 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import genLocaleFunc, {LocaleList} from '../app/genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
+
+import en from './en.json';
+import pt from './pt.json';
 
 interface Props {
 	onClear?: () => void;
@@ -14,7 +17,7 @@ interface Props {
  */
 const Footer: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'Footer', {en, pt});
 
 	return (
 		<Wrap>
@@ -34,16 +37,5 @@ const Wrap = styled.div`
 		margin-left: 16px;
 	}
 `;
-
-const locales: LocaleList = {
-	en: {
-		'Home': 'Home',
-		'clear all': 'clear all'
-	},
-	pt: {
-		'Home': 'Início',
-		'clear all': 'limpar tudo'
-	}
-};
 
 export default Footer;

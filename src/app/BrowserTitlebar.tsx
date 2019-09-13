@@ -1,7 +1,10 @@
 import {FC, useEffect} from 'react';
 
 import useStore from './ContextStore';
-import genLocaleFunc, {LocaleList} from './genLocaleFunc';
+import {genLocaleFunc2} from '../app/genLocaleFunc';
+
+import en from './en.json';
+import pt from './pt.json';
 
 interface Props {
 	title: string;
@@ -9,22 +12,13 @@ interface Props {
 
 const BrowserTitlebar: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc(store.lang, locales);
+	const t = genLocaleFunc2(store.lang, 'BrowserTitlebar', {en, pt});
 
 	useEffect(() => {
 		document.title = p.title + (p.title && ' - ') + t`Wikipedia Templates`;
 	}, [t]);
 
 	return null;
-};
-
-const locales: LocaleList = {
-	en: {
-		'Wikipedia Templates': 'Wikipedia Templates'
-	},
-	pt: {
-		'Wikipedia Templates': 'Predefinições da Wikipédia'
-	}
 };
 
 export default BrowserTitlebar;
