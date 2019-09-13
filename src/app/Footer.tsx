@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -17,7 +17,7 @@ interface Props {
  */
 const Footer: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'Footer', {en, pt});
+	const t = genLocaleFunc(store.lang, 'Footer', {en, pt});
 
 	return (
 		<Wrap>

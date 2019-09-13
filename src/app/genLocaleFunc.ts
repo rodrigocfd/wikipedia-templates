@@ -1,34 +1,36 @@
 import {Lang} from './Lang';
 
 /**
- * Describes the locales and its keys/values.
+ * Describes the locales, components and keys/values, stored in JSON.
  */
-export interface LocaleList2 {
+export interface LocaleList {
 	[lang: string]: {
 		[componentName: string]: {
 			[key: string]: string;
 		}
 	}
 };
-export interface LocaleList {
-	[lang: string]: {
-		[key: string]: string;
-	}
-};
-
-type StringOrTaggedTemplate = string | TemplateStringsArray;
-
-export type LocaleFunc = (str: StringOrTaggedTemplate,
-	...args: (string | number)[]) => string;
 
 /**
- * Returns the function used to retrieve string from locale key.
+ * Type of the function used to retrieve string from locale.
  */
-export function genLocaleFunc2(curLang: Lang, componentName: string,
-		locales: LocaleList2): LocaleFunc {
+export type LocaleFunc = (
+	str: string | TemplateStringsArray,
+	...args: (string | number)[]
+	) => string;
 
-	function t(key: StringOrTaggedTemplate,
-			...args: (string | number)[]): string {
+/**
+ * Returns the function used to retrieve string from locale.
+ */
+export default function genLocaleFunc(
+		curLang: Lang, componentName: string,
+		locales: LocaleList
+		): LocaleFunc {
+
+	function t(
+			key: string | TemplateStringsArray,
+			...args: (string | number)[]
+			): string {
 
 		const curLocale = locales[curLang][componentName];
 		const theKey = (key instanceof Array) ? key[0] : key;
@@ -46,30 +48,10 @@ export function genLocaleFunc2(curLang: Lang, componentName: string,
 	return t;
 };
 
-export default function genLocaleFunc(curLang: Lang,
-		locales: LocaleList): LocaleFunc {
-
-	function t(key: StringOrTaggedTemplate,
-			...args: (string | number)[]): string {
-
-		const curLocale = locales[curLang];
-		const theKey = (key instanceof Array) ? key[0] : key;
-		if (theKey === '') {
-			return '';
-		}
-		const ret = curLocale[theKey];
-		if (ret === undefined) {
-			console.error(`Key not found: "${theKey}".`);
-			return `[${theKey}]`;
-		}
-		return args.length ? interpolateString(ret, args) : ret;
-	}
-
-	return t;
-};
-
-function interpolateString(translatedStr: string,
-		args: (string | number)[]): string {
+function interpolateString(
+		translatedStr: string,
+		args: (string | number)[]
+		): string {
 
 	let finalStr = '';
 	const regex = new RegExp('\\{\\d+\\}', 'g');

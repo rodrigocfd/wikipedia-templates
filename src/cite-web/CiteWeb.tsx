@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
@@ -14,7 +14,7 @@ import pt from './pt.json';
 
 const CiteWeb: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc2(store.lang, 'CiteWeb', {en, pt});
+	const t = genLocaleFunc(store.lang, 'CiteWeb', {en, pt});
 
 	return (<>
 		<BrowserTitlebar title={t`Cite web`} />

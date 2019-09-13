@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 import en from './en.json';
@@ -20,7 +20,7 @@ interface Props {
  */
 const YearMonthDay: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'YearMonthDay', {en, pt});
+	const t = genLocaleFunc(store.lang, 'YearMonthDay', {en, pt});
 
 	function setDateField(fieldName: string, val?: string) {
 		p.onChange({

@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import {LangName, langNames} from './Lang';
 
 import en from './en.json';
@@ -13,7 +13,7 @@ import pt from './pt.json';
  */
 const ChangeLang: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc2(store.lang, 'ChangeLang', {en, pt});
+	const t = genLocaleFunc(store.lang, 'ChangeLang', {en, pt});
 
 	return (
 		<Wrap>

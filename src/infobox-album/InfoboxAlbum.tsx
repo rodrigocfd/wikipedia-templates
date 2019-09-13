@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
@@ -14,7 +14,7 @@ import pt from './pt.json';
 
 const InfoboxAlbum: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc2(store.lang, 'InfoboxAlbum', {en, pt});
+	const t = genLocaleFunc(store.lang, 'InfoboxAlbum', {en, pt});
 
 	return (<>
 		<BrowserTitlebar title={t`Infobox album`} />

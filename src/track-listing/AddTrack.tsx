@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import {newTrack} from './Track';
 
 import en from './en.json';
@@ -10,7 +10,7 @@ import pt from './pt.json';
 
 const AddTrack: FC = () => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc2(store.lang, 'AddTrack', {en, pt});
+	const t = genLocaleFunc(store.lang, 'AddTrack', {en, pt});
 
 	function addTrack() {
 		setStore({

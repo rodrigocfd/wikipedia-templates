@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import Track from './Track';
 
 import en from './en.json';
@@ -14,7 +14,7 @@ interface Props {
 
 const RemoveTrack: FC<Readonly<Props>> = p => {
 	const [store, setStore] = useStore();
-	const t = genLocaleFunc2(store.lang, 'RemoveTrack', {en, pt});
+	const t = genLocaleFunc(store.lang, 'RemoveTrack', {en, pt});
 
 	function deleteTrack() {
 		setStore({

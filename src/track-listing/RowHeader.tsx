@@ -2,14 +2,14 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 
 import en from './en.json';
 import pt from './pt.json';
 
 const RowHeader: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'RowHeader', {en, pt});
+	const t = genLocaleFunc(store.lang, 'RowHeader', {en, pt});
 	const fs = store.trackListing.fieldsShown;
 
 	return !store.trackListing.tracks.length ? null : (

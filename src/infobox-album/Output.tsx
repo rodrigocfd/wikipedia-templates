@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import TextAreaOut from '../app/TextAreaOut';
 import DayMonthYear from '../app/DayMonthYear';
 import NameYear from './NameYear';
@@ -12,7 +12,7 @@ import pt from './pt.json';
 
 const Output: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'Output', {en, pt});
+	const t = genLocaleFunc(store.lang, 'Output', {en, pt});
 	const ia = store.infoboxAlbum;
 
 	function formatDate(date: DayMonthYear): string {

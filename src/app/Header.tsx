@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from './ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import ChangeLang from './ChangeLang';
 
 import en from './en.json';
@@ -13,7 +13,7 @@ import pt from './pt.json';
  */
 const Header: FC = () => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'Header', {en, pt});
+	const t = genLocaleFunc(store.lang, 'Header', {en, pt});
 
 	return (
 		<Wrap>

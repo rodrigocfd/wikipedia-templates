@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import styled from 'styled-components';
 
 import useStore from '../app/ContextStore';
-import {genLocaleFunc2} from '../app/genLocaleFunc';
+import genLocaleFunc from '../app/genLocaleFunc';
 import NameYear from './NameYear';
 
 import en from './en.json';
@@ -16,7 +16,7 @@ interface Props {
 
 const OtherAlbum: FC<Readonly<Props>> = p => {
 	const [store] = useStore();
-	const t = genLocaleFunc2(store.lang, 'OtherAlbum', {en, pt});
+	const t = genLocaleFunc(store.lang, 'OtherAlbum', {en, pt});
 
 	function setNameYear(d: Partial<NameYear>) {
 		p.onChange({...p.value, ...d});
