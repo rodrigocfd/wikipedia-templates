@@ -1,4 +1,4 @@
-import {Lang} from './Lang';
+import {Lang} from '../store/Lang';
 
 /**
  * Describes the locales, components and keys/values, stored in JSON.

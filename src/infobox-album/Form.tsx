@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import InputFocused from '../app/InputFocused';
 import YearMonthDay from '../app/YearMonthDay';
 import OtherAlbum from './OtherAlbum';
-import InfoboxAlbumData from './InfoboxAlbumData';
+import DataInfoboxAlbum from '../store/DataInfoboxAlbum';
 import {AlbumType, albumTypes} from './AlbumType';
 
 import en from './en.json';
@@ -16,7 +16,7 @@ const Form: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, 'Form', {en, pt});
 
-	function setInfoboxAlbum(d: Partial<InfoboxAlbumData>) {
+	function setInfoboxAlbum(d: Partial<DataInfoboxAlbum>) {
 		setStore({
 			infoboxAlbum: {...store.infoboxAlbum, ...d}
 		});

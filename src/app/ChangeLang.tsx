@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from './ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
-import {LangName, langNames} from './Lang';
+import useStore from '../store/ContextStore';
+import genLocaleFunc from './genLocaleFunc';
+import {LangName, langNames} from '../store/Lang';
 
 import en from './en.json';
 import pt from './pt.json';

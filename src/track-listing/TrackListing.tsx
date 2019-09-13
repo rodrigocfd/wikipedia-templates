@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
@@ -10,7 +10,7 @@ import RowHeader from './RowHeader';
 import RowTrack from './RowTrack';
 import Output from './Output';
 import Track from './Track';
-import {newTrackListingData} from './TrackListingData';
+import {newDataTrackListing} from '../store/DataTrackListing';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -33,7 +33,7 @@ const TrackListing: FC = () => {
 			)}
 		</div>
 		<Output />
-		<Footer onClear={() => setStore({trackListing: newTrackListingData()})} />
+		<Footer onClear={() => setStore({trackListing: newDataTrackListing()})} />
 	</>);
 };
 

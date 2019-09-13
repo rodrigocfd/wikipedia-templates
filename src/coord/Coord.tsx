@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
@@ -10,7 +10,7 @@ import RadiosInline from '../app/RadiosInline';
 import GoogleMapsLink from './GoogleMapsLink';
 import OsmMap from './OsmMap';
 import Output from './Output';
-import CoordData, {CoordDisplay, newCoordData} from './CoordData';
+import DataCoord, {CoordDisplay, newDataCoord} from '../store/DataCoord';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -19,7 +19,7 @@ const Coord: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, 'Coord', {en, pt});
 
-	function setCoord(d: Partial<CoordData>) {
+	function setCoord(d: Partial<DataCoord>) {
 		setStore({
 			coord: {...store.coord, ...d}
 		});
@@ -44,7 +44,7 @@ const Coord: FC = () => {
 				<Output />
 			</div>
 		</div>
-		<Footer onClear={() => setStore({coord: newCoordData()})} />
+		<Footer onClear={() => setStore({coord: newDataCoord()})} />
 	</>);
 };
 

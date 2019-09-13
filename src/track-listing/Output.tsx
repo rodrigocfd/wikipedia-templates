@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import TextAreaOut from '../app/TextAreaOut';
 import Track from './Track';

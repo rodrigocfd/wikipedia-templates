@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import extractLatLng from './extractLatLng';
 
 const OsmMap: FC = () => {

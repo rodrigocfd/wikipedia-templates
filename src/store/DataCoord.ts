@@ -1,11 +1,11 @@
 export type CoordDisplay = 'inline' | 'title' | 'inline,title';
 
-export function newCoordData() {
+export function newDataCoord() {
 	return {
 		latLng: '',
 		display: 'inline' as CoordDisplay
 	};
 };
 
-export default interface CoordData
-	extends ReturnType<typeof newCoordData> { };
+export default interface DataCoord
+	extends ReturnType<typeof newDataCoord> { };

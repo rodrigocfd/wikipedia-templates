@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
 import IframeWebsite from './IframeWebsite';
-import {newCiteWebData} from './CiteWebData';
+import {newDataCiteWeb} from '../store/DataCiteWeb';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -22,7 +22,7 @@ const CiteWeb: FC = () => {
 		<Form />
 		<Output />
 		<IframeWebsite />
-		<Footer onClear={() => setStore({citeWeb: newCiteWebData()})} />
+		<Footer onClear={() => setStore({citeWeb: newDataCiteWeb()})} />
 	</>);
 };
 

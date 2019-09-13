@@ -1,12 +1,12 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import InputFocused from '../app/InputFocused';
 import RadiosInline from '../app/RadiosInline';
 import YearMonthDay from '../app/YearMonthDay';
-import CiteWebData from './CiteWebData';
+import DataCiteWeb from '../store/DataCiteWeb';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -15,7 +15,7 @@ const Form: FC = () => {
 	const [store, setStore] = useStore();
 	const t = genLocaleFunc(store.lang, 'Form', {en, pt});
 
-	function setCiteWeb(d: Partial<CiteWebData>) {
+	function setCiteWeb(d: Partial<DataCiteWeb>) {
 		setStore({
 			citeWeb: {...store.citeWeb, ...d}
 		});

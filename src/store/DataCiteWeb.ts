@@ -1,6 +1,6 @@
 import {newDayMonthYear} from '../app/DayMonthYear';
 
-export function newCiteWebData() {
+export function newDataCiteWeb() {
 	return {
 		refName: '',
 		url: '',
@@ -13,5 +13,5 @@ export function newCiteWebData() {
 	};
 };
 
-export default interface CiteWebData
-	extends ReturnType<typeof newCiteWebData> { };
+export default interface DataCiteWeb
+	extends ReturnType<typeof newDataCiteWeb> { };

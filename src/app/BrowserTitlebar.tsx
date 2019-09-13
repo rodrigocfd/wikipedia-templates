@@ -1,7 +1,7 @@
 import {FC, useEffect} from 'react';
 
-import useStore from './ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import useStore from '../store/ContextStore';
+import genLocaleFunc from './genLocaleFunc';
 
 import en from './en.json';
 import pt from './pt.json';

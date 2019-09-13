@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from './ContextStore';
-import genLocaleFunc from '../app/genLocaleFunc';
+import useStore from '../store/ContextStore';
+import genLocaleFunc from './genLocaleFunc';
 import DayMonthYear, {newDayMonthYear} from './DayMonthYear';
 
 import en from './en.json';

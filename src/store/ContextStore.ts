@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {newLang} from './Lang';
-import {newCiteWebData} from '../cite-web/CiteWebData';
-import {newCoordData} from '../coord/CoordData';
-import {newInfoboxAlbumData} from '../infobox-album/InfoboxAlbumData';
-import {newTrackListingData} from '../track-listing/TrackListingData';
+import {newDataCiteWeb} from './DataCiteWeb';
+import {newDataCoord} from './DataCoord';
+import {newDataInfoboxAlbum} from './DataInfoboxAlbum';
+import {newDataTrackListing} from './DataTrackListing';
 
 /**
  * Global app context store.
@@ -12,10 +12,10 @@ import {newTrackListingData} from '../track-listing/TrackListingData';
 function createStore() {
 	return {
 		lang: newLang(),
-		citeWeb: newCiteWebData(),
-		coord: newCoordData(),
-		infoboxAlbum: newInfoboxAlbumData(),
-		trackListing: newTrackListingData()
+		citeWeb: newDataCiteWeb(),
+		coord: newDataCoord(),
+		infoboxAlbum: newDataInfoboxAlbum(),
+		trackListing: newDataTrackListing()
 	};
 }
 

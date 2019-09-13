@@ -1,13 +1,13 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../app/ContextStore';
+import useStore from '../store/ContextStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 import Footer from '../app/Footer';
 import Form from './Form';
 import Output from './Output';
-import {newInfoboxAlbumData} from './InfoboxAlbumData';
+import {newDataInfoboxAlbum} from '../store/DataInfoboxAlbum';
 
 import en from './en.json';
 import pt from './pt.json';
@@ -23,7 +23,7 @@ const InfoboxAlbum: FC = () => {
 			<Form />
 			<Output />
 		</DivTwoColumns>
-		<Footer onClear={() => setStore({infoboxAlbum: newInfoboxAlbumData()})} />
+		<Footer onClear={() => setStore({infoboxAlbum: newDataInfoboxAlbum()})} />
 	</>);
 };
 

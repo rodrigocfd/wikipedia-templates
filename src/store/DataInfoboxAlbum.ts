@@ -1,8 +1,8 @@
 import {newDayMonthYear} from '../app/DayMonthYear';
-import {AlbumType} from './AlbumType';
-import {newNameYear} from './NameYear';
+import {AlbumType} from '../infobox-album/AlbumType';
+import {newNameYear} from '../infobox-album/NameYear';
 
-export function newInfoboxAlbumData() {
+export function newDataInfoboxAlbum() {
 	return {
 		name: '',
 		type: 'none' as AlbumType,
@@ -18,5 +18,5 @@ export function newInfoboxAlbumData() {
 	};
 };
 
-export default interface InfoboxAlbumData
-	extends ReturnType<typeof newInfoboxAlbumData> { };
+export default interface DataInfoboxAlbum
+	extends ReturnType<typeof newDataInfoboxAlbum> { };
