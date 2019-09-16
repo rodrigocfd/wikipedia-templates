@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
-import useStore from '../store/ContextStore';
+import useStore from '../store/useStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import BrowserTitlebar from '../app/BrowserTitlebar';
 

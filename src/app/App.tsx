@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {HashRouter, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {ContextStore, newStore} from '../store/ContextStore';
+import {ContextStore, newStore} from '../store/useStore';
 import Header from './Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';

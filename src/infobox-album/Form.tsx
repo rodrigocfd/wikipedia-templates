@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../store/ContextStore';
+import useStore from '../store/useStore';
 import genLocaleFunc from '../app/genLocaleFunc';
 import InputFocused from '../app/InputFocused';
 import YearMonthDay from '../app/YearMonthDay';

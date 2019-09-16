@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import styled from 'styled-components';
 
-import useStore from '../store/ContextStore';
+import useStore from '../store/useStore';
 import RemoveTrack from './RemoveTrack';
 import MoveUpTrack from './MoveUpTrack';
 import Track from './Track';
