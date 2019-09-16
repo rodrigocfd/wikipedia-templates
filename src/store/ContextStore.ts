@@ -41,7 +41,7 @@ export function newStore(): ContextGetSetTuple {
  * Context object, to be passed to useContext hook.
  */
 export const ContextStore = React.createContext(
-	<ContextGetSetTuple>[<Store>{}, (s: Store): void => {}]);
+	[{} as Store, (s: Store): void => {}] as ContextGetSetTuple);
 
 /**
  * Syntactic sugar to useContext hook, with partial setStore function.

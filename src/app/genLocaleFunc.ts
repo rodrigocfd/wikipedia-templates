@@ -15,7 +15,7 @@ export interface LocaleList {
  * Type of the function used to retrieve string from locale.
  */
 export type LocaleFunc = (
-	str: string | TemplateStringsArray,
+	str: (string | TemplateStringsArray),
 	...args: (string | number)[]
 	) => string;
 
@@ -23,12 +23,13 @@ export type LocaleFunc = (
  * Returns the function used to retrieve string from locale.
  */
 export default function genLocaleFunc(
-		curLang: Lang, componentName: string,
+		curLang: Lang,
+		componentName: string,
 		locales: LocaleList
 		): LocaleFunc {
 
 	function t(
-			key: string | TemplateStringsArray,
+			key: (string | TemplateStringsArray),
 			...args: (string | number)[]
 			): string {
 

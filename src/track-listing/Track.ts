@@ -15,7 +15,7 @@ export function newTrack() {
 		writer: '',
 		lyrics: '',
 		music: '',
-		duration: '' as number | ''
+		duration: '' as (number | '')
 	};
 };
 
