@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import {HashRouter, Route} from 'react-router-dom';
 import styled from 'styled-components';
 
-import {ContextStore, newStore} from '../store/useStore';
+import {ContextStore, useNewStore} from '../store/useStore';
 import Header from './Header';
 import Home from '../home/Home';
 import CiteWeb from '../cite-web/CiteWeb';
@@ -15,7 +15,7 @@ import TrackListing from '../track-listing/TrackListing';
  */
 const App: FC = () => (
 	<HashRouter>
-		<ContextStore.Provider value={newStore()}>
+		<ContextStore.Provider value={useNewStore()}>
 			<Header />
 			<DivBodyContent>
 				<Route exact path="/" component={Home} />

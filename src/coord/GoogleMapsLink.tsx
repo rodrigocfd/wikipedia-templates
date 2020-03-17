@@ -17,7 +17,7 @@ const GoogleMapsLink: FC = () => {
 
 	return !url ? null : (
 		<Wrap>
-			<a target="_blank" href={url}>{url}</a>
+			<a target="_blank" rel="noopener noreferrer" href={url}>{url}</a>
 		</Wrap>
 	);
 };

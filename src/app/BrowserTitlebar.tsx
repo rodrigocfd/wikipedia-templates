@@ -16,7 +16,7 @@ const BrowserTitlebar: FC<Readonly<Props>> = p => {
 
 	useEffect(() => {
 		document.title = p.title + (p.title && ' - ') + t`Wikipedia Templates`;
-	}, [t]);
+	}, [t, p.title]);
 
 	return null;
 };

@@ -33,7 +33,7 @@ export type ContextGetSetTuple = [Readonly<Store>, SetStoreFunc];
  * of current component; intended to be used at your root component.
  * Return value can be passed to ContextStore.Provider.
  */
-export function newStore(): ContextGetSetTuple {
+export function useNewStore(): ContextGetSetTuple {
 	return React.useState(createStore());
 };
 
