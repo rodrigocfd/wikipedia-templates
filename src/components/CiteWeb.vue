@@ -2,7 +2,7 @@
 	<h1>Cite web</h1>
 	<div>
 		<div class="fields">
-			<label>URL</label><input type="text" v-model="url" />
+			<label>URL</label><input type="text" v-model="url" ref="txtUrl" />
 			<label>Title</label><input type="text" v-model="title" />
 			<label>Author</label>
 			<div>
@@ -10,21 +10,31 @@
 				<label>First name</label><input type="text" v-model="first" />
 			</div>
 			<label>Website</label><input type="text" v-model="website" />
+			<label>Date</label><Date @change="dateChanged" />
 		</div>
 	</div>
 	<textarea :value="result" />
 </template>
 
 <script>
-import {computed, ref} from 'vue';
+import {computed, onMounted, ref} from 'vue';
+import Date from './Date.vue';
 
 export default {
+	components: {Date},
+
 	setup() {
+		const txtUrl = ref(null);
 		const url = ref('');
 		const title = ref('');
 		const last = ref('');
 		const first = ref('');
 		const website = ref('');
+		const date = ref('');
+
+		onMounted(() => {
+			txtUrl.value.focus();
+		});
 
 		const result = computed(() =>
 			'{{cite web' +
@@ -33,10 +43,20 @@ export default {
 			(last.value ? ` |last=${last.value}` : '') +
 			(first.value ? ` |last=${first.value}` : '') +
 			(website.value ? ` |website=${website.value}` : '') +
+			(date.value ? ` |date=${date.value}` : '') +
 			'}}'
 		);
 
-		return {url, title, last, first, website, result};
+		function dateChanged(newDate) {
+			date.value = newDate;
+		}
+
+		return {
+			txtUrl,
+			url, title, last, first, website, date,
+			dateChanged,
+			result,
+		};
 	}
 };
 </script>
