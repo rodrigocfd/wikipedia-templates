@@ -6,7 +6,7 @@
 			<label>Title</label><input type="text" v-model="title" />
 		</div>
 	</div>
-	<textarea :value="tag" />
+	<textarea :value="result" />
 </template>
 
 <script>
@@ -17,17 +17,14 @@ export default {
 		const url = ref('');
 		const title = ref('');
 
-		const tag = computed(() =>
+		const result = computed(() =>
 			'{{cite web' +
 			(url.value ? ` |url=${url.value}` : '') +
-			(title.value ? ` |url=${title.value}` : '') +
+			(title.value ? ` |title=${title.value}` : '') +
 			'}}'
 		);
 
-		return {
-			url,
-			tag,
-		};
+		return {url, title, result};
 	}
 };
 </script>
@@ -38,12 +35,17 @@ export default {
 	grid-template-columns: auto auto;
 	grid-gap: 12px;
 	margin-bottom: 20px;
+	& > label {
+		align-self: center;
+	}
 	& > input {
 		width: 400px;
+		font-family: monospace;
 	}
 }
 textarea {
 	width: 800px;
 	height: 60px;
+	padding: 6px;
 }
 </style>
