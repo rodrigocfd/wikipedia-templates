@@ -9,6 +9,7 @@
 				<label>Last name</label><input type="text" v-model="last" />
 				<label>First name</label><input type="text" v-model="first" />
 			</div>
+			<label>Website</label><input type="text" v-model="website" />
 		</div>
 	</div>
 	<textarea :value="result" />
@@ -23,6 +24,7 @@ export default {
 		const title = ref('');
 		const last = ref('');
 		const first = ref('');
+		const website = ref('');
 
 		const result = computed(() =>
 			'{{cite web' +
@@ -30,10 +32,11 @@ export default {
 			(title.value ? ` |title=${title.value}` : '') +
 			(last.value ? ` |last=${last.value}` : '') +
 			(first.value ? ` |last=${first.value}` : '') +
+			(website.value ? ` |website=${website.value}` : '') +
 			'}}'
 		);
 
-		return {url, title, last, first, result};
+		return {url, title, last, first, website, result};
 	}
 };
 </script>
