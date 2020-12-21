@@ -11,6 +11,7 @@
 			</div>
 			<label>Website</label><input type="text" v-model="website" />
 			<label>Date</label><Date v-model="date" />
+			<label>Access date</label><Date v-model="accessDate" />
 		</div>
 	</div>
 	<textarea :value="result" />
@@ -30,7 +31,8 @@ export default {
 		const last = ref('');
 		const first = ref('');
 		const website = ref('');
-		const date = ref('1981-4-26');
+		const date = ref('');
+		const accessDate = ref('');
 
 		onMounted(() => {
 			txtUrl.value.focus();
@@ -44,12 +46,13 @@ export default {
 			(first.value ? ` |last=${first.value}` : '') +
 			(website.value ? ` |website=${website.value}` : '') +
 			(date.value ? ` |date=${date.value}` : '') +
+			(accessDate.value ? ` |access-date=${accessDate.value}` : '') +
 			'}}'
 		);
 
 		return {
 			txtUrl,
-			url, title, last, first, website, date,
+			url, title, last, first, website, date, accessDate,
 			result,
 		};
 	}
