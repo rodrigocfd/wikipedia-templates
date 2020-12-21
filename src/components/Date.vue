@@ -1,8 +1,11 @@
 <template>
 	<div>
-		<label>Day</label><input type="number" size="3" maxlength="2" :value="ymd[2]" @input="changedD" />
-		<label>Month</label><input type="number" size="3" maxlength="2" :value="ymd[1]" @input="changedM" />
-		<label>Year</label><input type="number" size="5" maxlength="4" :value="ymd[0]" @input="changedY" />
+		<label>Day</label>
+		<input type="number" size="3" maxlength="2" :value="ymd[2]" @input="changedD" @click="selAll" />
+		<label>Month</label>
+		<input type="number" size="3" maxlength="2" :value="ymd[1]" @input="changedM" @click="selAll" />
+		<label>Year</label>
+		<input type="number" size="5" maxlength="4" :value="ymd[0]" @input="changedY" @click="selAll" />
 		<button @click="today">Today</button>
 		<button @click="clear">Clear</button>
 	</div>
@@ -33,6 +36,10 @@ export default {
 			emitYMD(e.target.value, ymd.value[1], ymd.value[2]);
 		}
 
+		function selAll(e) {
+			e.target.select();
+		}
+
 		function today() {
 			const now = new Date();
 			emitYMD(now.getFullYear(), now.getMonth() + 1, now.getDate());
@@ -42,7 +49,7 @@ export default {
 		}
 
 		return {
-			ymd, changedD, changedM, changedY,
+			ymd, changedD, changedM, changedY, selAll,
 			today, clear,
 		};
 	}

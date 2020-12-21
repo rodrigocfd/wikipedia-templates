@@ -14,7 +14,7 @@
 			<label>Access date</label><Date v-model="accessDate" />
 		</div>
 	</div>
-	<textarea :value="result" />
+	<textarea :value="result" @click="selAll" />
 </template>
 
 <script>
@@ -50,10 +50,14 @@ export default {
 			'}}'
 		);
 
+		function selAll(e) {
+			e.target.select();
+		}
+
 		return {
 			txtUrl,
 			url, title, last, first, website, date, accessDate,
-			result,
+			selAll, result,
 		};
 	}
 };
