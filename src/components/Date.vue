@@ -1,30 +1,37 @@
 <template>
 	<div>
-		<label>Day</label><input type="text" size="2" v-model="day" @input="txtChanged" />
-		<label>Month</label><input type="text" size="2" v-model="mon" @input="txtChanged" />
-		<label>Year</label><input type="text" size="4" v-model="yer" @input="txtChanged" />
+		<label>Day</label><input type="text" size="2" :value="ymd[2]" @input="changedD" />
+		<label>Month</label><input type="text" size="2" :value="ymd[1]" @input="changedM" />
+		<label>Year</label><input type="text" size="4" :value="ymd[0]" @input="changedY" />
 	</div>
 </template>
 
 <script>
-import {ref} from 'vue';
+import {computed} from 'vue';
 
 export default {
-	emits: ['change'],
+	props: ['modelValue'],
+	emits: ['update:modelValue'],
 
 	setup(props, ctx) {
-		const day = ref('');
-		const mon = ref('');
-		const yer = ref('');
+		const ymd = computed(() => props.modelValue.split('-'));
 
-		function txtChanged() {
-			ctx.emit('change', !yer.value && !mon.value && !day.value
-				? ''
-				: `${yer.value}-${mon.value}-${day.value}`
-			);
+		function emitYMD(y, m, d) {
+			ctx.emit('update:modelValue',
+				(!y && !m && !d) ? '' : `${y}-${m}-${d}`);
 		}
 
-		return {day, mon, yer, txtChanged};
+		function changedD(e) {
+			emitYMD(ymd.value[0], ymd.value[1], e.target.value);
+		}
+		function changedM(e) {
+			emitYMD(ymd.value[0], e.target.value, ymd.value[2]);
+		}
+		function changedY(e) {
+			emitYMD(e.target.value, ymd.value[1], ymd.value[2]);
+		}
+
+		return {ymd, changedD, changedM, changedY};
 	}
 }
 </script>

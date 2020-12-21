@@ -10,7 +10,7 @@
 				<label>First name</label><input type="text" v-model="first" />
 			</div>
 			<label>Website</label><input type="text" v-model="website" />
-			<label>Date</label><Date @change="dateChanged" />
+			<label>Date</label><Date v-model="date" />
 		</div>
 	</div>
 	<textarea :value="result" />
@@ -30,7 +30,7 @@ export default {
 		const last = ref('');
 		const first = ref('');
 		const website = ref('');
-		const date = ref('');
+		const date = ref('1981-4-26');
 
 		onMounted(() => {
 			txtUrl.value.focus();
@@ -47,14 +47,9 @@ export default {
 			'}}'
 		);
 
-		function dateChanged(newDate) {
-			date.value = newDate;
-		}
-
 		return {
 			txtUrl,
 			url, title, last, first, website, date,
-			dateChanged,
 			result,
 		};
 	}
