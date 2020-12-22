@@ -1,5 +1,5 @@
 <template>
-	<h2>Cite web EN</h2>
+	<h2>Cite web [{{lang}}]</h2>
 	<div>
 		<div class="fields">
 			<label>URL</label><input type="text" v-model="url" ref="txtUrl" />
@@ -19,12 +19,16 @@
 
 <script>
 import {computed, onMounted, ref} from 'vue';
-import Date from '@/pages/Date';
+import {useStore} from 'vuex';
+import Date from '@/components/Date';
 
 export default {
 	components: {Date},
 
 	setup() {
+		const store = useStore();
+		const lang = computed(() => store.state.lang);
+
 		const txtUrl = ref(null);
 		const url = ref('');
 		const title = ref('');
@@ -55,7 +59,7 @@ export default {
 		}
 
 		return {
-			txtUrl,
+			txtUrl, lang,
 			url, title, last, first, website, date, accessDate,
 			selAll, result,
 		};

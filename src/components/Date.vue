@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<label>Day</label>
-		<input type="number" size="3" maxlength="2" :value="ymd[2]" @input="changedD" @click="selAll" />
+		<input type="number" class="nums2" maxlength="2" :value="ymd[2]" @input="changedD" @click="selAll" />
 		<label>Month</label>
-		<input type="number" size="3" maxlength="2" :value="ymd[1]" @input="changedM" @click="selAll" />
+		<input type="number" class="nums2" maxlength="2" :value="ymd[1]" @input="changedM" @click="selAll" />
 		<label>Year</label>
-		<input type="number" size="5" maxlength="4" :value="ymd[0]" @input="changedY" @click="selAll" />
+		<input type="number" class="nums4" maxlength="4" :value="ymd[0]" @input="changedY" @click="selAll" />
 		<button @click="today">Today</button>
 		<button @click="clear">Clear</button>
 	</div>
@@ -59,5 +59,11 @@ export default {
 <style scoped lang="scss">
 label, button {
 	margin: 0 12px;
+}
+.nums2 {
+	width: 40px;
+}
+.nums4 {
+	width: 80px;
 }
 </style>

@@ -1,18 +1,13 @@
 import {createWebHistory, createRouter} from 'vue-router';
 
-import CiteWebEn from '@/pages/CiteWebEn';
-import CiteWebPt from '@/pages/CiteWebPt';
+import CiteWeb from '@/pages/CiteWeb';
 import NotFound from '@/pages/NotFound';
 
-const history = createWebHistory();
-const router = createRouter({
-	history,
+export default createRouter({
+	history: createWebHistory(),
 	routes: [
 		{ path: '/', redirect: '/cite-web-en' },
-		{ path: '/cite-web-en', component: CiteWebEn },
-		{ path: '/cite-web-pt', component: CiteWebPt },
+		{ path: '/cite-web', component: CiteWeb },
 		{ path: '/:pathMatch(.*)*', component: NotFound },
 	],
 });
-
-export default router;

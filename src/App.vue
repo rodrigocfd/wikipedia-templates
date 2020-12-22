@@ -2,8 +2,7 @@
 	<div id="appTopRow">
 		<h1>Wikipedia Templates</h1>
 		<div>
-			<router-link to="/cite-web-en">Cite web EN</router-link> |
-			<router-link to="/cite-web-pt">Cite web PT</router-link>
+			<router-link to="/cite-web">Cite web</router-link>
 		</div>
 	</div>
 	<div id="appContent">
