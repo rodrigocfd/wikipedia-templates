@@ -1,5 +1,5 @@
 <template>
-	<h1>Cite web</h1>
+	<h2>Cite web EN</h2>
 	<div>
 		<div class="fields">
 			<label>URL</label><input type="text" v-model="url" ref="txtUrl" />
@@ -19,7 +19,7 @@
 
 <script>
 import {computed, onMounted, ref} from 'vue';
-import Date from '@/components/Date';
+import Date from '@/pages/Date';
 
 export default {
 	components: {Date},
