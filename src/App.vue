@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import CiteWeb from './components/CiteWeb.vue';
+import CiteWeb from '@/components/CiteWeb';
 
 export default {
 	components: {CiteWeb},

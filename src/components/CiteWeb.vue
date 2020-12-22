@@ -19,7 +19,7 @@
 
 <script>
 import {computed, onMounted, ref} from 'vue';
-import Date from './Date.vue';
+import Date from '@/components/Date';
 
 export default {
 	components: {Date},
