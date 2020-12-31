@@ -43,15 +43,15 @@ export default {
 		});
 
 		const result = computed(() =>
-			'{{cite web' +
+			'<ref>{{cite web' +
 			(url.value ? ` |url=${url.value}` : '') +
 			(title.value ? ` |title=${title.value}` : '') +
 			(last.value ? ` |last=${last.value}` : '') +
-			(first.value ? ` |last=${first.value}` : '') +
+			(first.value ? ` |first=${first.value}` : '') +
 			(website.value ? ` |website=${website.value}` : '') +
 			(date.value ? ` |date=${date.value}` : '') +
 			(accessDate.value ? ` |access-date=${accessDate.value}` : '') +
-			'}}'
+			'}}</ref>'
 		);
 
 		function selAll(e) {
