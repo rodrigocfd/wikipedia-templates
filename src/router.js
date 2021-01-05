@@ -4,10 +4,7 @@ import CiteWeb from '@/pages/CiteWeb';
 import NotFound from '@/pages/NotFound';
 
 export default createRouter({
-	history: createWebHistory(),
-	base: process.env.NODE_ENV === 'production' // follows vue.config.js
-		? '/wikipedia-templates/'
-		: '/',
+	history: createWebHistory(process.env.BASE_URL),
 	routes: [
 		{ path: '/', redirect: '/cite-web' },
 		{ path: '/cite-web', component: CiteWeb },
