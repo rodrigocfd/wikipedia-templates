@@ -2,7 +2,7 @@
 	<div id="appTopRow">
 		<h1>Wikipedia Templates</h1>
 		<div>
-			<router-link to="/cite-web">Cite web</router-link>
+			<a href="https://github.com/rodrigocfd/wikipedia-templates">Repo</a>
 		</div>
 	</div>
 	<div id="appContent">
